@@ -1,0 +1,5 @@
+"use strict";
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Class to cast object for yaml files
+Object.defineProperty(exports, "__esModule", { value: true });
+//# sourceMappingURL=settingFile.models.js.map

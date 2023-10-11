@@ -1,0 +1,35 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ObjectNameEnum = void 0;
+var ObjectNameEnum;
+(function (ObjectNameEnum) {
+    ObjectNameEnum["VM"] = "vm";
+    ObjectNameEnum["RG"] = "rg";
+    ObjectNameEnum["DISK"] = "disk";
+    ObjectNameEnum["NSG"] = "nsg";
+    ObjectNameEnum["VIRTUALNETWORK"] = "virtualNetwork";
+    ObjectNameEnum["NETWORKINTERFACE"] = "networkInterfaces";
+    ObjectNameEnum["NAMESPACE"] = "namespaces";
+    ObjectNameEnum["PODS"] = "pods";
+    ObjectNameEnum["HELM"] = "helm";
+    ObjectNameEnum["AKS"] = "aks";
+    ObjectNameEnum["REPOSITORIES"] = "repositories";
+    ObjectNameEnum["BRANCHES"] = "branches";
+    ObjectNameEnum["ISSUES"] = "issues";
+    ObjectNameEnum["IP"] = "ip";
+    ObjectNameEnum["PUBLICIP"] = "PublicIp";
+    ObjectNameEnum["EC2INSTANCE"] = "ec2Instance";
+    ObjectNameEnum["EC2VOLUME"] = "ec2Volume";
+    ObjectNameEnum["EC2SG"] = "ec2SG";
+    ObjectNameEnum["RDS"] = "rds";
+    ObjectNameEnum["RESOURCEGROUPS"] = "resourceGroups";
+    ObjectNameEnum["TAGSVALUE"] = "tagsValue";
+    ObjectNameEnum["ECSCLUSTER"] = "ecsCluster";
+    ObjectNameEnum["ECRREPOSITORY"] = "ecrRepository";
+    ObjectNameEnum["REQUEST"] = "request";
+    ObjectNameEnum["ECRIMAGE"] = "ecrImage";
+    ObjectNameEnum["BUCKET"] = "bucket";
+    ObjectNameEnum["TASK"] = "task";
+    ObjectNameEnum["COMPUTE"] = "compute";
+})(ObjectNameEnum || (exports.ObjectNameEnum = ObjectNameEnum = {}));
+//# sourceMappingURL=objectName.enum.js.map
