@@ -1,14 +1,19 @@
-name: 'Kexa-Action'
-description: 'test github action'
-author: 'Esteban Mathia'
+name: 'The name of your action here'
+description: 'Provide a description here'
+author: 'Your name or organization here'
+
+# Define your inputs here.
 inputs:
-  message:
-    description: 'message rendering in the action'
+  milliseconds:
+    description: 'Your input description here'
     required: true
-    default: 'Hello, GitHub Actions!'
+    default: '1000'
+
+# Define your outputs here.
 outputs:
   time:
-    description: 'now'
+    description: 'Your output description here'
+
 runs:
-  using: 'node12'
-  main: 'main.ts'
+  using: node20
+  main: dist/index.js

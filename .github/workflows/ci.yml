@@ -35,6 +35,7 @@ jobs:
         uses: ./
         with:
           message: 'salut' 
+          milliseconds: 1000
 
       - name: Display output
         run: 'echo "Time: ${{ steps.myaction.outputs.time }}"'
