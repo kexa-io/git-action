@@ -1,0 +1,24 @@
+{
+  "name": "kexa_githubaction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4urcloud/Kexa_githubAction.git"
+  },
+  "keywords": [],
+  "author": "esteban.mathia@innovtech.eu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4urcloud/Kexa_githubAction/issues"
+  },
+  "homepage": "https://github.com/4urcloud/Kexa_githubAction#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  }
+}

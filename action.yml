@@ -1,0 +1,14 @@
+name: 'Kexa-Action'
+description: 'test github action'
+author: 'Esteban Mathia'
+inputs:
+  message:
+    description: 'message rendering in the action'
+    required: true
+    default: 'Hello, GitHub Actions!'
+outputs:
+  time:
+    description: 'now'
+runs:
+  using: 'node12'
+  main: 'main.ts'
