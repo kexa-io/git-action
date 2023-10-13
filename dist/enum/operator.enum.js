@@ -10,5 +10,5 @@ var OperatorEnum;
     OperatorEnum["NOR"] = "NOR";
     OperatorEnum["XNOR"] = "XNOR";
     OperatorEnum["NOT"] = "NOT";
-})(OperatorEnum || (exports.OperatorEnum = OperatorEnum = {}));
-//# sourceMappingURL=operator.enum.js.map
+})(OperatorEnum = exports.OperatorEnum || (exports.OperatorEnum = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib3BlcmF0b3IuZW51bS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9lbnVtL29wZXJhdG9yLmVudW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsSUFBWSxZQVFYO0FBUkQsV0FBWSxZQUFZO0lBQ3BCLDJCQUFXLENBQUE7SUFDWCx5QkFBUyxDQUFBO0lBQ1QsMkJBQVcsQ0FBQTtJQUNYLDZCQUFhLENBQUE7SUFDYiwyQkFBVyxDQUFBO0lBQ1gsNkJBQWEsQ0FBQTtJQUNiLDJCQUFXLENBQUE7QUFDZixDQUFDLEVBUlcsWUFBWSxHQUFaLG9CQUFZLEtBQVosb0JBQVksUUFRdkIifQ==

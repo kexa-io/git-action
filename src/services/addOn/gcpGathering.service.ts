@@ -200,7 +200,7 @@ export async function collectData(gcpConfig:GcpConfig[]): Promise<GCPResources[]
                 compute_item: compute_itemList
             };
         }
-        catch (e) {
+        catch (e:any) {
             logger.error("error in collectGCPData: " + projectId);
             logger.error(e);
         }
@@ -241,7 +241,7 @@ async function retrieveAllRegions(projectId: number, regionsList: Array<string>)
         for await (const response of iterable) {
             regionsList.push(response.name);
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error("GCP : Error while retrieving all regions")
     }
 }
@@ -250,7 +250,7 @@ async function retrieveAllRegions(projectId: number, regionsList: Array<string>)
 /////  ASYNC REGIONS GATHERING FOR FASTER EXECUTION /////    it iterate async to gather all.
 /////////////////////////////////////////////////////////
 async function executeAllRegions(projectId: number, serviceFunction: Function, client: any,
-                                 regionsList: Array<string>, isIterable: Boolean) : Promise<Array<any>> {
+                                regionsList: Array<string>, isIterable: Boolean) : Promise<Array<any>> {
     const processRegion = async (currentRegion: any) => {
         const parent = 'projects/' + projectId + '/locations/' + currentRegion;
         try {
@@ -272,8 +272,8 @@ async function executeAllRegions(projectId: number, serviceFunction: Function, c
                 }
             }
             return jsonResponses;
-        } catch (e) {
-            logger.warn(`GCP : Error while retrieving data in multiple regions - Region: ${currentRegion} not found or access not authorized for ${serviceFunction.name}`);
+        } catch (e:any) {
+            logger.warning(`GCP : Error while retrieving data in multiple regions - Region: ${currentRegion} not found or access not authorized for ${serviceFunction.name}`);
         }
     };
     const processingPromises = regionsList.map(processRegion);
@@ -302,7 +302,7 @@ async function listTasks(projectId: number, regionsList: Array<string>): Promise
     try {
         const tasksClient = new CloudTasksClient();
         jsonData = await executeAllRegions(projectId, tasksClient.listQueuesAsync, tasksClient, regionsList, true);
-    } catch (e) {
+    } catch (e:any) {
         logger.error("Error while retrieving GCP Tasks Queues");
     }
     return jsonData ?? null;
@@ -377,7 +377,7 @@ async function listAllBucket(): Promise<Array<any>|null> {
             jsonReturn.push(jsonData);
 
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Buckets Listing Done");
@@ -400,7 +400,7 @@ async function listAllClusters(): Promise<Array<any>|null> {
         };
         const [response] = await cnt.listClusters(request);
         jsonData = JSON.parse(JSON.stringify(response));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Clusters Listing Done");
@@ -417,7 +417,7 @@ async function listAllProject(): Promise<Array<any>|null> {
         for await (const project of projects) {
             jsonData = JSON.parse(JSON.stringify(project));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Projects Listing Done");
@@ -436,7 +436,7 @@ async function getBillingAccount(projectId: any): Promise<Array<any>|null> {
         for (const account of accounts) {
             jsonData = JSON.parse(JSON.stringify(account));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Billing Accounts Listing Done");
@@ -454,7 +454,7 @@ async function listWorkflows(projectId: any): Promise<Array<any>|null> {
         for (const workflow of workflows) {
             jsonData = JSON.parse(JSON.stringify(workflow));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Workflows Listing Done");
@@ -471,7 +471,7 @@ async function listWebSecurityConfig(projectId: any): Promise<Array<any>|null> {
         });
         jsonData = JSON.parse(JSON.stringify(stats));
     }
-    catch (e) {
+    catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Web Security Configs Listing Done");
@@ -484,7 +484,7 @@ async function listVpcConnectors(projectId: any, regionsList: Array<string>): Pr
     try {
         const client = new VpcAccessServiceClient();
         jsonData = await executeAllRegions(projectId, client.listConnectors, client, regionsList, false )
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP VPC Connectors Listing Done");
@@ -506,7 +506,7 @@ async function listVMWareEngine(projectId: any): Promise<Array<any>|null>  {
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP VMWare Engine Listing Done");
@@ -521,7 +521,7 @@ async function listNamespaces(projectId: any, regionsList: Array<string>): Promi
         const registrationServiceClient = new RegistrationServiceClient();
         jsonData = await executeAllRegions(projectId, registrationServiceClient.listNamespaces, registrationServiceClient,
             regionsList, true);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Namespaces Listing Done");
@@ -540,7 +540,7 @@ export async function listSecrets(projectId: any): Promise<Array<any>|null> {
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Secrets Listing Done");
@@ -557,7 +557,7 @@ async function listConnectivityTests(projectId: any): Promise<Array<any>|null>  
             parent: `projects/${projectId}/locations/global`,
         });
         jsonData = JSON.parse(JSON.stringify(tests));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Connectivity Tests Listing Done");
@@ -575,7 +575,7 @@ async function listResourceSettings(projectId: any): Promise<Array<any>|null> {
             parent: `projects/${projectId}`,
         });
         jsonData = JSON.parse(JSON.stringify(settings));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Resources Settings Listing Done");
@@ -589,7 +589,7 @@ async function listRedisInstances(projectId: any, regionsList: Array<string>): P
     try {
         const client = new CloudRedisClient();
         jsonData = await executeAllRegions(projectId, client.listInstances, client, regionsList, false);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Redis Instances Listing Done");
@@ -606,7 +606,7 @@ async function listOSConfig(projectId: any): Promise<Array<any>|null> {
             parent: `projects/${projectId}`,
         });
         jsonData = JSON.parse(JSON.stringify(deployments));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP OS Config Listing Done");
@@ -623,7 +623,7 @@ async function listOrgPolicyContraints(projectId: any): Promise<Array<any>|null>
             parent: `projects/${projectId}`,
         });
         jsonData = JSON.parse(JSON.stringify(constraints));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP OrgPolicy Contraints Listing Done");
@@ -637,7 +637,7 @@ async function listOrchestrationAirflow(projectId: any, regionsList: Array<strin
     try {
         const client = new ImageVersionsClient();
         jsonData = await executeAllRegions(projectId, client.listImageVersions, client, regionsList, false);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP OrgPolicy Contraints Listing Done");
@@ -656,7 +656,7 @@ async function listNotebookInstances(projectId: any): Promise<Array<any> | null>
         for (const instance of instances) {
             jsonData = JSON.parse(JSON.stringify(instance));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Notebook Instances Listing Done");
@@ -674,7 +674,7 @@ async function listDashboards(projectId: any): Promise<Array<any> | null> {
         for (const dashboard of dashboards) {
             jsonData = JSON.parse(JSON.stringify(dashboard));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Dashboards Listing Done");
@@ -691,7 +691,7 @@ async function listIdentitiesDomain(projectId: any): Promise<Array<any> | null> 
             parent: `projects/${projectId}/locations/global`,
         });
         jsonData = JSON.parse(JSON.stringify(domains));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e)
     }
     logger.info("GCP Identities Domains Listing Done");
@@ -710,7 +710,7 @@ async function listLineageProcesses(projectId: any): Promise<Array<any> | null> 
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Lineage Processes Listing Done");
@@ -730,7 +730,7 @@ async function listKMSCryptoKeys(projectId: any): Promise<Array<any> | null> {
             autoPaginate: false,
         });
         jsonData = JSON.parse(JSON.stringify(response));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP KMS Crypto Keys Listing Done");
@@ -750,7 +750,7 @@ async function listKMSKeyRings(projectId: any): Promise<Array<any> | null> {
         for (const keyRing of keyRings) {
             jsonData = JSON.parse(JSON.stringify(keyRing));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP KMS Key Rings Listing Done");
@@ -767,7 +767,7 @@ async function listDomainsRegistration(projectId: any): Promise<Array<any> | nul
             parent: `projects/${projectId}/locations/global`,
         });
         jsonData = JSON.parse(JSON.stringify(registrations));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Domains Resgitration Listing Done");
@@ -784,7 +784,7 @@ async function listDnsZones(projectId: any): Promise<Array<any> | null> {
         for (const zone of zones) {
             jsonData = JSON.parse(JSON.stringify(zone));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP DNS Zones Listing Done");
@@ -798,7 +798,7 @@ async function listDeliveryPipelines(projectId: any, regionsList: Array<string>)
     try {
         const deployClient = new CloudDeployClient();
         jsonData = await executeAllRegions(projectId, deployClient.listDeliveryPipelinesAsync, deployClient, regionsList, true);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Delivery Pipelines Listing Done");
@@ -817,7 +817,7 @@ async function listCertificates(projectId: any): Promise<Array<any> | null> {
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Certificates Listing Done");
@@ -831,7 +831,7 @@ async function listBatchJobs(projectId: any, regionsList: Array<string>): Promis
     try {
         const batchClient = new BatchServiceClient();
         jsonData = await executeAllRegions(projectId, batchClient.listJobsAsync, batchClient, regionsList, true);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Batch Jobs Listing Done");
@@ -854,7 +854,7 @@ async function listWorkloads(projectId: any): Promise<Array<any> | null> {
         for (const workload of workloads) {
             jsonData = JSON.parse(JSON.stringify(workload));
         }*/
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Workloads Listing Done");
@@ -868,7 +868,7 @@ async function listArtifactsRepositories(projectId: any, regionsList: Array<stri
     try {
         const client = new ArtifactRegistryClient();
         jsonData = await executeAllRegions(projectId, client.listRepositories, client, regionsList, false);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Artifacts Repositories Listing Done");
@@ -882,7 +882,7 @@ async function listAppGateways(projectId: any, regionsList: Array<string>): Prom
     try {
         const appgatewaysClient = new AppGatewaysServiceClient();
         jsonData = await executeAllRegions(projectId, appgatewaysClient.listAppGatewaysAsync, appgatewaysClient, regionsList, true);
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP App Gateways Listing Done");
@@ -905,7 +905,7 @@ async function listAppConnectors(projectId: any): Promise<Array<any> | null> {
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP App Connectors Listing Done");
@@ -925,7 +925,7 @@ async function listApiKeys(projectId: any): Promise<Array<any> | null> {
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Api Keys Listing Done");
@@ -944,7 +944,7 @@ async function listApi(projectId: any): Promise<Array<any> | null> {
         for (const api of apis) {
             jsonData = JSON.parse(JSON.stringify(api));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Api Listing Done");
@@ -961,7 +961,7 @@ async function listAccessPolicy(projectId: any): Promise<Array<any> | null> {
             parent: `projects/${projectId}`,
         });
         jsonData = JSON.parse(JSON.stringify(requests));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Api Listing Done");
@@ -978,7 +978,7 @@ async function listWorkstations(projectId: any, regionsList: Array<string>): Pro
         const workstationsClient = new WorkstationsClient();
         jsonData = await executeAllRegions(projectId, workstationsClient.listWorkstationsAsync, workstationsClient, regionsList,true);
     }
-    catch (e) {
+    catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Workstations Listing Done");
@@ -1003,7 +1003,7 @@ async function listStorageConfig(projectId: any): Promise<Array<any>|null> {
         for await (const response of iterable) {
             jsonData = JSON.parse(JSON.stringify(response));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Storage Configs Listing Done");
@@ -1023,7 +1023,7 @@ async function listPrivateCertificates(projectId: any): Promise<Array<any>|null>
             parent: `projects/${projectId}/locations/-/caPools/-`,
         });
         jsonData = JSON.parse(JSON.stringify(res));
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     logger.info("GCP Private Certificates Listing Done");

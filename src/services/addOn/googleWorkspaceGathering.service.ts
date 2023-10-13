@@ -104,7 +104,7 @@ export async function collectData(googleWorkspaceConfig:googleWorkspaceConfig[])
                 };
                 logger.info("- listing googleWorkspace resources done -");
             }
-            catch (e)
+            catch (e:any)
             {
                 logger.error("error in collect googleWorkspace data: ");
                 logger.error(e);
@@ -184,7 +184,7 @@ async function listUsers(auth: any): Promise<Array<any> | null> {
                 }
             });
 
-        } catch (error) {
+        } catch (error:any) {
             logger.error('Error listing user roles:', error);
             return [];
         }
@@ -220,11 +220,11 @@ async function listDomains(auth: any): Promise<Array<any> | null> {
                     domainInfos: domainResponse.data
                 }
                 jsonData.push(JSON.parse(JSON.stringify(newJsonEntry)));
-            } catch (e) {
+            } catch (e:any) {
                 logger.error(e);
             }
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     return jsonData ?? null;
@@ -243,7 +243,7 @@ async function listGroups(auth: any): Promise<Array<any> | null> {
             jsonData = JSON.parse(JSON.stringify(groups));
         else
             return null;
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     return jsonData ?? null;
@@ -259,7 +259,7 @@ async function listRoles(auth: any): Promise<Array<any> | null> {
             customer: 'my_customer',
         });
         jsonData = JSON.parse(JSON.stringify(adminRoles.data.items));
-    } catch (error) {
+    } catch (error:any) {
         logger.error('Error listing user roles:', error);
     }
     return jsonData ?? null;
@@ -301,7 +301,7 @@ async function listCalendars(auth: any): Promise<Array<any> | null> {
             const calendarACL = responseUnit.data;
             jsonData[i].calendarACL = JSON.parse(JSON.stringify(calendarACL.items));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     return jsonData ?? null;
@@ -322,7 +322,7 @@ async function listFiles(auth: any): Promise<Array<any> | null> {
             });
             jsonData.push(JSON.parse(JSON.stringify(res.data)));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     return jsonData ?? null;
@@ -343,7 +343,7 @@ async function listDrive(auth: any): Promise<Array<any> | null> {
             });
             jsonData.push(JSON.parse(JSON.stringify(res.data)));
         }
-    } catch (e) {
+    } catch (e:any) {
         logger.error(e);
     }
     return jsonData ?? null;

@@ -41,7 +41,7 @@ export async function collectData(kubernetesConfig:KubernetesConfig[]): Promise<
                 "helm": kubernetesList["helm"],
             } as KubernetesResources;
             resources.push(kubernetesResource);
-        }catch(e){
+        }catch(e:any){
             logger.error(e);
         }
         deleteFile("./config/kubernetes.json");

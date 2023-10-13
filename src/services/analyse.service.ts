@@ -107,7 +107,7 @@ export function logCheckDoc(result:string[]): void {
     logger.debug("log check doc");
     result.forEach((value) => {
         if(value.startsWith("error")) logger.error(value);
-        else if(value.startsWith("warn")) logger.warn(value);
+        else if(value.startsWith("warn")) logger.warning(value);
         else logger.info(value);
     });
 }
@@ -278,19 +278,19 @@ export function checkSubRuleCondition(subRule:RulesConditions): string[] {
 
 function checkMatchConfigAndResource(rule:Rules, resources:ProviderResource, index: number): BeHaviorEnum {
     if(!resources[rule.cloudProvider]){
-        logger.warn("This cloud provider is not supported:"+rule.cloudProvider + "\nDon't forget to add this addOn");
+        logger.warning("This cloud provider is not supported:"+rule.cloudProvider + "\nDon't forget to add this addOn");
         return BeHaviorEnum.RETURN;
     }
     if(!Array.isArray(resources[rule.cloudProvider]) || resources[rule.cloudProvider].length === 0){
-        logger.warn("the addOn for : "+rule.cloudProvider+" are not supported multi-configuration");
+        logger.warning("the addOn for : "+rule.cloudProvider+" are not supported multi-configuration");
         return BeHaviorEnum.NONE;
     }
     if(!resources[rule.cloudProvider][index].hasOwnProperty(rule.objectName)){
-        logger.warn("object name : "+rule.objectName + "not found in your provider " + rule.cloudProvider + " with configuration index " + index + "\nMake sure you have the right addOn or the right spelling in your rules");
+        logger.warning("object name : "+rule.objectName + "not found in your provider " + rule.cloudProvider + " with configuration index " + index + "\nMake sure you have the right addOn or the right spelling in your rules");
         return BeHaviorEnum.CONTINUE;
     }
     if(resources[rule.cloudProvider][index][rule.objectName] === null){
-        logger.warn("No " + rule.objectName + " found in your provider " + rule.cloudProvider + " with configuration index " + index);
+        logger.warning("No " + rule.objectName + " found in your provider " + rule.cloudProvider + " with configuration index " + index);
         return BeHaviorEnum.CONTINUE;
     }
     return BeHaviorEnum.NONE;
@@ -304,7 +304,7 @@ export function checkRules(rules:Rules[], resources:ProviderResource, alert: Ale
         if(!rule.applied) return;
         logger.info("check rule:"+rule.name);
         if(!config.has(rule.cloudProvider)){
-            logger.warn("cloud provider not found in config:"+rule.cloudProvider);
+            logger.warning("cloud provider not found in config:"+rule.cloudProvider);
             return;
         }
         const configAssign = config.get(rule.cloudProvider);

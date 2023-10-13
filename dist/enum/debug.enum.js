@@ -10,5 +10,5 @@ var DebugEnum;
     DebugEnum[DebugEnum["WARN"] = 4] = "WARN";
     DebugEnum[DebugEnum["ERROR"] = 5] = "ERROR";
     DebugEnum[DebugEnum["FATAL"] = 6] = "FATAL";
-})(DebugEnum || (exports.DebugEnum = DebugEnum = {}));
-//# sourceMappingURL=debug.enum.js.map
+})(DebugEnum = exports.DebugEnum || (exports.DebugEnum = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGVidWcuZW51bS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9lbnVtL2RlYnVnLmVudW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsSUFBWSxTQVVYO0FBVkQsV0FBWSxTQUFTO0lBQ2pCLDJDQUFTLENBQUE7SUFDVCwyQ0FBUyxDQUFBO0lBQ1QsMkNBQVMsQ0FBQTtJQUNULHlDQUFRLENBQUE7SUFDUix5Q0FBUSxDQUFBO0lBRVIsMkNBQVMsQ0FBQTtJQUVULDJDQUFTLENBQUE7QUFDYixDQUFDLEVBVlcsU0FBUyxHQUFULGlCQUFTLEtBQVQsaUJBQVMsUUFVcEIifQ==

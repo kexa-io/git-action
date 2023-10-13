@@ -30,11 +30,11 @@ export function alertGlobal(allScan: ResultScan[][], alert: GlobalConfigAlert) {
         });
     });
     logger.debug("compteError:");
-    logger.debug(compteError);
+    logger.debug(compteError.toString());
     let isAlert = false;
-    alert.conditions.forEach((condition) => {
+    alert.conditions.forEach((condition:any) => {
         logger.debug("condition:");
-        logger.debug(condition);
+        logger.debug(condition.toString());
         if(compteError[condition.level] >= condition.min){
             logger.debug("alert:"+levelAlert[condition.level]);
             isAlert = true;
@@ -208,7 +208,7 @@ export function alertFromRule(rule:Rules, conditions:SubResultScan[], objectReso
             default:
                 logger.error("error:"+rule.name);
                 logger.error("resource:");
-                logger.error(conditions);
+                logger.error(conditions.toString());
                 break;
         }
     });
@@ -234,8 +234,8 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
             logger.info(jsome.getColoredString(conditions));
             break;
         case LevelEnum.FATAL:
-            logger.fatal("critical:"+rule.name);
-            logger.fatal(sentenceConditionLog(objectResource.id));
+            logger.error("critical:"+rule.name);
+            logger.error(sentenceConditionLog(objectResource.id));
             logger.info(jsome.getColoredString(conditions));
             break;
         default:
@@ -245,8 +245,8 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
 }
 
 export function warnLog(rule: Rules, conditions:SubResultScan[], objectResource:any){
-    logger.warn("warning:"+rule.name);
-    logger.warn(sentenceConditionLog(objectResource.id));
+    logger.warning("warning:"+rule.name);
+    logger.warning(sentenceConditionLog(objectResource.id));
     logger.info(jsome.getColoredString(conditions));
 }
 
@@ -301,7 +301,7 @@ async function SendMail(mail: string, to: string, subject: string): Promise<bool
             html: mail, // html body
         });
         return true;
-    }catch (e) {
+    }catch (e:any) {
         logger.error("error:");
         logger.error(e);
         return false;
@@ -368,7 +368,7 @@ async function sendWebhook(alert: ConfigAlert, subject: string, content: any) {
             } else {
                 logger.error('Failed to send Teams card.');
             }
-        } catch (error) {
+        } catch (error:any) {
             logger.error('Teams webhook : An error occurred:', error);
         }
     }

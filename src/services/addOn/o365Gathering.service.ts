@@ -104,7 +104,7 @@ export async function collectData(o365Config:o365Config[]): Promise<o365Resource
                 };
                 logger.info("- listing O365 resources done -");
             }
-        } catch (e) {
+        } catch (e:any) {
             logger.error("error in collect O365 data: ");
             logger.error(e);
         }
@@ -167,13 +167,13 @@ async function  listUsers(endpoint: string, accessToken: string, headers: Header
                         }
                     });
                     if (userTypeResponse.status != 200) {
-                        logger.warn("O365 - Error when calling graph API for user " + element.displayName);
+                        logger.warning("O365 - Error when calling graph API for user " + element.displayName);
                         element.userType = null;
                         continue;
                     }
                     element.userType = userTypeResponse.data.userType;
                     element.passwordPolicies = userTypeResponse.data.passwordPolicies;
-                } catch (e) {
+                } catch (e:any) {
                     logger.error('O365 - Error fetching user ');
                     logger.error(e);
                 }
@@ -196,7 +196,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
                 }
             })
             if (response.status != 200) {
-                logger.warn("O365 - Error when calling graph API for subsribed Skus ");
+                logger.warning("O365 - Error when calling graph API for subsribed Skus ");
                 return null;
             }
             else {
@@ -208,7 +208,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
                 }
             })
             if (assignedResponse.status != 200) {
-                logger.warn("O365 - Error when calling graph API for users (skus) ");
+                logger.warning("O365 - Error when calling graph API for users (skus) ");
             }
             else {
                 const adaptedResponse = assignedResponse.data.value.map((user: any) => ({
@@ -234,7 +234,7 @@ async function genericListing(endpoint: string, accessToken: string, queryEndpoi
             }
         });
         if (response.status != 200) {
-            logger.warn("O365 - Error when calling graph API for " + operationName);
+            logger.warning("O365 - Error when calling graph API for " + operationName);
             return null;
         }
         else {
@@ -271,7 +271,7 @@ async function listAuthMethods(endpoint: string, accessToken: string, userList: 
                     }
                 })
                 if (response.status != 200) {
-                    logger.warn("O365 - Error when calling graph API for Auth Methods ");
+                    logger.warning("O365 - Error when calling graph API for Auth Methods ");
                     return null;
                 } else {
                     let tmpJson = {methods: [], userId: {}, userName: {}};
@@ -338,11 +338,11 @@ async function listAppAccessPolicy(endpoint: string, accessToken: string, header
                     }
                 });
                 if (licenseResponse.status != 200) {
-                    logger.warn("O365 - Error when calling graph API for user " + jsonData[i].displayName);
+                    logger.warning("O365 - Error when calling graph API for user " + jsonData[i].displayName);
                     continue;
                 }
                 jsonData = licenseResponse.data.value;
-            } catch (e) {
+            } catch (e:any) {
                 logger.error('O365 - Error fetching user ');
                 logger.error(e);
             }

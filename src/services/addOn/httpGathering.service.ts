@@ -52,7 +52,7 @@ export async function collectData(_httpConfig:HttpConfig[]) {
 
                     httpResources = await getDataHttp(url, config);
 
-                } catch (e) {
+                } catch (e:any) {
                     logger.error("error in collectHttpData with the url: " + ((await getConfigOrEnvVar(config, "URL", prefix)) ?? null));
                     logger.error(e);
                 }
@@ -168,7 +168,7 @@ async function getDataHttp(url: string, config: HttpConfig): Promise<HttpRequest
         httpResources.url = url;
         httpResources.ip = await dnsLookup(URL.parse(url).hostname!);
         httpResources.certificate = await getCertificateFromResponse(response);
-    }catch(e){
+    }catch(e:any){
         logger.error("error in getDataHttp with the url: " + url);
         logger.error(e);
     }

@@ -34,7 +34,7 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
             if(!addOnNeed["addOn"].includes(nameAddOn)) return null;
             let header = hasValidHeader(serviceAddOnPath + "/" + file);
             if (typeof header === "string") {
-                logger.warn(header);
+                logger.warning(header);
                 return null;
             }
             const { collectData } = await import(`./addOn/${file.replace(".ts", ".js") }`);
@@ -45,8 +45,8 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
             logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
             return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
         }
-    }catch(e){
-        logger.warn(e);
+    }catch(e:any){
+        logger.warning(e);
     }
     return null;
 }
@@ -71,8 +71,8 @@ function loadAddOnDisplay(file: string): { key: string; data: Function; } | null
             const displayFn = moduleExports.propertyToSend;
             return { key: nameAddOn, data:displayFn};
         }
-    }catch(e){
-        logger.warn(e);
+    }catch(e:any){
+        logger.warning(e);
     }
     return null;
 }
@@ -191,8 +191,8 @@ async function extractHeader(file: string): Promise<Header|null> {
             header.provider = nameAddOn;
             return header;
         }
-    }catch(e){
-        logger.warn(e);
+    }catch(e:any){
+        logger.warning(e);
     }
     return null;
 }

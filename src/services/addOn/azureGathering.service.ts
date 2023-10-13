@@ -61,13 +61,13 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<AzureResou
             let subscriptionId = await getConfigOrEnvVar(config, "SUBSCRIPTIONID", prefix);
             let azureClientId = await getConfigOrEnvVar(config, "AZURECLIENTID", prefix);
             if(azureClientId) setEnvVar("AZURE_CLIENT_ID", azureClientId);
-            else logger.warn(prefix + "AZURECLIENTID not found in config file");
+            else logger.warning(prefix + "AZURECLIENTID not found in config file");
             let azureClientSecret = await getConfigOrEnvVar(config, "AZURECLIENTSECRET", prefix);
             if(azureClientSecret) setEnvVar("AZURE_CLIENT_SECRET", azureClientSecret);
-            else logger.warn(prefix + "AZURECLIENTSECRET not found in config file");
+            else logger.warning(prefix + "AZURECLIENTSECRET not found in config file");
             let azureTenantId = await getConfigOrEnvVar(config, "AZURETENANTID", prefix);
             if(azureTenantId) setEnvVar("AZURE_TENANT_ID", azureTenantId);
-            else logger.warn(prefix + "AZURETENANTID not found in config file");
+            else logger.warning(prefix + "AZURETENANTID not found in config file");
 
             const credential = new DefaultAzureCredential();
             if(!subscriptionId) {
@@ -104,7 +104,7 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<AzureResou
                     //"sp": [...azureResource["sp"]??[], ...SPList],
                 } as AzureResources;
             }
-        }catch(e){
+        }catch(e:any){
             logger.error("error in collectAzureData with the subscription ID: " + (await getConfigOrEnvVar(config, "SUBSCRIPTIONID", prefix))??null);
             logger.error(e);
         }
@@ -139,7 +139,7 @@ export async function ipListing(client:NetworkManagementClient): Promise<Array<a
             resultList.push(item);
         }
         return resultList;
-    }catch(e){
+    }catch(e:any){
         logger.error("error in ipListing:"+e);
         return null;
     }
@@ -155,7 +155,7 @@ export async function aksListing(credential: DefaultAzureCredential, subscriptio
             resArray.push(item);
         }
         return resArray;
-    }catch(e){
+    }catch(e:any){
         logger.error("error in aksListing:"+e);
         return null;
     }

@@ -44,19 +44,12 @@ env.config();                                                                   
 export async function main() {
     const logger = getNewLogger("MainLogger");
 
-    if (process.env.DEV)
-        if (process.env.DEV == "true") {
-            logger.settings.minLevel = 2;
-            console.log("DEBUG");
-        }
-
     logger.debug(args);
     AsciiArtText("Kexa");
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
     let settings = await gatheringRules(await getEnvVar("RULESDIRECTORY")??"./Kexa/rules");
-
     if(settings.length != 0){
 
         let resources = {};
