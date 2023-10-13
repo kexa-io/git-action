@@ -18,8 +18,8 @@ jobs:
           ref: ${{ github.head_ref }}   # checkout the correct branch name
           fetch-depth: 0
       
-      - name: Bump version
-        run: npm version patch
+      #- name: Bump version
+      #  run: npm version patch
 
       - name: Get changed files
         id: changed-files
