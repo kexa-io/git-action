@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { Logger } from "tslog";
-const logger = new Logger({ minLevel: 3, type: "pretty", name: "GcpLogger" });
+import { getNewLogger } from '../services/logger.service';
+const logger = getNewLogger("FilesHelper");
 
 export function writeStringToJsonFile(data: string, filePath: string): boolean {
     try {
@@ -14,7 +14,7 @@ export function writeStringToJsonFile(data: string, filePath: string): boolean {
         logger.debug("Writing data to file: " + filePath)
         fs.writeFileSync(filePath, JSON.stringify(JSON.parse(data), null, 4), 'utf8');
         return true;
-    } catch (error) {
+    } catch (error:any) {
         logger.error(error);
         return false;
     }
@@ -27,7 +27,7 @@ export function deleteFile(filePath: string): boolean {
             fs.unlinkSync(filePath);
         }
         return true;
-    } catch (error) {
+    } catch (error:any) {
         logger.error(error);
         return false;
     }
