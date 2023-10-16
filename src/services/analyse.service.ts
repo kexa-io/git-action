@@ -1,6 +1,5 @@
 import { LevelEnum } from './../enum/level.enum';
 import fs from "fs";
-import yaml from "js-yaml";
 import { SettingFile } from "../models/settingFile/settingFile.models";
 import { Rules } from "../models/settingFile/rules.models";
 import { ParentRules, RulesConditions } from "../models/settingFile/conditions.models";
@@ -23,7 +22,7 @@ import { extractHeaders } from './addOn.service';
 
 import {getNewLogger} from "./logger.service";
 const logger = getNewLogger("AnalyseLogger");
-
+const yaml = require('js-yaml');
 const jsome = require('jsome');
 jsome.level.show = true;
 const varEnvMin = {
