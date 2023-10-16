@@ -1,13 +1,4 @@
 {
-    "kubernetes": [
-        {
-            "Description": "Main kubernetes cluster",
-            "prefix": "DEMO-",
-            "rules": [
-                "Deployement"
-            ]
-        }
-    ],
     "http":[
         {
             "Description": "main end point for the api 4urcloud",
@@ -17,15 +8,6 @@
             ],
             "METHOD": "GET",
             "URL": "https://api.4urcloud.eu/"
-        }
-    ],
-    "github":[
-        {
-            "Description": "Organization 4urcloud",
-            "prefix": "DEMO-",
-            "rules": [
-                "Deployement"
-            ]
         }
     ]
 }

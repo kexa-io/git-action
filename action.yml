@@ -1,6 +1,6 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Kexa-Action'
+description: "It's Kexa version for a GitHub Action"
+author: '4urcloud | Esteban MATHIA'
 
 # Define your inputs here.
 inputs:
@@ -15,5 +15,5 @@ outputs:
     description: 'Your output description here'
 
 runs:
-  using: node20
+  using: node16
   main: dist/index.js

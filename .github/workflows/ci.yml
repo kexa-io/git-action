@@ -71,7 +71,7 @@ jobs:
 
       - name: My Action
         id: myaction
-        uses: /
+        uses: ./
         with:
           message: 'salut' 
           milliseconds: 1000
