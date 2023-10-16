@@ -24,26 +24,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getNewLogger = void 0;
-//import { Logger } from "tslog";
-const dotenv = __importStar(require("dotenv"));
 const core = __importStar(require("@actions/core"));
-dotenv.config();
-const process = require('process');
-//export function getNewLogger(name: string) {
-//    let debug_mode;
-//    if (!process.env.DEBUG_MODE) {
-//        debug_mode = DebugEnum.INFO;
-//    } else {
-//        let debug_var = process.env.DEBUG_MODE;
-//        if (!isNaN(parseInt(debug_var)))
-//            debug_mode = Number(debug_var);
-//        else
-//            debug_mode = Number(DebugEnum[debug_var]);
-//    }
-//    return new Logger({minLevel: debug_mode, name: name});
-//}
 function getNewLogger(name) {
     return core;
 }
 exports.getNewLogger = getNewLogger;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9nZ2VyLnNlcnZpY2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2VydmljZXMvbG9nZ2VyLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxpQ0FBaUM7QUFDakMsK0NBQWlDO0FBQ2pDLG9EQUFzQztBQUV0QyxNQUFNLENBQUMsTUFBTSxFQUFFLENBQUM7QUFDaEIsTUFBTSxPQUFPLEdBQUcsT0FBTyxDQUFDLFNBQVMsQ0FBQyxDQUFDO0FBRW5DLDhDQUE4QztBQUM5QyxxQkFBcUI7QUFDckIsb0NBQW9DO0FBQ3BDLHNDQUFzQztBQUN0QyxjQUFjO0FBQ2QsaURBQWlEO0FBQ2pELDBDQUEwQztBQUMxQyw2Q0FBNkM7QUFDN0MsY0FBYztBQUNkLHdEQUF3RDtBQUN4RCxPQUFPO0FBQ1AsNERBQTREO0FBQzVELEdBQUc7QUFFSCxTQUFnQixZQUFZLENBQUMsSUFBWTtJQUNyQyxPQUFPLElBQUksQ0FBQztBQUNoQixDQUFDO0FBRkQsb0NBRUMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9nZ2VyLnNlcnZpY2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2VydmljZXMvbG9nZ2VyLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxvREFBc0M7QUFFdEMsU0FBZ0IsWUFBWSxDQUFDLElBQVk7SUFDckMsT0FBTyxJQUFJLENBQUM7QUFDaEIsQ0FBQztBQUZELG9DQUVDIn0=
