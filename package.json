@@ -21,7 +21,7 @@
     ".": "./dist/index.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "scripts": {
     "package": "rimraf ./dist && tsc",

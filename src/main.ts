@@ -25,7 +25,6 @@
 //  }
 //}
 
-import env from "dotenv";
 import { checkRules, gatheringRules } from "./services/analyse.service";
 import { alertGlobal } from "./services/alerte.service";
 import { AsciiArtText, talkAboutOtherProject} from "./services/display.service";
@@ -37,9 +36,8 @@ import {getNewLogger} from "./services/logger.service";
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const args = yargs(hideBin(process.argv)).argv
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-env.config();                                                                    // reading environnement vars                                                       // file system
+require('dotenv').config();
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
 
 export async function main() {
     const logger = getNewLogger("MainLogger");
@@ -77,6 +75,4 @@ export async function main() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if (require.main === module) {
-    main();
-}
+main();
