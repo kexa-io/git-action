@@ -1,10 +1,9 @@
-import { Logger } from "tslog";
 import { Provider, ProviderResource } from "../models/providerResource.models";
 import { Header } from "../models/settingFile/header.models";
 import { writeStringToJsonFile } from "../helpers/files"
 const configuration = require('config');
 
-const mainFolder = 'Kexa';
+const mainFolder = 'lib';
 const serviceAddOnPath = './' + mainFolder + '/services/addOn';
 const fs = require('fs');
 
