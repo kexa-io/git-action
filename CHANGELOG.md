@@ -322,3 +322,19 @@ src/services/updateCapability.service.ts was changed
 dist/index.js was changed
 
 
+## 0.0.13
+### Files added: 0
+
+### Files changed: 5
+
+.github/workflows/ci.yml was changed
+
+action.yml was changed
+
+dist/index.js was changed
+
+lib/main.js was changed
+
+src/main.ts was changed
+
+
