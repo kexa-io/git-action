@@ -298,3 +298,19 @@ lib/main.js was changed
 lib/services/updateCapability.service.js was changed
 
 
+## 0.0.11
+### Files added: 0
+
+### Files changed: 5
+
+dist/index.js was changed
+
+lib/main.js was changed
+
+lib/services/updateCapability.service.js was changed
+
+src/main.ts was changed
+
+src/services/updateCapability.service.ts was changed
+
+
