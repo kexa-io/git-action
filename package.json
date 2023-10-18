@@ -24,7 +24,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "package": "rimraf ./dist && tsc && ncc build dist/main.js",
+    "package": "rimraf ./dist && tsc && ncc build lib/main.js",
     "package:watch": "npm run package -- --watch",
     "test": "npm run build && mocha --require ts-node/register --require source-map-support/register 'Kexa/__tests__/**/*.test.ts'",
     "all": "npm run test && npm run package"
