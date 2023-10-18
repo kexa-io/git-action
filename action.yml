@@ -4,15 +4,70 @@ author: '4urcloud | Esteban MATHIA'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
-    required: true
-    default: '1000'
+  AZURE_CLIENT_ID:
+    description: 'credentials for azure service principal(combo 1): client ID'
+  AZURE_TENANT_ID:
+    description: 'credentials for azure service principal(combo 1): tenant ID'
+  AZURE_CLIENT_SECRET:
+    description: 'credentials for azure service principal(combo 1): client secret'
+  USERAZUREIDENTITYID:
+    description: 'credentials for azure service principal(combo 2): user identity ID'
+  AZUREKEYVAULTNAME:
+    description: 'Name of the Azure Key Vault'
+  SMSFROM:
+    description: 'credentials for sms: from'
+  SMSACCOUNTSID:
+    description: 'credentials for sms: account sid'
+  SMSAUTHTOKEN:
+    description: 'credentials for sms: auth token'
+  EMAILPORT:
+    description: 'credentials for email: port'
+    default: '587'
+  EMAILHOST:
+    description: 'credentials for email: host'
+    default: 'smtp.sendgrid.net'
+  EMAILUSER:
+    description: 'credentials for email: user'
+    default: apikey
+  EMAILPWD:
+    description: 'credentials for email: password'
+  EMAILFROM:
+    description: 'credentials for email: from'
+  SUBSCRIPTIONID:
+    description: 'base name for credential addon: Azure'
+  AZURECLIENTID:
+    description: 'base name for credential addon: Azure'
+  AZURETENANTID:
+    description: 'base name for credential addon: Azure'
+  AZURECLIENTSECRET:
+    description: 'base name for credential addon: Azure'
+  KUBECONFIG:
+    description: 'base name for credential addon: Kubernetes'
+  GITHUBTOKEN:
+    description: 'base name for credential addon: GitHub'
+  AWSACCESSKEYID:
+    description: 'base name for credential addon: AWS'
+  AWSSECRETACCESSKEY:
+    description: 'base name for credential addon: AWS'
+  GOOGLE_APPLICATION_CREDENTIALS:
+    description: 'base name for credential addon: Google'
+  GOOGLE_PROJECT_ID:
+    description: 'base name for credential addon: Google'
+  WORKSPACECRED:
+    description: 'base name for credential addon: Workspace'
+  WORKSPACETOKEN:
+    description: 'base name for credential addon: Workspace'
+  URL:
+    description: 'base name for credential addon: HTTP'
+  METHOD:
+    description: 'base name for credential addon: HTTP'
+  AUTHORIZATION:
+    description: 'base name for credential addon: HTTP'
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  resultScan:
+    description: 'A list of result scan for each rules applied'
 
 runs:
   using: node16

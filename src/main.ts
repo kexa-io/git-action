@@ -55,6 +55,7 @@ export async function main() {
         if(args.o) writeStringToJsonFile(JSON.stringify(resources), "./config/resultScan"+ new Date().toISOString().slice(0, 16).replace(/[-T:/]/g, '') +".json");
         settings.forEach(setting => {
             let result = checkRules(setting.rules, resources, setting.alert);
+            logger.setOutput('resultScan', result);
             if(setting.alert.global.enabled){
                 alertGlobal(result, setting.alert.global);
             }

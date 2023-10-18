@@ -64,14 +64,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      
+      - name: Extraction du YAML secret
+        run: echo "${{ secrets.YAML_CONFIG_KUBE }}" > config/kubernetes.yaml
 
-      - name: My Action
-        id: myaction
+      - name: Kexa
+        id: kexa
         uses: ./
         with:
-          message: 'salut' 
-          milliseconds: 1000
+          EMAILPWD: ${{ secrets.PWD_EMAIL }} 
+          EMAILFROM: "'ISEE' <ateliertechniquededev@gmail.com>"
+          DEMO-GITHUBTOKEN: ${{ secrets.TOKEN_KEXA_GITHUB }}
+          DEMO-KUBECONFIG: "./config/kubernetes.yaml"
 
       - name: Display output
-        run: 'echo "Time: ${{ steps.myaction.outputs.time }}"'
+        run: 'echo "scan: ${{ steps.kexa.outputs.resultScan }}"'
