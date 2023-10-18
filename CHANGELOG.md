@@ -272,3 +272,15 @@ src/services/addOn.service.ts was changed
 tsconfig.json was changed
 
 
+## 0.0.9
+### Files added: 0
+
+### Files changed: 3
+
+src/__tests__/services/analyse.test.ts was changed
+
+src/main.ts was changed
+
+src/services/updateCapability.service.ts was changed
+
+
