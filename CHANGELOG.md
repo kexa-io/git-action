@@ -80,3 +80,15 @@ dist/xdg-open was changed
 package.json was changed
 
 
+## 0.0.6
+### Files added: 0
+
+### Files changed: 3
+
+action.yml was changed
+
+package.json was changed
+
+tsconfig.json was changed
+
+
