@@ -314,3 +314,11 @@ src/main.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 0.0.12
+### Files added: 0
+
+### Files changed: 1
+
+dist/index.js was changed
+
+
