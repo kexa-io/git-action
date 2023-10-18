@@ -256,3 +256,19 @@ lib/services/save.service.js was changed
 lib/services/updateCapability.service.js was changed
 
 
+## 0.0.8
+### Files added: 0
+
+### Files changed: 5
+
+.github/workflows/check-dist.yml was changed
+
+dist/index.js was changed
+
+lib/services/addOn.service.js was changed
+
+src/services/addOn.service.ts was changed
+
+tsconfig.json was changed
+
+
