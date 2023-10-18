@@ -13,5 +13,5 @@
     "inlineSourceMap": true, 
     "noImplicitAny": true,
   },
-  "exclude": ["./dist", "./node_modules", "./__tests__", "./coverage"]
+  "exclude": ["./dist", "./__tests__", "./coverage"]
 }

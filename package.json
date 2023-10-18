@@ -23,7 +23,6 @@
   "engines": {
     "node": ">=16"
   },
-  "outDir": "dist",
   "scripts": {
     "package": "rimraf ./dist && tsc && ncc build dist/main.js",
     "package:watch": "npm run package -- --watch",
