@@ -4,6 +4,8 @@ import { SettingFile } from "../models/settingFile/settingFile.models";
 import { extractHeaders } from "./addOn.service";
 import { gatheringRules } from "./analyse.service";
 
+const fs = require("fs");
+
 async function releaseCapability(){
     let rules = await gatheringRules("./Kexa/rules", true);
     let freeRules = [...rules.map((rule: SettingFile) => {
