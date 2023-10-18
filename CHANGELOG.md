@@ -22,3 +22,17 @@ src/services/logger.service.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 0.0.2
+### Files added: 0
+
+### Files changed: 4
+
+dist/services/logger.service.js was changed
+
+dist/services/manageVarEnvironnement.service.js was changed
+
+dist/services/updateCapability.service.js was changed
+
+src/services/updateCapability.service.ts was changed
+
+
