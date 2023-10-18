@@ -284,3 +284,17 @@ src/main.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 0.0.10
+### Files added: 0
+
+### Files changed: 4
+
+dist/index.js was changed
+
+lib/__tests__/services/analyse.test.js was changed
+
+lib/main.js was changed
+
+lib/services/updateCapability.service.js was changed
+
+
