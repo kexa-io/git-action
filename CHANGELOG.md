@@ -56,3 +56,27 @@ package-lock.json was changed
 package.json was changed
 
 
+## 0.0.5
+### Files added: 4
+
+dist/index.js was added
+
+dist/register.js was added
+
+dist/swc.js was added
+
+dist/xdg-open was added
+
+### Files changed: 5
+
+dist/index.js was changed
+
+dist/register.js was changed
+
+dist/swc.js was changed
+
+dist/xdg-open was changed
+
+package.json was changed
+
+
