@@ -23,8 +23,9 @@
   "engines": {
     "node": ">=16"
   },
+  "outDir": "dist",
   "scripts": {
-    "package": "rimraf ./dist && tsc",
+    "package": "rimraf ./dist && tsc && ncc build dist/main.js",
     "package:watch": "npm run package -- --watch",
     "test": "npm run build && mocha --require ts-node/register --require source-map-support/register 'Kexa/__tests__/**/*.test.ts'",
     "all": "npm run test && npm run package"
