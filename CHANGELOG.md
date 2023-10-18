@@ -46,3 +46,13 @@ package-lock.json was changed
 package.json was changed
 
 
+## 0.0.4
+### Files added: 0
+
+### Files changed: 2
+
+package-lock.json was changed
+
+package.json was changed
+
+
