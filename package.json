@@ -89,6 +89,7 @@
     "@octokit/core": "^4.2.4",
     "@types/glob": "^8.1.0",
     "@types/minimatch": "^5.1.2",
+    "@vercel/ncc": "^0.38.0",
     "aws-sdk": "^2.1424.0",
     "cfonts": "^3.2.0",
     "config": "^3.3.9",
