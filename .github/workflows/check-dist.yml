@@ -6,32 +6,32 @@
 #
 # This workflow will fail if the checked-in `dist/index.js` file does not match
 # what is expected from the build.
-#name: Check dist/
-#
-#on:
-#  push:
-#    branches:
-#      - main
-#    paths-ignore:
-#      - '**.md'
-#  pull_request:
-#    paths-ignore:
-#      - '**.md'
-#  workflow_dispatch:
-#
-#jobs:
-#  check-dist:
-#    name: Check dist/
-#    runs-on: ubuntu-latest
-#
-#    permissions:
-#      contents: read
-#      statuses: write
-#
-#    steps:
-#      - name: Checkout
-#        id: checkout
-#        uses: actions/checkout@v4
+name: Check dist/
+
+on:
+    push:
+        branches:
+            - main
+        paths-ignore:
+            - '**.md'
+    pull_request:
+        paths-ignore:
+            - '**.md'
+    workflow_dispatch:
+
+jobs:
+    check-dist:
+        name: Check dist/
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: read
+            statuses: write
+
+        steps:
+            -   name: Checkout
+                id: checkout
+                uses: actions/checkout@v4
 #
 #      - name: Setup Node.js
 #        uses: actions/setup-node@v3

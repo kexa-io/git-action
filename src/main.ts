@@ -36,10 +36,13 @@ import {getNewLogger} from "./services/logger.service";
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const args = yargs(hideBin(process.argv)).argv
+const core = require('@actions/core');
 require('dotenv').config();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
 
 export async function main() {
+    //core.addPath('./config');
+    //core.addPath('./rules');
     const logger = getNewLogger("MainLogger");
 
     logger.debug(args);
