@@ -36,3 +36,13 @@ dist/services/updateCapability.service.js was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 0.0.3
+### Files added: 0
+
+### Files changed: 2
+
+package-lock.json was changed
+
+package.json was changed
+
+
