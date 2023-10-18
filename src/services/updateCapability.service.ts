@@ -7,7 +7,7 @@ import { gatheringRules } from "./analyse.service";
 const fs = require("fs");
 
 async function releaseCapability(){
-    let rules = await gatheringRules("./Kexa/rules", true);
+    let rules = await gatheringRules("./lib/rules", true);
     let freeRules = [...rules.map((rule: SettingFile) => {
         return rule.rules
     })];

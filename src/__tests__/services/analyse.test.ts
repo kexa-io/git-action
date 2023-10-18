@@ -7,12 +7,12 @@ const { expect } = require('chai');
 describe('analyse service', () => {
     describe('Gathering rules', () => {
         it('should return a multiple rules', async () => {
-            const result = await gatheringRules("./Kexa/__tests__/rules/test2", true);
+            const result = await gatheringRules("./lib/__tests__/rules/test2", true);
             expect(result.length).to.be.above(1);
         });
 
         it('should return 0 rules', async () => {
-            const result = await gatheringRules("./Kexa/__tests__/rules/test3");
+            const result = await gatheringRules("./lib/__tests__/rules/test3");
             expect(result.length).to.equal(0);
         });
     });
