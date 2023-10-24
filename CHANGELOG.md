@@ -46,3 +46,19 @@ package-lock.json was changed
 .github/workflows/check-dist.yml was changed
 
 
+## 0.0.21
+### Files added: 0
+
+### Files changed: 5
+
+.github/workflows/check-dist.yml was changed
+
+lib/main.js was changed
+
+node_modules/.package-lock.json was changed
+
+package-lock.json was changed
+
+src/main.ts was changed
+
+
