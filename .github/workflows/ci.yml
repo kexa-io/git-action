@@ -39,22 +39,22 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v39
 
-      #- name: List all changed files
-      #  run: |
-      #    echo "## ${{ steps.versionning.outputs.version }}" >> CHANGELOG.md
-      #    echo "### Files added: ${{steps.changed-files.outputs.added_files_count}}" >> CHANGELOG.md
-      #    echo "" >> CHANGELOG.md
-      #    for file in ${{ steps.changed-files.outputs.added_files }}; do 
-      #      echo "$file was added" >> CHANGELOG.md
-      #      echo "" >> CHANGELOG.md
-      #    done
-      #    echo "### Files changed: ${{steps.changed-files.outputs.all_changed_and_modified_files_count}}" >> CHANGELOG.md
-      #    echo "" >> CHANGELOG.md
-      #    for file in ${{ steps.changed-files.outputs.all_changed_files }}; do 
-      #      echo "$file was changed" >> CHANGELOG.md
-      #      echo "" >> CHANGELOG.md
-      #    done
-      #    echo "" >> CHANGELOG.md
+      - name: List all changed files
+        run: |
+          echo "## ${{ steps.versionning.outputs.version }}" >> CHANGELOG.md
+          echo "### Files added: ${{steps.changed-files.outputs.added_files_count}}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          for file in ${{ steps.changed-files.outputs.added_files }}; do 
+            echo "$file was added" >> CHANGELOG.md
+            echo "" >> CHANGELOG.md
+          done
+          echo "### Files changed: ${{steps.changed-files.outputs.all_changed_and_modified_files_count}}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do 
+            echo "$file was changed" >> CHANGELOG.md
+            echo "" >> CHANGELOG.md
+          done
+          echo "" >> CHANGELOG.md
 
       - name: Release
         uses: ncipollo/release-action@v1
