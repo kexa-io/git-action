@@ -62,3 +62,13 @@ package-lock.json was changed
 src/main.ts was changed
 
 
+## 0.0.22
+### Files added: 0
+
+### Files changed: 2
+
+lib/main.js was changed
+
+src/main.ts was changed
+
+
