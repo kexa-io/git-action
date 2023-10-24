@@ -64,9 +64,8 @@ export async function main() {
             let result = checkRules(setting.rules, resources, setting.alert);
             logger.setOutput('resultScan', result);
             if(setting.alert.global.enabled){
-                logger.info("alert global")
-                logger.info(result)
-                logger.info(setting.alert.global)
+                logger.info("alert global");
+                logger.info(setting.alert.global.toString());
                 let compteError = alertGlobal(result, setting.alert.global);
                 if(compteError[2]>0 || compteError[3]>0){
                     stop = true;
