@@ -30,12 +30,11 @@ import { alertGlobal } from "./services/alerte.service";
 import { AsciiArtText, talkAboutOtherProject} from "./services/display.service";
 import { getEnvVar } from "./services/manageVarEnvironnement.service";
 import { loadAddOns } from "./services/addOn.service";
-import { deleteFile, writeStringToJsonFile } from "./helpers/files";
+import { deleteFile } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
 
-const yargs = require('yargs/yargs')
-const { hideBin } = require('yargs/helpers')
-const args = yargs(hideBin(process.argv)).argv
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
 const core = require('@actions/core');
 require('dotenv').config();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
@@ -68,6 +67,10 @@ export async function main() {
                 logger.info(setting.alert.global.to.toString());
                 logger.info(setting.alert.global.type.toString());
                 logger.info(setting.alert.global.enabled.toString());
+                logger.info(core.getInput('EMAILHOST'));
+                logger.info(core.getInput('EMAILPORT'));
+                logger.info(core.getInput('EMAILUSER'));
+                logger.info(core.getInput('EMAILPWD'));
                 let compteError = alertGlobal(result, setting.alert.global);
                 if(compteError[2]>0 || compteError[3]>0){
                     stop = true;

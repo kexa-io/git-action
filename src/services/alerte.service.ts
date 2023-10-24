@@ -54,7 +54,6 @@ export function alertFromGlobal(alert: GlobalConfigAlert, compteError: number[],
                 alertLogGlobal(alert, compteError, allScan);
                 break;
             case AlertEnum.EMAIL:
-                logger.info("alert email");
                 alertEmailGlobal(alert, compteError, allScan);
                 break;
             case AlertEnum.SMS:
@@ -101,10 +100,10 @@ export function alertEmailGlobal(alert: GlobalConfigAlert, compteError: number[]
     logger.debug("alert email");
     alert.to.forEach((email_to) => {
         if(!email_to.includes("@")) return;
-        logger.info("send email to:"+email_to);
+        logger.debug("send email to:"+email_to);
         let render_table = renderTableAllScan(allScan.map(scan => scan.filter(value => value.error.length>0)));
         let mail = Emails.GlobalAlert(email_to, compteError, render_table, alert);
-        SendMailWithAttachment(mail, email_to, "Kexa - Global Alert - "+(alert.name??"Uname"), compteRender(allScan));
+        SendMailWithAttachment(mail, email_to, "Kexa - Global Alert - "+(alert.name??"name"), compteRender(allScan));
     });
 }
 
