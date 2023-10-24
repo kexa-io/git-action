@@ -92,3 +92,11 @@ lib/main.js was changed
 src/main.ts was changed
 
 
+## 0.0.25
+### Files added: 0
+
+### Files changed: 1
+
+.github/workflows/ci.yml was changed
+
+
