@@ -42,7 +42,7 @@ jobs:
 
             -   name: Build dist/ Directory
                 id: build
-                run: npm run package
+                run: npm run package:watch
 
             -   name: Compare Expected and Actual Directories
                 id: diff
