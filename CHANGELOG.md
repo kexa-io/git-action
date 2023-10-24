@@ -146,3 +146,17 @@ src/services/alerte.service.ts was changed
 .github/workflows/ci.yml was changed
 
 
+## 0.0.30
+### Files added: 0
+
+### Files changed: 4
+
+lib/main.js was changed
+
+lib/services/alerte.service.js was changed
+
+src/main.ts was changed
+
+src/services/alerte.service.ts was changed
+
+
