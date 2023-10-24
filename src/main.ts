@@ -66,6 +66,8 @@ export async function main() {
             if(setting.alert.global.enabled){
                 logger.info("alert global");
                 logger.info(setting.alert.global.to.toString());
+                logger.info(setting.alert.global.type.toString());
+                logger.info(setting.alert.global.enabled.toString());
                 let compteError = alertGlobal(result, setting.alert.global);
                 if(compteError[2]>0 || compteError[3]>0){
                     stop = true;
