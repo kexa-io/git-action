@@ -22,3 +22,11 @@ package-lock.json was changed
 .github/workflows/ci.yml was changed
 
 
+## 0.0.18
+### Files added: 0
+
+### Files changed: 1
+
+.github/workflows/check-dist.yml was changed
+
+
