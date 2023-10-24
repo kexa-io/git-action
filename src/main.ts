@@ -71,6 +71,7 @@ export async function main() {
                 logger.info(core.getInput('EMAILPORT'));
                 logger.info(core.getInput('EMAILUSER'));
                 logger.info(core.getInput('EMAILPWD'));
+                logger.info(Number(core.getInput('EMAILPORT')) == 465);
                 let compteError = alertGlobal(result, setting.alert.global);
                 if(compteError[2]>0 || compteError[3]>0){
                     stop = true;

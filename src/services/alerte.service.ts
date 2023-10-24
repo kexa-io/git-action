@@ -103,6 +103,7 @@ export function alertEmailGlobal(alert: GlobalConfigAlert, compteError: number[]
         logger.debug("send email to:"+email_to);
         let render_table = renderTableAllScan(allScan.map(scan => scan.filter(value => value.error.length>0)));
         let mail = Emails.GlobalAlert(email_to, compteError, render_table, alert);
+        logger.info("mail:"+mail)
         SendMailWithAttachment(mail, email_to, "Kexa - Global Alert - "+(alert.name??"name"), compteRender(allScan));
     });
 }
@@ -336,6 +337,8 @@ async function SendMailWithAttachment(mail: string, to: string, subject: string,
         logger.info(`Email sent: ${subject} to ${to} with attachment`);
         return true;
     }catch (e) {
+        logger.error("error:");
+        logger.error(e);
         return false;
     }
 }
