@@ -18,7 +18,7 @@
     *       - app_access_policy
 */
 
-import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service";
+import { getConfigOrEnvVar } from "../manageVarEnvironnement.service";
 import { o365Resources } from "../../models/o365/ressource.models";
 import { o365Config } from "../../models/o365/config.models";
 
@@ -51,7 +51,7 @@ export async function collectData(o365Config:o365Config[]): Promise<o365Resource
             "app_access_policy": null
         } as o365Resources;
         try {
-            let prefix = config.prefix??(o365Config.indexOf(config)+"-");
+            let prefix = config.prefix??(o365Config.indexOf(config).toString());
             let subscriptionId = await getConfigOrEnvVar(config, "SUBSCRIPTIONID", prefix);
 
             const clientId = await getConfigOrEnvVar(config, "AZURECLIENTID", prefix);

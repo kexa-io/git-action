@@ -45,24 +45,32 @@ export async function main() {
     //core.addPath('./rules');
     const logger = getNewLogger("MainLogger");
 
-    logger.debug(args);
+    logger.debug("test");
+    logger.debug(await getEnvVar("TEST"));
     AsciiArtText("Kexa");
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
-    let settings = await gatheringRules(await getEnvVar("RULESDIRECTORY")??"./src/rules");
+    let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./src/rules";
+    if(rulesDirectory == ""){
+        rulesDirectory = "./src/rules";
+    }
+    let settings = await gatheringRules(rulesDirectory);
     if(settings.length != 0){
-
+        let stop = false;
         let resources = {};
         resources = await loadAddOns(resources);
-        if(args.o) writeStringToJsonFile(JSON.stringify(resources), "./config/resultScan"+ new Date().toISOString().slice(0, 16).replace(/[-T:/]/g, '') +".json");
         settings.forEach(setting => {
             let result = checkRules(setting.rules, resources, setting.alert);
             logger.setOutput('resultScan', result);
             if(setting.alert.global.enabled){
-                alertGlobal(result, setting.alert.global);
+                let compteError = alertGlobal(result, setting.alert.global);
+                if(compteError[2]>0 || compteError[3]>0){
+                    stop = true;
+                }
             }
         });
+        if(stop) core.setFailed(`Kexa found at least one error or critical error, please check the logs for more details.`);
     }else {
         logger.error("No correct rules found, please check the rules directory or the rules files.");
     }

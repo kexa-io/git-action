@@ -1,0 +1,1514 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/Context.ts":
+/*!************************!*\
+  !*** ./src/Context.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateContextAndInputs = void 0;
+const uuid_1 = __webpack_require__(/*! uuid */ "uuid");
+const BindingConverters_1 = __webpack_require__(/*! ./converters/BindingConverters */ "./src/converters/BindingConverters.ts");
+const RpcConverters_1 = __webpack_require__(/*! ./converters/RpcConverters */ "./src/converters/RpcConverters.ts");
+const Request_1 = __webpack_require__(/*! ./http/Request */ "./src/http/Request.ts");
+const Response_1 = __webpack_require__(/*! ./http/Response */ "./src/http/Response.ts");
+function CreateContextAndInputs(info, request, userLogCallback, doneEmitter) {
+    const context = new InvocationContext(info, request, userLogCallback, doneEmitter);
+    const bindings = {};
+    const inputs = [];
+    let httpInput;
+    for (const binding of request.inputData) {
+        if (binding.data && binding.name) {
+            let input;
+            if (binding.data && binding.data.http) {
+                input = httpInput = new Request_1.Request(binding.data.http);
+            }
+            else {
+                // TODO: Don't hard code fix for camelCase https://github.com/Azure/azure-functions-nodejs-worker/issues/188
+                if (info.getTimerTriggerName() === binding.name) {
+                    // v2 worker converts timer trigger object to camelCase
+                    input = (0, BindingConverters_1.convertKeysToCamelCase)(binding)['data'];
+                }
+                else {
+                    input = (0, RpcConverters_1.fromTypedData)(binding.data);
+                }
+            }
+            bindings[binding.name] = input;
+            inputs.push(input);
+        }
+    }
+    context.bindings = bindings;
+    if (httpInput) {
+        context.req = httpInput;
+        context.res = new Response_1.Response(context.done);
+        // This is added for backwards compatability with what the host used to send to the worker
+        context.bindingData.sys = {
+            methodName: info.name,
+            utcNow: new Date().toISOString(),
+            randGuid: (0, uuid_1.v4)(),
+        };
+        // Populate from HTTP request for backwards compatibility if missing
+        if (!context.bindingData.query) {
+            context.bindingData.query = Object.assign({}, httpInput.query);
+        }
+        if (!context.bindingData.headers) {
+            context.bindingData.headers = Object.assign({}, httpInput.headers);
+        }
+    }
+    return {
+        context: context,
+        inputs: inputs,
+    };
+}
+exports.CreateContextAndInputs = CreateContextAndInputs;
+class InvocationContext {
+    constructor(info, request, userLogCallback, doneEmitter) {
+        this.invocationId = request.invocationId;
+        this.traceContext = (0, RpcConverters_1.fromRpcTraceContext)(request.traceContext);
+        const executionContext = {
+            invocationId: this.invocationId,
+            functionName: info.name,
+            functionDirectory: info.directory,
+            retryContext: request.retryContext,
+        };
+        this.executionContext = executionContext;
+        this.bindings = {};
+        // Log message that is tied to function invocation
+        this.log = Object.assign((...args) => userLogCallback('information', ...args), {
+            error: (...args) => userLogCallback('error', ...args),
+            warn: (...args) => userLogCallback('warning', ...args),
+            info: (...args) => userLogCallback('information', ...args),
+            verbose: (...args) => userLogCallback('trace', ...args),
+        });
+        this.bindingData = (0, BindingConverters_1.getNormalizedBindingData)(request);
+        this.bindingDefinitions = (0, BindingConverters_1.getBindingDefinitions)(info);
+        this.done = (err, result) => {
+            doneEmitter.emit('done', err, result);
+        };
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/FunctionInfo.ts":
+/*!*****************************!*\
+  !*** ./src/FunctionInfo.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.FunctionInfo = void 0;
+const RpcConverters_1 = __webpack_require__(/*! ./converters/RpcConverters */ "./src/converters/RpcConverters.ts");
+const RpcHttpConverters_1 = __webpack_require__(/*! ./converters/RpcHttpConverters */ "./src/converters/RpcHttpConverters.ts");
+const returnBindingKey = '$return';
+class FunctionInfo {
+    constructor(metadata) {
+        this.name = metadata.name;
+        this.directory = metadata.directory;
+        this.bindings = {};
+        this.outputBindings = {};
+        this.httpOutputName = '';
+        this.hasHttpTrigger = false;
+        if (metadata.bindings) {
+            const bindings = (this.bindings = metadata.bindings);
+            // determine output bindings & assign rpc converter (http has quirks)
+            Object.keys(bindings)
+                .filter((name) => bindings[name].direction !== 'in')
+                .forEach((name) => {
+                const type = bindings[name].type;
+                if (type && type.toLowerCase() === 'http') {
+                    this.httpOutputName = name;
+                    this.outputBindings[name] = Object.assign(bindings[name], { converter: RpcHttpConverters_1.toRpcHttp });
+                }
+                else {
+                    this.outputBindings[name] = Object.assign(bindings[name], { converter: RpcConverters_1.toTypedData });
+                }
+            });
+            this.hasHttpTrigger =
+                Object.keys(bindings).filter((name) => {
+                    const type = bindings[name].type;
+                    return type && type.toLowerCase() === 'httptrigger';
+                }).length > 0;
+        }
+    }
+    /**
+     * Return output binding details on the special key "$return" output binding
+     */
+    getReturnBinding() {
+        return this.outputBindings[returnBindingKey];
+    }
+    getTimerTriggerName() {
+        for (const name in this.bindings) {
+            const type = this.bindings[name].type;
+            if (type && type.toLowerCase() === 'timertrigger') {
+                return name;
+            }
+        }
+        return;
+    }
+}
+exports.FunctionInfo = FunctionInfo;
+
+
+/***/ }),
+
+/***/ "./src/InvocationModel.ts":
+/*!********************************!*\
+  !*** ./src/InvocationModel.ts ***!
+  \********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _InvocationModel_instances, _InvocationModel_doneEmitter, _InvocationModel_isDone, _InvocationModel_resultIsPromise, _InvocationModel_coreCtx, _InvocationModel_funcInfo, _InvocationModel_log, _InvocationModel_systemLog, _InvocationModel_userLog, _InvocationModel_onDone;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.InvocationModel = void 0;
+const util_1 = __webpack_require__(/*! util */ "util");
+const Context_1 = __webpack_require__(/*! ./Context */ "./src/Context.ts");
+const RpcConverters_1 = __webpack_require__(/*! ./converters/RpcConverters */ "./src/converters/RpcConverters.ts");
+const errors_1 = __webpack_require__(/*! ./errors */ "./src/errors.ts");
+const FunctionInfo_1 = __webpack_require__(/*! ./FunctionInfo */ "./src/FunctionInfo.ts");
+const EventEmitter = __webpack_require__(/*! events */ "events");
+const asyncDoneLearnMoreLink = 'https://go.microsoft.com/fwlink/?linkid=2097909';
+class InvocationModel {
+    constructor(coreCtx) {
+        _InvocationModel_instances.add(this);
+        _InvocationModel_doneEmitter.set(this, new EventEmitter());
+        _InvocationModel_isDone.set(this, false);
+        _InvocationModel_resultIsPromise.set(this, false);
+        _InvocationModel_coreCtx.set(this, void 0);
+        _InvocationModel_funcInfo.set(this, void 0);
+        __classPrivateFieldSet(this, _InvocationModel_coreCtx, coreCtx, "f");
+        __classPrivateFieldSet(this, _InvocationModel_funcInfo, new FunctionInfo_1.FunctionInfo(coreCtx.metadata), "f");
+    }
+    getArguments() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { context, inputs } = (0, Context_1.CreateContextAndInputs)(__classPrivateFieldGet(this, _InvocationModel_funcInfo, "f"), __classPrivateFieldGet(this, _InvocationModel_coreCtx, "f").request, (level, ...args) => __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_userLog).call(this, level, ...args), __classPrivateFieldGet(this, _InvocationModel_doneEmitter, "f"));
+            return { context, inputs };
+        });
+    }
+    invokeFunction(context, inputs, functionCallback) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const legacyDoneTask = new Promise((resolve, reject) => {
+                __classPrivateFieldGet(this, _InvocationModel_doneEmitter, "f").on('done', (err, result) => {
+                    __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_onDone).call(this, context.suppressAsyncDoneError);
+                    if ((0, errors_1.isError)(err)) {
+                        reject(err);
+                    }
+                    else {
+                        resolve(result);
+                    }
+                });
+            });
+            try {
+                let rawResult = functionCallback(context, ...inputs);
+                __classPrivateFieldSet(this, _InvocationModel_resultIsPromise, !!rawResult && typeof rawResult.then === 'function', "f");
+                let resultTask;
+                if (__classPrivateFieldGet(this, _InvocationModel_resultIsPromise, "f")) {
+                    rawResult = Promise.resolve(rawResult).then((r) => {
+                        __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_onDone).call(this, context.suppressAsyncDoneError);
+                        return r;
+                    });
+                    resultTask = Promise.race([rawResult, legacyDoneTask]);
+                }
+                else {
+                    resultTask = legacyDoneTask;
+                }
+                return yield resultTask;
+            }
+            finally {
+                __classPrivateFieldSet(this, _InvocationModel_isDone, true, "f");
+            }
+        });
+    }
+    getResponse(context, result) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = { invocationId: __classPrivateFieldGet(this, _InvocationModel_coreCtx, "f").invocationId };
+            response.outputData = [];
+            const info = __classPrivateFieldGet(this, _InvocationModel_funcInfo, "f");
+            // Allow HTTP response from context.res if HTTP response is not defined from the context.bindings object
+            if (info.httpOutputName && context.res && context.bindings[info.httpOutputName] === undefined) {
+                context.bindings[info.httpOutputName] = context.res;
+            }
+            // As legacy behavior, falsy values get serialized to `null` in AzFunctions.
+            // This breaks Durable Functions expectations, where customers expect any
+            // JSON-serializable values to be preserved by the framework,
+            // so we check if we're serializing for durable and, if so, ensure falsy
+            // values get serialized.
+            const isDurableBinding = ((_b = (_a = info === null || info === void 0 ? void 0 : info.bindings) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.type) == 'activityTrigger';
+            const returnBinding = info.getReturnBinding();
+            // Set results from return / context.done
+            if (result || (isDurableBinding && result != null)) {
+                // $return binding is found: return result data to $return binding
+                if (returnBinding) {
+                    response.returnValue = returnBinding.converter(result);
+                    // $return binding is not found: read result as object of outputs
+                }
+                else if (typeof result === 'object') {
+                    response.outputData = Object.keys(info.outputBindings)
+                        .filter((key) => result[key] !== undefined)
+                        .map((key) => ({
+                        name: key,
+                        data: info.outputBindings[key].converter(result[key]),
+                    }));
+                }
+                // returned value does not match any output bindings (named or $return)
+                // if not http, pass along value
+                if (!response.returnValue && response.outputData.length == 0 && !info.hasHttpTrigger) {
+                    response.returnValue = (0, RpcConverters_1.toTypedData)(result);
+                }
+            }
+            // Set results from context.bindings
+            if (context.bindings) {
+                response.outputData = response.outputData.concat(Object.keys(info.outputBindings)
+                    // Data from return prioritized over data from context.bindings
+                    .filter((key) => {
+                    const definedInBindings = context.bindings[key] !== undefined;
+                    const hasReturnValue = !!result;
+                    const hasReturnBinding = !!returnBinding;
+                    const definedInReturn = hasReturnValue &&
+                        !hasReturnBinding &&
+                        typeof result === 'object' &&
+                        result[key] !== undefined;
+                    return definedInBindings && !definedInReturn;
+                })
+                    .map((key) => ({
+                    name: key,
+                    data: info.outputBindings[key].converter(context.bindings[key]),
+                })));
+            }
+            return response;
+        });
+    }
+}
+exports.InvocationModel = InvocationModel;
+_InvocationModel_doneEmitter = new WeakMap(), _InvocationModel_isDone = new WeakMap(), _InvocationModel_resultIsPromise = new WeakMap(), _InvocationModel_coreCtx = new WeakMap(), _InvocationModel_funcInfo = new WeakMap(), _InvocationModel_instances = new WeakSet(), _InvocationModel_log = function _InvocationModel_log(level, logCategory, ...args) {
+    __classPrivateFieldGet(this, _InvocationModel_coreCtx, "f").log(level, logCategory, util_1.format.apply(null, args));
+}, _InvocationModel_systemLog = function _InvocationModel_systemLog(level, ...args) {
+    __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_log).call(this, level, 'system', ...args);
+}, _InvocationModel_userLog = function _InvocationModel_userLog(level, ...args) {
+    if (__classPrivateFieldGet(this, _InvocationModel_isDone, "f") && __classPrivateFieldGet(this, _InvocationModel_coreCtx, "f").state !== 'postInvocationHooks') {
+        let badAsyncMsg = "Warning: Unexpected call to 'log' on the context object after function execution has completed. Please check for asynchronous calls that are not awaited or calls to 'done' made before function execution completes. ";
+        badAsyncMsg += `Function name: ${__classPrivateFieldGet(this, _InvocationModel_funcInfo, "f").name}. Invocation Id: ${__classPrivateFieldGet(this, _InvocationModel_coreCtx, "f").invocationId}. `;
+        badAsyncMsg += `Learn more: ${asyncDoneLearnMoreLink}`;
+        __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_systemLog).call(this, 'warning', badAsyncMsg);
+    }
+    __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_log).call(this, level, 'user', ...args);
+}, _InvocationModel_onDone = function _InvocationModel_onDone(suppressAsyncDoneError = false) {
+    if (__classPrivateFieldGet(this, _InvocationModel_isDone, "f")) {
+        if (__classPrivateFieldGet(this, _InvocationModel_resultIsPromise, "f") && suppressAsyncDoneError) {
+            return;
+        }
+        const message = __classPrivateFieldGet(this, _InvocationModel_resultIsPromise, "f")
+            ? `Error: Choose either to return a promise or call 'done'. Do not use both in your script. Learn more: ${asyncDoneLearnMoreLink}`
+            : "Error: 'done' has already been called. Please check your script for extraneous calls to 'done'.";
+        __classPrivateFieldGet(this, _InvocationModel_instances, "m", _InvocationModel_systemLog).call(this, 'error', message);
+    }
+    __classPrivateFieldSet(this, _InvocationModel_isDone, true, "f");
+};
+
+
+/***/ }),
+
+/***/ "./src/constants.ts":
+/*!**************************!*\
+  !*** ./src/constants.ts ***!
+  \**************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.MediaType = exports.HeaderName = exports.version = void 0;
+exports.version = '3.5.1';
+var HeaderName;
+(function (HeaderName) {
+    HeaderName["contentType"] = "content-type";
+    HeaderName["contentDisposition"] = "content-disposition";
+})(HeaderName = exports.HeaderName || (exports.HeaderName = {}));
+var MediaType;
+(function (MediaType) {
+    MediaType["multipartForm"] = "multipart/form-data";
+    MediaType["multipartPrefix"] = "multipart/";
+    MediaType["urlEncodedForm"] = "application/x-www-form-urlencoded";
+    MediaType["octetStream"] = "application/octet-stream";
+    MediaType["json"] = "application/json";
+})(MediaType = exports.MediaType || (exports.MediaType = {}));
+
+
+/***/ }),
+
+/***/ "./src/converters/BindingConverters.ts":
+/*!*********************************************!*\
+  !*** ./src/converters/BindingConverters.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.convertKeysToCamelCase = exports.getNormalizedBindingData = exports.getBindingDefinitions = void 0;
+const RpcConverters_1 = __webpack_require__(/*! ./RpcConverters */ "./src/converters/RpcConverters.ts");
+function getBindingDefinitions(info) {
+    const bindings = info.bindings;
+    if (!bindings) {
+        return [];
+    }
+    return Object.keys(bindings).map((name) => {
+        return {
+            name: name,
+            type: bindings[name].type || '',
+            direction: bindings[name].direction || undefined,
+        };
+    });
+}
+exports.getBindingDefinitions = getBindingDefinitions;
+function getNormalizedBindingData(request) {
+    const bindingData = {
+        invocationId: request.invocationId,
+    };
+    // node binding data is camel cased due to language convention
+    if (request.triggerMetadata) {
+        Object.assign(bindingData, convertKeysToCamelCase(request.triggerMetadata));
+    }
+    return bindingData;
+}
+exports.getNormalizedBindingData = getNormalizedBindingData;
+// Recursively convert keys of objects to camel case
+function convertKeysToCamelCase(obj) {
+    const output = {};
+    for (const key in obj) {
+        const camelCasedKey = key.charAt(0).toLocaleLowerCase() + key.slice(1);
+        try {
+            // Only "undefined" will be replaced with original object property. For example:
+            //{ string : "0" } -> 0
+            //{ string : "false" } -> false
+            //"test" -> "test" (undefined returned from fromTypedData)
+            const valueFromDataType = (0, RpcConverters_1.fromTypedData)(obj[key]);
+            const value = valueFromDataType === undefined ? obj[key] : valueFromDataType;
+            // If the value is a JSON object (and not array and not http, which is already cased), convert keys to camel case
+            if (!Array.isArray(value) && typeof value === 'object' && value && value.http == undefined) {
+                output[camelCasedKey] = convertKeysToCamelCase(value);
+            }
+            else {
+                output[camelCasedKey] = value;
+            }
+        }
+        catch (_a) {
+            // Just use the original value if we failed to recursively convert for any reason
+            output[camelCasedKey] = obj[key];
+        }
+    }
+    return output;
+}
+exports.convertKeysToCamelCase = convertKeysToCamelCase;
+
+
+/***/ }),
+
+/***/ "./src/converters/RpcConverters.ts":
+/*!*****************************************!*\
+  !*** ./src/converters/RpcConverters.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.toNullableTimestamp = exports.toNullableString = exports.toRpcString = exports.toNullableDouble = exports.toNullableBool = exports.toTypedData = exports.fromRpcTraceContext = exports.fromTypedData = void 0;
+const long_1 = __webpack_require__(/*! long */ "long");
+const errors_1 = __webpack_require__(/*! ../errors */ "./src/errors.ts");
+/**
+ * Converts 'ITypedData' input from the RPC layer to JavaScript types.
+ * TypedData can be string, json, or bytes
+ * @param typedData ITypedData object containing one of a string, json, or bytes property
+ * @param convertStringToJson Optionally parse the string input type as JSON
+ */
+function fromTypedData(typedData, convertStringToJson = true) {
+    typedData = typedData || {};
+    let str = typedData.string || typedData.json;
+    if (str !== undefined) {
+        if (convertStringToJson) {
+            try {
+                if (str != null) {
+                    str = JSON.parse(str);
+                }
+            }
+            catch (err) { }
+        }
+        return str;
+    }
+    else if (typedData.bytes) {
+        return Buffer.from(typedData.bytes);
+    }
+    else if (typedData.collectionBytes && typedData.collectionBytes.bytes) {
+        const byteCollection = typedData.collectionBytes.bytes;
+        return byteCollection.map((element) => Buffer.from(element));
+    }
+    else if (typedData.collectionString && typedData.collectionString.string) {
+        return typedData.collectionString.string;
+    }
+    else if (typedData.collectionDouble && typedData.collectionDouble.double) {
+        return typedData.collectionDouble.double;
+    }
+    else if (typedData.collectionSint64 && typedData.collectionSint64.sint64) {
+        const longCollection = typedData.collectionSint64.sint64;
+        return longCollection.map((element) => ((0, long_1.isLong)(element) ? element.toString() : element));
+    }
+}
+exports.fromTypedData = fromTypedData;
+/**
+ * Converts 'IRpcTraceContext' input from RPC layer to dictionary of key value pairs.
+ * @param traceContext IRpcTraceContext object containing the activityId, tracestate and attributes.
+ */
+function fromRpcTraceContext(traceContext) {
+    if (traceContext) {
+        return {
+            traceparent: traceContext.traceParent,
+            tracestate: traceContext.traceState,
+            attributes: traceContext.attributes,
+        };
+    }
+    return {};
+}
+exports.fromRpcTraceContext = fromRpcTraceContext;
+/**
+ * Converts JavaScript type data to 'ITypedData' to be sent through the RPC layer
+ * TypedData can be string, json, or bytes
+ * @param inputObject A JavaScript object that is a string, Buffer, ArrayBufferView, number, or object.
+ */
+function toTypedData(inputObject) {
+    if (typeof inputObject === 'string') {
+        return { string: inputObject };
+    }
+    else if (Buffer.isBuffer(inputObject)) {
+        return { bytes: inputObject };
+    }
+    else if (ArrayBuffer.isView(inputObject)) {
+        const bytes = new Uint8Array(inputObject.buffer, inputObject.byteOffset, inputObject.byteLength);
+        return { bytes: bytes };
+    }
+    else if (typeof inputObject === 'number') {
+        if (Number.isInteger(inputObject)) {
+            return { int: inputObject };
+        }
+        else {
+            return { double: inputObject };
+        }
+    }
+    else {
+        return { json: JSON.stringify(inputObject) };
+    }
+}
+exports.toTypedData = toTypedData;
+/**
+ * Converts boolean input to an 'INullableBool' to be sent through the RPC layer.
+ * Input that is not a boolean but is also not null or undefined logs a function app level warning.
+ * @param nullable Input to be converted to an INullableBool if it is a valid boolean
+ * @param propertyName The name of the property that the caller will assign the output to. Used for debugging.
+ */
+function toNullableBool(nullable, propertyName) {
+    if (typeof nullable === 'boolean') {
+        return {
+            value: nullable,
+        };
+    }
+    if (nullable != null) {
+        throw new errors_1.AzFuncSystemError(`A 'boolean' type was expected instead of a '${typeof nullable}' type. Cannot parse value of '${propertyName}'.`);
+    }
+    return undefined;
+}
+exports.toNullableBool = toNullableBool;
+/**
+ * Converts number or string that parses to a number to an 'INullableDouble' to be sent through the RPC layer.
+ * Input that is not a valid number but is also not null or undefined logs a function app level warning.
+ * @param nullable Input to be converted to an INullableDouble if it is a valid number
+ * @param propertyName The name of the property that the caller will assign the output to. Used for debugging.
+ */
+function toNullableDouble(nullable, propertyName) {
+    if (typeof nullable === 'number') {
+        return {
+            value: nullable,
+        };
+    }
+    else if (typeof nullable === 'string') {
+        if (!isNaN(nullable)) {
+            const parsedNumber = parseFloat(nullable);
+            return {
+                value: parsedNumber,
+            };
+        }
+    }
+    if (nullable != null) {
+        throw new errors_1.AzFuncSystemError(`A 'number' type was expected instead of a '${typeof nullable}' type. Cannot parse value of '${propertyName}'.`);
+    }
+    return undefined;
+}
+exports.toNullableDouble = toNullableDouble;
+/**
+ * Converts string input to an 'INullableString' to be sent through the RPC layer.
+ * Input that is not a string but is also not null or undefined logs a function app level warning.
+ * @param nullable Input to be converted to an INullableString if it is a valid string
+ * @param propertyName The name of the property that the caller will assign the output to. Used for debugging.
+ */
+function toRpcString(nullable, propertyName) {
+    if (typeof nullable === 'string') {
+        return nullable;
+    }
+    if (nullable != null) {
+        throw new errors_1.AzFuncSystemError(`A 'string' type was expected instead of a '${typeof nullable}' type. Cannot parse value of '${propertyName}'.`);
+    }
+    return '';
+}
+exports.toRpcString = toRpcString;
+/**
+ * Converts string input to an 'INullableString' to be sent through the RPC layer.
+ * Input that is not a string but is also not null or undefined logs a function app level warning.
+ * @param nullable Input to be converted to an INullableString if it is a valid string
+ * @param propertyName The name of the property that the caller will assign the output to. Used for debugging.
+ */
+function toNullableString(nullable, propertyName) {
+    if (typeof nullable === 'string') {
+        return {
+            value: nullable,
+        };
+    }
+    if (nullable != null) {
+        throw new errors_1.AzFuncSystemError(`A 'string' type was expected instead of a '${typeof nullable}' type. Cannot parse value of '${propertyName}'.`);
+    }
+    return undefined;
+}
+exports.toNullableString = toNullableString;
+/**
+ * Converts Date or number input to an 'INullableTimestamp' to be sent through the RPC layer.
+ * Input that is not a Date or number but is also not null or undefined logs a function app level warning.
+ * @param nullable Input to be converted to an INullableTimestamp if it is valid input
+ * @param propertyName The name of the property that the caller will assign the output to. Used for debugging.
+ */
+function toNullableTimestamp(dateTime, propertyName) {
+    if (dateTime != null) {
+        try {
+            const timeInMilliseconds = typeof dateTime === 'number' ? dateTime : dateTime.getTime();
+            if (timeInMilliseconds && timeInMilliseconds >= 0) {
+                return {
+                    value: {
+                        seconds: Math.round(timeInMilliseconds / 1000),
+                    },
+                };
+            }
+        }
+        catch (_a) {
+            throw new errors_1.AzFuncSystemError(`A 'number' or 'Date' input was expected instead of a '${typeof dateTime}'. Cannot parse value of '${propertyName}'.`);
+        }
+    }
+    return undefined;
+}
+exports.toNullableTimestamp = toNullableTimestamp;
+
+
+/***/ }),
+
+/***/ "./src/converters/RpcHttpConverters.ts":
+/*!*********************************************!*\
+  !*** ./src/converters/RpcHttpConverters.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.toRpcHttpCookieList = exports.toRpcHttp = exports.fromNullableMapping = exports.fromRpcHttpBody = void 0;
+const errors_1 = __webpack_require__(/*! ../errors */ "./src/errors.ts");
+const RpcConverters_1 = __webpack_require__(/*! ./RpcConverters */ "./src/converters/RpcConverters.ts");
+/**
+ * Converts the provided body from the RPC layer to the appropriate javascript object.
+ * Body of type 'byte' is a special case and it's converted to it's utf-8 string representation.
+ * This is to avoid breaking changes in v2.
+ * @param body The body from the RPC layer.
+ */
+function fromRpcHttpBody(body) {
+    if (body && body.bytes) {
+        return body.bytes.toString();
+    }
+    else {
+        return (0, RpcConverters_1.fromTypedData)(body, false);
+    }
+}
+exports.fromRpcHttpBody = fromRpcHttpBody;
+function fromNullableMapping(nullableMapping, originalMapping) {
+    let converted = {};
+    if (nullableMapping && Object.keys(nullableMapping).length > 0) {
+        for (const key in nullableMapping) {
+            converted[key] = nullableMapping[key].value || '';
+        }
+    }
+    else if (originalMapping && Object.keys(originalMapping).length > 0) {
+        converted = originalMapping;
+    }
+    return converted;
+}
+exports.fromNullableMapping = fromNullableMapping;
+/**
+ * Converts the HTTP 'Response' object to an 'ITypedData' 'http' type to be sent through the RPC layer.
+ * 'http' types are a special case from other 'ITypedData' types, which come from primitive types.
+ * @param inputMessage  An HTTP response object
+ */
+function toRpcHttp(data) {
+    // Check if we will fail to find any of these
+    if (typeof data !== 'object' || Array.isArray(data)) {
+        throw new errors_1.AzFuncSystemError("The HTTP response must be an 'object' type that can include properties such as 'body', 'status', and 'headers'. Learn more: https://go.microsoft.com/fwlink/?linkid=2112563");
+    }
+    const inputMessage = data || {};
+    let status = inputMessage.statusCode;
+    if (typeof inputMessage.status !== 'function') {
+        status || (status = inputMessage.status);
+    }
+    const httpMessage = Object.assign(Object.assign({}, inputMessage), { statusCode: (status === null || status === void 0 ? void 0 : status.toString()) || null, headers: toRpcHttpHeaders(inputMessage.headers), cookies: toRpcHttpCookieList(inputMessage.cookies || []), body: (0, RpcConverters_1.toTypedData)(inputMessage.body) });
+    return { http: httpMessage };
+}
+exports.toRpcHttp = toRpcHttp;
+/**
+ * Convert HTTP headers to a string/string mapping.
+ * @param inputHeaders
+ */
+function toRpcHttpHeaders(inputHeaders) {
+    const rpcHttpHeaders = {};
+    if (inputHeaders) {
+        for (const key in inputHeaders) {
+            if (inputHeaders[key] != null) {
+                rpcHttpHeaders[key] = inputHeaders[key].toString();
+            }
+        }
+    }
+    return rpcHttpHeaders;
+}
+/**
+ * Convert HTTP 'Cookie' array to an array of 'RpcHttpCookie' objects to be sent through the RPC layer
+ * @param inputCookies array of 'Cookie' objects representing options for the 'Set-Cookie' response header
+ */
+function toRpcHttpCookieList(inputCookies) {
+    const rpcCookies = [];
+    inputCookies.forEach((cookie) => {
+        rpcCookies.push(toRpcHttpCookie(cookie));
+    });
+    return rpcCookies;
+}
+exports.toRpcHttpCookieList = toRpcHttpCookieList;
+/**
+ * From RFC specifications for 'Set-Cookie' response header: https://www.rfc-editor.org/rfc/rfc6265.txt
+ * @param inputCookie
+ */
+function toRpcHttpCookie(inputCookie) {
+    // Resolve RpcHttpCookie.SameSite enum, a one-off
+    let rpcSameSite = 'none';
+    if (inputCookie && inputCookie.sameSite) {
+        const sameSite = inputCookie.sameSite.toLocaleLowerCase();
+        if (sameSite === 'lax') {
+            rpcSameSite = 'lax';
+        }
+        else if (sameSite === 'strict') {
+            rpcSameSite = 'strict';
+        }
+        else if (sameSite === 'none') {
+            rpcSameSite = 'explicitNone';
+        }
+    }
+    const rpcCookie = {
+        name: inputCookie && (0, RpcConverters_1.toRpcString)(inputCookie.name, 'cookie.name'),
+        value: inputCookie && (0, RpcConverters_1.toRpcString)(inputCookie.value, 'cookie.value'),
+        domain: (0, RpcConverters_1.toNullableString)(inputCookie && inputCookie.domain, 'cookie.domain'),
+        path: (0, RpcConverters_1.toNullableString)(inputCookie && inputCookie.path, 'cookie.path'),
+        expires: (0, RpcConverters_1.toNullableTimestamp)(inputCookie && inputCookie.expires, 'cookie.expires'),
+        secure: (0, RpcConverters_1.toNullableBool)(inputCookie && inputCookie.secure, 'cookie.secure'),
+        httpOnly: (0, RpcConverters_1.toNullableBool)(inputCookie && inputCookie.httpOnly, 'cookie.httpOnly'),
+        sameSite: rpcSameSite,
+        maxAge: (0, RpcConverters_1.toNullableDouble)(inputCookie && inputCookie.maxAge, 'cookie.maxAge'),
+    };
+    return rpcCookie;
+}
+
+
+/***/ }),
+
+/***/ "./src/errors.ts":
+/*!***********************!*\
+  !*** ./src/errors.ts ***!
+  \***********************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isError = exports.ensureErrorType = exports.ReadOnlyError = exports.AzFuncRangeError = exports.AzFuncTypeError = exports.AzFuncSystemError = void 0;
+class AzFuncSystemError extends Error {
+    constructor() {
+        super(...arguments);
+        this.isAzureFunctionsSystemError = true;
+    }
+}
+exports.AzFuncSystemError = AzFuncSystemError;
+class AzFuncTypeError extends TypeError {
+    constructor() {
+        super(...arguments);
+        this.isAzureFunctionsSystemError = true;
+    }
+}
+exports.AzFuncTypeError = AzFuncTypeError;
+class AzFuncRangeError extends RangeError {
+    constructor() {
+        super(...arguments);
+        this.isAzureFunctionsSystemError = true;
+    }
+}
+exports.AzFuncRangeError = AzFuncRangeError;
+class ReadOnlyError extends AzFuncTypeError {
+    constructor(propertyName) {
+        super(`Cannot assign to read only property '${propertyName}'`);
+    }
+}
+exports.ReadOnlyError = ReadOnlyError;
+function ensureErrorType(err) {
+    if (err instanceof Error) {
+        return err;
+    }
+    else {
+        let message;
+        if (err === undefined || err === null) {
+            message = 'Unknown error';
+        }
+        else if (typeof err === 'string') {
+            message = err;
+        }
+        else if (typeof err === 'object') {
+            message = JSON.stringify(err);
+        }
+        else {
+            message = String(err);
+        }
+        return new Error(message);
+    }
+}
+exports.ensureErrorType = ensureErrorType;
+/**
+ * This is mostly for callbacks where `null` or `undefined` indicates there is no error
+ * By contrast, anything thrown/caught is assumed to be an error regardless of what it is
+ */
+function isError(err) {
+    return err !== null && err !== undefined;
+}
+exports.isError = isError;
+
+
+/***/ }),
+
+/***/ "./src/http/Request.ts":
+/*!*****************************!*\
+  !*** ./src/http/Request.ts ***!
+  \*****************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var _Request_cachedUser;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Request = void 0;
+const iconv_lite_1 = __webpack_require__(/*! iconv-lite */ "iconv-lite");
+const constants_1 = __webpack_require__(/*! ../constants */ "./src/constants.ts");
+const RpcConverters_1 = __webpack_require__(/*! ../converters/RpcConverters */ "./src/converters/RpcConverters.ts");
+const RpcHttpConverters_1 = __webpack_require__(/*! ../converters/RpcHttpConverters */ "./src/converters/RpcHttpConverters.ts");
+const errors_1 = __webpack_require__(/*! ../errors */ "./src/errors.ts");
+const parseForm_1 = __webpack_require__(/*! ../parsers/parseForm */ "./src/parsers/parseForm.ts");
+const extractHttpUserFromHeaders_1 = __webpack_require__(/*! ./extractHttpUserFromHeaders */ "./src/http/extractHttpUserFromHeaders.ts");
+class Request {
+    constructor(rpcHttp) {
+        var _a, _b;
+        _Request_cachedUser.set(this, void 0);
+        this.method = rpcHttp.method;
+        this.url = rpcHttp.url;
+        this.originalUrl = rpcHttp.url;
+        this.headers = (0, RpcHttpConverters_1.fromNullableMapping)(rpcHttp.nullableHeaders, rpcHttp.headers);
+        this.query = (0, RpcHttpConverters_1.fromNullableMapping)(rpcHttp.nullableQuery, rpcHttp.query);
+        this.params = (0, RpcHttpConverters_1.fromNullableMapping)(rpcHttp.nullableParams, rpcHttp.params);
+        if ((_a = rpcHttp.body) === null || _a === void 0 ? void 0 : _a.bytes) {
+            this.bufferBody = Buffer.from(rpcHttp.body.bytes);
+            // We turned on the worker capability to always receive bytes instead of a string (RawHttpBodyBytes) so that we could introduce the `bufferBody` property
+            // However, we need to replicate the old host behavior for the `body` and `rawBody` properties so that we don't break anyone
+            // https://github.com/Azure/azure-functions-nodejs-worker/issues/294
+            // NOTE: The tests for this are in the e2e test folder of the worker. This is so we can test the full .net host behavior of encoding/parsing/etc.
+            // https://github.com/Azure/azure-functions-nodejs-worker/blob/b109082f9b85b42af1de00db4192483460214d81/test/end-to-end/Azure.Functions.NodejsWorker.E2E/Azure.Functions.NodejsWorker.E2E/HttpEndToEndTests.cs
+            const contentType = (_b = this.get(constants_1.HeaderName.contentType)) === null || _b === void 0 ? void 0 : _b.toLowerCase();
+            let legacyBody;
+            if (contentType === constants_1.MediaType.octetStream || (contentType === null || contentType === void 0 ? void 0 : contentType.startsWith(constants_1.MediaType.multipartPrefix))) {
+                // If the content type was octet or multipart, the host would leave the body as bytes
+                // https://github.com/Azure/azure-functions-host/blob/9ac904e34b744d95a6f746921556235d4b2b3f0f/src/WebJobs.Script.Grpc/MessageExtensions/GrpcMessageConversionExtensions.cs#L233
+                legacyBody = rpcHttp.body;
+            }
+            else {
+                // Otherwise the host would decode the buffer to a string
+                legacyBody = {
+                    string: decodeBuffer(this.bufferBody),
+                };
+            }
+            this.body = (0, RpcConverters_1.fromTypedData)(legacyBody);
+            this.rawBody = (0, RpcHttpConverters_1.fromRpcHttpBody)(legacyBody);
+        }
+    }
+    get user() {
+        if (__classPrivateFieldGet(this, _Request_cachedUser, "f") === undefined) {
+            __classPrivateFieldSet(this, _Request_cachedUser, (0, extractHttpUserFromHeaders_1.extractHttpUserFromHeaders)(this.headers), "f");
+        }
+        return __classPrivateFieldGet(this, _Request_cachedUser, "f");
+    }
+    get(field) {
+        return this.headers && this.headers[field.toLowerCase()];
+    }
+    parseFormBody() {
+        const contentType = this.get(constants_1.HeaderName.contentType);
+        if (!contentType) {
+            throw new errors_1.AzFuncSystemError(`"${constants_1.HeaderName.contentType}" header must be defined.`);
+        }
+        else {
+            return (0, parseForm_1.parseForm)(this.body, contentType);
+        }
+    }
+}
+exports.Request = Request;
+_Request_cachedUser = new WeakMap();
+/**
+ * The host used utf8 by default, but supported `detectEncodingFromByteOrderMarks` so we have to replicate that
+ * Host code: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/03cb2ce82db74ed5a2f3299e8a84a6c35835c269/src/WebJobs.Extensions.Http/Extensions/HttpRequestExtensions.cs#L27
+ * .NET code: https://github.com/dotnet/runtime/blob/e55c908229e36f99a52745d4ee85316a0e8bb6a2/src/libraries/System.Private.CoreLib/src/System/IO/StreamReader.cs#L469
+ * .NET description of encoding preambles: https://docs.microsoft.com/en-us/dotnet/api/system.text.encoding.getpreamble?view=net-6.0#remarks
+ **/
+function decodeBuffer(buffer) {
+    let encoding = 'utf8';
+    if (buffer[0] === 0xfe && buffer[1] === 0xff) {
+        encoding = 'utf16be'; // The same as `Encoding.BigEndianUnicode` in .NET
+        buffer = compressBuffer(buffer, 2);
+    }
+    else if (buffer[0] === 0xff && buffer[1] === 0xfe) {
+        if (buffer[2] !== 0 || buffer[3] !== 0) {
+            encoding = 'utf16le'; // The same as `Encoding.Unicode` in .NET
+            buffer = compressBuffer(buffer, 2);
+        }
+        else {
+            encoding = 'utf32le';
+            buffer = compressBuffer(buffer, 4);
+        }
+    }
+    else if (buffer[0] === 0xef && buffer[1] === 0xbb && buffer[2] === 0xbf) {
+        encoding = 'utf8';
+        buffer = compressBuffer(buffer, 3);
+    }
+    else if (buffer[0] === 0 && buffer[1] === 0 && buffer[2] === 0xfe && buffer[3] === 0xff) {
+        encoding = 'utf32be';
+        buffer = compressBuffer(buffer, 4);
+    }
+    // NOTE: Node.js doesn't support all the above encodings by default, so we have to use "iconv-lite" to help
+    // Here are the iconv-lite supported encodings: https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings
+    return (0, iconv_lite_1.decode)(buffer, encoding);
+}
+function compressBuffer(buffer, n) {
+    return buffer.subarray(n);
+}
+
+
+/***/ }),
+
+/***/ "./src/http/Response.ts":
+/*!******************************!*\
+  !*** ./src/http/Response.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Response = void 0;
+const constants_1 = __webpack_require__(/*! ../constants */ "./src/constants.ts");
+class Response {
+    constructor(done) {
+        this.headers = {};
+        this.cookies = [];
+        this.send = this.end;
+        this.header = this.setHeader;
+        this.set = this.setHeader;
+        this.get = this.getHeader;
+        this._done = done;
+    }
+    end(body) {
+        if (body !== undefined) {
+            this.body = body;
+        }
+        this.setContentType();
+        this._done();
+        return this;
+    }
+    setHeader(field, val) {
+        this.headers[field.toLowerCase()] = val;
+        return this;
+    }
+    getHeader(field) {
+        return this.headers[field.toLowerCase()];
+    }
+    removeHeader(field) {
+        delete this.headers[field.toLowerCase()];
+        return this;
+    }
+    status(statusCode) {
+        this.statusCode = statusCode;
+        return this;
+    }
+    sendStatus(statusCode) {
+        this.status(statusCode);
+        // eslint-disable-next-line deprecation/deprecation
+        return this.end();
+    }
+    type(type) {
+        return this.set(constants_1.HeaderName.contentType, type);
+    }
+    json(body) {
+        this.type(constants_1.MediaType.json);
+        // eslint-disable-next-line deprecation/deprecation
+        this.send(body);
+        return;
+    }
+    // NOTE: This is considered private and people should not be referencing it, but for the sake of backwards compatibility we will avoid using `#`
+    setContentType() {
+        if (this.body !== undefined) {
+            if (this.get(constants_1.HeaderName.contentType)) {
+                // use user defined content type, if exists
+                return;
+            }
+            if (Buffer.isBuffer(this.body)) {
+                this.type(constants_1.MediaType.octetStream);
+            }
+        }
+    }
+}
+exports.Response = Response;
+
+
+/***/ }),
+
+/***/ "./src/http/extractHttpUserFromHeaders.ts":
+/*!************************************************!*\
+  !*** ./src/http/extractHttpUserFromHeaders.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.extractHttpUserFromHeaders = void 0;
+function extractHttpUserFromHeaders(headers) {
+    let user = null;
+    if (headers['x-ms-client-principal']) {
+        const claimsPrincipalData = JSON.parse(Buffer.from(headers['x-ms-client-principal'], 'base64').toString('utf-8'));
+        if (claimsPrincipalData['identityProvider']) {
+            user = {
+                type: 'StaticWebApps',
+                id: claimsPrincipalData['userId'],
+                username: claimsPrincipalData['userDetails'],
+                identityProvider: claimsPrincipalData['identityProvider'],
+                claimsPrincipalData,
+            };
+        }
+        else {
+            user = {
+                type: 'AppService',
+                id: headers['x-ms-client-principal-id'],
+                username: headers['x-ms-client-principal-name'],
+                identityProvider: headers['x-ms-client-principal-idp'],
+                claimsPrincipalData,
+            };
+        }
+    }
+    return user;
+}
+exports.extractHttpUserFromHeaders = extractHttpUserFromHeaders;
+
+
+/***/ }),
+
+/***/ "./src/parsers/parseForm.ts":
+/*!**********************************!*\
+  !*** ./src/parsers/parseForm.ts ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _Form_parts;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Form = exports.parseForm = void 0;
+const constants_1 = __webpack_require__(/*! ../constants */ "./src/constants.ts");
+const errors_1 = __webpack_require__(/*! ../errors */ "./src/errors.ts");
+const parseHeader_1 = __webpack_require__(/*! ./parseHeader */ "./src/parsers/parseHeader.ts");
+const parseMultipartForm_1 = __webpack_require__(/*! ./parseMultipartForm */ "./src/parsers/parseMultipartForm.ts");
+/**
+ * See ./test/parseForm.test.ts for examples
+ */
+function parseForm(data, contentType) {
+    const [mediaType, parameters] = (0, parseHeader_1.parseContentType)(contentType);
+    switch (mediaType.toLowerCase()) {
+        case constants_1.MediaType.multipartForm: {
+            const boundary = parameters.get('boundary');
+            const parts = (0, parseMultipartForm_1.parseMultipartForm)(typeof data === 'string' ? Buffer.from(data) : data, boundary);
+            return new Form(parts);
+        }
+        case constants_1.MediaType.urlEncodedForm: {
+            const parsed = new URLSearchParams(data.toString());
+            const parts = [];
+            for (const [key, value] of parsed) {
+                parts.push([key, { value: Buffer.from(value) }]);
+            }
+            return new Form(parts);
+        }
+        default:
+            throw new errors_1.AzFuncSystemError(`Media type "${mediaType}" does not match types supported for form parsing: "${constants_1.MediaType.multipartForm}", "${constants_1.MediaType.urlEncodedForm}".`);
+    }
+}
+exports.parseForm = parseForm;
+class Form {
+    constructor(parts) {
+        _Form_parts.set(this, void 0);
+        __classPrivateFieldSet(this, _Form_parts, parts, "f");
+    }
+    get(name) {
+        for (const [key, value] of __classPrivateFieldGet(this, _Form_parts, "f")) {
+            if (key === name) {
+                return value;
+            }
+        }
+        return null;
+    }
+    getAll(name) {
+        const result = [];
+        for (const [key, value] of __classPrivateFieldGet(this, _Form_parts, "f")) {
+            if (key === name) {
+                result.push(value);
+            }
+        }
+        return result;
+    }
+    has(name) {
+        for (const [key] of __classPrivateFieldGet(this, _Form_parts, "f")) {
+            if (key === name) {
+                return true;
+            }
+        }
+        return false;
+    }
+    [(_Form_parts = new WeakMap(), Symbol.iterator)]() {
+        return __classPrivateFieldGet(this, _Form_parts, "f")[Symbol.iterator]();
+    }
+    get length() {
+        return __classPrivateFieldGet(this, _Form_parts, "f").length;
+    }
+}
+exports.Form = Form;
+
+
+/***/ }),
+
+/***/ "./src/parsers/parseHeader.ts":
+/*!************************************!*\
+  !*** ./src/parsers/parseHeader.ts ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _HeaderParams_params;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.HeaderParams = exports.parseContentDisposition = exports.parseContentType = exports.getHeaderValue = void 0;
+const constants_1 = __webpack_require__(/*! ../constants */ "./src/constants.ts");
+const errors_1 = __webpack_require__(/*! ../errors */ "./src/errors.ts");
+const space = ' ';
+// See "LEXICAL TOKENS" section for definition of ctl chars and quoted string: https://www.w3.org/Protocols/rfc822/3_Lexical.html
+const ctlChars = '\\u0000-\\u001F\\u007F';
+const quotedString = '(?:[^"\\\\]|\\\\.)*';
+// General description of content type header, including defintion of tspecials and token https://www.w3.org/Protocols/rfc1341/4_Content-Type.html
+const tspecials = '\\(\\)<>@,;:\\\\"\\/\\[\\]\\?\\.=';
+const token = `[^${space}${ctlChars}${tspecials}]+`;
+const start = '^\\s*'; // allows leading whitespace
+const end = '\\s*(.*)$'; // gets the rest of the string except leading whitespace
+const semicolonEnd = `\\s*;?${end}`; // allows optional semicolon and otherwise gets the rest of the string
+/**
+ * @param data a full header, e.g. "Content-Type: text/html; charset=UTF-8"
+ * @param headerName the header name, e.g. "Content-Type"
+ * @returns the header value, e.g. "text/html; charset=UTF-8" or null if not found
+ */
+function getHeaderValue(data, headerName) {
+    const match = new RegExp(`${start}${headerName}\\s*:${end}`, 'i').exec(data);
+    if (match) {
+        return match[1].trim();
+    }
+    return null;
+}
+exports.getHeaderValue = getHeaderValue;
+/**
+ * @param data a content type, e.g. "text/html; charset=UTF-8"
+ * @returns an array containing the media type (e.g. text/html) and an object with the parameters
+ */
+function parseContentType(data) {
+    const match = new RegExp(`${start}(${token}\\/${token})${semicolonEnd}`, 'i').exec(data);
+    if (!match) {
+        throw new errors_1.AzFuncSystemError(`${constants_1.HeaderName.contentType} must begin with format "type/subtype".`);
+    }
+    else {
+        return [match[1], parseHeaderParams(match[2])];
+    }
+}
+exports.parseContentType = parseContentType;
+/**
+ * @param data a content disposition, e.g. "form-data; name=myfile; filename=test.txt"
+ * @returns an array containing the disposition (e.g. form-data) and an object with the parameters
+ */
+function parseContentDisposition(data) {
+    const match = new RegExp(`${start}(${token})${semicolonEnd}`, 'i').exec(data);
+    if (!match) {
+        throw new errors_1.AzFuncSystemError(`${constants_1.HeaderName.contentDisposition} must begin with disposition type.`);
+    }
+    else {
+        return [match[1], parseHeaderParams(match[2])];
+    }
+}
+exports.parseContentDisposition = parseContentDisposition;
+function parseHeaderParams(data) {
+    const result = new HeaderParams();
+    while (data) {
+        // try to find an unquoted name=value pair first
+        const regexp = new RegExp(`${start}(${token})=(${token})${semicolonEnd}`, 'i');
+        let match = regexp.exec(data);
+        // if that didn't work, try to find a quoted name="value" pair instead
+        if (!match) {
+            const quotedPartsRegexp = new RegExp(`${start}(${token})="(${quotedString})"${semicolonEnd}`, 'i');
+            match = quotedPartsRegexp.exec(data);
+        }
+        if (match) {
+            result.add(match[1], match[2].replace(/\\"/g, '"')); // un-escape any quotes
+            data = match[3];
+        }
+        else {
+            break;
+        }
+    }
+    return result;
+}
+class HeaderParams {
+    constructor() {
+        _HeaderParams_params.set(this, {});
+    }
+    get(name) {
+        const result = __classPrivateFieldGet(this, _HeaderParams_params, "f")[name.toLowerCase()];
+        if (result === undefined) {
+            throw new errors_1.AzFuncSystemError(`Failed to find parameter with name "${name}".`);
+        }
+        else {
+            return result;
+        }
+    }
+    has(name) {
+        return __classPrivateFieldGet(this, _HeaderParams_params, "f")[name.toLowerCase()] !== undefined;
+    }
+    add(name, value) {
+        __classPrivateFieldGet(this, _HeaderParams_params, "f")[name.toLowerCase()] = value;
+    }
+}
+exports.HeaderParams = HeaderParams;
+_HeaderParams_params = new WeakMap();
+
+
+/***/ }),
+
+/***/ "./src/parsers/parseMultipartForm.ts":
+/*!*******************************************!*\
+  !*** ./src/parsers/parseMultipartForm.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.parseMultipartForm = void 0;
+const constants_1 = __webpack_require__(/*! ../constants */ "./src/constants.ts");
+const errors_1 = __webpack_require__(/*! ../errors */ "./src/errors.ts");
+const parseHeader_1 = __webpack_require__(/*! ./parseHeader */ "./src/parsers/parseHeader.ts");
+const carriageReturn = Buffer.from('\r')[0];
+const newline = Buffer.from('\n')[0];
+// multipart/form-data specification https://datatracker.ietf.org/doc/html/rfc7578
+function parseMultipartForm(chunk, boundary) {
+    const result = [];
+    let currentName;
+    let currentPart;
+    let inHeaders = false;
+    const boundaryBuffer = Buffer.from(`--${boundary}`);
+    const endBoundaryBuffer = Buffer.from(`--${boundary}--`);
+    let lineStart = 0;
+    let lineEnd = 0;
+    let partValueStart = 0;
+    let partValueEnd = 0;
+    for (let index = 0; index < chunk.length; index++) {
+        let line;
+        if (chunk[index] === newline) {
+            lineEnd = chunk[index - 1] === carriageReturn ? index - 1 : index;
+            line = chunk.slice(lineStart, lineEnd);
+            lineStart = index + 1;
+        }
+        else {
+            continue;
+        }
+        const isBoundary = line.equals(boundaryBuffer);
+        const isBoundaryEnd = line.equals(endBoundaryBuffer);
+        if (isBoundary || isBoundaryEnd) {
+            if (currentPart) {
+                currentPart.value = chunk.slice(partValueStart, partValueEnd);
+            }
+            if (isBoundaryEnd) {
+                break;
+            }
+            currentPart = {
+                value: Buffer.from(''),
+            };
+            inHeaders = true;
+        }
+        else if (inHeaders) {
+            if (!currentPart) {
+                throw new errors_1.AzFuncSystemError(`Expected form data to start with boundary "${boundary}".`);
+            }
+            const lineAsString = line.toString();
+            if (!lineAsString) {
+                // A blank line means we're done with the headers for this part
+                inHeaders = false;
+                if (!currentName) {
+                    throw new errors_1.AzFuncSystemError(`Expected part to have header "${constants_1.HeaderName.contentDisposition}" with parameter "name".`);
+                }
+                else {
+                    partValueStart = lineStart;
+                    partValueEnd = lineStart;
+                    result.push([currentName, currentPart]);
+                }
+            }
+            else {
+                const contentDisposition = (0, parseHeader_1.getHeaderValue)(lineAsString, constants_1.HeaderName.contentDisposition);
+                if (contentDisposition) {
+                    const [, dispositionParts] = (0, parseHeader_1.parseContentDisposition)(contentDisposition);
+                    currentName = dispositionParts.get('name');
+                    // filename is optional, even for files
+                    if (dispositionParts.has('fileName')) {
+                        currentPart.fileName = dispositionParts.get('fileName');
+                    }
+                }
+                else {
+                    const contentType = (0, parseHeader_1.getHeaderValue)(lineAsString, constants_1.HeaderName.contentType);
+                    if (contentType) {
+                        currentPart.contentType = contentType;
+                    }
+                }
+            }
+        }
+        else {
+            partValueEnd = lineEnd;
+        }
+    }
+    return result;
+}
+exports.parseMultipartForm = parseMultipartForm;
+
+
+/***/ }),
+
+/***/ "@azure/functions-core":
+/*!****************************************!*\
+  !*** external "@azure/functions-core" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("@azure/functions-core");
+
+/***/ }),
+
+/***/ "events":
+/*!*************************!*\
+  !*** external "events" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = require("events");
+
+/***/ }),
+
+/***/ "iconv-lite":
+/*!*****************************!*\
+  !*** external "iconv-lite" ***!
+  \*****************************/
+/***/ ((module) => {
+
+module.exports = require("iconv-lite");
+
+/***/ }),
+
+/***/ "long":
+/*!***********************!*\
+  !*** external "long" ***!
+  \***********************/
+/***/ ((module) => {
+
+module.exports = require("long");
+
+/***/ }),
+
+/***/ "util":
+/*!***********************!*\
+  !*** external "util" ***!
+  \***********************/
+/***/ ((module) => {
+
+module.exports = require("util");
+
+/***/ }),
+
+/***/ "uuid":
+/*!***********************!*\
+  !*** external "uuid" ***!
+  \***********************/
+/***/ ((module) => {
+
+module.exports = require("uuid");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License.
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.setup = void 0;
+const functions_core_1 = __webpack_require__(/*! @azure/functions-core */ "@azure/functions-core");
+const constants_1 = __webpack_require__(/*! ./constants */ "./src/constants.ts");
+const InvocationModel_1 = __webpack_require__(/*! ./InvocationModel */ "./src/InvocationModel.ts");
+class ProgrammingModel {
+    constructor() {
+        this.name = '@azure/functions';
+        this.version = constants_1.version;
+    }
+    getInvocationModel(coreCtx) {
+        return new InvocationModel_1.InvocationModel(coreCtx);
+    }
+}
+function setup() {
+    (0, functions_core_1.setProgrammingModel)(new ProgrammingModel());
+}
+exports.setup = setup;
+
+})();
+
+module.exports = __webpack_exports__;
+/******/ })()
+;
+//# sourceMappingURL=azure-functions.js.map

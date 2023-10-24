@@ -31,11 +31,11 @@ export async function collectData(_httpConfig:HttpConfig[]) {
     httpConfig = _httpConfig;
     let resources = new Array<HttpResources>();
     let promises: any = []
-    logger.info("- loading client http -");
     for(let config of httpConfig??[]){
-        let prefix = config.prefix??(httpConfig.indexOf(config)+"-");
+        let prefix = config.prefix??(httpConfig.indexOf(config).toString());
         promises.push(
             (async () => {
+                logger.info("- add one config for http -");
                 let httpResources = {
                     certificate: null,
                     body: null,
@@ -45,7 +45,6 @@ export async function collectData(_httpConfig:HttpConfig[]) {
 
                 try {
                     const url = await getConfigOrEnvVar(config, "URL", prefix);
-
                     if (!url) {
                         throw new Error("- Please pass URL in your config file");
                     }
@@ -146,11 +145,18 @@ async function dnsLookup(hostname: string): Promise<string[]|string|null> {
 }
 
 async function doRequest(url: string, config: HttpConfig): Promise<any> {
-    let method = await getConfigOrEnvVar(config, "METHOD", config.prefix??(httpConfig.indexOf(config)+"-"));
-    let header = await getHeader(config);
-    let body = getBody(config);
-    if(!header) return await makeHttpRequest<any>(method, url, body);
-    return await makeHttpRequest<any>(method, url, body, header);
+    const method = await getConfigOrEnvVar(config, "METHOD", config.prefix??(httpConfig.indexOf(config)+"-"));
+    const header = await getHeader(config);
+    const body = getBody(config);
+    const start = Date.now();
+    let result = null;
+    if(!header) result = await makeHttpRequest<any>(method, url, body);
+    else result = await makeHttpRequest<any>(method, url, body, header);
+    const delays = Date.now() - start;
+    return {
+        ...result,
+        delays: delays,
+    };
 }
 
 async function getDataHttp(url: string, config: HttpConfig): Promise<HttpRequest> {
@@ -168,6 +174,7 @@ async function getDataHttp(url: string, config: HttpConfig): Promise<HttpRequest
         httpResources.url = url;
         httpResources.ip = await dnsLookup(URL.parse(url).hostname!);
         httpResources.certificate = await getCertificateFromResponse(response);
+        httpResources.delays = response?.delays;
     }catch(e:any){
         logger.error("error in getDataHttp with the url: " + url);
         logger.error(e);

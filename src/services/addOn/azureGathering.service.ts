@@ -23,7 +23,6 @@ import {
 import { ComputeManagementClient, Disk, VirtualMachine } from "@azure/arm-compute";
 import { ResourceManagementClient , ResourceGroup } from "@azure/arm-resources";
 import * as ckiNetworkSecurityClass from "../../class/azure/ckiNetworkSecurityGroup.class";
-import { Logger } from "tslog";
 import { AzureResources } from "../../models/azure/resource.models";
 import { DefaultAzureCredential } from "@azure/identity";
 import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service";
@@ -55,21 +54,23 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<AzureResou
         } as AzureResources;
         logger.debug("config: ");
         logger.debug(JSON.stringify(config));
-        let prefix = config.prefix??(azureConfig.indexOf(config)+"-");
+        let prefix = config.prefix??(azureConfig.indexOf(config).toString());
         try{
             logger.debug("prefix: "+prefix);
             let subscriptionId = await getConfigOrEnvVar(config, "SUBSCRIPTIONID", prefix);
             let azureClientId = await getConfigOrEnvVar(config, "AZURECLIENTID", prefix);
             if(azureClientId) setEnvVar("AZURE_CLIENT_ID", azureClientId);
-            else logger.warning(prefix + "AZURECLIENTID not found in config file");
+            else logger.warning(prefix + "AZURECLIENTID not found");
             let azureClientSecret = await getConfigOrEnvVar(config, "AZURECLIENTSECRET", prefix);
             if(azureClientSecret) setEnvVar("AZURE_CLIENT_SECRET", azureClientSecret);
-            else logger.warning(prefix + "AZURECLIENTSECRET not found in config file");
+            else logger.warning(prefix + "AZURECLIENTSECRET not found");
             let azureTenantId = await getConfigOrEnvVar(config, "AZURETENANTID", prefix);
             if(azureTenantId) setEnvVar("AZURE_TENANT_ID", azureTenantId);
-            else logger.warning(prefix + "AZURETENANTID not found in config file");
-
-            const credential = new DefaultAzureCredential();
+            else logger.warning(prefix + "AZURETENANTID not found");
+            let UAI = {}
+            let useAzureIdentity = await getConfigOrEnvVar(config, "USERAZUREIDENTITYID", prefix);
+            if(useAzureIdentity) UAI = {managedIdentityClientId: useAzureIdentity};
+            const credential = new DefaultAzureCredential(UAI);
             if(!subscriptionId) {
                 throw new Error("- Please pass "+ prefix + "SUBSCRIPTIONID in your config file");
             }else{

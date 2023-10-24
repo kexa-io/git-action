@@ -17,8 +17,7 @@
 
 const process = require('process');
 
-import { Logger } from "tslog";
-import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service";
+import { getConfigOrEnvVar } from "../manageVarEnvironnement.service";
 import { googleWorkspaceResources } from "../../models/googleWorkspace/ressource.models";
 import { googleWorkspaceConfig } from "../../models/googleWorkspace/config.models";
 import {deleteFile, writeStringToJsonFile} from "../../helpers/files";
@@ -75,7 +74,7 @@ export async function collectData(googleWorkspaceConfig:googleWorkspaceConfig[])
             "drive": null
         } as googleWorkspaceResources;
         try {
-            let prefix = config.prefix??(googleWorkspaceConfig.indexOf(config)+"-");
+            let prefix = config.prefix??(googleWorkspaceConfig.indexOf(config).toString());
             writeStringToJsonFile(await getConfigOrEnvVar(config, "WORKSPACECRED", prefix), path.join(process.cwd(), '/config/credentials_workspace.json'));
             if (process.env[googleWorkspaceConfig.indexOf(config)+"-WORKSPACETOKEN"])
                 writeStringToJsonFile(await getConfigOrEnvVar(config, "WORKSPACETOKEN", prefix), "./config/token_workspace.json");
@@ -278,7 +277,7 @@ async function listOrganizationalUnits(auth: any): Promise<Array<any> | null> {
         });
         const orgUnitList = orgUnits.data;
         jsonData = JSON.parse(JSON.stringify(orgUnitList));
-    } catch (error) {
+    } catch (error:any) {
         console.error('Error listing organizational units:', error);
     }
     return jsonData ?? null;

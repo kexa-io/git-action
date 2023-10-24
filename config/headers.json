@@ -1,0 +1,135 @@
+{
+    "aws": {
+        "resources": [
+            "ec2Instance",
+            "ec2SG",
+            "ec2Volume",
+            "rds",
+            "resourceGroup",
+            "tagsValue",
+            "ecsCluster",
+            "ecrRepository"
+        ],
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png",
+        "documentation": "https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/welcome.html",
+        "freeRules": []
+    },
+    "azure": {
+        "resources": [
+            "vm",
+            "rg",
+            "disk",
+            "nsg",
+            "virtualNetwork",
+            "networkInterfaces",
+            "aks"
+        ],
+        "thumbnail": "https://cdn.icon-icons.com/icons2/2699/PNG/512/microsoft_azure_logo_icon_168977.png",
+        "documentation": "https://learn.microsoft.com/fr-fr/javascript/api/overview/azure/?view=azure-node-latest",
+        "freeRules": []
+    },
+    "gcp": {
+        "resources": [
+            "tasks_queue",
+            "compute",
+            "storage",
+            "project",
+            "billingAccount",
+            "cluster",
+            "workflows",
+            "websecurity",
+            "connector",
+            "vmware",
+            "namespace",
+            "certificate",
+            "secret",
+            "connectivity_test",
+            "resource_settings",
+            "redis_instance",
+            "os_config",
+            "org_policy_constraint",
+            "airflow_image_version",
+            "disk",
+            "compute_item"
+        ],
+        "thumbnail": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/google-cloud-square.png",
+        "documentation": "https://cloud.google.com/nodejs/docs/reference",
+        "freeRules": []
+    },
+    "github": {
+        "resources": [
+            "repositories",
+            "branches",
+            "issues",
+            "organizations",
+            "members",
+            "teams",
+            "teamProjects",
+            "teamMembers",
+            "teamRepositories",
+            "outsideCollaborators"
+        ],
+        "thumbnail": "https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo-768x432.png",
+        "documentation": "https://docs.github.com/en/rest?apiVersion=2022-11-28",
+        "freeRules": []
+    },
+    "googleDrive": {
+        "resources": [
+            "files"
+        ],
+        "thumbnail": "https://icones.pro/wp-content/uploads/2022/08/logo-google-drive.png",
+        "documentation": "https://developers.google.com/drive/api/reference/rest/v3?hl=fr",
+        "freeRules": []
+    },
+    "googleWorkspace": {
+        "resources": [
+            "user",
+            "domain",
+            "group",
+            "role",
+            "orgaunit",
+            "calendar",
+            "file",
+            "drive"
+        ],
+        "thumbnail": "https://lh3.googleusercontent.com/sYGCKFdty43En6yLGeV94mfNGHXfVj-bQYitHRndarB7tHmQq_kyVxhlPejeCBVEEYUbnKG2_jUzgNXoPoer6XJm71V3uz2Z6q0CmNw=w0",
+        "documentation": "https://developers.google.com/workspace?hl=fr",
+        "freeRules": []
+    },
+    "http": {
+        "resources": [
+            "request"
+        ],
+        "thumbnail": "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
+        "documentation": "https://developer.mozilla.org/fr/docs/Web/HTTP",
+        "freeRules": []
+    },
+    "kubernetes": {
+        "resources": [
+            "namespaces",
+            "pods",
+            "helm"
+        ],
+        "thumbnail": "https://logos-download.com/wp-content/uploads/2018/09/Kubernetes_Logo.png",
+        "documentation": "https://github.com/kubernetes-client/javascript",
+        "freeRules": []
+    },
+    "o365": {
+        "resources": [
+            "sku",
+            "user",
+            "domain",
+            "secure_score",
+            "auth_methods",
+            "organization",
+            "directory",
+            "sp",
+            "alert",
+            "incident",
+            "app_access_policy"
+        ],
+        "thumbnail": "https://www.logo.wine/a/logo/Office_365/Office_365-Logo.wine.svg",
+        "documentation": "https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0",
+        "freeRules": []
+    }
+}

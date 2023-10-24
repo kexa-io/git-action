@@ -3,14 +3,15 @@ import { Header } from "../models/settingFile/header.models";
 import { writeStringToJsonFile } from "../helpers/files"
 const configuration = require('config');
 
-const mainFolder = 'lib';
+const mainFolder = 'src';
 const serviceAddOnPath = './' + mainFolder + '/services/addOn';
 const fs = require('fs');
 
 import {getNewLogger} from "./logger.service";
 import { Capacity } from "../models/settingFile/capacity.models";
 const logger = getNewLogger("LoaderAddOnLogger");
-export async function loadAddOns(resources: ProviderResource){
+
+export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const addOnNeed = require('../../config/addOnNeed.json');
     const files = fs.readdirSync(serviceAddOnPath);
@@ -33,7 +34,6 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
             if(!addOnNeed["addOn"].includes(nameAddOn)) return null;
             let header = hasValidHeader(serviceAddOnPath + "/" + file);
             if (typeof header === "string") {
-                logger.warning(header);
                 return null;
             }
             const { collectData } = await import(`./addOn/${file.replace(".ts", ".js") }`);

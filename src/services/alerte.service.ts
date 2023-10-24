@@ -22,7 +22,7 @@ const config = require('config');
 
 import {getNewLogger} from "./logger.service";
 const logger = getNewLogger("functionLogger");
-export function alertGlobal(allScan: ResultScan[][], alert: GlobalConfigAlert) {
+export function alertGlobal(allScan: ResultScan[][], alert: GlobalConfigAlert): number[] {
     let compteError = [0,0,0,0];
     allScan.forEach((rule) => {
         rule.forEach((scan) => {
@@ -43,6 +43,7 @@ export function alertGlobal(allScan: ResultScan[][], alert: GlobalConfigAlert) {
     if(isAlert){
         alertFromGlobal(alert, compteError, allScan);
     }
+    return compteError;
 }
 
 export function alertFromGlobal(alert: GlobalConfigAlert, compteError: number[], allScan: ResultScan[][]) {
@@ -75,7 +76,7 @@ export function alertFromGlobal(alert: GlobalConfigAlert, compteError: number[],
 }
 
 export function alertLogGlobal(alert: GlobalConfigAlert, compteError: number[], allScan: ResultScan[][]) {
-    logger.info("_______________________________________-= Result Global scan =-___________________________________");
+    logger.info("_______________________________________-= Result Global scan: "+ alert.name +" =-___________________________________");
     compteError.forEach((value, index) => {
         logger.info("number of "+levelAlert[index]+" :"+value);
     });
@@ -86,9 +87,10 @@ export function alertLogGlobal(alert: GlobalConfigAlert, compteError: number[], 
     Object.entries(subResult).forEach(([key, value]) => {
         logger.info("rule:"+key);
         logger.info("all resources who not respect the rules:");
-        value.map(scan => scan.objectContent).forEach((resource, index) => {
+        value.map((scan:ResultScan) => scan.objectContent).forEach((resource, index) => {
             logger.info("resource " + (index+1) + ":");
-            logger.info(jsome.getColoredString(resource));
+            logger.debug(jsome.getColoredString(resource));
+            logger.info(propertyToSend(value[index].rule, resource, true));
         });
     });
     logger.info("_____________________________________-= End Result Global scan =-_________________________________");
@@ -208,7 +210,7 @@ export function alertFromRule(rule:Rules, conditions:SubResultScan[], objectReso
             default:
                 logger.error("error:"+rule.name);
                 logger.error("resource:");
-                logger.error(conditions.toString());
+                logger.error(conditions);
                 break;
         }
     });
@@ -223,7 +225,8 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
         case LevelEnum.INFO:
             logger.info("information:"+rule.name);
             logger.info(sentenceConditionLog(objectResource.id));
-            logger.info(jsome.getColoredString(conditions));
+            logger.debug(jsome.getColoredString(conditions));
+            logger.info(propertyToSend(rule, objectResource, true));
             break;
         case LevelEnum.WARNING:
             warnLog(rule, conditions, objectResource);
@@ -231,12 +234,14 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
         case LevelEnum.ERROR:
             logger.error("error:"+rule.name);
             logger.error(sentenceConditionLog(objectResource.id));
-            logger.info(jsome.getColoredString(conditions));
+            logger.debug(jsome.getColoredString(conditions));
+            logger.info(propertyToSend(rule, objectResource, true));
             break;
         case LevelEnum.FATAL:
             logger.error("critical:"+rule.name);
             logger.error(sentenceConditionLog(objectResource.id));
-            logger.info(jsome.getColoredString(conditions));
+            logger.debug(jsome.getColoredString(conditions));
+            logger.info(propertyToSend(rule, objectResource, true));
             break;
         default:
             warnLog(rule, conditions, objectResource);
@@ -245,8 +250,8 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
 }
 
 export function warnLog(rule: Rules, conditions:SubResultScan[], objectResource:any){
-    logger.warning("warning:"+rule.name);
-    logger.warning(sentenceConditionLog(objectResource.id));
+    logger.warn("warning:"+rule.name);
+    logger.warn(sentenceConditionLog(objectResource.id));
     logger.info(jsome.getColoredString(conditions));
 }
 
@@ -364,9 +369,9 @@ async function sendWebhook(alert: ConfigAlert, subject: string, content: any) {
         try {
             const response = await axios.post(webhook_to, payload);
             if (response.status === 200) {
-                logger.info('Teams Card sent successfully!');
+                logger.info('Webhook sent successfully!');
             } else {
-                logger.error('Failed to send Teams card.');
+                logger.error('Failed to send Webhook.');
             }
         } catch (error:any) {
             logger.error('Teams webhook : An error occurred:', error);

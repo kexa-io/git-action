@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-
 const AWS = require('aws-sdk');
 
 import {getNewLogger} from "./logger.service";
@@ -11,7 +10,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
 //const { SecretManagerServiceClient } = require('@google-cloud/secret-manager');
 
 export async function getEnvVar(name:string) {
-    return (await getFromManager(name))??process.env[name];
+    const result = ((await getFromManager(name))??process.env[name])??core.getInput(name);
+    if(result == "")return null;
+    return result;
 }
 
 async function getFromManager(name:string){
@@ -20,8 +21,8 @@ async function getFromManager(name:string){
             return await getEnvVarWithAzureKeyVault(name);
         else if (possibleWithAwsSecretManager())
             return await getEnvVarWithAwsSecretManager(name);
-        else if (await possibleWithGoogleSecretManager(process.env["0-GOOGLE_PROJECT_ID"]))
-            return await getEnvVarWithGoogleSecretManager(name, process.env["0-GOOGLE_PROJECT_ID"]);
+        else if (await possibleWithGoogleSecretManager(process.env["GOOGLE_PROJECT_ID"]))
+            return await getEnvVarWithGoogleSecretManager(name, process.env["GOOGLE_PROJECT_ID"]);
         } catch(e) {}
     return null;
 }
@@ -32,7 +33,10 @@ function possibleWithAzureKeyVault(){
 
 async function getEnvVarWithAzureKeyVault(name:string){
     const url = `https://${core.getInput('AZUREKEYVAULTNAME')}.vault.azure.net`;
-    const credential = new DefaultAzureCredential();
+    let UAI = {}
+    let useAzureIdentity = process.env.USERAZUREIDENTITYID;
+    if(useAzureIdentity) UAI = {managedIdentityClientId: useAzureIdentity};
+    const credential = new DefaultAzureCredential(UAI);
     const client = new SecretClient(url, credential);
     return (await client.getSecret(name)).value;
 }
@@ -41,8 +45,18 @@ function possibleWithAwsSecretManager(){
     return (Boolean(core.getInput('AWS_SECRET_NAME')));
 }
 
+import { Credentials, SharedIniFileCredentials } from "aws-sdk";
 async function getEnvVarWithAwsSecretManager(name:string){
-    const secretsmanager = new AWS.SecretsManager();
+    let awsKeyId = core.getInput('AWS_ACCESS_KEY_ID');
+    let awsSecretKey = core.getInput('AWS_SECRET_ACCESS_KEY');
+    let credentials: Credentials = new SharedIniFileCredentials({profile: 'default'});
+    if(awsKeyId && awsSecretKey){
+        credentials = new Credentials({
+            accessKeyId: awsKeyId,
+            secretAccessKey: awsSecretKey
+        });
+    }
+    const secretsmanager = new AWS.SecretsManager({credentials});
     const secName = core.getInput('AWS_SECRET_NAME');
     const params = { SecretId: secName };
     secretsmanager.getSecretValue(params, function(err : any, data : any) {
@@ -97,5 +111,7 @@ export async function setEnvVar(name:string, value:string){
 }
 
 export async function getConfigOrEnvVar(config:any, name:string, optionalPrefix:string = "") {
-    return (((await getFromManager(optionalPrefix+name))??config[name])??process.env[optionalPrefix+name])??core.getInput(optionalPrefix+name);
+    const result = ((await getFromManager(optionalPrefix+name))??config[name])??core.getInput(optionalPrefix+name);
+    if(result == "")return null;
+    return result;
 }

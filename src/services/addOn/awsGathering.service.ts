@@ -48,7 +48,7 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
             //   "ecrImage": null
             // Add more AWS resource
         } as AWSResources;
-        let prefix = oneConfig["prefix"]??( awsConfig.indexOf(oneConfig) + "-")
+        let prefix = oneConfig["prefix"]??( awsConfig.indexOf(oneConfig).toString())
         try {
             let awsKeyId = await getConfigOrEnvVar(oneConfig, "AWS_ACCESS_KEY_ID", prefix);
             let awsSecretKey = await getConfigOrEnvVar(oneConfig, "AWS_SECRET_ACCESS_KEY", prefix);
@@ -85,11 +85,11 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
             }
             else {
                 gatherAll = true;
-                logger.info("AWS - No Regions found in Config, gathering all regions...");
+                logger.info("AWS - No Regions found, gathering all regions...");
             }
             if (skip)
                 continue;
-            else if (!gatherAll)
+            else if (!gatherAll) 
                 logger.info("AWS - Config n°" + awsConfig.indexOf(oneConfig) + " correctly loaded user regions.");
             if (response.Regions) {
                 const promises = response.Regions.map(async (region) => {
@@ -169,7 +169,7 @@ async function ec2SGListing(client: EC2, region: string): Promise<any> {
         logger.debug(region + " - ec2SGListing Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in ec2SGListing: "+ err);
+        logger.error("Error in ec2SGListing: " + err);
         return null;
     }
 }
@@ -182,7 +182,7 @@ async function ec2VolumesListing(client: EC2, region: string): Promise<any> {
         logger.debug(region + " - ec2VolumesListing Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in ec2VolumesListing: ", err);
+        logger.error("Error in ec2VolumesListing: " + err);
         return null;
     }
 }
@@ -195,7 +195,7 @@ async function ec2InstancesListing(client: EC2, region: string): Promise<Array<E
         logger.debug(region + " - ec2InstancesListing Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in ec2InstancesListing: ", err);
+        logger.error("Error in ec2InstancesListing: " + err);
         return null;
     }
 }
@@ -208,7 +208,7 @@ async function rdsInstancesListing(client: RDS, region: string): Promise<any> {
         logger.debug(region + " - rdsInstancesListing Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in rdsInstancesListing: ", err);
+        logger.error("Error in rdsInstancesListing: " + err);
         return null;
     }
 }
@@ -221,7 +221,7 @@ async function resourceGroupsListing(client: ResourceGroups, region: string): Pr
         logger.debug(region + " - Ressource Group Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in Ressource Group Listing: ", err);
+        logger.error("Error in Ressource Group Listing: "+ err);
         return null;
     }
 }
@@ -242,7 +242,7 @@ async function tagsValueListing(client: ResourceGroupsTaggingAPI, region: string
         logger.debug(region + " - Tags Done");
         return jsonDataKeys;
     } catch (err:any) {
-        logger.error("Error in Tags Value Listing: ", err);
+        logger.error("Error in Tags Value Listing: "+ err);
         return null;
     }
 }
@@ -255,7 +255,7 @@ async function s3BucketsListing(client: S3, region: string): Promise<Array<S3> |
         logger.debug(region + " - s3BucketsListing Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in s3BucketsListing: ", err);
+        logger.error("Error in s3BucketsListing: "+ err);
         return null;
     }
 }
@@ -268,7 +268,7 @@ async function ecsClusterListing(client: ECS, region: string): Promise<any> {
         logger.debug(region + " - ECS Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in ECS Listing: ", err);
+        logger.error("Error in ECS Listing: "+ err);
         return null;
     }
 }
@@ -281,7 +281,7 @@ async function ecrImagesListing(client: ECR, region: string): Promise<any> {
         logger.debug(region + " - ECR Done");
         return jsonData;
     } catch (err:any) {
-        logger.error("Error in ECR Listing: ", err);
+        logger.error("Error in ECR Listing: "+ err);
         return null;
     }
 }

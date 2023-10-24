@@ -4,6 +4,8 @@ author: '4urcloud | Esteban MATHIA'
 
 # Define your inputs here.
 inputs:
+  DEBUG_MODE:
+    description: 'Debug mode'
   AZURE_CLIENT_ID:
     description: 'credentials for azure service principal(combo 1): client ID'
   AZURE_TENANT_ID:
@@ -71,4 +73,5 @@ outputs:
 
 runs:
   using: node16
-  main: dist/index.js
+  #main: dist/index.js
+  main: lib/main.js

@@ -51,7 +51,7 @@ export async function collectData(gcpConfig:GcpConfig[]): Promise<GCPResources[]
     let defaultPathCred = await getEnvVar("GOOGLE_APPLICATION_CREDENTIALS");
     for (let config of gcpConfig??[]) {
         setEnvVar("GOOGLE_APPLICATION_CREDENTIALS", "./config/gcp.json");
-        let prefix = config.prefix??(gcpConfig.indexOf(config)+"-");
+        let prefix = config.prefix??(gcpConfig.indexOf(config).toString());
         let gcpResources = {
             "bucket": null,
             "tasks_queue": null,
@@ -157,7 +157,7 @@ export async function collectData(gcpConfig:GcpConfig[]): Promise<GCPResources[]
                 kms_crypto_keyList, kms_key_ringList, domain_registrationList, dns_zoneList,
                 pipelineList, certificateList, batchJobList, workloadList, artifactRepoList,
                 app_gatewayList, diskList, compute_itemList] = await Promise.all(promises);
-
+            
             logger.info("- listing cloud resources done -");
 
             ///////////////// List cloud resources ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,7 +250,7 @@ async function retrieveAllRegions(projectId: number, regionsList: Array<string>)
 /////  ASYNC REGIONS GATHERING FOR FASTER EXECUTION /////    it iterate async to gather all.
 /////////////////////////////////////////////////////////
 async function executeAllRegions(projectId: number, serviceFunction: Function, client: any,
-                                regionsList: Array<string>, isIterable: Boolean) : Promise<Array<any>> {
+                                    regionsList: Array<string>, isIterable: Boolean) : Promise<Array<any>> {
     const processRegion = async (currentRegion: any) => {
         const parent = 'projects/' + projectId + '/locations/' + currentRegion;
         try {
