@@ -32,35 +32,30 @@ jobs:
             -   name: Checkout
                 id: checkout
                 uses: actions/checkout@v4
-#
-#      - name: Setup Node.js
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: 18
-#          cache: npm
-#
-#      - name: Install Dependencies
-#        id: install
-#        run: npm ci
-#
-#      # JS run out of memory
-#      - name: Build dist/ Directory
-#        id: build
-#        run: npm run package
-#
-#      - name: Compare Expected and Actual Directories
-#        id: diff
-#        run: |
-#          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
-#            echo "Detected uncommitted changes after build. See status below:"
-#            git diff --ignore-space-at-eol --text dist/
-#            exit 1
-#          fi
-#
-#      # If index.js was different than expected, upload the expected version as
-#      # a workflow artifact.
-#      - uses: actions/upload-artifact@v3
-#        if: ${{ failure() && steps.diff.conclusion == 'failure' }}
-#        with:
-#          name: dist
-#          path: dist/
+
+            -   name: Setup Node.js
+                uses: actions/setup-node@v3
+                with:
+                    node-version: 18
+                    cache: npm
+
+            -   name: Build dist/ Directory
+                id: build
+                run: npm run package
+
+            -   name: Compare Expected and Actual Directories
+                id: diff
+                run: |
+                    if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+                        echo "Detected uncommitted changes after build. See status below:"
+                        git diff --ignore-space-at-eol --text dist/
+                        exit 1
+                    fi
+
+            # If index.js was different than expected, upload the expected version as
+            # a workflow artifact.
+            -   uses: actions/upload-artifact@v3
+                if: ${{ failure() && steps.diff.conclusion == 'failure' }}
+                with:
+                    name: dist
+                    path: dist/
