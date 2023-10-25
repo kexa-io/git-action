@@ -12,18 +12,26 @@ import { Capacity } from "../models/settingFile/capacity.models";
 import { getEnvVar, setEnvVar } from "./manageVarEnvironnement.service";
 const logger = getNewLogger("LoaderAddOnLogger");
 
+const addOnName = [
+    "aws",
+    "azure",
+    "gcp",
+    "kubernetes",
+    "github",
+    "googleDrive",
+    "googleWorkspace",
+    "http",
+    "o365"
+]
+
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const addOnNeed = require('../../config/addOnNeed.json');
-    logger.info(fs.readdirSync("./src"));
-    logger.info(fs.readdirSync("./src/services"));
-    logger.info(fs.readdirSync("./src/services/addOn"));
-    logger.info(fs.readdirSync("./src/services/addOn/display"));
-    const files = fs.readdirSync(serviceAddOnPath);
-    const promises = files.map(async (file: string) => {
+    //const files = fs.readdirSync(serviceAddOnPath);
+    const promises = addOnName.map(async (file: string) => {
         return await loadAddOn(file, addOnNeed);
     });
-    const results = await Promise.all(promises);
+    const results:any = await Promise.all(promises);
     results.forEach((result: { key: string; data: Provider[]; }) => {
         if (result?.data) {
             resources[result.key] = result.data;
@@ -32,23 +40,16 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
     return resources;
 }
 
-async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; data: Provider|null; } | null> {
+async function loadAddOn(nameAddOn: string, addOnNeed: any): Promise<{ key: string; data: Provider|null; } | null> {
     try{
-        if (file.endsWith('Gathering.service.ts')){
-            let nameAddOn = file.split('Gathering.service.ts')[0];
-            if(!addOnNeed["addOn"].includes(nameAddOn)) return null;
-            let header = hasValidHeader(serviceAddOnPath + "/" + file);
-            if (typeof header === "string") {
-                return null;
-            }
-            const { collectData } = await import(`./addOn/${file.replace(".ts", ".js") }`);
-            let start = Date.now();
-            const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
-            const data = await collectData(addOnConfig);
-            let delta = Date.now() - start;
-            logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
-            return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
-        }
+        if(!addOnNeed["addOn"].includes(nameAddOn)) return null;
+        const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
+        let start = Date.now();
+        const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
+        const data = await collectData(addOnConfig);
+        let delta = Date.now() - start;
+        logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
+        return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
     }catch(e:any){
         logger.warning(e);
     }
@@ -65,15 +66,15 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
         setEnvVar("RULESDIRECTORY", customRules);
         core.addPath(customRules);
     }
-    setRealPath();
+    //setRealPath();
     let dictFunc: { [key: string]: Function; } = {};
-    logger.info(fs.readdirSync("./"));
-    logger.info(fs.readdirSync("./src"));
-    logger.info(fs.readdirSync("./src/services"));
-    logger.info(fs.readdirSync("./src/services/addOn"));
-    logger.info(fs.readdirSync("./src/services/addOn/display"));
-    const files = fs.readdirSync(serviceAddOnPath + "/display");
-    files.map((file: string) => {
+    //logger.info(fs.readdirSync("./"));
+    //logger.info(fs.readdirSync("./src"));
+    //logger.info(fs.readdirSync("./src/services"));
+    //logger.info(fs.readdirSync("./src/services/addOn"));
+    //logger.info(fs.readdirSync("./src/services/addOn/display"));
+    //const files = fs.readdirSync(serviceAddOnPath + "/display");
+    addOnName.forEach((file: string) => {
         let result = loadAddOnDisplay(file.replace(".ts", ".js"));
         if(result?.data){
             dictFunc[result.key] = result.data;

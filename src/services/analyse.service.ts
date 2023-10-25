@@ -17,7 +17,6 @@ import {getConfigOrEnvVar} from './manageVarEnvironnement.service';
 import moment, { Moment, unitOfTime } from 'moment';
 import { BeHaviorEnum } from '../enum/beHavior.enum';
 import { writeStringToJsonFile } from '../helpers/files';
-import { extractHeaders } from './addOn.service';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +36,7 @@ let headers: any;
 // read the yaml file with rules
 // exam each rules and raise alarm or not
 export async function gatheringRules(rulesDirectory:string, getAll:boolean=false): Promise<SettingFile[]> {
-    await extractHeaders();
+    //await extractHeaders();
     // list directory
     const paths = fs.readdirSync(rulesDirectory, { withFileTypes: true});
     logger.debug("listing rules files.");
