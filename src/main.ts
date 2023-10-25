@@ -14,9 +14,10 @@ require('dotenv').config();
 
 export async function main() {
     core.addPath('./config');
+    core.addPath('./src');
+    core.addPath('./lib');
     let customRules = await getEnvVar("MYOWNRULES");
     if(customRules != "NO"){
-        core.addPath(customRules);
         await setEnvVar("RULESDIRECTORY", customRules);
     }
     const logger = getNewLogger("MainLogger");
