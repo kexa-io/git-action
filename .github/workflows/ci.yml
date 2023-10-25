@@ -81,7 +81,7 @@ jobs:
       #  with:
       #    DEBUG_MODE: DEBUG
       #    EMAILPWD: ${{ secrets.PWD_EMAIL }} 
-      #    EMAILFROM: "'ISEE' <ateliertechniquededev@gmail.com>"
+      #    EMAILFROM: 
       #    #EMAILPORT: 587
       #    #EMAILUSER: "apikey"
       #    #EMAILHOST: "smtp.sendgrid.net"
