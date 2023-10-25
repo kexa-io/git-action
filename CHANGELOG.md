@@ -81,3 +81,13 @@ src/helpers/files.ts was changed
 src/main.ts was changed
 
 
+## 1.0.5
+### Files added: 0
+
+### Files changed: 2
+
+lib/helpers/files.js was changed
+
+src/helpers/files.ts was changed
+
+
