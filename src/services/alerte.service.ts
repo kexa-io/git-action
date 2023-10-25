@@ -89,8 +89,7 @@ export function alertLogGlobal(alert: GlobalConfigAlert, compteError: number[], 
         logger.info("all resources who not respect the rules:");
         value.map((scan:ResultScan) => scan.objectContent).forEach((resource, index) => {
             logger.info("resource " + (index+1) + ":");
-            logger.debug(jsome.getColoredString(resource));
-            logger.info(propertyToSend(value[index].rule, resource, true));
+            alertLog(value[index].rule, value[index].error, resource, false);
         });
     });
     logger.info("_____________________________________-= End Result Global scan =-_________________________________");
@@ -220,39 +219,48 @@ const sentenceConditionLog = (resource : string) => {
     return "condition not respect for " + resource + " :";
 }
 
-export function alertLog(rule: Rules, conditions: SubResultScan[], objectResource: any) {
+export function alertLog(rule: Rules, conditions: SubResultScan[], objectResource: any, fullDetail:boolean = true) {
     switch(rule.level){
         case LevelEnum.INFO:
-            logger.info("information:"+rule.name);
-            logger.info(sentenceConditionLog(objectResource.id));
+            if(fullDetail){
+                logger.info("information:"+rule.name);
+                logger.info(sentenceConditionLog(objectResource.id));
+            }
             logger.debug(jsome.getColoredString(conditions));
             logger.info(propertyToSend(rule, objectResource, true));
             break;
         case LevelEnum.WARNING:
-            warnLog(rule, conditions, objectResource);
+            warnLog(rule, conditions, objectResource, fullDetail);
             break;
         case LevelEnum.ERROR:
-            logger.error("error:"+rule.name);
-            logger.error(sentenceConditionLog(objectResource.id));
+            if(fullDetail){
+                logger.error("error:"+rule.name);
+                logger.error(sentenceConditionLog(objectResource.id));
+            } 
             logger.debug(jsome.getColoredString(conditions));
-            logger.info(propertyToSend(rule, objectResource, true));
+            logger.error(propertyToSend(rule, objectResource, true));
             break;
         case LevelEnum.FATAL:
-            logger.error("critical:"+rule.name);
-            logger.error(sentenceConditionLog(objectResource.id));
+            if(fullDetail){
+                logger.error("critical:"+rule.name);
+                logger.error(sentenceConditionLog(objectResource.id));
+            }
             logger.debug(jsome.getColoredString(conditions));
-            logger.info(propertyToSend(rule, objectResource, true));
+            logger.error(propertyToSend(rule, objectResource, true));
             break;
         default:
-            warnLog(rule, conditions, objectResource);
+            warnLog(rule, conditions, objectResource, fullDetail);
             break;
     }
 }
 
-export function warnLog(rule: Rules, conditions:SubResultScan[], objectResource:any){
-    logger.warn("warning:"+rule.name);
-    logger.warn(sentenceConditionLog(objectResource.id));
-    logger.info(jsome.getColoredString(conditions));
+export function warnLog(rule: Rules, conditions:SubResultScan[], objectResource:any, fullDetail:boolean = true){
+    if(fullDetail){
+        logger.warning("warning:"+rule.name);
+        logger.warning(sentenceConditionLog(objectResource.id));
+    }
+    logger.debug(jsome.getColoredString(conditions));
+    logger.warning(propertyToSend(rule, objectResource, true));
 }
 
 export function alertTeams(detailAlert: ConfigAlert|GlobalConfigAlert ,rule: Rules, objectResource:any) {

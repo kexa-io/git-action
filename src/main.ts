@@ -28,7 +28,7 @@
 import { checkRules, gatheringRules } from "./services/analyse.service";
 import { alertGlobal } from "./services/alerte.service";
 import { AsciiArtText, talkAboutOtherProject} from "./services/display.service";
-import { getEnvVar } from "./services/manageVarEnvironnement.service";
+import { getEnvVar, setEnvVar } from "./services/manageVarEnvironnement.service";
 import { loadAddOns } from "./services/addOn.service";
 import { deleteFile } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
@@ -40,8 +40,13 @@ require('dotenv').config();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
 
 export async function main() {
-    //core.addPath('./config');
+    core.addPath('./config');
     //core.addPath('./rules');
+    let customRules = await getEnvVar("MYOWNRULES");
+    if(customRules != "NO"){
+        core.addPath(customRules);
+        await setEnvVar("RULESDIRECTORY", customRules);
+    }
     const logger = getNewLogger("MainLogger");
 
     logger.debug("test");
@@ -63,14 +68,6 @@ export async function main() {
             let result = checkRules(setting.rules, resources, setting.alert);
             logger.setOutput('resultScan', result);
             if(setting.alert.global.enabled){
-                logger.info("alert global");
-                logger.info(setting.alert.global.to.toString());
-                logger.info(setting.alert.global.type.toString());
-                logger.info(setting.alert.global.enabled.toString());
-                logger.info(core.getInput('EMAILHOST'));
-                logger.info(core.getInput('EMAILPORT'));
-                logger.info(core.getInput('EMAILUSER'));
-                logger.info(Number(core.getInput('EMAILPORT')) == 465);
                 let compteError = alertGlobal(result, setting.alert.global);
                 if(compteError[2]>0 || compteError[3]>0){
                     stop = true;

@@ -72,19 +72,19 @@ jobs:
         with:
           tag: "${{ steps.versionning.outputs.version }}"
 
-      - name: Extraction du YAML secret
-        run: echo "${{ secrets.YAML_CONFIG_KUBE }}" > config/kubernetes.yaml
+      #- name: Extraction du YAML secret
+      #  run: echo "${{ secrets.YAML_CONFIG_KUBE }}" > config/kubernetes.yaml
 
-      - name: Kexa
-        id: kexa
-        uses: ./
-        with:
-          DEBUG_MODE: DEBUG
-          EMAILPWD: ${{ secrets.PWD_EMAIL }} 
-          EMAILFROM: "'ISEE' <ateliertechniquededev@gmail.com>"
-          #EMAILPORT: 587
-          #EMAILUSER: "apikey"
-          #EMAILHOST: "smtp.sendgrid.net"
-          DEMO-GITHUBTOKEN: ${{ secrets.TOKEN_KEXA_GITHUB }}
-          DEMO-KUBECONFIG: "./config/kubernetes.yaml"
-          TEST: "tout est ok"
+      #- name: Kexa
+      #  id: kexa
+      #  uses: ./
+      #  with:
+      #    DEBUG_MODE: DEBUG
+      #    EMAILPWD: ${{ secrets.PWD_EMAIL }} 
+      #    EMAILFROM: "'ISEE' <ateliertechniquededev@gmail.com>"
+      #    #EMAILPORT: 587
+      #    #EMAILUSER: "apikey"
+      #    #EMAILHOST: "smtp.sendgrid.net"
+      #    DEMO-GITHUBTOKEN: ${{ secrets.TOKEN_KEXA_GITHUB }}
+      #    DEMO-KUBECONFIG: "./config/kubernetes.yaml"
+      #    TEST: "tout est ok"

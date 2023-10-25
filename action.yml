@@ -4,6 +4,9 @@ author: '4urcloud | Esteban MATHIA'
 
 # Define your inputs here.
 inputs:
+  MYOWNRULES:
+    description: 'If you want to use your own rules'
+    default: "NO"
   DEBUG_MODE:
     description: 'Debug mode'
   AZURE_CLIENT_ID:
