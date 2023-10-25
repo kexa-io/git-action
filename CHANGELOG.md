@@ -35,3 +35,15 @@ src/services/alerte.service.ts was changed
 src/main.ts was changed
 
 
+## 1.0.1
+### Files added: 0
+
+### Files changed: 3
+
+lib/main.js was changed
+
+lib/services/addOn.service.js was changed
+
+src/services/addOn.service.ts was changed
+
+
