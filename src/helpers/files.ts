@@ -55,3 +55,11 @@ export function writeFileSync(data: string, filePath:string):boolean{
         return false;
     }
 }
+
+export function setRealPath():void {
+    const workspace = process.env.GITHUB_WORKSPACE;
+    if (!workspace) {
+        return ;
+    }
+    process.chdir(workspace);
+}

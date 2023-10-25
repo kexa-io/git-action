@@ -3,7 +3,7 @@ import { alertGlobal } from "./services/alerte.service";
 import { AsciiArtText, talkAboutOtherProject} from "./services/display.service";
 import { getEnvVar, setEnvVar } from "./services/manageVarEnvironnement.service";
 import { loadAddOns } from "./services/addOn.service";
-import { deleteFile } from "./helpers/files";
+import { deleteFile, setRealPath } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
 
 const yargs = require('yargs/yargs');
@@ -19,7 +19,9 @@ export async function main() {
     let customRules = await getEnvVar("MYOWNRULES");
     if(customRules != "NO"){
         await setEnvVar("RULESDIRECTORY", customRules);
+        core.addPath(customRules);
     }
+    setRealPath();
     const logger = getNewLogger("MainLogger");
 
     logger.debug("test");
