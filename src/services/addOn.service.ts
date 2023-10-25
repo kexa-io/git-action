@@ -1,6 +1,6 @@
 import { Provider, ProviderResource } from "../models/providerResource.models";
 import { Header } from "../models/settingFile/header.models";
-import { writeStringToJsonFile } from "../helpers/files"
+import { setRealPath, writeStringToJsonFile } from "../helpers/files"
 const configuration = require('config');
 
 const mainFolder = 'src';
@@ -9,6 +9,7 @@ const fs = require('fs');
 
 import {getNewLogger} from "./logger.service";
 import { Capacity } from "../models/settingFile/capacity.models";
+import { getEnvVar, setEnvVar } from "./manageVarEnvironnement.service";
 const logger = getNewLogger("LoaderAddOnLogger");
 
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
@@ -55,7 +56,18 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
 }
 
 export function loadAddOnsDisplay() : { [key: string]: Function; }{
+    const core = require('@actions/core');
+    core.addPath('./config');
+    core.addPath('./src');
+    core.addPath('./lib');
+    let customRules =core.inputs.customRules;
+    if(customRules != "NO"){
+        setEnvVar("RULESDIRECTORY", customRules);
+        core.addPath(customRules);
+    }
+    setRealPath();
     let dictFunc: { [key: string]: Function; } = {};
+    logger.info(fs.readdirSync("./"));
     logger.info(fs.readdirSync("./src"));
     logger.info(fs.readdirSync("./src/services"));
     logger.info(fs.readdirSync("./src/services/addOn"));
