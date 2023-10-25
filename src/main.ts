@@ -13,6 +13,11 @@ require('dotenv').config();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
 
 export async function main() {
+    let customRules = await getEnvVar("MYOWNRULES");
+    if(customRules != "NO"){
+        await setEnvVar("RULESDIRECTORY", customRules);
+        core.addPath(customRules);
+    }
     const logger = getNewLogger("MainLogger");
 
     logger.debug("test");
