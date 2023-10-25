@@ -67,3 +67,17 @@ lib/main.js was changed
 src/main.ts was changed
 
 
+## 1.0.4
+### Files added: 0
+
+### Files changed: 4
+
+lib/helpers/files.js was changed
+
+lib/main.js was changed
+
+src/helpers/files.ts was changed
+
+src/main.ts was changed
+
+
