@@ -56,6 +56,10 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
 
 export function loadAddOnsDisplay() : { [key: string]: Function; }{
     let dictFunc: { [key: string]: Function; } = {};
+    logger.info(fs.readdirSync("./src"));
+    logger.info(fs.readdirSync("./src/services"));
+    logger.info(fs.readdirSync("./src/services/addOn"));
+    logger.info(fs.readdirSync("./src/services/addOn/display"));
     const files = fs.readdirSync(serviceAddOnPath + "/display");
     files.map((file: string) => {
         let result = loadAddOnDisplay(file.replace(".ts", ".js"));
