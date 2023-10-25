@@ -60,7 +60,7 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
     core.addPath('./config');
     core.addPath('./src');
     core.addPath('./lib');
-    let customRules =core.inputs.customRules;
+    let customRules =core.getInput["MYOWNRULES"];
     if(customRules != "NO"){
         setEnvVar("RULESDIRECTORY", customRules);
         core.addPath(customRules);
