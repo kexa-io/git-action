@@ -27,7 +27,6 @@ const addOnName = [
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const addOnNeed = require('../../config/addOnNeed.json');
-    //const files = fs.readdirSync(serviceAddOnPath);
     const promises = addOnName.map(async (file: string) => {
         return await loadAddOn(file, addOnNeed);
     });
@@ -64,18 +63,10 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
     let customRules =core.getInput["MYOWNRULES"];
     if(customRules != "NO"){
         setEnvVar("RULESDIRECTORY", customRules);
-        core.addPath(customRules);
     }
-    //setRealPath();
     let dictFunc: { [key: string]: Function; } = {};
-    //logger.info(fs.readdirSync("./"));
-    //logger.info(fs.readdirSync("./src"));
-    //logger.info(fs.readdirSync("./src/services"));
-    //logger.info(fs.readdirSync("./src/services/addOn"));
-    //logger.info(fs.readdirSync("./src/services/addOn/display"));
-    //const files = fs.readdirSync(serviceAddOnPath + "/display");
     addOnName.forEach((file: string) => {
-        let result = loadAddOnDisplay(file.replace(".ts", ".js"));
+        let result = loadAddOnDisplay(file);
         if(result?.data){
             dictFunc[result.key] = result.data;
         }
@@ -83,14 +74,11 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
     return dictFunc;
 }
 
-function loadAddOnDisplay(file: string): { key: string; data: Function; } | null {
+function loadAddOnDisplay(nameAddOn: string): { key: string; data: Function; } | null {
     try{
-        if (file.endsWith('Display.service.js')){
-            let nameAddOn = file.split('Display.service.js')[0];
-            const moduleExports = require(`./addOn/display/${nameAddOn}Display.service.js`);
-            const displayFn = moduleExports.propertyToSend;
-            return { key: nameAddOn, data:displayFn};
-        }
+        const moduleExports = require(`./addOn/display/${nameAddOn}Display.service.js`);
+        const displayFn = moduleExports.propertyToSend;
+        return { key: nameAddOn, data:displayFn};
     }catch(e:any){
         logger.warning(e);
     }
