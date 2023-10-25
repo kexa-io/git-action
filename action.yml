@@ -1,6 +1,9 @@
 name: 'Kexa-Action'
 description: "It's Kexa version for a GitHub Action"
 author: '4urcloud | Esteban MATHIA'
+branding:
+  icon: 'check-circle'
+  color: 'blue'
 
 # Define your inputs here.
 inputs:
