@@ -14,6 +14,10 @@ const logger = getNewLogger("LoaderAddOnLogger");
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const addOnNeed = require('../../config/addOnNeed.json');
+    logger.info(fs.readdirSync("./src"));
+    logger.info(fs.readdirSync("./src/services"));
+    logger.info(fs.readdirSync("./src/services/addOn"));
+    logger.info(fs.readdirSync("./src/services/addOn/display"));
     const files = fs.readdirSync(serviceAddOnPath);
     const promises = files.map(async (file: string) => {
         return await loadAddOn(file, addOnNeed);
