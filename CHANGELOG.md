@@ -145,3 +145,11 @@ lib/services/addOn.service.js was changed
 src/services/addOn.service.ts was changed
 
 
+## 1.0.11
+### Files added: 0
+
+### Files changed: 1
+
+action.yml was changed
+
+
