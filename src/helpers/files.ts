@@ -58,8 +58,11 @@ export function writeFileSync(data: string, filePath:string):boolean{
 
 export function setRealPath():void {
     const workspace = process.env.GITHUB_WORKSPACE;
+    logger.info(`workspace: ${workspace}`);
     if (!workspace) {
         return ;
     }
     process.chdir(workspace);
+    logger.info(`cwd: ${process.cwd()}`);
+    logger.info(`ls: ${fs.readdirSync(process.cwd())}`);
 }
