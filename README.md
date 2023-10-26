@@ -29,19 +29,17 @@
 <br />
 <div align="center">
   <a href="https://github.com/4urcloud/Kexa_githubAction">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/kexa-no-background-color.png" alt="Logo" height="150">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Kexa Github Action</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Optimize your infrastructure with the GitHub Actions version of Kexa's generic alerting tools. Avoid wasting money on unnecessary infrastructure, avoidable security breaches and service failures.
     <br />
     <a href="https://github.com/4urcloud/Kexa_githubAction"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/4urcloud/Kexa_githubAction">View Demo</a>
-    ·
     <a href="https://github.com/4urcloud/Kexa_githubAction/issues">Report Bug</a>
     ·
     <a href="https://github.com/4urcloud/Kexa_githubAction/issues">Request Feature</a>
@@ -56,9 +54,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -81,35 +76,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+We have built Kexa to automatize verifications across your working environments (cloud, workspace, APIs endpoints), with a easy-to-deploy script that will allow you to optimize your costs, conformity and security.
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+To ensure your workflows integrity on a hight frequency check, we have built the github action of Kexa. The "action" version of kexa provides the same functionality as its classic counterparts, with the exception of being able to perform "pre-production" checks before any merge.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Run it and get all the available optimizations with the different notification tools (logs, mail, sms, webhook, Teams, and more incoming with generics tools).
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+Macro-scale operation is extremely similar to Kexa. That's why, in this documentation, we'll only deal with the technical differences between Kexa and Macro-scale operation.
+For more information on macro-scale operation, see [here](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -118,32 +92,33 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Only the credentials to access your various addons need to be retrieved upstream.
+Depending on the addons you wish to use, please refer to their documentation:
+
+- [AWS](./documentation/aws.md)
+- [Azure](./documentation/Azure.md)
+- [GCP](./documentation/GCP.md)
+- [Github](./documentation/Github.md)
+- [Google Drive](./documentation/GoogleDrive.md)
+- [Google Workspace](./documentation/GoogleWorkspace.md)
+- [HTTP/HTTPS](./documentation/HTTP.md)
+- [Kubernetes](./documentation/Kubernetes.md)
+- [O365](./documentation/O365.md)
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+Add to your repository the "config" folder in which you will put your [configuration de scan](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration) and a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
+To use the github action you can use such as:
+
+```yaml
+-   name: Kexa Git action
+    uses: 4urcloud/Kexa_githubAction@1.0.13 #to see all version available : https://github.com/4urcloud/Kexa_githubAction/releases
+    with:
+        MYOWNRULES: "./rules" #Path conform to our example
+        #add here all your "environment variable" here
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -152,9 +127,9 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Kexa offers [many advantages](./documentation/Documentation-Kexa.md#utility-examples). Unlike its counterpart, the Kexa_githubAction has the advantage of being able to stop github actions and thus cancel the pull request. This advantage makes it possible to perform "pre-production" checks to ensure that the deployment environment complies with the required standards. What's more, with the scheduling option in github action you can run regular tests every 5min or more to check the health of your web applications (addOn HTTP) or pods in kubernetes (addOn Kubernetes) at low cost.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+En the end, the reading grid for github Action and classic Kexa is the same : see [here](https://github.com/4urcloud/Kexa#results-explanation)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -260,7 +235,7 @@ If you would like additional functionality, please send us your request. : <a hr
 ## <div align="center" id="license">**License**</div>
 <br/>
 
-Distributed under the MIT License. See [`LICENSE.txt`](https://github.com/4urcloud/Kexa/blob/main/LICENCE.txt) for more information just [here](https://github.com/4urcloud/Kexa/blob/main/LICENCE.txt).
+Distributed under the MIT License. See [`LICENSE`](https://github.com/4urcloud/Kexa_githubAction/blob/main/LICENCE) for more information just [here](https://github.com/4urcloud/Kexa_githubAction/blob/main/LICENCE).
 
 
 ## <div align="center" id="contact">**Contact**</div>
@@ -280,7 +255,7 @@ Si vous voulez approfondir l'utilisation de Kexa:
 * [Website Kexa](https://www.kexa.io/)
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://www.linkedin.com/company/4urcloud/
 [contributors-shield]: https://img.shields.io/github/contributors/4urcloud/Kexa_githubAction.svg?style=for-the-badge
 [contributors-url]: https://github.com/4urcloud/Kexa_githubAction/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/4urcloud/Kexa_githubAction.svg?style=for-the-badge
