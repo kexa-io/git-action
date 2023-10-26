@@ -1,13 +1,13 @@
 {
     "addOn": [
         "googleWorkspace",
+        "github",
+        "http",
+        "kubernetes",
         "azure",
         "aws",
         "gcp",
         "o365",
-        "http",
-        "github",
-        "googleDrive",
-        "kubernetes"
+        "googleDrive"
     ]
 }

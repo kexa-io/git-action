@@ -311,3 +311,11 @@ images/workspace-icon.png was changed
 README.md was changed
 
 
+## 1.0.14
+### Files added: 0
+
+### Files changed: 1
+
+src/rules/Deployement.yaml was changed
+
+
