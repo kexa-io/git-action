@@ -153,3 +153,13 @@ src/services/addOn.service.ts was changed
 action.yml was changed
 
 
+## 1.0.12
+### Files added: 1
+
+README.md was added
+
+### Files changed: 1
+
+README.md was changed
+
+
