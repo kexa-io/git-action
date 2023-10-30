@@ -1,0 +1,40 @@
+name: Kexa Pre Deployement
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  kexa:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}   # checkout the correct branch name
+          fetch-depth: 0
+
+      #- name: Connexion au registre Docker privé
+      #  run: echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin ${{ secrets.DOCKER_REGISTRY_URL }}
+
+      - name: Extraction du YAML secret
+        run: echo "${{ secrets.YAML_CONFIG_KUBE }}" > config/kubernetes.yaml
+
+      - name: Kexa Git action
+        #description: In the case of this github action, we use the rules file located in the rules directory at the root of the project,
+        #             we also use secrets for environment variables
+        #             in the imaginary configuration of this gitub action, we use email notifications in our rules
+        #             in this configuration, we use 2 addOns as examples: github and kubernetes, both of which would have the prefix "DEMO-" in the configuration
+        #             we also use the config/kubernetes.yaml file to connect to the kubernetes cluster added before in the previous step
+        uses: 4urcloud/Kexa_githubAction@1.0.13
+        with:
+          MYOWNRULES: "./rules"
+          EMAILPWD: ${{ secrets.PWD_EMAIL }}
+          EMAILFROM: ${{ secrets.FROM_EMAIL }}
+          DEMO-GITHUBTOKEN: ${{ secrets.TOKEN_KEXA_GITHUB }}
+          DEMO-KUBECONFIG: "./config/kubernetes.yaml"

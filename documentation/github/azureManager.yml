@@ -1,0 +1,39 @@
+name: Kexa Pre Deployement
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  kexa:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}   # checkout the correct branch name
+          fetch-depth: 0
+
+      #- name: Connexion au registre Docker privé
+      #  run: echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin ${{ secrets.DOCKER_REGISTRY_URL }}
+
+      - name: Extraction du YAML secret
+        run: echo "${{ secrets.YAML_CONFIG_KUBE }}" > config/kubernetes.yaml
+
+      - name: Kexa Git action
+        #description: In the case of this github action, we use the rules file located in the rules directory at the root of the project,
+        #             we also use a secret manager from azure for environment variables
+        #             in this case all the variable need to perform a scan are in the secret manager
+        #             Practices for secrets remain the same, just move to the secret manager
+        uses: 4urcloud/Kexa_githubAction@1.0.13
+        with:
+          MYOWNRULES: "./rules"
+          AZUREKEYVAULTNAME: ${{ secrets.AZURE_KEYVAULT_NAME }}}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}

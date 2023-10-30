@@ -110,7 +110,7 @@ Depending on the addons you wish to use, please refer to their documentation:
 ### Installation
 
 Add to your repository the "config" folder in which you will put your [configuration de scan](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration) and a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
-To use the [github action]() you can use such as:
+To use the [github action](https://docs.github.com/fr/actions/learn-github-actions/understanding-github-actions) you can use such as:
 
 ```yaml
     steps:
@@ -120,6 +120,8 @@ To use the [github action]() you can use such as:
               MYOWNRULES: "./rules" #Path conform to our example
               #add here all your "environment variable" here
 ```
+
+You can also use key manager. The principle of use is the same as for [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#password-manager). Here are some examples of use with and without key manager : [Here](./documentation/github/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
