@@ -94,6 +94,12 @@ For more information on macro-scale operation, see [here](https://github.com/4ur
 
 ### Prerequisites
 
+#### Knowledge
+
+Before attempting to implement Kexa CI/CD, we advise you to have a global knowledge base on [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md).
+
+#### Technical
+
 Only the credentials to access your various addons need to be retrieved upstream.
 Depending on the addons you wish to use, please refer to their documentation:
 
@@ -136,6 +142,9 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 
 ## <div align="center" id="roadmap">**Roadmap**</div>
 <br/>
+
+<details>
+<summary>All Achievements</summary>
 
 - ✅ Setting notification levels
 - ✅ Azure check in:
@@ -222,13 +231,19 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
     - ✅ alert
     - ✅ incident
     - ✅ app_access_policy
-- [ ] VM Ware
+
+</details>
+
+Next step:
+
 - [ ] Kexa SaaS
+- [ ] VM Ware
 - [ ] OVH
-- [ ] Postgres
-- [ ] SQL
-- [ ] Mysql/MariaDB
-- [ ] Oracle
+- [ ] Database
+	- [ ] Postgres
+	- [ ] SQL
+	- [ ] Mysql/MariaDB
+	- [ ] Oracle
 
 If you would like additional functionality, please send us your request. : <a href="https://github.com/4urcloud/Kexa/issues">Request Feature</a>
 <p align="right">(<a href="#top">back to top</a>)</p>
