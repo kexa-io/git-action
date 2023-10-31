@@ -250,7 +250,7 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/4urcloud/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Si vous voulez approfondir l'utilisation de Kexa:
+If you'd like to find out more about Kexa:
 
 * [Github Kexa](https://github.com/4urcloud/Kexa)
 * [Website Kexa](https://www.kexa.io/)
