@@ -116,7 +116,16 @@ Depending on the addons you wish to use, please refer to their documentation:
 ### Installation
 
 If not exist, add to your repository the "config" folder in which you will put your [kexa configuration](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration)
-If not exist, add a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
+If not exist, add a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). 
+You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
+
+<br/>
+
+The configuration file will be used to set up your projects, that will regroup by provider/service name the rules you want to apply in your scan.
+Those rules will be defined in YAML files located in the /rules folder. 
+
+<br/>
+
 To use the [github action](https://docs.github.com/fr/actions/learn-github-actions/understanding-github-actions) you can use such as:
 
 ```yaml
