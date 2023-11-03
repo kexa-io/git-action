@@ -115,16 +115,42 @@ Depending on the addons you wish to use, please refer to their documentation:
 
 ### Installation
 
-Add to your repository the "config" folder in which you will put your [configuration de scan](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration) and a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
+If not exist, add to your repository the "config" folder in which you will put your [kexa configuration](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration)
+If not exist, add a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
 To use the [github action](https://docs.github.com/fr/actions/learn-github-actions/understanding-github-actions) you can use such as:
 
 ```yaml
     steps:
       -   name: Kexa Git action
-          uses: 4urcloud/Kexa_githubAction@1.0.13 #to see all version available : https://github.com/4urcloud/Kexa_githubAction/releases
+          uses: 4urcloud/Kexa_githubAction@1.0.16 #to see all version available : https://github.com/4urcloud/Kexa_githubAction/releases
           with:
               MYOWNRULES: "./rules" #Path conform to our example
               #add here all your "environment variable" here
+```
+
+Here is a full example of a github workflow with Kexa action :
+```yaml
+name: KexaTestWorkflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  kexa-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Kexa Git action
+        uses: 4urcloud/Kexa_githubAction@1.0.16
+        with:
+          MYOWNRULES: "./rules"
+          ENVVAR1: ""
+          ENVVAR2: ""
 ```
 
 You can also use key manager. The principle of use is the same as for [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#password-manager). Here are some examples of use with and without key manager : [Here](./documentation/github/)
