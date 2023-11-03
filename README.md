@@ -155,6 +155,9 @@ jobs:
 
 You can also use key manager. The principle of use is the same as for [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#password-manager). Here are some examples of use with and without key manager : [Here](./documentation/github/)
 
+With this workflow, Kexa will be triggered at each push on the main branch of this repository.
+If Kexa find a issue that rise an alert with a level superior than warning (error or fatal), the workflow will be canceled.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
