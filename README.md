@@ -159,7 +159,11 @@ With this workflow, Kexa will be triggered at each push on the main branch of th
 If Kexa find a issue that rise an alert with a level superior than warning (error or fatal), the workflow will be canceled.
 Here is a sample of a Kexa scan in github action that rise an error :
 
-![github-action-scan](.images/scan-gitaction.png)
+<div align="center">
+	
+![github-action-scan](./images/scan-gitaction.png)
+
+</div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
