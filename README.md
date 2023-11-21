@@ -94,6 +94,12 @@ For more information on macro-scale operation, see [here](https://github.com/4ur
 
 ### Prerequisites
 
+#### Knowledge
+
+Before attempting to implement Kexa CI/CD, we advise you to have a global knowledge base on [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md).
+
+#### Technical
+
 Only the credentials to access your various addons need to be retrieved upstream.
 Depending on the addons you wish to use, please refer to their documentation:
 
@@ -109,21 +115,78 @@ Depending on the addons you wish to use, please refer to their documentation:
 
 ### Installation
 
-Add to your repository the "config" folder in which you will put your [configuration de scan](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration) and a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
+If not exist, add to your repository the "config" folder in which you will put your [kexa configuration](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#global-configuration)
+If not exist, add a dedicate folder for your [rules](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#rules-editing) for example ("./rules"). 
+You can use our rules at [here](https://github.com/4urcloud/Kexa/tree/main/Kexa/rules).
+
+<br/>
+
+The configuration file will be used to set up your projects, that will regroup by provider/service name the rules you want to apply in your scan.
+Those rules will be defined in YAML files located in the /rules folder. 
+
+<br/>
+
 To use the [github action](https://docs.github.com/fr/actions/learn-github-actions/understanding-github-actions) you can use such as:
 
 ```yaml
     steps:
       -   name: Kexa Git action
-          uses: 4urcloud/Kexa_githubAction@1.0.13 #to see all version available : https://github.com/4urcloud/Kexa_githubAction/releases
+          uses: 4urcloud/Kexa_githubAction@1.0.16 #to see all version available : https://github.com/4urcloud/Kexa_githubAction/releases
           with:
               MYOWNRULES: "./rules" #Path conform to our example
               #add here all your "environment variable" here
 ```
 
+<br/>
+
+Here is a full example of a github workflow with Kexa action :
+```yaml
+name: KexaTestWorkflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  kexa-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Kexa Git action
+        uses: 4urcloud/Kexa_githubAction@1.0.16
+        with:
+          MYOWNRULES: "./rules"
+          ENVVAR1: ""
+          ENVVAR2: ""
+```
+
 You can also use key manager. The principle of use is the same as for [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#password-manager). Here are some examples of use with and without key manager : [Here](./documentation/github/)
 
+</br>
+
+With this workflow, Kexa will be triggered at each push on the main branch of this repository.
+
+<br/>
+
+If Kexa find a issue that rise an alert with a level superior than warning (error or fatal), the workflow will be canceled.
+
+<br/>
+
+Here is a sample of a Kexa scan in github action that rise an error :
+
+<div align="center">
+	
+![github-action-scan](./images/scan-gitaction.png)
+
+</div>
+
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<br/>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -136,6 +199,9 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 
 ## <div align="center" id="roadmap">**Roadmap**</div>
 <br/>
+
+<details>
+<summary>All Achievements</summary>
 
 - ✅ Setting notification levels
 - ✅ Azure check in:
@@ -222,13 +288,19 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
     - ✅ alert
     - ✅ incident
     - ✅ app_access_policy
-- [ ] VM Ware
+
+</details>
+
+Next step:
+
 - [ ] Kexa SaaS
+- [ ] VM Ware
 - [ ] OVH
-- [ ] Postgres
-- [ ] SQL
-- [ ] Mysql/MariaDB
-- [ ] Oracle
+- [ ] Database
+	- [ ] Postgres
+	- [ ] SQL
+	- [ ] Mysql/MariaDB
+	- [ ] Oracle
 
 If you would like additional functionality, please send us your request. : <a href="https://github.com/4urcloud/Kexa/issues">Request Feature</a>
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -250,7 +322,7 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/4urcloud/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Si vous voulez approfondir l'utilisation de Kexa:
+If you'd like to find out more about Kexa:
 
 * [Github Kexa](https://github.com/4urcloud/Kexa)
 * [Website Kexa](https://www.kexa.io/)
