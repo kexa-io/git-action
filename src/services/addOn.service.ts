@@ -3,13 +3,26 @@ import { Header } from "../models/settingFile/header.models";
 import { writeStringToJsonFile } from "../helpers/files"
 const configuration = require('config');
 
-const mainFolder = 'Kexa';
-const serviceAddOnPath = '../../src/services/addOn';
+const mainFolder = 'src';
+const serviceAddOnPath = './' + mainFolder + '/services/addOn';
 const fs = require('fs');
+import { getEnvVar, setEnvVar } from "./manageVarEnvironnement.service";
 
 import { getNewLogger} from "./logger.service";
 import { Capacity } from "../models/settingFile/capacity.models";
 const logger = getNewLogger("LoaderAddOnLogger");
+
+const addOnName = [
+    "aws",
+    "azure",
+    "gcp",
+    "kubernetes",
+    "github",
+    "googleDrive",
+    "googleWorkspace",
+    "http",
+    "o365"
+]
 
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
@@ -52,10 +65,17 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
 }
 
 export function loadAddOnsDisplay() : { [key: string]: Function; }{
+    const core = require('@actions/core');
+    core.addPath('./config');
+    core.addPath('./src');
+    core.addPath('./lib');
+    let customRules =core.getInput["MYOWNRULES"];
+    if(customRules != "NO"){
+        setEnvVar("RULESDIRECTORY", customRules);
+    }
     let dictFunc: { [key: string]: Function; } = {};
-    const files = fs.readdirSync(serviceAddOnPath + "/display");
-    files.map((file: string) => {
-        let result = loadAddOnDisplay(file.replace(".ts", ".js"));
+    addOnName.forEach((file: string) => {
+        let result = loadAddOnDisplay(file);
         if(result?.data){
             dictFunc[result.key] = result.data;
         }
