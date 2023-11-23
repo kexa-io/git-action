@@ -319,3 +319,13 @@ README.md was changed
 src/rules/Deployement.yaml was changed
 
 
+## 1.0.16-SNAPSHOT.22.7050b306
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/addOn.service.js was changed
+
+src/services/addOn.service.ts was changed
+
+

@@ -122,11 +122,15 @@
             "secure_score",
             "auth_methods",
             "organization",
-            "directory",
+            "directory_role",
             "sp",
             "alert",
             "incident",
-            "app_access_policy"
+            "app_access_policy",
+            "group",
+            "policy",
+            "conditional_access",
+            "sharepoint_settings"
         ],
         "thumbnail": "https://www.logo.wine/a/logo/Office_365/Office_365-Logo.wine.svg",
         "documentation": "https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0",
