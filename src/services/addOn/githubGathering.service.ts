@@ -24,12 +24,11 @@ import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service"
 import { GitConfig } from "../../models/git/config.models";
 env.config();
 
-import {getContext, getNewLogger} from "../logger.service";
+import { getNewLogger} from "../logger.service";
 const logger = getNewLogger("GithubLogger");
 let githubToken = "";
 
 export async function collectData(gitConfig:GitConfig[]): Promise<GitResources[]|null>{
-    let context = getContext();
     let resources = new Array<GitResources>();
     for(let config of gitConfig??[]){
         let prefix = config.prefix??(gitConfig.indexOf(config).toString());
@@ -39,7 +38,6 @@ export async function collectData(gitConfig:GitConfig[]): Promise<GitResources[]
         }
         await setEnvVar("GITHUBTOKEN", githubToken)
         try {
-            context?.log("Gathering github data");
             logger.info("Gathering github data");
             const promisesPrimaryData:any[] = [collectRepo(), collectOrganizations()]
             let [allRepo, allOrganizations] = await Promise.all(promisesPrimaryData);

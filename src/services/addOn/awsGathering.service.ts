@@ -25,7 +25,6 @@ import { AwsConfig } from "../../models/aws/config.models";
 import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("AWSLogger");
 
-import { getContext } from "../logger.service";
 
 
 let ec2Client: EC2;
@@ -37,7 +36,6 @@ let ecrClient: ECR;
 //// LISTING CLOUD RESOURCES ///////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[] | null> {
-    let context = getContext();
     let resources = new Array<AWSResources>();
     for (let oneConfig of awsConfig ?? []) {
         let awsResource = {
@@ -89,13 +87,11 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
             }
             else {
                 gatherAll = true;
-                context?.log("AWS - No Regions found, gathering all regions...");
                 logger.info("AWS - No Regions found, gathering all regions...");
             }
             if (skip)
                 continue;
             else if (!gatherAll){
-                context?.log("AWS - Config n°" + awsConfig.indexOf(oneConfig) + " correctly loaded user regions.");
                 logger.info("AWS - Config n°" + awsConfig.indexOf(oneConfig) + " correctly loaded user regions.");
             }
             if (response.Regions) {
@@ -105,7 +101,6 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
                             if (!(userRegions.includes(region.RegionName as string)))
                                 return;
                         }
-                        context?.log("Retrieving AWS Region : " + region.RegionName);
                         logger.info("Retrieving AWS Region : " + region.RegionName);
                         config.update({credentials: credentials, region: region.RegionName});
                         ec2Client = new EC2();
@@ -151,12 +146,10 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
                         });
                     }
                 });
-                context?.log("- Listing AWS resources done -");
                 logger.info("- Listing AWS resources done -");
                 resources.push(awsResource as any);
             }
         } catch (e) {
-            context?.log("error in AWS connect with AWSACCESSKEYID: " + oneConfig["AWSACCESSKEYID"] ?? null);
             logger.error("error in AWS connect with AWSACCESSKEYID: " + oneConfig["AWSACCESSKEYID"] ?? null);
             logger.error(e);
         }

@@ -30,7 +30,7 @@ import { o365Config } from "../../models/o365/config.models";
 //////   INITIALIZATION   //////
 ////////////////////////////////
 
-import {getContext, getNewLogger} from "../logger.service";
+import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("o365Logger");
 
 /////////////////////////////////////////
@@ -38,7 +38,6 @@ const logger = getNewLogger("o365Logger");
 /////////////////////////////////////////
 
 export async function collectData(o365Config:o365Config[]): Promise<o365Resources[] | null> {
-    let context = getContext();
     let resources = new Array<o365Resources>();
 
     for (let config of o365Config??[]) {
@@ -81,7 +80,6 @@ export async function collectData(o365Config:o365Config[]): Promise<o365Resource
             if(!subscriptionId) {
                 throw new Error("- Please pass SUBSCRIPTIONID in your config file");
             } else {
-                context?.log("- listing O365 resources -");
                 logger.info("- listing O365 resources -");
                 const userList = await listUsers(graphApiEndpoint, accessToken, headers);
                 const promises = [
@@ -135,7 +133,6 @@ export async function collectData(o365Config:o365Config[]): Promise<o365Resource
                     conditional_access: conditional_accessList,
                     sharepoint_settings: sharepoint_settingsList
                 };
-                context?.log("- listing O365 resources done -");
                 logger.info("- listing O365 resources done -");
             }
         } catch (e) {
