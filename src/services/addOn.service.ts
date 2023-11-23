@@ -4,7 +4,7 @@ import { writeStringToJsonFile } from "../helpers/files"
 const configuration = require('config');
 
 const mainFolder = 'Kexa';
-const serviceAddOnPath = '/services/addOn';
+const serviceAddOnPath = './addOn';
 const fs = require('fs');
 
 import { getNewLogger} from "./logger.service";
