@@ -26,7 +26,7 @@ import {deleteFile, writeStringToJsonFile} from "../../helpers/files";
 //////   INITIALIZATION   //////
 ////////////////////////////////
 
-import {getNewLogger} from "../logger.service";
+import {getContext, getNewLogger} from "../logger.service";
 const logger = getNewLogger("googleWorkspaceLogger");
 
 const fs = require('fs').promises;
@@ -59,6 +59,7 @@ const TOKEN_PATH = path.join(process.cwd(), '/config/token_workspace.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), '/config/credentials_workspace.json');
 
 export async function collectData(googleWorkspaceConfig:googleWorkspaceConfig[]): Promise<googleWorkspaceResources[] | null> {
+    let context = getContext();
     let resources = new Array<googleWorkspaceResources>();
 
 
@@ -79,35 +80,36 @@ export async function collectData(googleWorkspaceConfig:googleWorkspaceConfig[])
             if (process.env[googleWorkspaceConfig.indexOf(config)+"-WORKSPACETOKEN"])
                 writeStringToJsonFile(await getConfigOrEnvVar(config, "WORKSPACETOKEN", prefix), "./config/token_workspace.json");
             const auth = await authorize();
-                const promises = [
-                    await listUsers(auth),
-                    await listDomains(auth),
-                    await listGroups(auth),
-                    await listRoles(auth),
-                    await listOrganizationalUnits(auth),
-                    await listCalendars(auth),
-                    await listFiles(auth),
-                    await listDrive(auth)
-                ];
-                const [userList, domainList, groupList, roleList, orgaunitList, calendarList, fileList, driveList] = await Promise.all(promises);
+            const promises = [
+                await listUsers(auth),
+                await listDomains(auth),
+                await listGroups(auth),
+                await listRoles(auth),
+                await listOrganizationalUnits(auth),
+                await listCalendars(auth),
+                await listFiles(auth),
+                await listDrive(auth)
+            ];
+            const [userList, domainList, groupList, roleList, orgaunitList, calendarList, fileList, driveList] = await Promise.all(promises);
 
-                googleWorkspaceResources = {
-                    user: userList,
-                    domain: domainList,
-                    group: groupList,
-                    role: roleList,
-                    orgaunit: orgaunitList,
-                    calendar: calendarList,
-                    file: fileList,
-                    drive: driveList
-                };
-                logger.info("- listing googleWorkspace resources done -");
-            }
-            catch (e:any)
-            {
-                logger.error("error in collect googleWorkspace data: ");
-                logger.error(e);
-            }
+            googleWorkspaceResources = {
+                user: userList,
+                domain: domainList,
+                group: groupList,
+                role: roleList,
+                orgaunit: orgaunitList,
+                calendar: calendarList,
+                file: fileList,
+                drive: driveList
+            };
+            context?.log("- listing googleWorkspace resources done -");
+            logger.info("- listing googleWorkspace resources done -");
+        }
+        catch (e)
+        {
+            logger.error("error in collect googleWorkspace data: ");
+            logger.error(e);
+        }
         deleteFile("./config/credentials_workspace.json");
         deleteFile("./config/token_workspace.json");
         resources.push(googleWorkspaceResources);
@@ -183,8 +185,8 @@ async function listUsers(auth: any): Promise<Array<any> | null> {
                 }
             });
 
-        } catch (error:any) {
-            logger.error('Error listing user roles:', error);
+        } catch (error) {
+            logger.debug('Error listing user roles:', error);
             return [];
         }
         if (isSuperAdmin) {
@@ -197,7 +199,7 @@ async function listUsers(auth: any): Promise<Array<any> | null> {
     return jsonData ?? null;
 }
 async function listDomains(auth: any): Promise<Array<any> | null> {
-   let jsonData = [];
+    let jsonData = [];
 
     const admin = google.admin({version: 'directory_v1', auth});
     try {
@@ -219,12 +221,12 @@ async function listDomains(auth: any): Promise<Array<any> | null> {
                     domainInfos: domainResponse.data
                 }
                 jsonData.push(JSON.parse(JSON.stringify(newJsonEntry)));
-            } catch (e:any) {
-                logger.error(e);
+            } catch (e) {
+                logger.debug(e);
             }
         }
-    } catch (e:any) {
-        logger.error(e);
+    } catch (e) {
+        logger.debug(e);
     }
     return jsonData ?? null;
 }
@@ -242,8 +244,8 @@ async function listGroups(auth: any): Promise<Array<any> | null> {
             jsonData = JSON.parse(JSON.stringify(groups));
         else
             return null;
-    } catch (e:any) {
-        logger.error(e);
+    } catch (e) {
+        logger.debug(e);
     }
     return jsonData ?? null;
 }
@@ -258,8 +260,8 @@ async function listRoles(auth: any): Promise<Array<any> | null> {
             customer: 'my_customer',
         });
         jsonData = JSON.parse(JSON.stringify(adminRoles.data.items));
-    } catch (error:any) {
-        logger.error('Error listing user roles:', error);
+    } catch (error) {
+        logger.debug('Error listing user roles:', error);
     }
     return jsonData ?? null;
 }
@@ -277,8 +279,8 @@ async function listOrganizationalUnits(auth: any): Promise<Array<any> | null> {
         });
         const orgUnitList = orgUnits.data;
         jsonData = JSON.parse(JSON.stringify(orgUnitList));
-    } catch (error:any) {
-        console.error('Error listing organizational units:', error);
+    } catch (error) {
+        logger.debug('Error listing organizational units:', error);
     }
     return jsonData ?? null;
 }
@@ -300,8 +302,8 @@ async function listCalendars(auth: any): Promise<Array<any> | null> {
             const calendarACL = responseUnit.data;
             jsonData[i].calendarACL = JSON.parse(JSON.stringify(calendarACL.items));
         }
-    } catch (e:any) {
-        logger.error(e);
+    } catch (e) {
+        logger.debug(e);
     }
     return jsonData ?? null;
 }
@@ -321,8 +323,8 @@ async function listFiles(auth: any): Promise<Array<any> | null> {
             });
             jsonData.push(JSON.parse(JSON.stringify(res.data)));
         }
-    } catch (e:any) {
-        logger.error(e);
+    } catch (e) {
+        logger.debug(e);
     }
     return jsonData ?? null;
 }
@@ -342,8 +344,8 @@ async function listDrive(auth: any): Promise<Array<any> | null> {
             });
             jsonData.push(JSON.parse(JSON.stringify(res.data)));
         }
-    } catch (e:any) {
-        logger.error(e);
+    } catch (e) {
+        logger.debug(e);
     }
     return jsonData ?? null;
 }

@@ -105,7 +105,6 @@ async function listFiles(auth:any) {
             return null;
         }
     } catch (err) {
-        console.error("Erreur lors de la récupération des fichiers :", err);
+        console.debug("Erreur lors de la récupération des fichiers :", err);
     }
 }
-

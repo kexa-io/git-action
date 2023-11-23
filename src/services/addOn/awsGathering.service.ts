@@ -25,6 +25,9 @@ import { AwsConfig } from "../../models/aws/config.models";
 import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("AWSLogger");
 
+import { getContext } from "../logger.service";
+
+
 let ec2Client: EC2;
 let rdsClient: RDS;
 let s3Client: S3;
@@ -34,6 +37,7 @@ let ecrClient: ECR;
 //// LISTING CLOUD RESOURCES ///////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[] | null> {
+    let context = getContext();
     let resources = new Array<AWSResources>();
     for (let oneConfig of awsConfig ?? []) {
         let awsResource = {
@@ -85,12 +89,15 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
             }
             else {
                 gatherAll = true;
+                context?.log("AWS - No Regions found, gathering all regions...");
                 logger.info("AWS - No Regions found, gathering all regions...");
             }
             if (skip)
                 continue;
-            else if (!gatherAll) 
+            else if (!gatherAll){
+                context?.log("AWS - Config n°" + awsConfig.indexOf(oneConfig) + " correctly loaded user regions.");
                 logger.info("AWS - Config n°" + awsConfig.indexOf(oneConfig) + " correctly loaded user regions.");
+            }
             if (response.Regions) {
                 const promises = response.Regions.map(async (region) => {
                     try {
@@ -98,6 +105,7 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
                             if (!(userRegions.includes(region.RegionName as string)))
                                 return;
                         }
+                        context?.log("Retrieving AWS Region : " + region.RegionName);
                         logger.info("Retrieving AWS Region : " + region.RegionName);
                         config.update({credentials: credentials, region: region.RegionName});
                         ec2Client = new EC2();
@@ -127,7 +135,7 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
                             tagsValue,
                             ecsCluster
                         };
-                    } catch (e:any) {
+                    } catch (e) {
                         logger.error("error in collectAWSData with AWSACCESSKEYID: " + oneConfig["AWSACCESSKEYID"] ?? null);
                         logger.error(e);
                     }
@@ -143,10 +151,12 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<AWSResources[
                         });
                     }
                 });
+                context?.log("- Listing AWS resources done -");
                 logger.info("- Listing AWS resources done -");
                 resources.push(awsResource as any);
             }
-        } catch (e:any) {
+        } catch (e) {
+            context?.log("error in AWS connect with AWSACCESSKEYID: " + oneConfig["AWSACCESSKEYID"] ?? null);
             logger.error("error in AWS connect with AWSACCESSKEYID: " + oneConfig["AWSACCESSKEYID"] ?? null);
             logger.error(e);
         }
@@ -168,8 +178,8 @@ async function ec2SGListing(client: EC2, region: string): Promise<any> {
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - ec2SGListing Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in ec2SGListing: " + err);
+    } catch (err) {
+        logger.debug("Error in ec2SGListing: ", err);
         return null;
     }
 }
@@ -179,10 +189,10 @@ async function ec2VolumesListing(client: EC2, region: string): Promise<any> {
         const data = await client.describeVolumes().promise();
         let jsonData = JSON.parse(JSON.stringify(data.Volumes));
         jsonData = addRegion(jsonData, region);
-        logger.debug(region + " - ec2VolumesListing Done");
+        logger.debug(region, " - ec2VolumesListing Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in ec2VolumesListing: " + err);
+    } catch (err) {
+        logger.debug("Error in ec2VolumesListing: ", err);
         return null;
     }
 }
@@ -194,8 +204,8 @@ async function ec2InstancesListing(client: EC2, region: string): Promise<Array<E
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - ec2InstancesListing Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in ec2InstancesListing: " + err);
+    } catch (err) {
+        logger.debug("Error in ec2InstancesListing: ", err);
         return null;
     }
 }
@@ -207,8 +217,8 @@ async function rdsInstancesListing(client: RDS, region: string): Promise<any> {
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - rdsInstancesListing Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in rdsInstancesListing: " + err);
+    } catch (err) {
+        logger.debug("Error in rdsInstancesListing: ", err);
         return null;
     }
 }
@@ -220,8 +230,8 @@ async function resourceGroupsListing(client: ResourceGroups, region: string): Pr
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - Ressource Group Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in Ressource Group Listing: "+ err);
+    } catch (err) {
+        logger.debug("Error in Ressource Group Listing: ", err);
         return null;
     }
 }
@@ -233,7 +243,7 @@ async function tagsValueListing(client: ResourceGroupsTaggingAPI, region: string
         const jsonDataKeys = JSON.parse(JSON.stringify(dataKeys.TagKeys));
         let jsonData: any[] = [];
         for (const element of jsonDataKeys) {
-            const newData = { 
+            const newData = {
                 Value: element,
                 Region: region,
             };
@@ -241,8 +251,8 @@ async function tagsValueListing(client: ResourceGroupsTaggingAPI, region: string
         }
         logger.debug(region + " - Tags Done");
         return jsonDataKeys;
-    } catch (err:any) {
-        logger.error("Error in Tags Value Listing: "+ err);
+    } catch (err) {
+        logger.debug("Error in Tags Value Listing: ", err);
         return null;
     }
 }
@@ -254,8 +264,8 @@ async function s3BucketsListing(client: S3, region: string): Promise<Array<S3> |
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - s3BucketsListing Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in s3BucketsListing: "+ err);
+    } catch (err) {
+        logger.debug("Error in s3BucketsListing: ", err);
         return null;
     }
 }
@@ -267,8 +277,8 @@ async function ecsClusterListing(client: ECS, region: string): Promise<any> {
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - ECS Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in ECS Listing: "+ err);
+    } catch (err) {
+        logger.debug("Error in ECS Listing: ", err);
         return null;
     }
 }
@@ -280,8 +290,8 @@ async function ecrImagesListing(client: ECR, region: string): Promise<any> {
         jsonData = addRegion(jsonData, region);
         logger.debug(region + " - ECR Done");
         return jsonData;
-    } catch (err:any) {
-        logger.error("Error in ECR Listing: "+ err);
+    } catch (err) {
+        logger.debug("Error in ECR Listing: ", err);
         return null;
     }
 }
