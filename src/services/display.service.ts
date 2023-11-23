@@ -3,7 +3,7 @@ import { Rules } from "../models/settingFile/rules.models";
 import { loadAddOnsDisplay } from "./addOn.service";
 
 const colors = ["#4f5660", "#ffcc00", "#cc3300", "#cc3300"];
-import {getContext, getNewLogger} from "./logger.service";
+import { getNewLogger} from "./logger.service";
 const logger = getNewLogger("DiplayLogger");
 const cfonts = require('cfonts');
 
@@ -110,7 +110,5 @@ export function AsciiArtText(text:string){
 }
 
 export function talkAboutOtherProject(){
-    const context = getContext();
-    context?.log("You can go check our other project : https://www.thecloudprices.com/");
     logger.info("You can go check our other project : https://www.thecloudprices.com/");
 }

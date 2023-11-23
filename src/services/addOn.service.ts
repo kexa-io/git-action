@@ -7,14 +7,12 @@ const mainFolder = 'Kexa';
 const serviceAddOnPath = './' + mainFolder + '/services/addOn';
 const fs = require('fs');
 
-import {getContext, getNewLogger} from "./logger.service";
+import { getNewLogger} from "./logger.service";
 import { Capacity } from "../models/settingFile/capacity.models";
 const logger = getNewLogger("LoaderAddOnLogger");
 
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
-    let context = getContext();
     logger.info("Loading addOns");
-    context?.log("Loading addOns");
     const addOnNeed = require('../../config/addOnNeed.json');
     const files = fs.readdirSync(serviceAddOnPath);
     const promises = files.map(async (file: string) => {
@@ -30,7 +28,6 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
 }
 
 async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; data: Provider|null; } | null> {
-    let context = getContext();
     try{
         if (file.endsWith('Gathering.service.ts')){
             let nameAddOn = file.split('Gathering.service.ts')[0];
@@ -45,7 +42,6 @@ async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; d
             const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
             const data = await collectData(addOnConfig);
             let delta = Date.now() - start;
-            context?.log(`AddOn ${nameAddOn} collect in ${delta}ms`);
             logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
             return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
         }
