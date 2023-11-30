@@ -329,3 +329,11 @@ lib/services/addOn.service.js was changed
 src/services/addOn.service.ts was changed
 
 
+## 1.0.16-SNAPSHOT.24.7a983aad
+### Files added: 0
+
+### Files changed: 1
+
+src/main.ts was changed
+
+
