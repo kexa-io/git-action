@@ -26,9 +26,9 @@ export async function main() {
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
-    let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./src/rules";
+    let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./rules";
     if(rulesDirectory == ""){
-        rulesDirectory = "./src/rules";
+        rulesDirectory = "./rules";
     }
     let settings = await gatheringRules(rulesDirectory);
     if(settings.length != 0){
