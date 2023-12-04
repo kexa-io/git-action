@@ -24,7 +24,7 @@ import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service"
 import { GitConfig } from "../../models/git/config.models";
 env.config();
 
-import {getNewLogger} from "../logger.service";
+import { getNewLogger} from "../logger.service";
 const logger = getNewLogger("GithubLogger");
 let githubToken = "";
 
@@ -47,7 +47,7 @@ export async function collectData(gitConfig:GitConfig[]): Promise<GitResources[]
                 collectOrganizationRelaidInfo(allOrganizations),
             ]
             let [secondaryDataRepo, secondaryDataOrganization] = await Promise.all(promisesSecondaryData);
-            
+
             resources.push({
                 "repositories": allRepo,
                 "branches": secondaryDataRepo.allBranches,
@@ -60,7 +60,7 @@ export async function collectData(gitConfig:GitConfig[]): Promise<GitResources[]
                 "teamRepositories": secondaryDataOrganization.allTeamRepos,
                 "teamProjects": secondaryDataOrganization.allTeamProjects
             });
-        }catch (e:any){
+        }catch(e){
             logger.error(e);
         }
     }
@@ -77,7 +77,7 @@ async function collectRepoRelaidInfo(allRepo: any): Promise<any>{
             collectIssues(repo.name, repo.owner.login),
             collectBranch(repo.name, repo.owner.login)
         ]);
-    
+
         allIssues.push(...addInfoRepo(repo, issues));
         allBranches.push(...addInfoRepo(repo, branches));
     }));
@@ -155,8 +155,8 @@ function addInfoTeam(team: any, datas:any): any[]{
             data["team"] = team.name;
             data["teamUrl"] = team.url;
         });
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
     }
     return datas;
 }
@@ -167,8 +167,8 @@ function addInfoOrg(org: any, datas:any): any[]{
             data["organization"] = org.login;
             data["organizationUrl"] = org.url;
         });
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
     }
     return datas;
 }
@@ -179,8 +179,8 @@ function addInfoRepo(repo: any, datas:any): any[]{
             data["repo"] = repo.name;
             data["repoUrl"] = repo.html_url;
         });
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
     }
     return datas;
 }
@@ -203,10 +203,10 @@ export async function collectRepo(){
             page++;
             repos.push(...repo);
         }
-        
+
         return repos;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -231,10 +231,10 @@ export async function collectBranch(repo: string, owner: string): Promise<any[]>
             page++;
             members.push(...member);
         }
-        
+
         return members;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -259,10 +259,10 @@ export async function collectIssues(repo: string, owner: string): Promise<any[]>
             page++;
             issues.push(...issue);
         }
-        
+
         return issues;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -270,8 +270,8 @@ export async function collectIssues(repo: string, owner: string): Promise<any[]>
 export async function collectOrganizations(): Promise<any>{
     try{
         return (await (await getOctokit()).request('GET /user/orgs')).data;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -304,10 +304,10 @@ export async function collectMembers(org: string): Promise<any>{
             page++;
             members.push(...member);
         }
-        
+
         return members;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -331,10 +331,10 @@ export async function collectOutsideCollaborators(org: string): Promise<any>{
             page++;
             collaborators.push(...collaborator);
         }
-        
+
         return collaborators;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -358,10 +358,10 @@ export async function collectTeams(org: string): Promise<any>{
             page++;
             teams.push(...team);
         }
-        
+
         return teams;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -386,10 +386,10 @@ export async function collectTeamMembers(org:string, team: string): Promise<any>
             page++;
             membersTeam.push(...memberTeam);
         }
-        
+
         return membersTeam;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -414,10 +414,10 @@ export async function collectTeamRepos(org:string, team: string): Promise<any>{
             page++;
             reposTeam.push(...repoTeam);
         }
-        
+
         return reposTeam;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }
@@ -442,10 +442,10 @@ export async function collectTeamProjects(org:string, team: string): Promise<any
             page++;
             projectsTeam.push(...projectTeam);
         }
-        
+
         return projectsTeam;
-    }catch (e:any){
-        logger.error(e);
+    }catch(e){
+        logger.debug(e);
         return [];
     }
 }

@@ -1,7 +1,7 @@
 {
     "name": "Kexa-Github-Action",
     "description": "A GitHub Action for Kexa",
-    "version": "1.0.14",
+    "version": "1.0.16-SNAPSHOT.26.328f67a3",
     "author": "Esteban MATHIA",
     "private": true,
     "homepage": "https://github.com/4urcloud/Kexa_githubAction",
@@ -37,6 +37,7 @@
         "@aws-sdk/client-ec2": "^3.390.0",
         "@azure/arm-compute": "^20.0.0",
         "@azure/arm-containerservice": "^19.0.0",
+        "@azure/arm-machinelearning": "^2.1.1",
         "@azure/arm-network": "^30.1.0",
         "@azure/arm-resources": "^5.1.0",
         "@azure/arm-resources-subscriptions": "^2.1.0",

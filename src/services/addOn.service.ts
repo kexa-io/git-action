@@ -1,15 +1,15 @@
 import { Provider, ProviderResource } from "../models/providerResource.models";
 import { Header } from "../models/settingFile/header.models";
-import { setRealPath, writeStringToJsonFile } from "../helpers/files"
+import { writeStringToJsonFile } from "../helpers/files"
 const configuration = require('config');
 
 const mainFolder = 'src';
 const serviceAddOnPath = './' + mainFolder + '/services/addOn';
 const fs = require('fs');
-
-import {getNewLogger} from "./logger.service";
-import { Capacity } from "../models/settingFile/capacity.models";
 import { getEnvVar, setEnvVar } from "./manageVarEnvironnement.service";
+
+import { getNewLogger} from "./logger.service";
+import { Capacity } from "../models/settingFile/capacity.models";
 const logger = getNewLogger("LoaderAddOnLogger");
 
 const addOnName = [
@@ -27,10 +27,11 @@ const addOnName = [
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const addOnNeed = require('../../config/addOnNeed.json');
-    const promises = addOnName.map(async (file: string) => {
+    const files = fs.readdirSync(serviceAddOnPath);
+    const promises = files.map(async (file: string) => {
         return await loadAddOn(file, addOnNeed);
     });
-    const results:any = await Promise.all(promises);
+    const results = await Promise.all(promises);
     results.forEach((result: { key: string; data: Provider[]; }) => {
         if (result?.data) {
             resources[result.key] = result.data;
@@ -39,18 +40,26 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
     return resources;
 }
 
-async function loadAddOn(nameAddOn: string, addOnNeed: any): Promise<{ key: string; data: Provider|null; } | null> {
+async function loadAddOn(file: string, addOnNeed: any): Promise<{ key: string; data: Provider|null; } | null> {
     try{
-        if(!addOnNeed["addOn"].includes(nameAddOn)) return null;
-        const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
-        let start = Date.now();
-        const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
-        const data = await collectData(addOnConfig);
-        let delta = Date.now() - start;
-        logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
-        return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
-    }catch(e:any){
-        logger.warning(e);
+        if (file.endsWith('Gathering.service.ts')){
+            let nameAddOn = file.split('Gathering.service.ts')[0];
+            if(!addOnNeed["addOn"].includes(nameAddOn)) return null;
+            let header = hasValidHeader(serviceAddOnPath + "/" + file);
+            if (typeof header === "string") {
+                logger.warn(header);
+                return null;
+            }
+            const { collectData } = await import(`./addOn/${file.replace(".ts", ".js") }`);
+            let start = Date.now();
+            const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
+            const data = await collectData(addOnConfig);
+            let delta = Date.now() - start;
+            logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
+            return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
+        }
+    }catch(e){
+        logger.warn(e);
     }
     return null;
 }
@@ -74,13 +83,16 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
     return dictFunc;
 }
 
-function loadAddOnDisplay(nameAddOn: string): { key: string; data: Function; } | null {
+function loadAddOnDisplay(file: string): { key: string; data: Function; } | null {
     try{
-        const moduleExports = require(`./addOn/display/${nameAddOn}Display.service.js`);
-        const displayFn = moduleExports.propertyToSend;
-        return { key: nameAddOn, data:displayFn};
-    }catch(e:any){
-        logger.warning(e);
+        if (file.endsWith('Display.service.js')){
+            let nameAddOn = file.split('Display.service.js')[0];
+            const moduleExports = require(`./addOn/display/${nameAddOn}Display.service.js`);
+            const displayFn = moduleExports.propertyToSend;
+            return { key: nameAddOn, data:displayFn};
+        }
+    }catch(e){
+        logger.warn(e);
     }
     return null;
 }
@@ -199,8 +211,8 @@ async function extractHeader(file: string): Promise<Header|null> {
             header.provider = nameAddOn;
             return header;
         }
-    }catch(e:any){
-        logger.warning(e);
+    }catch(e){
+        logger.warn(e);
     }
     return null;
 }
