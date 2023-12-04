@@ -198,7 +198,7 @@ async function  listUsers(endpoint: string, accessToken: string, headers: Header
                     }
                 });
                 if (userTypeResponse.status != 200) {
-                    logger.warn("O365 - Error when calling graph API for user " + element.displayName);
+                    logger.warning("O365 - Error when calling graph API for user " + element.displayName);
                     element.userType = null;
                     continue;
                 }
@@ -230,7 +230,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
             }
         })
         if (response.status != 200) {
-            logger.warn("O365 - Error when calling graph API for subsribed Skus ");
+            logger.warning("O365 - Error when calling graph API for subsribed Skus ");
             return null;
         }
         else {
@@ -242,7 +242,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
             }
         })
         if (assignedResponse.status != 200) {
-            logger.warn("O365 - Error when calling graph API for users (skus) ");
+            logger.warning("O365 - Error when calling graph API for users (skus) ");
         }
         else {
             const adaptedResponse = assignedResponse.data.value.map((user: any) => ({
@@ -268,7 +268,7 @@ async function genericListing(endpoint: string, accessToken: string, queryEndpoi
             }
         });
         if (response.status != 200) {
-            logger.warn("O365 - Error when calling graph API for " + operationName);
+            logger.warning("O365 - Error when calling graph API for " + operationName);
             return null;
         }
         else {
@@ -308,7 +308,7 @@ async function listAuthMethods(endpoint: string, accessToken: string, userList: 
                 }
             })
             if (response.status != 200) {
-                logger.warn("O365 - Error when calling graph API for Auth Methods ");
+                logger.warning("O365 - Error when calling graph API for Auth Methods ");
                 return null;
             } else {
                 let tmpJson = {methods: [], userId: {}, userName: {}, userRole: {}};
@@ -384,7 +384,7 @@ async function listAppAccessPolicy(endpoint: string, accessToken: string, header
                 }
             });
             if (licenseResponse.status != 200) {
-                logger.warn("O365 - Error when calling graph API for user " + jsonData[i].displayName);
+                logger.warning("O365 - Error when calling graph API for user " + jsonData[i].displayName);
                 continue;
             }
             jsonData = licenseResponse.data.value;

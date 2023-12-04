@@ -87,7 +87,7 @@ export function propertyToSend(rule: Rules, objectContent: any, isSms: boolean=f
     try{
         return addOnPropertyToSend[rule?.cloudProvider](rule, objectContent, isSms);
     }catch(e){
-        logger.warn("Error while loading addOn display for rule : " + rule?.name);
+        logger.warning("Error while loading addOn display for rule : " + rule?.name);
         return `Id : ` + objectContent.id
     }
 }
