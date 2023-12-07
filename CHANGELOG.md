@@ -3589,3 +3589,37 @@ src/models/azure/resource.models.ts was changed
 src/services/addOn/azureGathering.service.ts was changed
 
 
+## 1.0.16-SNAPSHOT.28.21b86293
+### Files added: 6
+
+lib/emails/teams.js was added
+
+lib/helpers/extractURL.js was added
+
+lib/helpers/spliter.js was added
+
+src/emails/teams.ts was added
+
+src/helpers/extractURL.ts was added
+
+src/helpers/spliter.ts was added
+
+### Files changed: 8
+
+lib/emails/teams.js was changed
+
+lib/helpers/extractURL.js was changed
+
+lib/helpers/spliter.js was changed
+
+src/emails/teams.ts was changed
+
+src/helpers/extractURL.ts was changed
+
+src/helpers/spliter.ts was changed
+
+lib/services/alerte.service.js was changed
+
+src/services/alerte.service.ts was changed
+
+
