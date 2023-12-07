@@ -16,7 +16,7 @@ const jsome = require('jsome');
 jsome.level.show = true;
 const request = require('request');
 const nodemailer = require("nodemailer");
-const levelAlert = ["info", "warning", "error", "critical"];
+const levelAlert = ["info", "warning", "error", "fatal"];
 const colors = ["#4f5660", "#ffcc00", "#cc3300", "#cc3300"];
 const config = require('config');
 
