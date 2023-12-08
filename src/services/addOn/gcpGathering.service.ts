@@ -219,7 +219,7 @@ function compareUserAndValidRegions(userRegions: Array<any>, validRegions: Array
         if (validRegions.includes(userRegions[i]))
             continue;
         else {
-            logger.warn("GCP - Config '" + gcpConfig.indexOf(config) + "' Skipped - Regions '" + userRegions[i] + "' is not a valid GCP region.");
+            logger.warning("GCP - Config '" + gcpConfig.indexOf(config) + "' Skipped - Regions '" + userRegions[i] + "' is not a valid GCP region.");
             return (false);
         }
     }
@@ -273,7 +273,7 @@ async function executeAllRegions(projectId: number, serviceFunction: Function, c
             }
             return jsonResponses;
         } catch (e) {
-            logger.warn(`GCP : Error while retrieving data in multiple regions - Region: ${currentRegion} not found or access not authorized for ${serviceFunction.name}`);
+            logger.warning(`GCP : Error while retrieving data in multiple regions - Region: ${currentRegion} not found or access not authorized for ${serviceFunction.name}`);
         }
     };
     const processingPromises = regionsList.map(processRegion);

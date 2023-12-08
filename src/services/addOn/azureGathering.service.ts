@@ -65,13 +65,13 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<AzureResou
             let subscriptionId = await getConfigOrEnvVar(config, "SUBSCRIPTIONID", prefix);
             let azureClientId = await getConfigOrEnvVar(config, "AZURECLIENTID", prefix);
             if(azureClientId) setEnvVar("AZURE_CLIENT_ID", azureClientId);
-            else logger.warn(prefix + "AZURECLIENTID not found");
+            else logger.warning(prefix + "AZURECLIENTID not found");
             let azureClientSecret = await getConfigOrEnvVar(config, "AZURECLIENTSECRET", prefix);
             if(azureClientSecret) setEnvVar("AZURE_CLIENT_SECRET", azureClientSecret);
-            else logger.warn(prefix + "AZURECLIENTSECRET not found");
+            else logger.warning(prefix + "AZURECLIENTSECRET not found");
             let azureTenantId = await getConfigOrEnvVar(config, "AZURETENANTID", prefix);
             if(azureTenantId) setEnvVar("AZURE_TENANT_ID", azureTenantId);
-            else logger.warn(prefix + "AZURETENANTID not found");
+            else logger.warning(prefix + "AZURETENANTID not found");
             let UAI = {}
             let useAzureIdentity = await getConfigOrEnvVar(config, "USERAZUREIDENTITYID", prefix);
             if(useAzureIdentity) UAI = {managedIdentityClientId: useAzureIdentity};
@@ -303,16 +303,10 @@ export async function mlListing(credential: DefaultAzureCredential, subscription
                 schedulesListing(client, resourceGroupName, workspaceName),
             ];
             const [jobsList, computeOperationsList, schedulesList] = await Promise.all(promises);
-            logger.error("jobsList: "+JSON.stringify(jobsList));
-            logger.error("computeOperationsList: "+JSON.stringify(computeOperationsList));
-            logger.error("schedulesList: "+JSON.stringify(schedulesList));
             result.jobs = [...result.jobs??[], ...jobsList];
             result.computes = [...result.computes??[], ...computeOperationsList];
             result.schedule = [...result.schedule??[], ...schedulesList];
-            logger.error("RESULT0: ");
-            logger.error("RESULT0: "+JSON.stringify(result));
         }
-        logger.error("RESULT1: "+JSON.stringify(result));
         return result;
     }catch(e){
         logger.debug("error in mlListing:"+e);
