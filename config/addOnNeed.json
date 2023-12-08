@@ -1,13 +1,4 @@
 {
-    "addOn": [
-        "googleWorkspace",
-        "github",
-        "http",
-        "kubernetes",
-        "azure",
-        "aws",
-        "gcp",
-        "o365",
-        "googleDrive"
-    ]
+    "addOn": [],
+    "objectNameNeed": {}
 }
