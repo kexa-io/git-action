@@ -3,7 +3,8 @@ import { Rules } from "../models/settingFile/rules.models";
 import { SettingFile } from "../models/settingFile/settingFile.models";
 import { extractHeaders } from "./addOn.service";
 import { gatheringRules } from "./analyse.service";
-import * as fs from 'fs';
+
+const fs = require("fs");
 
 async function releaseCapability(){
     let rules = await gatheringRules("./src/rules", true);

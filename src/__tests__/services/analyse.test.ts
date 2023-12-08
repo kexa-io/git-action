@@ -3,16 +3,17 @@ import { RulesConditions } from "../../models/settingFile/conditions.models";
 import { checkAll, checkCount, checkEndsWith, checkEqual, checkEqualDate, checkEqualThanDate, checkGreaterThan, checkGreaterThanDate, checkInclude, checkIncludeNS, checkInterval, checkIntervalDate, checkLessThan, checkLessThanDate, checkOne, checkRegex, checkSome, checkStartsWith, gatheringRules, generateDate } from "../../services/analyse.service";
 
 const { expect } = require('chai');
+const mainFolderDev = 'src';
 
 describe('analyse service', () => {
     describe('Gathering rules', () => {
         it('should return a multiple rules', async () => {
-            const result = await gatheringRules("./lib/__tests__/rules/test2", true);
+            const result = await gatheringRules("./"+ mainFolderDev +"/__tests__/rules/test2", true);
             expect(result.length).to.be.above(1);
         });
 
         it('should return 0 rules', async () => {
-            const result = await gatheringRules("./lib/__tests__/rules/test3");
+            const result = await gatheringRules("./"+ mainFolderDev +"/__tests__/rules/test3");
             expect(result.length).to.equal(0);
         });
     });

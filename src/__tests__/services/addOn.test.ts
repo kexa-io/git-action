@@ -3,7 +3,7 @@ import { hasValidHeader } from "../../services/addOn.service";
 
 const { expect } = require('chai');
 const fs = require('fs');
-const mainFolder = 'Kexa';
+const mainFolder = 'lib';
 let logger = new Logger({ minLevel: Number(process.env.DEBUG_MODE)??4, type: "pretty", name: "globalLogger" });
 
 describe('Add On', function() {
