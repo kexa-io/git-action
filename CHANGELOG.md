@@ -35827,3 +35827,21 @@ node_modules/yargs/node_modules/yargs-parser/build/lib/yargs-parser.js was chang
 README.md was changed
 
 
+## 1.1.2-SNAPSHOT.6.ca47b3a5
+### Files added: 0
+
+### Files changed: 6
+
+lib/emails/emails.js was changed
+
+lib/services/addOn/kubernetesGathering.service.js was changed
+
+lib/services/alerte.service.js was changed
+
+src/emails/emails.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+src/services/alerte.service.ts was changed
+
+
