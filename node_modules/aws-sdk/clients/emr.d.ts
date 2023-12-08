@@ -864,6 +864,14 @@ declare namespace EMR {
      * The Amazon Linux release specified in a cluster launch RunJobFlow request. If no Amazon Linux release was specified, the default Amazon Linux release is shown in the response.
      */
     OSReleaseLabel?: String;
+    /**
+     * The IOPS, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.
+     */
+    EbsRootVolumeIops?: Integer;
+    /**
+     * The throughput, in MiB/s, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.
+     */
+    EbsRootVolumeThroughput?: Integer;
   }
   export type ClusterId = string;
   export type ClusterState = "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS"|string;
@@ -1065,6 +1073,22 @@ declare namespace EMR {
      * A list of tags to associate with the Amazon EMR Studio. Tags are user-defined key-value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.
      */
     Tags?: TagList;
+    /**
+     *  A Boolean indicating whether to enable Trusted identity propagation for the Studio. The default value is false. 
+     */
+    TrustedIdentityPropagationEnabled?: BooleanObject;
+    /**
+     *  Specifies whether IAM Identity Center user assignment is REQUIRED or OPTIONAL. If the value is set to REQUIRED, users must be explicitly assigned to the Studio application to access the Studio. 
+     */
+    IdcUserAssignment?: IdcUserAssignment;
+    /**
+     *  The ARN of the IAM Identity Center instance to create the Studio application. 
+     */
+    IdcInstanceArn?: ArnType;
+    /**
+     * The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
+     */
+    EncryptionKeyArn?: XmlString;
   }
   export interface CreateStudioOutput {
     /**
@@ -1439,7 +1463,7 @@ declare namespace EMR {
     /**
      * The Amazon Resource Name (ARN) of the runtime role for interactive workload submission on the cluster. The runtime role can be a cross-account IAM role. The runtime role ARN is a combination of account ID, role name, and role type using the following format: arn:partition:service:region:account:resource.
      */
-    ExecutionRoleArn: ArnType;
+    ExecutionRoleArn?: ArnType;
   }
   export interface GetClusterSessionCredentialsOutput {
     /**
@@ -1524,6 +1548,7 @@ declare namespace EMR {
     Args?: StringList;
   }
   export type IAMRoleArn = string;
+  export type IdcUserAssignment = "REQUIRED"|"OPTIONAL"|string;
   export type IdentityType = "USER"|"GROUP"|string;
   export interface Instance {
     /**
@@ -3164,6 +3189,14 @@ declare namespace EMR {
      * Specifies a particular Amazon Linux release for all nodes in a cluster launch RunJobFlow request. If a release is not specified, Amazon EMR uses the latest validated Amazon Linux release for cluster launch.
      */
     OSReleaseLabel?: XmlStringMaxLen256;
+    /**
+     * The IOPS, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.
+     */
+    EbsRootVolumeIops?: Integer;
+    /**
+     * The throughput, in MiB/s, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.
+     */
+    EbsRootVolumeThroughput?: Integer;
   }
   export interface RunJobFlowOutput {
     /**
@@ -3370,7 +3403,7 @@ declare namespace EMR {
      */
     BlockDurationMinutes?: WholeNumber;
     /**
-     *  Specifies the strategy to use in launching Spot Instance fleets. Currently, the only option is capacity-optimized (the default), which launches instances from Spot Instance pools with optimal capacity for the number of instances that are launching. 
+     * Specifies one of the following strategies to launch Spot Instance fleets: price-capacity-optimized, capacity-optimized, lowest-price, or diversified. For more information on the provisioning strategies, see Allocation strategies for Spot Instances in the Amazon EC2 User Guide for Linux Instances.  When you launch a Spot Instance fleet with the old console, it automatically launches with the capacity-optimized strategy. You can't change the allocation strategy from the old console. 
      */
     AllocationStrategy?: SpotProvisioningAllocationStrategy;
   }
@@ -3662,6 +3695,22 @@ declare namespace EMR {
      * A list of tags associated with the Amazon EMR Studio.
      */
     Tags?: TagList;
+    /**
+     *  The ARN of the IAM Identity Center instance the Studio application belongs to. 
+     */
+    IdcInstanceArn?: ArnType;
+    /**
+     *  Indicates whether the Studio has Trusted identity propagation enabled. The default value is false. 
+     */
+    TrustedIdentityPropagationEnabled?: BooleanObject;
+    /**
+     *  Indicates whether the Studio has REQUIRED or OPTIONAL IAM Identity Center user assignment. If the value is set to REQUIRED, users must be explicitly assigned to the Studio application to access the Studio. 
+     */
+    IdcUserAssignment?: IdcUserAssignment;
+    /**
+     * The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
+     */
+    EncryptionKeyArn?: XmlString;
   }
   export interface StudioSummary {
     /**
@@ -3793,6 +3842,10 @@ declare namespace EMR {
      * The Amazon S3 location to back up Workspaces and notebook files for the Amazon EMR Studio.
      */
     DefaultS3Location?: XmlString;
+    /**
+     * The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
+     */
+    EncryptionKeyArn?: XmlString;
   }
   export interface UpdateStudioSessionMappingInput {
     /**

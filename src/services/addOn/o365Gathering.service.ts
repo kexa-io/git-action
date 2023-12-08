@@ -32,6 +32,7 @@ import { o365Config } from "../../models/o365/config.models";
 
 import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("o365Logger");
+let currentConfig:o365Config;
 
 /////////////////////////////////////////
 //////   LISTING CLOUD RESOURCES    /////
@@ -41,6 +42,7 @@ export async function collectData(o365Config:o365Config[]): Promise<o365Resource
     let resources = new Array<o365Resources>();
 
     for (let config of o365Config??[]) {
+        currentConfig = config;
         let o365Resources = {
             "sku": null,
             "user": null,
@@ -170,6 +172,7 @@ async function getToken(tenantId: string, clientId: string, clientSecret: string
     return accessToken ?? null;
 }
 async function  listUsers(endpoint: string, accessToken: string, headers: Headers): Promise<Array<any> | null> {
+    if(!currentConfig?.ObjectNameNeed?.includes("user")) return null;
     const axios = require("axios");
     let jsonData = [];
 
@@ -220,8 +223,8 @@ async function  listUsers(endpoint: string, accessToken: string, headers: Header
 }
 
 async function  listSubscribedSkus(endpoint: string, accessToken: string, headers: Headers): Promise<Array<any> | null> {
+    if(!currentConfig?.ObjectNameNeed?.includes("sku")) return null;
     let jsonData = [];
-
 
     try {
         const response = await axios.get(`${endpoint}/subscribedSkus`, {
@@ -259,6 +262,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
 }
 
 async function genericListing(endpoint: string, accessToken: string, queryEndpoint: string, operationName: string): Promise<Array<any> | null> {
+    //if(!currentConfig?.ObjectNameNeed?.includes(operationName.toLowerCase().replace(' ', '_'))) return null;
     let jsonData = [];
 
     try {
@@ -298,6 +302,7 @@ async function listSecureScore(endpoint: string, accessToken: string, headers: H
 }
 
 async function listAuthMethods(endpoint: string, accessToken: string, userList: any): Promise<Array<any> | null>  {
+    if(!currentConfig?.ObjectNameNeed?.includes("auth_methods")) return null;
     let jsonData = [];
 
     for (const element of userList) {
@@ -374,6 +379,7 @@ async function listIncidents(endpoint: string, accessToken: string, headers: Hea
 }
 
 async function listAppAccessPolicy(endpoint: string, accessToken: string, headers: Headers, userList: any): Promise<Array<any> | null> {
+    if(!currentConfig?.ObjectNameNeed?.includes("app_access_policy")) return null;
     const axios = require("axios");
     let jsonData: any | [];
     for (let i = 0; i < userList.length; i++) {
