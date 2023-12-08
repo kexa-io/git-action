@@ -3,14 +3,17 @@ import { LevelEnum } from "../enum/level.enum";
 import { ResultScan, SubResultScan } from "../models/resultScan.models";
 import { Alert } from "../models/settingFile/alert.models";
 import { Rules } from "../models/settingFile/rules.models";
-import { Logger } from "tslog";
 import { Emails } from "../emails/emails";
 import { GlobalConfigAlert } from "../models/settingFile/globalAlert.models";
 import { ConfigAlert } from "../models/settingFile/configAlert.models";
 import { Readable } from "stream";
-import { propertyToSend, renderTableAllScan } from "./display.service";
+import { propertyToSend, renderTableAllScan, renderTableAllScanLoud } from "./display.service";
 import { groupBy } from "../helpers/groupBy";
 import { getConfigOrEnvVar } from "./manageVarEnvironnement.service";
+import axios from 'axios';
+import { AxiosRequestConfig } from 'axios';
+import { extractURL } from "../helpers/extractURL";
+import { Teams } from "../emails/teams";
 
 const jsome = require('jsome');
 jsome.level.show = true;
@@ -18,23 +21,25 @@ const request = require('request');
 const nodemailer = require("nodemailer");
 const levelAlert = ["info", "warning", "error", "fatal"];
 const colors = ["#4f5660", "#ffcc00", "#cc3300", "#cc3300"];
-const config = require('config');
+const config = require('node-config-ts');
 
-import {getNewLogger} from "./logger.service";
+import { getNewLogger } from "./logger.service";
 const logger = getNewLogger("functionLogger");
 export function alertGlobal(allScan: ResultScan[][], alert: GlobalConfigAlert): number[] {
+    let isAlert = false;
     let compteError = [0,0,0,0];
     allScan.forEach((rule) => {
         rule.forEach((scan) => {
-            if(scan.error.length > 0) compteError[scan.rule?.level??4]++;
+            if(scan.error.length > 0) compteError[scan.rule?.level??3]++;
+            if(scan.rule?.loud) isAlert = true;
         });
     });
     logger.debug("compteError:");
-    logger.debug(compteError.toString());
-    let isAlert = false;
-    alert.conditions.forEach((condition:any) => {
+    logger.debug(compteError);
+    alert.conditions.forEach((condition) => {
+        if(isAlert) return;
         logger.debug("condition:");
-        logger.debug(condition.toString());
+        logger.debug(condition);
         if(compteError[condition.level] >= condition.min){
             logger.debug("alert:"+levelAlert[condition.level]);
             isAlert = true;
@@ -47,7 +52,7 @@ export function alertGlobal(allScan: ResultScan[][], alert: GlobalConfigAlert): 
 }
 
 export function alertFromGlobal(alert: GlobalConfigAlert, compteError: number[], allScan: ResultScan[][]) {
-    allScan = allScan.map(scan => scan.filter(value => value.error.length>0));
+    allScan = allScan.map(scan => scan.filter(value => value.error.length>0 || value.loud))
     alert.type.forEach((type) => {
         switch(type){
             case AlertEnum.LOG:
@@ -86,11 +91,19 @@ export function alertLogGlobal(alert: GlobalConfigAlert, compteError: number[], 
     let subResult = groupBy(allScanOneDimension, (scan) => scan.rule?.name);
     Object.entries(subResult).forEach(([key, value]) => {
         logger.info("rule:"+key);
+        logger.info("description:"+value[0].rule?.description);
         logger.info("all resources who not respect the rules:");
-        value.map((scan:ResultScan) => scan.objectContent).forEach((resource, index) => {
+        value.filter(value => value.error.length>0).map((scan:ResultScan) => scan.objectContent).forEach((resource, index) => {
             logger.info("resource " + (index+1) + ":");
             alertLog(value[index].rule, value[index].error, resource, false);
         });
+        if(value[0].rule?.loud){
+            logger.info("all resources who respect the rules:");
+            value.filter(value => value.loud).map((scan:ResultScan) => scan.objectContent).forEach((resource, index) => {
+                logger.info("resource " + (index+1) + ":");
+                alertLog(value[index].rule, value[index].error, resource, false);
+            });
+        }
     });
     logger.info("_____________________________________-= End Result Global scan =-_________________________________");
 }
@@ -101,8 +114,9 @@ export function alertEmailGlobal(alert: GlobalConfigAlert, compteError: number[]
         if(!email_to.includes("@")) return;
         logger.debug("send email to:"+email_to);
         let render_table = renderTableAllScan(allScan.map(scan => scan.filter(value => value.error.length>0)));
-        let mail = Emails.GlobalAlert(email_to, compteError, render_table, alert);
-        SendMailWithAttachment(mail, email_to, "Kexa - Global Alert - "+(alert.name??"name"), compteRender(allScan));
+        let render_table_loud = renderTableAllScanLoud(allScan.map(scan => scan.filter(value => value.loud)));
+        let mail = Emails.GlobalAlert(email_to, compteError, render_table, render_table_loud, alert);
+        SendMailWithAttachment(mail, email_to, "Kexa - Global Alert - "+(alert.name??"Uname"), compteRender(allScan));
     });
 }
 
@@ -143,20 +157,24 @@ export function alertWebhookGlobal(alert: GlobalConfigAlert, compteError: number
 
 export function alertTeamsGlobal(alert: GlobalConfigAlert, compteError: number[], allScan: ResultScan[][]) {
     logger.debug("alert Teams Global");
-    let content = compteRender(allScan);
-    let nbrError: { [x: string]: number; }[] = [];
+    let nbrError: { [x: string]: number; } = {};
     compteError.forEach((value, index) => {
-        nbrError.push({
-            [levelAlert[index]] : value
-        });
+        nbrError[levelAlert[index]] = value;
     });
-    content["nbrError"] = nbrError;
-    content["title"] = "Kexa - Global Alert - "+(alert.name??"Uname");
+    let content = ""
+    let render_table = renderTableAllScan(allScan.map(scan => scan.filter(value => value.error.length>0)));
+    let render_table_loud = renderTableAllScanLoud(allScan.map(scan => scan.filter(value => value.loud)));
+    content += render_table;
+    if(render_table_loud.length > 30){
+        content += "\n\n\n<h3>Loud Section:</h3>\n"
+        content += render_table_loud;
+    }
     for (const teams_to of alert.to) {
         const regex = /^https:\/\/(?:[a-zA-Z0-9_-]+\.)?webhook\.office\.com\/[^\s"]+$/;
-        if(regex.test(teams_to)) return;
+        if(!regex.test(teams_to)) return;
         logger.debug("send teams to:"+teams_to);
-        sendCardMessageToTeamsChannel(teams_to, "Kexa - Global Alert - "+ (alert.name??"Uname"), content);
+        const payload = Teams.GlobalTeams(colors[0], "Global Alert - "+(alert.name??"Uname"), content, nbrError);
+        sendCardMessageToTeamsChannel(teams_to, payload);
     }
 }
 
@@ -167,13 +185,12 @@ export function compteRender(allScan: ResultScan[][]): any {
         return result.content.push(
             {
                 rule: rule[0].rule,
-                result: rule.filter(value => 
-                    value.error.length > 0
-                )
-                .map((scan) => {
+                result: rule.map((scan) => {
                     return {
                         objectContent: scan.objectContent,
-                        error: scan.error
+                        error: scan?.error,
+                        loud: scan?.loud,
+                        rule: scan?.rule,
                     };
                 })
             }
@@ -185,7 +202,7 @@ export function compteRender(allScan: ResultScan[][]): any {
 export function alertFromRule(rule:Rules, conditions:SubResultScan[], objectResource:any, alert: Alert) {
     let detailAlert = alert[levelAlert[rule.level] as keyof typeof alert];
     if (!detailAlert.enabled) return
-    if(rule.level > LevelEnum.FATAL) rule.level = LevelEnum.INFO;
+    if(rule.level > LevelEnum.FATAL) rule.level = LevelEnum.FATAL;
     detailAlert.type.forEach((type) => {
         switch(type){
             case AlertEnum.LOG:
@@ -223,55 +240,60 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
     switch(rule.level){
         case LevelEnum.INFO:
             if(fullDetail){
-                logger.info("information:"+rule.name);
+                logger.info("info name:"+rule.name);
+                logger.info("info description:"+rule?.description);
                 logger.info(sentenceConditionLog(objectResource.id));
             }
             logger.debug(jsome.getColoredString(conditions));
             logger.info(propertyToSend(rule, objectResource, true));
             break;
         case LevelEnum.WARNING:
-            warnLog(rule, conditions, objectResource, fullDetail);
+            warnLog(rule, conditions, objectResource);
             break;
         case LevelEnum.ERROR:
             if(fullDetail){
-                logger.error("error:"+rule.name);
-                logger.error(sentenceConditionLog(objectResource.id));
-            } 
-            logger.debug(jsome.getColoredString(conditions));
-            logger.error(propertyToSend(rule, objectResource, true));
-            break;
-        case LevelEnum.FATAL:
-            if(fullDetail){
-                logger.error("critical:"+rule.name);
+                logger.error("error name:"+rule.name);
+                logger.error("error description:"+rule?.description);
                 logger.error(sentenceConditionLog(objectResource.id));
             }
             logger.debug(jsome.getColoredString(conditions));
             logger.error(propertyToSend(rule, objectResource, true));
             break;
+        case LevelEnum.FATAL:
+            if(fullDetail){
+                logger.fatal("critical name:"+rule.name);
+                logger.fatal("critical description:"+rule?.description);
+                logger.fatal(sentenceConditionLog(objectResource.id));
+            }
+            logger.debug(jsome.getColoredString(conditions));
+            logger.fatal(propertyToSend(rule, objectResource, true));
+            break;
         default:
-            warnLog(rule, conditions, objectResource, fullDetail);
+            warnLog(rule, conditions, objectResource);
             break;
     }
 }
 
 export function warnLog(rule: Rules, conditions:SubResultScan[], objectResource:any, fullDetail:boolean = true){
     if(fullDetail){
-        logger.warning("warning:"+rule.name);
-        logger.warning(sentenceConditionLog(objectResource.id));
+        logger.warn("warning:"+rule.name);
+        logger.warn(sentenceConditionLog(objectResource.id));
     }
     logger.debug(jsome.getColoredString(conditions));
-    logger.warning(propertyToSend(rule, objectResource, true));
+    logger.warn(propertyToSend(rule, objectResource, true));
 }
 
 export function alertTeams(detailAlert: ConfigAlert|GlobalConfigAlert ,rule: Rules, objectResource:any) {
     logger.debug("alert Teams");
     for (const teams_to of detailAlert.to) {
         const regex = /^https:\/\/(?:[a-zA-Z0-9_-]+\.)?webhook\.office\.com\/[^\s"]+$/;
-        if(regex.test(teams_to)) return;
+        if(!regex.test(teams_to)) return;
         let content = propertyToSend(rule, objectResource);
-        sendCardMessageToTeamsChannel(teams_to, "Kexa - "+levelAlert[rule.level]+" - "+rule.name, content);
+        const payload = Teams.OneTeams(colors[rule.level], "Kexa - "+levelAlert[rule.level]+" - "+rule.name, extractURL(content)??"", rule.description??"");
+        sendCardMessageToTeamsChannel(teams_to, payload);
     }
 }
+
 export function alertEmail(detailAlert: ConfigAlert|GlobalConfigAlert ,rule: Rules, conditions:SubResultScan[], objectResource:any){
     logger.debug("alert email");
     detailAlert.to.forEach((email_to) => {
@@ -314,7 +336,7 @@ async function SendMail(mail: string, to: string, subject: string): Promise<bool
             html: mail, // html body
         });
         return true;
-    }catch (e:any) {
+    }catch (e) {
         logger.error("error:");
         logger.error(e);
         return false;
@@ -344,8 +366,6 @@ async function SendMailWithAttachment(mail: string, to: string, subject: string,
         logger.info(`Email sent: ${subject} to ${to} with attachment`);
         return true;
     }catch (e) {
-        logger.error("error:");
-        logger.error(e);
         return false;
     }
 }
@@ -373,7 +393,7 @@ async function sendWebhook(alert: ConfigAlert, subject: string, content: any) {
     for (const webhook_to of alert.to) {
         if(!webhook_to.includes("http")) continue;
         const payload = {
-            title: "Kexa scan : ",
+            title: "Kexa scan : " + subject,
             text: content.content,
         };
         try {
@@ -383,25 +403,29 @@ async function sendWebhook(alert: ConfigAlert, subject: string, content: any) {
             } else {
                 logger.error('Failed to send Webhook.');
             }
-        } catch (error:any) {
-            logger.error('Teams webhook : An error occurred:', error);
+        } catch (error) {
+            logger.error('Webhook : An error occurred:', error);
         }
     }
 }
 
-import axios from 'axios';
-
-export async function sendCardMessageToTeamsChannel(channelWebhook: string, subject: string, content: any): Promise<void> {
+export async function sendCardMessageToTeamsChannel(channelWebhook: string, payload:string): Promise<void> {
     if (!channelWebhook) {
         logger.error("Cannot retrieve TEAMS_CHANNEL_WEBHOOK_URL from env");
         throw("Error on TEAMS_CHANNEL_WEBHOOK_URL retrieve");
+
     }
-    const payload = {
-        title: subject,
-        text: content,
+    let config: AxiosRequestConfig = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: channelWebhook,
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        data : payload
     };
     try {
-        const response = await axios.post(channelWebhook, payload);
+        const response = await axios.request(config);
         if (response.status === 200) {
             logger.info('Card sent successfully!');
         } else {

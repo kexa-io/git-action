@@ -3,7 +3,7 @@ import { Rules } from "../models/settingFile/rules.models";
 import { loadAddOnsDisplay } from "./addOn.service";
 
 const colors = ["#4f5660", "#ffcc00", "#cc3300", "#cc3300"];
-import { getNewLogger} from "./logger.service";
+import {getNewLogger} from "./logger.service";
 const logger = getNewLogger("DiplayLogger");
 const cfonts = require('cfonts');
 
