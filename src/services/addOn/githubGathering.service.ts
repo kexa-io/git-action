@@ -24,13 +24,15 @@ import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service"
 import { GitConfig } from "../../models/git/config.models";
 env.config();
 
-import { getNewLogger} from "../logger.service";
+import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("GithubLogger");
 let githubToken = "";
+let currentConfig:GitConfig
 
 export async function collectData(gitConfig:GitConfig[]): Promise<GitResources[]|null>{
     let resources = new Array<GitResources>();
     for(let config of gitConfig??[]){
+        currentConfig = config;
         let prefix = config.prefix??(gitConfig.indexOf(config).toString());
         githubToken = await getConfigOrEnvVar(config, "GITHUBTOKEN", prefix);
         if(!githubToken){
@@ -47,7 +49,7 @@ export async function collectData(gitConfig:GitConfig[]): Promise<GitResources[]
                 collectOrganizationRelaidInfo(allOrganizations),
             ]
             let [secondaryDataRepo, secondaryDataOrganization] = await Promise.all(promisesSecondaryData);
-
+            
             resources.push({
                 "repositories": allRepo,
                 "branches": secondaryDataRepo.allBranches,
@@ -77,7 +79,7 @@ async function collectRepoRelaidInfo(allRepo: any): Promise<any>{
             collectIssues(repo.name, repo.owner.login),
             collectBranch(repo.name, repo.owner.login)
         ]);
-
+    
         allIssues.push(...addInfoRepo(repo, issues));
         allBranches.push(...addInfoRepo(repo, branches));
     }));
@@ -190,6 +192,11 @@ async function getOctokit(): Promise<Octokit>{
 }
 
 export async function collectRepo(){
+    if(
+        !currentConfig?.ObjectNameNeed?.includes("repositories") 
+        && !currentConfig?.ObjectNameNeed?.includes("branches")
+        && !currentConfig?.ObjectNameNeed?.includes("issues")
+    ) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -203,7 +210,7 @@ export async function collectRepo(){
             page++;
             repos.push(...repo);
         }
-
+        
         return repos;
     }catch(e){
         logger.debug(e);
@@ -212,6 +219,7 @@ export async function collectRepo(){
 }
 
 export async function collectBranch(repo: string, owner: string): Promise<any[]>{
+    if(!currentConfig?.ObjectNameNeed?.includes("branches")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -231,7 +239,7 @@ export async function collectBranch(repo: string, owner: string): Promise<any[]>
             page++;
             members.push(...member);
         }
-
+        
         return members;
     }catch(e){
         logger.debug(e);
@@ -240,6 +248,7 @@ export async function collectBranch(repo: string, owner: string): Promise<any[]>
 }
 
 export async function collectIssues(repo: string, owner: string): Promise<any[]>{
+    if(!currentConfig?.ObjectNameNeed?.includes("issues")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -259,7 +268,7 @@ export async function collectIssues(repo: string, owner: string): Promise<any[]>
             page++;
             issues.push(...issue);
         }
-
+        
         return issues;
     }catch(e){
         logger.debug(e);
@@ -268,6 +277,15 @@ export async function collectIssues(repo: string, owner: string): Promise<any[]>
 }
 
 export async function collectOrganizations(): Promise<any>{
+    if(
+        !currentConfig?.ObjectNameNeed?.includes("organizations")
+        && !currentConfig?.ObjectNameNeed?.includes("members")
+        && !currentConfig?.ObjectNameNeed?.includes("teams")
+        && !currentConfig?.ObjectNameNeed?.includes("teamMembers")
+        && !currentConfig?.ObjectNameNeed?.includes("teamRepositories")
+        && !currentConfig?.ObjectNameNeed?.includes("teamProjects")
+        && !currentConfig?.ObjectNameNeed?.includes("outsideCollaborators")
+    ) return [];
     try{
         return (await (await getOctokit()).request('GET /user/orgs')).data;
     }catch(e){
@@ -277,6 +295,7 @@ export async function collectOrganizations(): Promise<any>{
 }
 
 export async function collectMembers(org: string): Promise<any>{
+    if(!currentConfig?.ObjectNameNeed?.includes("members")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -304,7 +323,7 @@ export async function collectMembers(org: string): Promise<any>{
             page++;
             members.push(...member);
         }
-
+        
         return members;
     }catch(e){
         logger.debug(e);
@@ -313,6 +332,7 @@ export async function collectMembers(org: string): Promise<any>{
 }
 
 export async function collectOutsideCollaborators(org: string): Promise<any>{
+    if(!currentConfig?.ObjectNameNeed?.includes("outsideCollaborators")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -331,7 +351,7 @@ export async function collectOutsideCollaborators(org: string): Promise<any>{
             page++;
             collaborators.push(...collaborator);
         }
-
+        
         return collaborators;
     }catch(e){
         logger.debug(e);
@@ -340,6 +360,7 @@ export async function collectOutsideCollaborators(org: string): Promise<any>{
 }
 
 export async function collectTeams(org: string): Promise<any>{
+    if(!currentConfig?.ObjectNameNeed?.includes("teams")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -358,7 +379,7 @@ export async function collectTeams(org: string): Promise<any>{
             page++;
             teams.push(...team);
         }
-
+        
         return teams;
     }catch(e){
         logger.debug(e);
@@ -367,6 +388,7 @@ export async function collectTeams(org: string): Promise<any>{
 }
 
 export async function collectTeamMembers(org:string, team: string): Promise<any>{
+    if(!currentConfig?.ObjectNameNeed?.includes("teamMembers")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -386,7 +408,7 @@ export async function collectTeamMembers(org:string, team: string): Promise<any>
             page++;
             membersTeam.push(...memberTeam);
         }
-
+        
         return membersTeam;
     }catch(e){
         logger.debug(e);
@@ -395,6 +417,7 @@ export async function collectTeamMembers(org:string, team: string): Promise<any>
 }
 
 export async function collectTeamRepos(org:string, team: string): Promise<any>{
+    if(!currentConfig?.ObjectNameNeed?.includes("teamRepositories")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -414,7 +437,7 @@ export async function collectTeamRepos(org:string, team: string): Promise<any>{
             page++;
             reposTeam.push(...repoTeam);
         }
-
+        
         return reposTeam;
     }catch(e){
         logger.debug(e);
@@ -423,6 +446,7 @@ export async function collectTeamRepos(org:string, team: string): Promise<any>{
 }
 
 export async function collectTeamProjects(org:string, team: string): Promise<any>{
+    if(!currentConfig?.ObjectNameNeed?.includes("teamProjects")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -442,7 +466,7 @@ export async function collectTeamProjects(org:string, team: string): Promise<any
             page++;
             projectsTeam.push(...projectTeam);
         }
-
+        
         return projectsTeam;
     }catch(e){
         logger.debug(e);
