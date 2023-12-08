@@ -85,7 +85,7 @@ async function collectHelm(namespace: string): Promise<any> {
         let helmData = await helm.list({ namespace: namespace });
         return helmData;
     }catch(e:any){
-        //logger.error(e);
+        logger.debug(e);
         return null;
     }
 }
@@ -96,7 +96,7 @@ async function collectPods(k8sApiCore: any, namespace: string): Promise<any> {
         const pods = await k8sApiCore.listNamespacedPod(namespace);
         return pods;
     }catch(e:any){
-        //logger.error(e);
+        logger.debug(e);
         return null;
     }
 }
