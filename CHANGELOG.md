@@ -35935,3 +35935,11 @@ src/services/alerte.service.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 1.1.2-SNAPSHOT.22.96752e28
+### Files added: 0
+
+### Files changed: 1
+
+src/main.ts was changed
+
+
