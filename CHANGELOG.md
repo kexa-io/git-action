@@ -35863,3 +35863,13 @@ src/services/addOn/kubernetesGathering.service.ts was changed
 src/services/analyse.service.ts was changed
 
 
+## 1.1.2-SNAPSHOT.10.6611e831
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/manageVarEnvironnement.service.js was changed
+
+src/services/manageVarEnvironnement.service.ts was changed
+
+
