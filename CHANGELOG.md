@@ -35903,3 +35903,35 @@ lib/services/analyse.service.js was changed
 src/services/analyse.service.ts was changed
 
 
+## 1.1.2-SNAPSHOT.19.ef2d7501
+### Files added: 2
+
+lib/helpers/latestVersion.js was added
+
+src/helpers/latestVersion.ts was added
+
+### Files changed: 11
+
+lib/helpers/latestVersion.js was changed
+
+src/helpers/latestVersion.ts was changed
+
+README.md was changed
+
+capacity.json was changed
+
+config/addOnNeed.json was changed
+
+lib/main.js was changed
+
+lib/services/alerte.service.js was changed
+
+lib/services/updateCapability.service.js was changed
+
+src/main.ts was changed
+
+src/services/alerte.service.ts was changed
+
+src/services/updateCapability.service.ts was changed
+
+
