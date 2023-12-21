@@ -27,7 +27,7 @@ export async function main() {
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
-    await displayVersionAndLatest(logger);
+    //await displayVersionAndLatest(logger);
     let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./rules";
     if(rulesDirectory == ""){
         rulesDirectory = "./rules";
