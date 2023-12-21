@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const AWS = require('aws-sdk');
 
 import {getNewLogger} from "./logger.service";
-const logger = getNewLogger("KubernetesLogger");
+const logger = getNewLogger("SecretManagerService");
 
 
 const { SecretClient } = require("@azure/keyvault-secrets");
