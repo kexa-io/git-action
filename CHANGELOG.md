@@ -35883,3 +35883,13 @@ lib/main.js was changed
 src/main.ts was changed
 
 
+## 1.1.2-SNAPSHOT.14.fcdb9fca
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/addOn/httpGathering.service.js was changed
+
+src/services/addOn/httpGathering.service.ts was changed
+
+
