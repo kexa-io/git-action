@@ -204,48 +204,31 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 <summary>All Achievements</summary>
 
 - ✅ Setting notification levels
+
+<div class='spliter_code'></div>
+
+- ✅ Aws check in:
+    - ✅ ec2Instance
+    - ✅ ec2SG
+    - ✅ ec2Volume
+    - ✅ rds
+    - ✅ resourceGroup
+    - ✅ tagsValue
+    - ✅ ecsCluster
+    - ✅ ecrRepository
 - ✅ Azure check in:
-    - ✅ virtual machine (vm)
-    - ✅ resource groupe (rg)
+    - ✅ vm
+    - ✅ rg
     - ✅ disk
-    - ✅ network security groupe (nsg)
-    - ✅ virtual network (virtualNetwork)
-    - ✅ ip
-    - ✅ namespaces (namespaces)
-    - ✅ pods
+    - ✅ nsg
+    - ✅ virtualNetwork
+    - ✅ networkInterfaces
     - ✅ aks
-- ✅ Github check in:
-    - ✅ repositories
-    - ✅ branches
-    - ✅ issues
-    - ✅ organizations
-    - ✅ members
-    - ✅ teams
-    - ✅ teamProjects
-    - ✅ teamMembers
-    - ✅ teamRepositories
-    - ✅ outsideCollaborators
-- ✅ Kubernetes check in:
-    - ✅ namespaces
-    - ✅ pods
-    - ✅ helm
-- ✅ AWS :
-    - ✅ EC2 Instance (ec2Instance)
-    - ✅ EC2 Volume (ec2Volume)
-    - ✅ EC2 Security group (ec2SG)
-    - ✅ Relational Database Service (rds)
-    - ✅ Resource Groups (resourceGroups)
-    - ✅ Tags (tagsValue)
-    - ✅ Elastic Container Service CLUSTER (ecsCluster)
-    - ✅ Elastic Container Repository(ecrRepository)
-- ✅ HTTP and HTTPS request
-    - ✅ request
-        - ✅ certificate
-        - ✅ body
-        - ✅ headers
-        - ✅ http code(code)
-        - ✅ latency
-- ✅ GCP
+    - ✅ mlWorkspace
+    - ✅ mlJobs
+    - ✅ mlComputes
+    - ✅ mlSchedule
+- ✅ Gcp check in:
     - ✅ tasks_queue
     - ✅ compute
     - ✅ storage
@@ -255,7 +238,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
     - ✅ workflows
     - ✅ websecurity
     - ✅ connector
-    - ✅ vmware-engine
+    - ✅ vmware
     - ✅ namespace
     - ✅ certificate
     - ✅ secret
@@ -267,27 +250,73 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
     - ✅ airflow_image_version
     - ✅ disk
     - ✅ compute_item
-- ✅ Google Workspace
+- ✅ Github check in:
+    - ✅ repositories
+    - ✅ branches
+    - ✅ issues
+    - ✅ organizations
+    - ✅ members
+    - ✅ teams
+    - ✅ teamProjects
+    - ✅ teamMembers
+    - ✅ teamRepositories
+    - ✅ outsideCollaborators
+- ✅ GoogleDrive check in:
+    - ✅ files
+- ✅ GoogleWorkspace check in:
     - ✅ user
     - ✅ domain
     - ✅ group
     - ✅ role
     - ✅ orgaunit
     - ✅ calendar
-    - ✅ drive
     - ✅ file
-- ✅ O365
+    - ✅ drive
+- ✅ Http check in:
+    - ✅ request
+- ✅ Kubernetes check in:
+    - ✅ namespaces
+    - ✅ pods
+    - ✅ services
+    - ✅ helm
+    - ✅ configmap
+    - ✅ deployment
+    - ✅ replicaset
+    - ✅ statefulset
+    - ✅ daemonset
+    - ✅ ingress
+    - ✅ persistentvolume
+    - ✅ persistentvolumeclaim
+    - ✅ secret
+    - ✅ serviceaccount
+    - ✅ storageclass
+    - ✅ networkpolicy
+    - ✅ event
+    - ✅ node
+    - ✅ apiservice
+    - ✅ lease
+    - ✅ componentstatus
+    - ✅ limitrange
+    - ✅ resourcequota
+    - ✅ podtemplate
+- ✅ O365 check in:
     - ✅ sku
     - ✅ user
     - ✅ domain
     - ✅ secure_score
     - ✅ auth_methods
     - ✅ organization
-    - ✅ directory
+    - ✅ directory_role
     - ✅ sp
     - ✅ alert
     - ✅ incident
     - ✅ app_access_policy
+    - ✅ group
+    - ✅ policy
+    - ✅ conditional_access
+    - ✅ sharepoint_settings
+
+<div class='spliter_code'></div>
 
 </details>
 

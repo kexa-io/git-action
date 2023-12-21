@@ -5,6 +5,7 @@ import { getEnvVar, setEnvVar } from "./services/manageVarEnvironnement.service"
 import { loadAddOns } from "./services/addOn.service";
 import { deleteFile, setRealPath } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
+import { displayVersionAndLatest } from "./helpers/latestVersion";
 
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
@@ -26,8 +27,7 @@ export async function main() {
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
-    let version = require('../package.json').version;
-    logger.info("Kexa version: " + version);
+    await displayVersionAndLatest(logger);
     let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./rules";
     if(rulesDirectory == ""){
         rulesDirectory = "./rules";
