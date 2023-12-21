@@ -322,7 +322,7 @@ export function checkRules(rules:Rules[], resources:ProviderResource, alert: Ale
     rules.forEach(rule => {
         if(!rule.applied) return;
         logger.info("check rule:"+rule.name);
-        if(!config.has(rule.cloudProvider)){
+        if(!config.hasOwnProperty(rule.cloudProvider)){
             logger.debug("cloud provider not found in config:"+rule.cloudProvider);
             return;
         }
