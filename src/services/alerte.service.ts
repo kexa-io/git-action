@@ -275,11 +275,11 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
 
 export function warnLog(rule: Rules, conditions:SubResultScan[], objectResource:any, fullDetail:boolean = true){
     if(fullDetail){
-        logger.warn("warning:"+rule.name);
-        logger.warn(sentenceConditionLog(objectResource.id));
+        logger.warning("warning:"+rule.name);
+        logger.warning(sentenceConditionLog(objectResource.id));
     }
     logger.debug(jsome.getColoredString(conditions));
-    logger.warn(propertyToSend(rule, objectResource, true));
+    logger.warning(propertyToSend(rule, objectResource, true));
 }
 
 export function alertTeams(detailAlert: ConfigAlert|GlobalConfigAlert ,rule: Rules, objectResource:any) {

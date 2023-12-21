@@ -4,11 +4,11 @@
         "github",
         "http",
         "kubernetes",
+        "googleDrive",
         "azure",
         "aws",
         "gcp",
-        "o365",
-        "googleDrive"
+        "o365"
     ],
     "objectNameNeed": {
         "BenchmarkWorkspace": {
@@ -27,6 +27,11 @@
             "kubernetes": [
                 "namespaces",
                 "pods"
+            ]
+        },
+        "driveRules": {
+            "googleDrive": [
+                "files"
             ]
         },
         "Economy": {
@@ -69,6 +74,21 @@
                 "aks"
             ]
         },
+        "rules-testing": {
+            "azure": [
+                "disk",
+                "aks"
+            ],
+            "github": [
+                "repositories",
+                "branches"
+            ],
+            "kubernetes": [
+                "namespaces",
+                "pods",
+                "helm"
+            ]
+        },
         "Security": {
             "azure": [
                 "aks"
@@ -83,26 +103,6 @@
             ],
             "o365": [
                 "auth_methods"
-            ]
-        },
-        "driveRules": {
-            "googleDrive": [
-                "files"
-            ]
-        },
-        "rules-testing": {
-            "azure": [
-                "disk",
-                "aks"
-            ],
-            "github": [
-                "repositories",
-                "branches"
-            ],
-            "kubernetes": [
-                "namespaces",
-                "pods",
-                "helm"
             ]
         }
     }
