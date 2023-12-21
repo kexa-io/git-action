@@ -26,6 +26,8 @@ export async function main() {
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
+    let version = require('../package.json').version;
+    logger.info("Kexa version: " + version);
     let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./rules";
     if(rulesDirectory == ""){
         rulesDirectory = "./rules";

@@ -11,7 +11,6 @@ import { propertyToSend, renderTableAllScan, renderTableAllScanLoud } from "./di
 import { groupBy } from "../helpers/groupBy";
 import { getConfigOrEnvVar } from "./manageVarEnvironnement.service";
 import axios from 'axios';
-import { AxiosRequestConfig } from 'axios';
 import { extractURL } from "../helpers/extractURL";
 import { Teams } from "../emails/teams";
 
@@ -415,7 +414,7 @@ export async function sendCardMessageToTeamsChannel(channelWebhook: string, payl
         throw("Error on TEAMS_CHANNEL_WEBHOOK_URL retrieve");
 
     }
-    let config: AxiosRequestConfig = {
+    let config: any = {
         method: 'post',
         maxBodyLength: Infinity,
         url: channelWebhook,
