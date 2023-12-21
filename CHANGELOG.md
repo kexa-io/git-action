@@ -35845,3 +35845,21 @@ src/services/addOn/kubernetesGathering.service.ts was changed
 src/services/alerte.service.ts was changed
 
 
+## 1.1.2-SNAPSHOT.8.5689e45c
+### Files added: 0
+
+### Files changed: 6
+
+lib/models/kubernetes/kubernetes.models.js was changed
+
+lib/services/addOn/kubernetesGathering.service.js was changed
+
+lib/services/analyse.service.js was changed
+
+src/models/kubernetes/kubernetes.models.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+src/services/analyse.service.ts was changed
+
+
