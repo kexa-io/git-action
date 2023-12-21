@@ -35873,3 +35873,13 @@ lib/services/manageVarEnvironnement.service.js was changed
 src/services/manageVarEnvironnement.service.ts was changed
 
 
+## 1.1.2-SNAPSHOT.12.201d2756
+### Files added: 0
+
+### Files changed: 2
+
+lib/main.js was changed
+
+src/main.ts was changed
+
+
