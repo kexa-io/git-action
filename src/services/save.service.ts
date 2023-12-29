@@ -1,12 +1,11 @@
 import { Storage } from '@google-cloud/storage';
 import { ResultScan } from '../models/resultScan.models';
-import { getContext, getNewLogger } from "./logger.service";
+import { getNewLogger } from "./logger.service";
 import { loadAddOnsCustomUtility } from './addOn.service';
 import { SaveConfig } from '../models/export/config.models';
 
 const configuration = require('node-config-ts').config;
 const logger = getNewLogger("SaveLogger");
-const context = getContext();
 
 export async function saveResult(result: ResultScan[][]): Promise<void> {
     if(!configuration.save) return Promise.resolve();
@@ -24,12 +23,10 @@ export async function saveResult(result: ResultScan[][]): Promise<void> {
                 await addOnSave[save.type](save, dataToSave[save.onlyErrors??false ? 1 : 0]);
             }catch(e:any){
                 logger.error("Error in save " + save.type + " : " + e.message);
-                context?.log("Error in save " + save.type + " : " + e.message);
                 logger.debug(e);
             }
         }else{
             logger.warn('Unknown save type: ' + save.type);
-            context?.log('Unknown save type: ' + save.type);
         }
     }));
 }

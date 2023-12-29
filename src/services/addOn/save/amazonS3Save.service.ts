@@ -1,11 +1,10 @@
 import { ResultScan } from "../../../models/resultScan.models";
 import { getEnvVar } from "../../manageVarEnvironnement.service";
-import { getContext, getNewLogger } from "../../logger.service";
+import { getNewLogger } from "../../logger.service";
 import { AmazonS3SaveConfig } from "../../../models/export/amazonS3/config.models";
 import AWS from 'aws-sdk';
 
 const logger = getNewLogger("AzureBlobStorageLogger");
-const context = getContext();
 
 export async function save(save: AmazonS3SaveConfig, result: ResultScan[][]): Promise<void>{
     throw new Error("Implementation not yet complete");

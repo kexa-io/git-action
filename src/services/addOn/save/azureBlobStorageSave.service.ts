@@ -2,11 +2,10 @@ import { AnonymousCredential, BlobServiceClient, BlockBlobParallelUploadOptions,
 import { AzureBlobStorageSaveConfig } from "../../../models/export/azureBlobStorage/config.models";
 import { ResultScan } from "../../../models/resultScan.models";
 import { getEnvVar } from "../../manageVarEnvironnement.service";
-import { getContext, getNewLogger } from "../../logger.service";
+import { getNewLogger } from "../../logger.service";
 import { DefaultAzureCredential } from "@azure/identity";
 
 const logger = getNewLogger("AzureBlobStorageLogger");
-const context = getContext();
 
 export async function save(save: AzureBlobStorageSaveConfig, result: ResultScan[][]): Promise<void>{
     if(!save.containerName) throw new Error("containerName is missing");
@@ -35,7 +34,6 @@ async function saveJsonToAzureBlobStorage(connectionString: string, save: AzureB
     };
     await blockBlobClient.upload(jsonString, jsonString.length, uploadOptions);
     logger.info("Saved to Azure Blob Storage");
-    context?.log("Saved to Azure Blob Storage");
 }
 
 function getBlobServiceClientFromConnectionString(urlConnection:string): BlobServiceClient {

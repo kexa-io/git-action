@@ -1,13 +1,12 @@
 import { ResultScan } from "../../../models/resultScan.models";
 import { getEnvVar } from "../../manageVarEnvironnement.service";
-import { getContext, getNewLogger } from "../../logger.service";
+import { getNewLogger } from "../../logger.service";
 import { PrometheusSaveConfig } from "../../../models/export/prometheus/config.models";
 import { EventMetric } from "../../../models/export/prometheus/eventMetric.models";
 import { loadAddOnsCustomUtility } from "../../addOn.service";
 
 const axios = require('axios');
 const logger = getNewLogger("prometheusLogger");
-const context = getContext();
 const addOnPropertyToSend: { [key: string]: Function; } = loadAddOnsCustomUtility("display", "propertyToSend");
 
 export async function save(save: PrometheusSaveConfig, result: ResultScan[][]): Promise<void>{
@@ -15,7 +14,6 @@ export async function save(save: PrometheusSaveConfig, result: ResultScan[][]): 
     if(!save.urlName) throw new Error("urlName is required");
     let url = (await getEnvVar(save.urlName))??save.urlName;
     logger.info(`Saving to Prometheus`);
-    context?.log(`Saving to Prometheus`);
     const metrics = await Promise.all(result.flat().map(async (resultScan) => {
         return convertResultScanToEventMetric(resultScan);
     }));
