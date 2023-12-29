@@ -35943,3 +35943,23 @@ src/services/updateCapability.service.ts was changed
 src/main.ts was changed
 
 
+## 1.1.2-SNAPSHOT.24.511f184d
+### Files added: 0
+
+### Files changed: 4
+
+config/addOnNeed.json was changed
+
+lib/main.js was changed
+
+lib/services/analyse.service.js was changed
+
+src/services/analyse.service.ts was changed
+
+
+## 1.1.7-SNAPSHOT.2.6c06a008
+### Files added: 0
+
+### Files changed: 0
+
+

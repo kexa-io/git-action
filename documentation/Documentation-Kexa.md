@@ -14,11 +14,11 @@
     <a href="https://github.com/4urcloud/Kexa"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/4urcloud/Kexa">View Demo</a>
+    <a class="github-button" href="https://github.com/4urcloud/Kexa/issues" data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: light_high_contrast;" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue 4urcloud/Kexa on GitHub">Report Bug</a>
     ·
-    <a href="https://github.com/4urcloud/Kexa/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/4urcloud/Kexa/issues">Request Feature</a>
+<a class="github-button" href="https://github.com/4urcloud/Kexa/discussions" data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: light_high_contrast;" data-icon="octicon-comment-discussion" data-size="large" aria-label="Discuss 4urcloud/Kexa on GitHub">Request Feature</a>
+	·
+<a class="github-button" href="https://github.com/4urcloud/Kexa" data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: light_high_contrast;" data-icon="octicon-star" data-size="large" aria-label="Star 4urcloud/Kexa on GitHub">Put Star</a>
   </p>
 </div>
 
@@ -29,17 +29,31 @@
   <summary>Table of Contents (Full documentation)</summary>
   <ol>
     <li>
+      <a href="#global-understanding">Global understanding</a>
+    </li>
+    <li>
+      <a href="#prerequisites">Prerequisites</a>
+    </li>
+    <li>
       <a href="#global-configuration">Global Configuration</a>
       <ul>
+        <li><a href="#configuration-via-script">Configuration Via Script</a></li>
         <li><a href="#basic-configuration">Basic Configuration</a></li>
         <li><a href="#multiple-environments-provider-prefix">Multiple Environments provider prefix</a></li>
+	<li><a href="#custom-and-multiple-configurations">Custom and multiple Configurations</a></li>
         <li><a href="#regions">Regions</a></li>
       </ul>
     </li>
     <li>
       <a href="#environment-variables-and-auth">Environment variables & Auth</a>
       <ul>
-        <li><a href="#directory--notifications">Directory & Notifications</a></li>
+        <li><a href="#directory--notifications">Directory & Notifications</a>
+          <ul>
+            <li><a href="#default-folder-input-and-output">Default folder input and output</a></li>
+            <li><a href="#notification">Notification</a></li>
+            <li><a href="#save-result-of-the-scan">Save result of the scan</a></li>
+          </ul>
+        </li>
         <li><a href="#providers-authentications">Providers Authentications</a></li>
         <li><a href="#password-manager">Password Manager</a></li>
       </ul>
@@ -48,8 +62,8 @@
       <a href="#rules-editing">Rules Editing</a>
       <ul>
         <li><a href="#rules-fields">Rules fields</a></li>
-        <li><a href="#full-yaml-rules-file">Full Yaml rules file</a></li>
         <li><a href="#date--time-criteria">Date & Time criteria</a></li>
+        <li><a href="#full-yaml-rules-file">Full Yaml rules file</a></li>
         <li><a href="#utility-examples">Utility examples</a>
             <ul>
                 <li><a href="#cost-savings">Cost savings</a></li>
@@ -88,17 +102,144 @@
   </ol>
 </details>
 
+# <div align="center" id= "global-understanding">**Global Understanding**</div>
+
+We'll discuss how Kexa works in principle, and explain the usefulness of the various elements in the process at each stage.
+
+<img src="../images/schema-engine.png" alt="schema engine kexa">
+
+- The first step is to scan your environment. To avoid trying to scan all environments, we use a config that lets you describe which providers will be used. In this configuration, we then define the project(s) in this provider and the rule sets associated with them.
+
+- To perform the scans, addOns retrieves the credentials you've set up for each project. Priority is given to the credentials present in your key manager, and if not set up, then in the environment variables.
+
+- Once all the scans have been made, we apply the rules you've defined to the data. We detect any resource that doesn't conform to any of your rules.
+
+- Finally, depending on :
+  - the severity levels associated with the rule in question
+  - the notification presets present in the rule set where the rule is present.
+
+  Kexa notifies you on your communication channels
+
+The principle is simple: scan and verify. That's why you have 2 main elements to set up:
+  - the default.json to know what to scan and what to scan with
+  - the set of rules to know what Kexa has to verify
+
+# <div align="center" id= "prerequisites">**Prerequisites**</div>
+
+First of all, Kexa is build with [node](https://nodejs.org/en) so you need to [install it](https://nodejs.org/en/download)
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+## Installation
+
+### Clone the repo
+
+- CLI:
+
+   ```bash
+   git clone https://github.com/4urcloud/Kexa.git
+   ```
+
+<!--- Github Desktop:
+
+  ```
+  x-github-client://openRepo/https://github.com/4urcloud/Kexa
+  ```
+  [![Github Desktop](https://custom-icon-badges.demolab.com/badge/Download-purple?style=for-the-badge&logo=github&logoColor=white "Github Desktop")](x-github-client://openRepo/https://github.com/4urcloud/Kexa)-->
+
+
+- SSH:
+
+  ```bash
+  git@github.com:4urcloud/Kexa.git
+  ```
+
+- Download ZIP:
+
+  [![Download zip](https://custom-icon-badges.demolab.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/4urcloud/Kexa/archive/refs/heads/main.zip)
+
+- Visual Studio:
+
+  
+  [![Open in VS Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://vscode.dev/github/4urcloud/Kexa)
+
+### Install NPM packages
+   ```sh
+   npm install
+   ```
 
 # <div align="center" id= "global-configuration">**Global Configuration**</div>
+
 <br/>
 In the Kexa config folder, edit the default.json (create it if it doesn't exist)
 <br/>
+
+<div id="configuration-via-script"></div>
+
+## **Configuration via script**
+
+A powershell script is available for easy downloading, updating and configuration of Kexa versions.
+
+We don't yet have a Bash script for Linux. You can follow [this documentation](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.4) to run the powershell script on linux.
+
+### Downloads or update Kexa
+
+You can download a version of Kexa from a specific branch. To do this, there's the "-d" argument to request a Kexa pull locally without Github. To preset from which branch this should be done, you have the "-b" argument followed by a branch name present on our repository (by default: main). Finally, if you don't want to perform the download where you are, you can use "-p" followed by the path to where to perform the manipulation.
+An option is available for Kexa to update itself automatically with the 'AUTOUPDATE' environment variable. It will update on all non-breaking updates. If you decide not to update it automatically, Kexa will notify you via the logs of the latest available version.
+Note: in the event of an upgrade, your configuration files will be preserved.
+
+Here's an example:
+
+- Linux
+
+  ```bash
+  #for download the script localy
+  curl -sSL https://raw.githubusercontent.com/4urcloud/Kexa/main/initKexa.sh -o initKexa.sh
+
+  #to update or download Kexa locally with the main branch
+  ./initKexa.sh -d
+  #to update or download Kexa at ./Kexa with the dev branch
+  ./initKexa.sh -d -b dev -p ./Kexa
+  ```
+
+- Windows
+
+  ```powershell
+  #for download the script localy
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/4urcloud/Kexa/main/initKexa.ps1" -OutFile "./initKexa.ps1"
+
+  #to update or download Kexa locally with the main branch
+  ./initKexa.ps1 -d
+  #to update or download Kexa at ./Kexa with the dev branch
+  ./initKexa.ps1 -d -b dev -p ./Kexa
+  ```
+
+### Setup configuration
+
+A powershell script located at "./initKexa.ps1" allows you to set up a configuration and all your necessary environment variables. It also downloads from our github repo the basic rules per provider you've configured.
+Note, executing the command is destructive to your previous configuration.
+
+- Windows:
+
+  ```powershell
+  ./initKexa.ps1 -c
+  ```
+
+- Linux:
+  ```bash
+  sudo pwsh
+  ./initKexa.ps1 -c
+  ```
+  Our bash file does not yet support Kexa configuration. However, our powershell script does.
+
+
 <div id="basic-configuration"></div>
 
 ## **Basic configuration**
 
-Here you can define the providers you want to retrieve data from, and for each one, which rules
-file you want to check.
+Here you can define the providers you want to retrieve data from, and for each one, which rules file you want to check.
 - You can find the available providers name for this in /enum/provider.enum.ts
 - The 'rules' field is mandatory to specify the rules to be applied to each environment.
 
@@ -163,6 +304,32 @@ Each projects in this list refers to a "subscription"/"environment". It's a good
 ```
 <br/>
 
+<div id="custom-and-multiple-configurations"></div>
+
+## **Custom and multiple configurations**
+
+As we said before, `/config/default.json` is the default file path for your Kexa projects configuration.
+But you can edit this and have multiple configuration files to switch between.
+
+First, delete the `default.json` configuration file, so it won't be taken into account. (think about backup if you need it)
+
+There is a `/config/env/` folder available in Kexa, if not, you can create it.
+In this folder you will be able to store multiple configuration files, each having a custom name.
+
+To use a custom file, set the following environment variable :
+
+```sh
+NODE_CONFIG_TS_ENV=customName
+```
+
+Replace `customName` by your file name (that will always have '.json' extension).
+Do not forget to delete or move away `default.json` to avoid conflicts.
+
+In addition, you can also use the `/config/deployment/` and `/config/user/` folder, by using for each `DEPLOYMENT=customName` or `USER=customName`.
+For more information, check [node-config-ts](https://www.npmjs.com/package/node-config-ts#custom-config-directory) documentation.
+
+<br/>
+
 <div id="regions"></div>
 
 ## **Regions**
@@ -211,28 +378,72 @@ Without "regions" property (or empty "regions" property), all the regions will b
 
 ## **Directory & Notifications**
 
+<div id="default-folder-input-and-output"></div>
+
+### **Default folder input and output**
+
 Specify a folder to store the rules files.
 ```
   RULESDIRECTORY=./Kexa/rules (default value)
 ```
 
+Specify a folder to store the output files.
+```
+  OUTPUT=./output (default value)
+```
+
 You can modify your rule files to customize the notification channels on which to have your alerts. The "alert" section in rules files is designed for this purpose. It is possible to set up individual alerts by resource and by level of importance, but above all global alerts that summarize the scan. Go to [Full Yaml Rules File](#full-yaml-rules-file) to have more information.
+
+<div id="notification"></div>
+
+### **Notification**
 
 Setup your notification tools. (for those selected in your rules files).
 >email
 ```
  EMAILPORT=587
   EMAILHOST=smtp.sendgrid.net
-  EMAILUSER=XXXXXXXXXXXXXX
+  EMAILUSER=apikey
   EMAILPWD=XXXXXXXXXXXXXXX
   EMAILFROM='"Kexa" <noreply@4urcloud.eu>'
 ```
+
+For email, EMAILPWD is your Api Key for the case you use sendgrid.
+
 > sms (with Twilio)
 ```
  SMSFROM='+00000000000'
   SMSACCOUNTSID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   SMSAUTHTOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+<div id="save-result-of-the-scan"></div>
+
+### **Save result of the scan**
+
+You can save your scan results in various places :
+- [Azure Blob Storage](./save/AzureBlobStorage.md)
+- [Mongo DB](./save/MongoDB.md)
+
+To save your scan results in different places, a "save" attribute must be created in your default.json file. It's a list of "SaveConfig" objects, as follows : 
+
+![example SaveConfig](../Kexa/models/export/config.models.ts)
+
+Here's the table of correspondence for each attribute:
+- type: corresponds to the name of the addon solicited to save your scan
+- urlName: 2 functions to choose from:
+  - is used to provide the name of the environment variable storing the endpoint url
+  - provide endpoint url
+- name: reserved attribute for naming the backup location (maintenance aid)
+- description: reserved attribute to describe the backup location (maintenance aid)
+- origin: attribute to specify kexa run location
+- tags: additional information dictionary for tagging the backup
+- onlyErrors: Boolean to record only errors detected or not
+
+Each addOn brings its own unique set of attributes to the table. We invite you to refer to the documentation of the addOn you wish to use for all the subtleties.
+Here an example of configuration to save in Azure Blob Storage and MongoDB:
+
+![example config with save](../config/demo/exemple3.default.json)
 
 <br/>
 <div id="provider-authentications"></div>
@@ -241,15 +452,15 @@ Setup your notification tools. (for those selected in your rules files).
 
 For each environment you want to test, you'll need to provide the environment variables needed to authenticate to it. For this you can refer to the addons section corresponding to each addon:
 
-- [AWS](./AWS.md)
-- [Azure](./Azure.md)
-- [GCP](./GCP.md)
-- [Github](./Github.md)
-- [Google drive](./GoogleDrive.md)
-- [Google workspace](./GoogleWorkspace.md)
-- [HTTP(HTTPS)](./HTTP.md)
-- [Kubernetes](./Kubernetes.md)
-- [O365](./O365.md)
+- [AWS](./provider/AWS.md)
+- [Azure](./provider/Azure.md)
+- [GCP](./provider/GCP.md)
+- [Github](./provider/Github.md)
+- [Google drive](./provider/GoogleDrive.md)
+- [Google workspace](./provider/GoogleWorkspace.md)
+- [HTTP(HTTPS)](./provider/HTTP.md)
+- [Kubernetes](./provider/Kubernetes.md)
+- [O365](./provider/O365.md)
 
 An environment file is also available in our repository, with every official addon's needed variables.
 You can use it by filling the field corresponding to the providers you want to authenticate to.
@@ -303,6 +514,7 @@ You can optionally use a key manager; for these variables no prefix are needed. 
 
 ## **Rules fields**
 
+The default path for your folder rules is "./Kexa/rules". You can change it with the environment variable "RULESDIRECTORY".
 Here is the structure and required fields for a new rule :
 
 ```yaml
@@ -321,6 +533,7 @@ Here is the structure and required fields for a new rule :
   conditions: # the list of criteria to match
 		-	property : string 
 	 		# the object field name to check (you can see the objects fields by launching Kexa with npm run start:o option)
+      # for any property with a dot in his name, add "/" before the dot
 			condition : enum 
 			# the condition for this comparison (defined in ./enum/condition.enum.ts)
 			value : string 
@@ -377,7 +590,7 @@ With nested operations :
 			condition : enum 
 			value : # nested operation
 				- operator: AND
-			  		criteria:
+			  	criteria:
 						-	property : string 
 							condition : enum 
 							value : string 
@@ -390,6 +603,37 @@ With nested operations :
 		# add more criteria by starting a new '- property:' here #
 
 	
+```
+
+<br/>
+<div id="date-and-time-criteria"></div>
+
+## **Date & time criteria**
+
+You can also set up date and time comparison for your rules, we have built a set of specific conditions and fields for this feature :
+
+```yaml
+property: string
+condition: (
+  DATE_EQUAL |
+  DATE_SUP |
+  DATE_INF |
+  DATE_SUP_OR_EQUAL |
+  DATE_INF_OR_EQUAL |
+  INTERVAL |
+  DATE_INTERVAL
+)
+value: 0 0 0 0 0 0
+# time value to compare. We use NCronTab Normalization format. The values given in this value are subtracted from the current time.
+#In reading order, numbers have values in seconds, minutes, hours, weeks, months, years. That means 0 0 0 0 0 is equal to now.
+# few examples: 
+# - 0 0 1 0 0 0 = now minus one hour
+# - 0 0 0 0 2 0 = now minus 2 month
+date: "YYYY-MM-DDThh:mm:ss.SSSZ"
+# the format of the date you want to parse (the one used in the resource object field).
+# few examples:
+# "2023-10-23" = "YYYY-MM-DD"
+# "23-10 / 12:27" = "DD-MM / HH:mm"
 ```
 
 <br/>
@@ -460,38 +704,6 @@ With nested operations :
 	
 	# Add as much rules as you want by starting a new '-name' #
 	
-```
-
-<br/>
-
-<div id="date-and-time-criteria"></div>
-
-## **Date & time criteria**
-
-You can also set up date and time comparison for your rules, we have built a set of specific conditions and fields for this feature :
-
-```yaml
-property: string
-condition: (
-  DATE_EQUAL |
-  DATE_SUP |
-  DATE_INF |
-  DATE_SUP_OR_EQUAL |
-  DATE_INF_OR_EQUAL |
-  INTERVAL |
-  DATE_INTERVAL
-)
-value: 0 0 0 0 0 0
-# time value to compare. We use NCronTab Normalization format. The values given in this value are subtracted from the current time.
-#In reading order, numbers have values in seconds, minutes, hours, weeks, months, years. That means 0 0 0 0 0 is equal to now.
-# few examples: 
-# - 0 0 1 0 0 0 = now minus one hour
-# - 0 0 0 0 2 0 = now minus 2 month
-date: "YYYY-MM-DDThh:mm:ss.SSSZ"
-# the format of the date you want to parse (the one used in the resource object field).
-# few examples:
-# "2023-10-23" = "YYYY-MM-DD"
-# "23-10 / 12:27" = "DD-MM / HH:mm"
 ```
 
 <br/>
@@ -605,7 +817,7 @@ Whether you want to check specific elements of your infrastructure or take a mor
 
 Strengthen the security of your AWS resources with our state-of-the-art data scan addon, guaranteeing complete protection of your sensitive data, enhanced compliance and unrivalled peace of mind in the cloud.
 
-- [AWS](./AWS.md)
+- [AWS](./provider/AWS.md)
 
 <div id="azure"></div>
 
@@ -613,7 +825,7 @@ Strengthen the security of your AWS resources with our state-of-the-art data sca
 
 Optimize your Azure experience with our new data scan add-on, simplifying the management and analysis of your critical information, for more informed decisions than ever.
 
-- [Azure](./Azure.md)
+- [Azure](./provider/Azure.md)
 
 <div id="gcp"></div>
 
@@ -621,7 +833,7 @@ Optimize your Azure experience with our new data scan add-on, simplifying the ma
 
 Optimize the security of your assets on Google Cloud with our industry-leading data scan addon, offering advanced protection, complete visibility and foolproof compliance to ensure your data remains secure in the cloud.
 
-- [GCP](./GCP.md)
+- [GCP](./provider/GCP.md)
 
 <div id="github"></div>
 
@@ -629,7 +841,7 @@ Optimize the security of your assets on Google Cloud with our industry-leading d
 
 Optimize your GitHub workflow easily with our brand new data collection addon, enabling you to analyze and make the most of your development data, for projects that perform better than ever.
 
-- [Github](./Github.md)
+- [Github](./provider/Github.md)
 
 <div id="google-drive"></div>
 
@@ -637,7 +849,7 @@ Optimize your GitHub workflow easily with our brand new data collection addon, e
 
 Reinvent the way you work with Google Drive with our revolutionary data scan add-on, simplifying the collection, organization and analysis of your files and information for unprecedented productivity in the cloud.
 
-- [Google Drive](./GoogleDrive.md)
+- [Google Drive](./provider/GoogleDrive.md)
 
 <div id="google-workspace"></div>
 
@@ -645,7 +857,7 @@ Reinvent the way you work with Google Drive with our revolutionary data scan add
 
 Increase the security and compliance of your Google workspace with our state-of-the-art data scan add-on, offering proactive protection, comprehensive monitoring and seamless data management for confident communications and collaboration.
 
-- [Google Workspace](./GoogleWorkspace.md)
+- [Google Workspace](./provider/GoogleWorkspace.md)
 
 <div id="http"></div>
 
@@ -653,7 +865,7 @@ Increase the security and compliance of your Google workspace with our state-of-
 
 Ensure optimal service performance with our API endpoint data scan add-on, which gives you a real-time view of your systems' health, enabling you to maintain robust, uninterrupted online services.
 
-- [HTTP](./HTTP.md)
+- [HTTP](./provider/HTTP.md)
 
 <div id="kubernetes-addon"></div>
 
@@ -661,7 +873,7 @@ Ensure optimal service performance with our API endpoint data scan add-on, which
 
 Take the security of your Kubernetes environments to the next level with our data scan addon, guaranteeing proactive monitoring and unrivalled protection of your clusters, for total peace of mind in the container world.
 
-- [Kubernetes](./Kubernetes.md)
+- [Kubernetes](./provider/Kubernetes.md)
 
 <div id="o365"></div>
 
@@ -669,7 +881,7 @@ Take the security of your Kubernetes environments to the next level with our dat
 
 Ensure total confidentiality and seamless compliance within your Office 365 environment with our industry-leading data scan addon, giving you real-time monitoring, advanced protection and simplified management of sensitive information.
 
-- [O365](./O365.md)
+- [O365](./provider/O365.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 <div id="community-addons"></div>
@@ -712,12 +924,10 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ### **Adding functionalities**
 	
-  Each published addOn is free to set its own mandatory key values for its default.config configuration schema.
-  Our minimum values for any addOn are "rules". Keys such as "prefix", "name" and "description" are strongly recommended to maintain ease of use.
+Each published addOn is free to set its own mandatory key values for its default.config configuration schema.
+Our minimum values for any addOn are "rules". Keys such as "prefix", "name" and "description" are strongly recommended to maintain ease of use.
 
 We've set up a system to facilitate the development of new features. This system is based on the "addOn" system. To develop a new feature, you don't need to know the whole project. You can develop additional services to collect additional data, among which you can make rules.
-
-In the case of the github Action, it is necessary to add the name of your extensions in the list of the constant "addOnName" on line 15 of the file "[addOn.service.ts](../src/services/addOn.service.ts)"
 
 <br/>
 
@@ -725,7 +935,7 @@ In the case of the github Action, it is necessary to add the name of your extens
 
 ### **Gathering data**
 
-A file to collect data whose path will be "./Kexa/services/addOn". It is named as follows: [extension's name]Gathering.service.ts . The entry point for this file is a function named "collectData", which takes one arguments. The argument is a list containing all the configs for your addOn. The return format of this function is as shown in the following example. exemple :
+A file to collect data whose path will be "./Kexa/services/addOn". It is named as follows: [extension's name]Gathering.service.ts . The entry point for this file is a function named "collectData", which takes one arguments. The argument is a list containing all the configs for your addOn. This list corresponds to what you can find in the default.json file in the key that has the same name as your addOn. As additional information per item in the list, you have "ObjectNameNeed" which corresponds to the CategoryItem solicity in the rules set up. This helps you, to optimize your addOn and make faster, more targeted collections. The return format of this function is as shown in the following example. exemple :
 	
 ```json
 [
@@ -752,7 +962,7 @@ A file to collect data whose path will be "./Kexa/services/addOn". It is named a
   }
 ]
 ```
-	
+
 The data format is the following for several reasons. The first list corresponds to the different subscriptions or accounts in a sector. To illustrate, in the case of a cloud provider such as Azure, we might need different identifiers to scan all our accounts, and each account scan result is an item in the list. The dictionaries in the main list correspond to your dictionary that you find relevant to create to identify the different resources of your addOn, in the rules this corresponds to your "objectName". Finally, the lowest-level lists correspond to the list of items collected by your addOn.
 
 For project maintainability, we require addOn modules to contain a header to quickly identify certain information. It's also important to update this header according to the capabilities of your addOn. In fact, this header serves as a basis for checking the feasibility of certain rules. This header is a comment that must contain at least 2 pieces of information: the name of the module and the "categoryItems" you've included in your module. example for an "azureComplement" module: file name : azureComplementGathering.service.ts
@@ -768,8 +978,8 @@ For project maintainability, we require addOn modules to contain a header to qui
     *    - azFunction
 */
 
-export async function collectData(myGlobalConfig: any[]){
-  //the type of myGlobalConfig is any but you can make an interface if you want
+export async function collectData(myAddonConfig: any[]){
+  //the type of myAddonConfig is "any" but you can make an interface if you want
 
   //insert your stuff here
 }
@@ -785,9 +995,7 @@ export async function collectData(myGlobalConfig: any[]){
 
 The display data file has for name schema : [same extension's name]Display.service.ts, its path will be: "./Kexa/services/addOn/display". This file is used to display precise attributes of an object to quickly identify it in its environment. This return is done by returning a string, with the possibility of putting html in this sting. The function used as an entry point is named "propertyToSend". It takes 3 arguments. The first is a "Rules", and the relative path to the object definition is
 
-```ts
-import { Rules } from "../../../models/settingFile/rules.models";
-```
+![interface of a Rules](../Kexa/models/settingFile/rules.models.ts)
 
 The second is an "any", corresponding to an object you've collected previously. Finally, the last element is a boolean, which you'll set to false by default. It corresponds to your obligation not to put html in your string. Example display file for an "azureComplement" module: file name : azureComplementGathering.service.ts
 
@@ -801,6 +1009,33 @@ export function propertyToSend(rule: Rules, objectContent: any, isSms: boolean=f
         return `Id : `+ objectContent?.id + `https://portal.azure.com/#@/resource/` + objectContent?.id
     else
         return `Id : <a href="https://portal.azure.com/#@/resource/` + objectContent?.id + '">' + objectContent?.id + `</a>`
+}
+
+//can add other function here
+```
+
+<br/>
+
+<div id="save-results"></div>
+
+### **Save results**
+
+You can also add AddOns to save your data. These extensions are based on the same principle as Display AddOn. The Save AddOn file is named [extension name]Save.service.ts, and its path is "./Kexa/services/addOn/save". This file is used to store the scanned data in a specific location. No return is attempted. The function used as an entry point is called "save". It takes 2 arguments. The first is a "save", corresponding to :
+
+![interface of a SaveConfig](../Kexa/models/export/config.models.ts)
+
+But you can make your own by extends this interface.
+The second is a table of ResultScan:
+
+![interface of a SaveConfig](../Kexa/models/resultScan.models.ts)
+
+example of fresh template of save addOn:
+
+```ts
+import { ResultScan } from "../../../models/resultScan.models";
+
+export async function save(save: SaveConfig, result: ResultScan[][]): Promise<void>{
+  //insert your stuff here
 }
 
 //can add other function here

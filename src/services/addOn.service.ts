@@ -55,7 +55,27 @@ async function loadAddOn(nameAddOn: string, addOnNeed: any): Promise<{ key: stri
     return null;
 }
 
-export function loadAddOnsDisplay() : { [key: string]: Function; }{
+const addOnNameCustomUtility:{ [key: string]: string[]; } = {
+    "display": [
+        "aws",
+        "azure",
+        "gcp",
+        "kubernetes",
+        "github",
+        "googleDrive",
+        "googleWorkspace",
+        "http",
+        "o365"
+    ],
+    "save": [
+        "amazonS3",
+        "azureBlobStorage",
+        "mongoDB",
+        "prometheus",
+    ],
+}
+
+export function loadAddOnsCustomUtility(usage: string, funcName:string, onlyFiles: string[]|null = null) : { [key: string]: Function; }{
     const core = require('@actions/core');
     core.addPath('./config');
     core.addPath('./src');
@@ -65,8 +85,10 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
         setEnvVar("RULESDIRECTORY", customRules);
     }
     let dictFunc: { [key: string]: Function; } = {};
-    addOnName.forEach((file: string) => {
-        let result = loadAddOnDisplay(file);
+    const files = addOnNameCustomUtility[usage]
+    files.map((file: string) => {
+        if(onlyFiles && !onlyFiles.some((onlyFile:string) => {return file.includes(onlyFile)})) return;
+        let result = loadAddOnCustomUtility(file.replace(".ts", ".js"), usage, funcName);
         if(result?.data){
             dictFunc[result.key] = result.data;
         }
@@ -74,13 +96,14 @@ export function loadAddOnsDisplay() : { [key: string]: Function; }{
     return dictFunc;
 }
 
-function loadAddOnDisplay(nameAddOn: string): { key: string; data: Function; } | null {
+function loadAddOnCustomUtility(file: string, usage: string, funcName:string): { key: string; data: Function; } | null {
     try{
-        const moduleExports = require(`./addOn/display/${nameAddOn}Display.service.js`);
-        const displayFn = moduleExports.propertyToSend;
-        return { key: nameAddOn, data:displayFn};
-    }catch(e:any){
-        logger.warning(e);
+        let formatUsage = usage.slice(0,1).toUpperCase() + usage.slice(1);
+        const moduleExports = require(`./addOn/${usage}/${file}${formatUsage}.service.js`);
+        const funcCall = moduleExports[funcName];
+        return { key: file, data:funcCall};
+    }catch(e){
+        logger.warn("Error loading addOn " + file + " : " + e);
     }
     return null;
 }

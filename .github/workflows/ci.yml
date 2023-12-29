@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}   # checkout the correct branch name
           fetch-depth: 0
-      
+
       - name: Git Version
         id: versioning
         uses: codacy/git-version@2.8.0
@@ -29,11 +29,11 @@ jobs:
           log-paths: Kexa/
           minor-identifier: 'feat:'
           major-identifier: 'break:'
-      
+
       - name: Set up version in file
         run: echo "${{ steps.versioning.outputs.version }}" > VERSION
-
-      - name: update version in code
+      
+      - name: Run extract Addon
         run: npm run update
 
       - name: Get changed files
@@ -43,6 +43,7 @@ jobs:
       - name: List all changed files
         run: |
           echo "## ${{ steps.versioning.outputs.version }}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
           echo "### Files added: ${{steps.changed-files.outputs.added_files_count}}" >> CHANGELOG.md
           echo "" >> CHANGELOG.md
           for file in ${{ steps.changed-files.outputs.added_files }}; do 
@@ -68,24 +69,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+      - name: Login to Docker Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY_NAME}}
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+
+      - name: Push on Docker Registry
+        uses: docker/build-push-action@v4
+        with:
+          context: ./
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_REGISTRY_NAME}}/innovtech/kexa:${{ steps.versioning.outputs.version }}
+            ${{ secrets.DOCKER_REGISTRY_NAME}}/innovtech/kexa:latest
+      
       - name: Release
         uses: ncipollo/release-action@v1
         with:
           tag: "${{ steps.versioning.outputs.version }}"
-
-      #- name: Extraction du YAML secret
-      #  run: echo "${{ secrets.YAML_CONFIG_KUBE }}" > config/kubernetes.yaml
-
-      #- name: Kexa
-      #  id: kexa
-      #  uses: ./
-      #  with:
-      #    DEBUG_MODE: DEBUG
-      #    EMAILPWD: ${{ secrets.PWD_EMAIL }} 
-      #    EMAILFROM: 
-      #    #EMAILPORT: 587
-      #    #EMAILUSER: "apikey"
-      #    #EMAILHOST: "smtp.sendgrid.net"
-      #    DEMO-GITHUBTOKEN: ${{ secrets.TOKEN_KEXA_GITHUB }}
-      #    DEMO-KUBECONFIG: "./config/kubernetes.yaml"
-      #    TEST: "tout est ok"
