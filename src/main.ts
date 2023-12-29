@@ -6,7 +6,7 @@ import { loadAddOns } from "./services/addOn.service";
 import { deleteFile, setRealPath } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
 import { displayVersionAndLatest } from "./helpers/latestVersion";
-import { saveResult } from "../src/services/save.service";
+import { saveResult } from "./services/save.service";
 
 const core = require('@actions/core');
 require('dotenv').config();
