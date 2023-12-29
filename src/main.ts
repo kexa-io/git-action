@@ -6,10 +6,8 @@ import { loadAddOns } from "./services/addOn.service";
 import { deleteFile, setRealPath } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
 import { displayVersionAndLatest } from "./helpers/latestVersion";
-import { saveResult } from "../Kexa/services/save.service";
+import { saveResult } from "../src/services/save.service";
 
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
 const core = require('@actions/core');
 require('dotenv').config();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
