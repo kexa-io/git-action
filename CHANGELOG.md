@@ -35963,3 +35963,14 @@ src/services/analyse.service.ts was changed
 ### Files changed: 0
 
 
+## 1.1.7-SNAPSHOT.14.d3ea7bd55
+
+### Files added: 1
+
+config/headers.json was added
+
+### Files changed: 1
+
+config/headers.json was changed
+
+
