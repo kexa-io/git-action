@@ -68,22 +68,6 @@ jobs:
           message: 'add info extract from addon'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - name: Login to Docker Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ secrets.DOCKER_REGISTRY_NAME}}
-          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-
-      - name: Push on Docker Registry
-        uses: docker/build-push-action@v4
-        with:
-          context: ./
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_REGISTRY_NAME}}/innovtech/kexa:${{ steps.versioning.outputs.version }}
-            ${{ secrets.DOCKER_REGISTRY_NAME}}/innovtech/kexa:latest
       
       - name: Release
         uses: ncipollo/release-action@v1
