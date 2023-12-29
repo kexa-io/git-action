@@ -6,6 +6,7 @@ import { loadAddOns } from "./services/addOn.service";
 import { deleteFile, setRealPath } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
 import { displayVersionAndLatest } from "./helpers/latestVersion";
+import { saveResult } from "../Kexa/services/save.service";
 
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
@@ -27,7 +28,7 @@ export async function main() {
     logger.info("___________________________________________________________________________________________________"); 
     logger.info("___________________________________-= running Kexa scan =-_________________________________________");
     logger.info("___________________________________________________________________________________________________"); 
-    //await displayVersionAndLatest(logger);
+    await displayVersionAndLatest(logger);
     let rulesDirectory = (await getEnvVar("RULESDIRECTORY"))??"./rules";
     if(rulesDirectory == ""){
         rulesDirectory = "./rules";
@@ -46,6 +47,7 @@ export async function main() {
                     stop = true;
                 }
             }
+            saveResult(result);
         });
         if(stop) core.setFailed(`Kexa found at least one error or critical error, please check the logs for more details.`);
     }else {
