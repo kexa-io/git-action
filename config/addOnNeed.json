@@ -1,0 +1,80 @@
+{
+    "addOn": [
+        "o365",
+        "googleWorkspace",
+        "github",
+        "http",
+        "kubernetes",
+        "googleDrive",
+        "azure"
+    ],
+    "objectNameNeed": {
+        "BenchmarkOffice365": {
+            "o365": [
+                "directory_role",
+                "group",
+                "auth_methods",
+                "policy",
+                "conditional_access",
+                "sharepoint_settings"
+            ]
+        },
+        "BenchmarkWorkspace": {
+            "googleWorkspace": [
+                "user"
+            ]
+        },
+        "Deployement": {
+            "github": [
+                "repositories",
+                "branches"
+            ],
+            "http": [
+                "request"
+            ],
+            "kubernetes": [
+                "namespaces",
+                "pods"
+            ]
+        },
+        "HTTPRules": {
+            "http": [
+                "request"
+            ]
+        },
+        "Kubernete": {
+            "kubernetes": [
+                "namespaces",
+                "pods"
+            ]
+        },
+        "PostDeployement": {
+            "http": [
+                "request"
+            ]
+        },
+        "PreDeployement": {
+            "github": [
+                "repositories",
+                "branches"
+            ],
+            "kubernetes": [
+                "namespaces"
+            ]
+        },
+        "driveRules": {
+            "googleDrive": [
+                "files"
+            ]
+        },
+        "testingAutomate": {
+            "azure": [
+                "NetworkManagementClient.networkSecurityGroups",
+                "ComputeManagementClient.virtualMachines",
+                "ComputeManagementClient.disks",
+                "ContainerServiceClient.managedClusters",
+                "NetworkManagementClient.virtualNetworks"
+            ]
+        }
+    }
+}
