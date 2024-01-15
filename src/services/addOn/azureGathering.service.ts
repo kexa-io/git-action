@@ -1933,7 +1933,7 @@ function addingResourceGroups(item: any): any {
 /*  	CUSTOM GATHER RESOURCES         */
 /* ************************************ */
 
-import {stringKeys} from "../../models/azure/resource.models";
+import { stringKeys } from "../../models/azure/resource.models";
 
 interface FunctionMap {
     [key: string]: (name: string, credential: any, subscriptionId: any) => void;
@@ -2022,7 +2022,7 @@ async function collectKexaRestructuredData(credential: any, subscriptionId: any,
 		if(!currentConfig.ObjectNameNeed?.includes(element)) return {};
 		return { [element] : await customGatherFunctions[element](element, credential, subscriptionId)};
 	}));
-	return result.reduce((final, objet) => {
+	return result.reduce((final: any, objet: any) => {
 		return { ...final, ...objet };
 	}, {});
 }
