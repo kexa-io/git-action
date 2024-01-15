@@ -222,11 +222,6 @@ async function getOctokit(): Promise<Octokit>{
 }
 
 export async function collectRepo(){
-    if(
-        !currentConfig?.ObjectNameNeed?.includes("repositories") 
-        && !currentConfig?.ObjectNameNeed?.includes("branches")
-        && !currentConfig?.ObjectNameNeed?.includes("issues")
-    ) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -249,7 +244,6 @@ export async function collectRepo(){
 }
 
 export async function collectBranch(repo: string, owner: string): Promise<any[]>{
-    if(!currentConfig?.ObjectNameNeed?.includes("branches")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -278,7 +272,6 @@ export async function collectBranch(repo: string, owner: string): Promise<any[]>
 }
 
 export async function collectIssues(repo: string, owner: string): Promise<any[]>{
-    if(!currentConfig?.ObjectNameNeed?.includes("issues")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -307,15 +300,6 @@ export async function collectIssues(repo: string, owner: string): Promise<any[]>
 }
 
 export async function collectOrganizations(): Promise<any>{
-    if(
-        !currentConfig?.ObjectNameNeed?.includes("organizations")
-        && !currentConfig?.ObjectNameNeed?.includes("members")
-        && !currentConfig?.ObjectNameNeed?.includes("teams")
-        && !currentConfig?.ObjectNameNeed?.includes("teamMembers")
-        && !currentConfig?.ObjectNameNeed?.includes("teamRepositories")
-        && !currentConfig?.ObjectNameNeed?.includes("teamProjects")
-        && !currentConfig?.ObjectNameNeed?.includes("outsideCollaborators")
-    ) return [];
     try{
         return (await (await getOctokit()).request('GET /user/orgs')).data;
     }catch(e){
@@ -325,7 +309,6 @@ export async function collectOrganizations(): Promise<any>{
 }
 
 export async function collectMembers(org: string): Promise<any>{
-    if(!currentConfig?.ObjectNameNeed?.includes("members")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -362,7 +345,6 @@ export async function collectMembers(org: string): Promise<any>{
 }
 
 export async function collectOutsideCollaborators(org: string): Promise<any>{
-    if(!currentConfig?.ObjectNameNeed?.includes("outsideCollaborators")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -390,7 +372,6 @@ export async function collectOutsideCollaborators(org: string): Promise<any>{
 }
 
 export async function collectTeams(org: string): Promise<any>{
-    if(!currentConfig?.ObjectNameNeed?.includes("teams")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -418,7 +399,6 @@ export async function collectTeams(org: string): Promise<any>{
 }
 
 export async function collectTeamMembers(org:string, team: string): Promise<any>{
-    if(!currentConfig?.ObjectNameNeed?.includes("teamMembers")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -447,7 +427,6 @@ export async function collectTeamMembers(org:string, team: string): Promise<any>
 }
 
 export async function collectTeamRepos(org:string, team: string): Promise<any>{
-    if(!currentConfig?.ObjectNameNeed?.includes("teamRepositories")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();
@@ -476,7 +455,6 @@ export async function collectTeamRepos(org:string, team: string): Promise<any>{
 }
 
 export async function collectTeamProjects(org:string, team: string): Promise<any>{
-    if(!currentConfig?.ObjectNameNeed?.includes("teamProjects")) return [];
     let page = 1;
     try{
         let octokit = await getOctokit();

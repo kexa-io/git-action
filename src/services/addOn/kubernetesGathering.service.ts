@@ -301,7 +301,6 @@ async function getAllElementsWithNameSpace(resources: [any, string], namespace:s
 }
 
 async function collectHelm(namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("helm")) return [];
     try{
         let helmData = await helm.list({ namespace: namespace });
         return helmData;
@@ -312,7 +311,6 @@ async function collectHelm(namespace: string): Promise<any> {
 }
 
 async function collectPods(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("pods")) return [];
     try{
         const pods = await k8sApiCore.listNamespacedPod(namespace);
         return pods?.body?.items;
@@ -323,7 +321,6 @@ async function collectPods(k8sApiCore: any, namespace: string): Promise<any> {
 }
 
 async function collectServices(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("services")) return [];
     try{
         const services = await k8sApiCore.listNamespacedService(namespace);
         return services?.body?.items;
@@ -334,7 +331,6 @@ async function collectServices(k8sApiCore: any, namespace: string): Promise<any>
 }
 
 async function collectConfigmap(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("configmap")) return [];
     try{
         const configmap = await k8sApiCore.listNamespacedConfigMap(namespace);
         return configmap?.body?.items;
@@ -345,7 +341,6 @@ async function collectConfigmap(k8sApiCore: any, namespace: string): Promise<any
 }
 
 async function collectDeployment(k8sAppsV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("deployment")) return [];
     try{
         const deployment = await k8sAppsV1Api.listNamespacedDeployment(namespace);
         return deployment?.body?.items;
@@ -356,7 +351,6 @@ async function collectDeployment(k8sAppsV1Api: any, namespace: string): Promise<
 }
 
 async function collectReplicaset(k8sAppsV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("replicaset")) return [];
     try {
         const replicasets = await k8sAppsV1Api.listNamespacedReplicaSet(namespace);
         return replicasets?.body?.items;
@@ -367,7 +361,6 @@ async function collectReplicaset(k8sAppsV1Api: any, namespace: string): Promise<
 }
 
 async function collectStatefulset(k8sAppsV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("statefulset")) return [];
     try {
         const statefulsets = await k8sAppsV1Api.listNamespacedStatefulSet(namespace);
         return statefulsets?.body?.items;
@@ -378,7 +371,6 @@ async function collectStatefulset(k8sAppsV1Api: any, namespace: string): Promise
 }
 
 async function collectDaemonset(k8sAppsV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("daemonset")) return [];
     try {
         const daemonsets = await k8sAppsV1Api.listNamespacedDaemonSet(namespace);
         return daemonsets?.body?.items;
@@ -390,7 +382,6 @@ async function collectDaemonset(k8sAppsV1Api: any, namespace: string): Promise<a
 
 //TODO:find a way to get jobs
 async function collectJob(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("job")) return [];
     try {
         const jobs = await k8sApiCore.listNamespacedJob(namespace);
         return jobs?.body?.items;
@@ -402,7 +393,6 @@ async function collectJob(k8sApiCore: any, namespace: string): Promise<any> {
 
 //TODO:find a way to get cronjobs
 async function collectCronjob(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("cronjob")) return [];
     try {
         const cronjobs = await k8sApiCore.listNamespacedCronJob(namespace);
         return cronjobs?.body?.items;
@@ -413,7 +403,6 @@ async function collectCronjob(k8sApiCore: any, namespace: string): Promise<any> 
 }
 
 async function collectIngress(k8sNetworkingV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("ingress")) return [];
     try {
         const ingress = await k8sNetworkingV1Api.listNamespacedIngress(namespace);
         return ingress?.body?.items;
@@ -424,7 +413,6 @@ async function collectIngress(k8sNetworkingV1Api: any, namespace: string): Promi
 }
 
 async function collectPersistentvolume(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("persistentvolume")) return [];
     try {
         const persistentVolumes = await k8sApiCore.listPersistentVolume(namespace);
         return persistentVolumes?.body?.items;
@@ -435,7 +423,6 @@ async function collectPersistentvolume(k8sApiCore: any, namespace: string): Prom
 }
 
 async function collectPersistentvolumeclaim(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("persistentvolumeclaim")) return [];
     try {
         const persistentVolumeClaims = await k8sApiCore.listNamespacedPersistentVolumeClaim(namespace);
         return persistentVolumeClaims?.body?.items;
@@ -446,7 +433,6 @@ async function collectPersistentvolumeclaim(k8sApiCore: any, namespace: string):
 }
 
 async function collectSecret(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("secret")) return [];
     try {
         const secrets = await k8sApiCore.listNamespacedSecret(namespace);
         return secrets?.body?.items;
@@ -457,7 +443,6 @@ async function collectSecret(k8sApiCore: any, namespace: string): Promise<any> {
 }
 
 async function collectServiceaccount(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("serviceaccount")) return [];
     try {
         const serviceAccounts = await k8sApiCore.listNamespacedServiceAccount(namespace);
         return serviceAccounts?.body?.items;
@@ -468,7 +453,6 @@ async function collectServiceaccount(k8sApiCore: any, namespace: string): Promis
 }
 
 async function collectRole(k8sRbacAuthorizationV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("role")) return [];
     try {
         const roles = await k8sRbacAuthorizationV1Api.listNamespacedRole(namespace);
         return roles?.body?.items;
@@ -479,7 +463,6 @@ async function collectRole(k8sRbacAuthorizationV1Api: any, namespace: string): P
 }
 
 async function collectRolebinding(k8sRbacAuthorizationV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("rolebinding")) return [];
     try {
         const roleBindings = await k8sRbacAuthorizationV1Api.listNamespacedRoleBinding(namespace);
         return roleBindings?.body?.items;
@@ -490,7 +473,6 @@ async function collectRolebinding(k8sRbacAuthorizationV1Api: any, namespace: str
 }
 
 async function collectClusterrole(k8sRbacAuthorizationV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("clusterrole")) return [];
     try {
         const clusterRoles = await k8sRbacAuthorizationV1Api.listClusterRole();
         return clusterRoles?.body?.items;
@@ -501,7 +483,6 @@ async function collectClusterrole(k8sRbacAuthorizationV1Api: any, namespace: str
 }
 
 async function collectClusterrolebinding(k8sRbacAuthorizationV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("clusterrolebinding")) return [];
     try {
         const clusterRoleBindings = await k8sRbacAuthorizationV1Api.listClusterRoleBinding();
         return clusterRoleBindings?.body?.items;
@@ -512,7 +493,6 @@ async function collectClusterrolebinding(k8sRbacAuthorizationV1Api: any, namespa
 }
 
 async function collectStorageclass(k8sStorageV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("storageclass")) return [];
     try {
         const storageClasses = await k8sStorageV1Api.listStorageClass();
         return storageClasses?.body?.items;
@@ -523,7 +503,6 @@ async function collectStorageclass(k8sStorageV1Api: any, namespace: string): Pro
 }
 
 async function collectNetworkpolicy(k8sNetworkingV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("networkpolicy")) return [];
     try {
         const networkPolicies = await k8sNetworkingV1Api.listNamespacedNetworkPolicy(namespace);
         return networkPolicies?.body?.items;
@@ -535,7 +514,6 @@ async function collectNetworkpolicy(k8sNetworkingV1Api: any, namespace: string):
 
 //todo: find a way to get podsecuritypolicy
 async function collectPodsecuritypolicy(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("podsecuritypolicy")) return [];
     try {
         const podSecurityPolicies = await k8sApiCore.listPodSecurityPolicy();
         return podSecurityPolicies?.body?.items;
@@ -546,7 +524,6 @@ async function collectPodsecuritypolicy(k8sApiCore: any, namespace: string): Pro
 }
 
 async function collectLimitrange(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("limitrange")) return [];
     try {
         const limitRanges = await k8sApiCore.listNamespacedLimitRange(namespace);
         return limitRanges?.body?.items;
@@ -557,7 +534,6 @@ async function collectLimitrange(k8sApiCore: any, namespace: string): Promise<an
 }
 
 async function collectResourcequota(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("resourcequota")) return [];
     try {
         const resourceQuotas = await k8sApiCore.listNamespacedResourceQuota(namespace);
         return resourceQuotas?.body?.items;
@@ -569,7 +545,6 @@ async function collectResourcequota(k8sApiCore: any, namespace: string): Promise
 
 //todo: find a way to get horizontalpodautoscaler
 async function collectHorizontalpodautoscaler(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("horizontalpodautoscaler")) return [];
     try {
         const horizontalPodAutoscalers = await k8sApiCore.listNamespacedHorizontalPodAutoscaler(namespace);
         return horizontalPodAutoscalers?.body?.items;
@@ -581,7 +556,6 @@ async function collectHorizontalpodautoscaler(k8sApiCore: any, namespace: string
 
 //todo: find a way to get verticalpodautoscaler
 async function collectVerticalpodautoscaler(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("verticalpodautoscaler")) return [];
     try {
         const verticalPodAutoscalers = await k8sApiCore.listNamespacedVerticalPodAutoscaler(namespace);
         return verticalPodAutoscalers?.body?.items;
@@ -593,7 +567,6 @@ async function collectVerticalpodautoscaler(k8sApiCore: any, namespace: string):
 
 //todo: find a way to get priorityclass
 async function collectPriorityclass(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("priorityclass")) return [];
     try {
         const priorityClasses = await k8sApiCore.listPriorityClass();
         return priorityClasses?.body?.items;
@@ -605,7 +578,6 @@ async function collectPriorityclass(k8sApiCore: any, namespace: string): Promise
 
 //todo: find a way to get customresourcedefinition
 async function collectCustomresourcedefinition(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("customresourcedefinition")) return [];
     try {
         const customResourceDefinitions = await k8sApiCore.listCustomResourceDefinition();
         return customResourceDefinitions?.body?.items;
@@ -617,7 +589,6 @@ async function collectCustomresourcedefinition(k8sApiCore: any, namespace: strin
 
 //todo: find a way to get poddisruptionbudget
 async function collectPoddisruptionbudget(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("poddisruptionbudget")) return [];
     try {
         const podDisruptionBudgets = await k8sApiCore.listNamespacedPodDisruptionBudget(namespace);
         return podDisruptionBudgets?.body?.items;
@@ -628,7 +599,6 @@ async function collectPoddisruptionbudget(k8sApiCore: any, namespace: string): P
 }
 
 async function collectEvent(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("event")) return [];
     try {
         const events = await k8sApiCore.listNamespacedEvent(namespace);
         return events?.body?.items;
@@ -639,7 +609,6 @@ async function collectEvent(k8sApiCore: any, namespace: string): Promise<any> {
 }
 
 async function collectEndpoint(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("endpoint")) return [];
     try {
         const endpoints = await k8sApiCore.listNamespacedEndpoint(namespace);
         return endpoints?.body?.items;
@@ -650,7 +619,6 @@ async function collectEndpoint(k8sApiCore: any, namespace: string): Promise<any>
 }
 
 async function collectNode(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("node")) return [];
     try {
         const nodes = await k8sApiCore.listNode();
         return nodes?.body?.items;
@@ -661,7 +629,6 @@ async function collectNode(k8sApiCore: any, namespace: string): Promise<any> {
 }
 
 async function collectPodtemplate(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("podtemplate")) return [];
     try {
         const podTemplates = await k8sApiCore.listNamespacedPodTemplate(namespace);
         return podTemplates?.body?.items;
@@ -672,7 +639,6 @@ async function collectPodtemplate(k8sApiCore: any, namespace: string): Promise<a
 }
 
 async function collectMutatingwebhookconfiguration(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("mutatingwebhookconfiguration")) return [];
     try {
         const mutatingWebhookConfigurations = await k8sApiCore.listMutatingWebhookConfiguration();
         return mutatingWebhookConfigurations?.body?.items;
@@ -684,7 +650,6 @@ async function collectMutatingwebhookconfiguration(k8sApiCore: any, namespace: s
 
 //todo: find a way to get validatingwebhookconfiguration
 async function collectValidatingwebhookconfiguration(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("validatingwebhookconfiguration")) return [];
     try {
         const validatingWebhookConfigurations = await k8sApiCore.listValidatingWebhookConfiguration();
         return validatingWebhookConfigurations?.body?.items;
@@ -695,7 +660,6 @@ async function collectValidatingwebhookconfiguration(k8sApiCore: any, namespace:
 }
 
 async function collectApiservice(k8sApiregistrationV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("apiservice")) return [];
     try {
         const apiServices = await k8sApiregistrationV1Api.listAPIService();
         return apiServices?.body?.items;
@@ -707,7 +671,6 @@ async function collectApiservice(k8sApiregistrationV1Api: any, namespace: string
 
 //todo: find a way to get controllerrevision
 async function collectControllerrevision(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("controllerrevision")) return [];
     try {
         const controllerRevisions = await k8sApiCore.listNamespacedControllerRevision(namespace);
         return controllerRevisions?.body?.items;
@@ -718,7 +681,6 @@ async function collectControllerrevision(k8sApiCore: any, namespace: string): Pr
 }
 
 async function collectLease(k8CoordinationV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("lease")) return [];
     try {
         const leases = await k8CoordinationV1Api.listNamespacedLease(namespace);
         return leases?.body?.items;
@@ -730,7 +692,6 @@ async function collectLease(k8CoordinationV1Api: any, namespace: string): Promis
 
 //todo: find a way to get certificate
 async function collectCertificate(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("certificate")) return [];
     try {
         const certificates = await k8sApiCore.listNamespacedCertificate(namespace);
         return certificates?.body?.items;
@@ -741,7 +702,6 @@ async function collectCertificate(k8sApiCore: any, namespace: string): Promise<a
 }
 
 async function collectCertificateSigningRequest(k8scertificatesV1Api: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("certificateSigningRequest")) return [];
     try {
         const certificateSigningRequests = await k8scertificatesV1Api.listCertificateSigningRequest();
         return certificateSigningRequests?.body?.items;
@@ -753,7 +713,6 @@ async function collectCertificateSigningRequest(k8scertificatesV1Api: any, names
 
 //todo: find a way to get componentstatus
 async function collectComponentstatus(k8sApiCore: any, namespace: string): Promise<any> {
-    if(!currentConfig?.ObjectNameNeed?.includes("componentstatus")) return [];
     try {
         const componentStatuses = await k8sApiCore.listComponentStatus();
         return componentStatuses?.body?.items;

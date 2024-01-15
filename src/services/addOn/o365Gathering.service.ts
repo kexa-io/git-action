@@ -172,7 +172,6 @@ async function getToken(tenantId: string, clientId: string, clientSecret: string
     return accessToken ?? null;
 }
 async function  listUsers(endpoint: string, accessToken: string, headers: Headers): Promise<Array<any> | null> {
-    if(!currentConfig?.ObjectNameNeed?.includes("user")) return null;
     const axios = require("axios");
     let jsonData = [];
 
@@ -223,7 +222,6 @@ async function  listUsers(endpoint: string, accessToken: string, headers: Header
 }
 
 async function  listSubscribedSkus(endpoint: string, accessToken: string, headers: Headers): Promise<Array<any> | null> {
-    if(!currentConfig?.ObjectNameNeed?.includes("sku")) return null;
     let jsonData = [];
 
     try {
@@ -262,7 +260,6 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
 }
 
 async function genericListing(endpoint: string, accessToken: string, queryEndpoint: string, operationName: string): Promise<Array<any> | null> {
-    //if(!currentConfig?.ObjectNameNeed?.includes(operationName.toLowerCase().replace(' ', '_'))) return null;
     let jsonData = [];
 
     try {
@@ -302,7 +299,6 @@ async function listSecureScore(endpoint: string, accessToken: string, headers: H
 }
 
 async function listAuthMethods(endpoint: string, accessToken: string, userList: any): Promise<Array<any> | null>  {
-    if(!currentConfig?.ObjectNameNeed?.includes("auth_methods")) return null;
     let jsonData = [];
 
     for (const element of userList) {
@@ -379,7 +375,6 @@ async function listIncidents(endpoint: string, accessToken: string, headers: Hea
 }
 
 async function listAppAccessPolicy(endpoint: string, accessToken: string, headers: Headers, userList: any): Promise<Array<any> | null> {
-    if(!currentConfig?.ObjectNameNeed?.includes("app_access_policy")) return null;
     const axios = require("axios");
     let jsonData: any | [];
     for (let i = 0; i < userList.length; i++) {
