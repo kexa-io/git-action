@@ -1,7 +1,7 @@
 {
     "name": "Kexa-Github-Action",
     "description": "A GitHub Action for Kexa",
-    "version": "1.1.18-SNAPSHOT.1.9163cd8d7",
+    "version": "1.1.18-SNAPSHOT.4.dfa175f93",
     "author": "Esteban MATHIA",
     "private": true,
     "homepage": "https://github.com/4urcloud/Kexa_githubAction",
