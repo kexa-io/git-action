@@ -36042,3 +36042,10 @@ src/services/addOn/azureGathering.service.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 1.1.13-SNAPSHOT.2.6cf927ecf
+
+### Files added: 0
+
+### Files changed: 0
+
+
