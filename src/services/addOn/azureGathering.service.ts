@@ -1794,14 +1794,12 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|n
                 throw new Error("- Please pass "+ prefix + "SUBSCRIPTIONID in your config file");
             } else {
                 logger.info("- loading client microsoft azure done-");
-                
-				const dataComplementary = await collectKexaRestructuredData(credential, subscriptionId, config);
 
 				const [ autoFlatResources, dataComplementaryFlat ] = await Promise.all([
 					collectAuto(credential, subscriptionId, config),
 					collectKexaRestructuredData(credential, subscriptionId, config)
 				]);
-				let finalResources = {...autoFlatResources, ...dataComplementary};
+				let finalResources = {...autoFlatResources, ...dataComplementaryFlat};
                 resources.push(finalResources);
             }
         } catch(e) {
