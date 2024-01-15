@@ -36021,3 +36021,24 @@ src/models/azure/resource.models.ts was changed
 src/services/addOn/azureGathering.service.ts was changed
 
 
+## 1.1.12-SNAPSHOT.6.a19b5ec4a
+
+### Files added: 0
+
+### Files changed: 7
+
+lib/main.js was changed
+
+lib/models/azure/resource.models.js was changed
+
+lib/services/addOn/azureGathering.service.js was changed
+
+lib/services/updateCapability.service.js was changed
+
+src/models/azure/resource.models.ts was changed
+
+src/services/addOn/azureGathering.service.ts was changed
+
+src/services/updateCapability.service.ts was changed
+
+
