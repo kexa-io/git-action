@@ -36097,3 +36097,26 @@ src/services/addOn/kubernetesGathering.service.ts was changed
 src/services/addOn/o365Gathering.service.ts was changed
 
 
+## 1.1.15-SNAPSHOT.6.3f53951cd
+
+### Files added: 0
+
+### Files changed: 8
+
+lib/main.js was changed
+
+lib/services/addOn.service.js was changed
+
+lib/services/addOn/azureGathering.service.js was changed
+
+lib/services/analyse.service.js was changed
+
+src/main.ts was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/azureGathering.service.ts was changed
+
+src/services/analyse.service.ts was changed
+
+
