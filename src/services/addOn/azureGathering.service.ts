@@ -1699,6 +1699,13 @@
 	*	- DashboardManagementClient.privateEndpointConnections
 	*	- DashboardManagementClient.privateLinkResources
 	*	- DashboardManagementClient.managedPrivateEndpoints
+	*	- KexaAzure.vm
+	*	- KexaAzure.mlWorkspaces
+	*	- KexaAzure.mlJobs
+	*	- KexaAzure.mlComputes
+	*	- KexaAzure.mlSchedules
+	*	- KexaAzure.storage
+	*	- KexaAzure.blob
 */
 
 
@@ -1754,14 +1761,13 @@ import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service"
 import { AzureConfig } from "../../models/azure/config.models";
 import axios from "axios";
 
-import { getNewLogger } from "../logger.service";
+import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("AzureLogger");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// LISTING CLOUD RESOURCES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|null>{
-
     let resources = new Array<Object>();
     for(let config of azureConfig??[]){
         logger.debug("config: ");
@@ -1782,57 +1788,246 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|n
             let UAI = {}
             let useAzureIdentity = await getConfigOrEnvVar(config, "USERAZUREIDENTITYID", prefix);
             if(useAzureIdentity) UAI = {managedIdentityClientId: useAzureIdentity};
-            const credential = new DefaultAzureCredential();
+            const credential = new DefaultAzureCredential(UAI);
 
             if(!subscriptionId) {
                 throw new Error("- Please pass "+ prefix + "SUBSCRIPTIONID in your config file");
             } else {
                 logger.info("- loading client microsoft azure done-");
-                ///////////////// List cloud resources ///////////////////////////////////////////////////////////////////////////////////////////////
-                interface AzureRet {
-                    [key: string]: any;
-                }
-                const azureRet: AzureRet = {};
-                for (const clientService in allClients) {
-                    const constructor = clientConstructors[clientService];
-                    const clientName = constructor.name;
-					let requireClient = false;
-					if (Array.isArray(config.ObjectNameNeed)) {
-						requireClient = config.ObjectNameNeed.some((item: string) => item.startsWith(constructor.name));
-					} else {
-						requireClient = false;
-					}
-					if (requireClient) {
-						try {
-							azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
-						} catch (e) {
-							logger.debug("Error constructing client", e);
-						}
-					}
-                }
-                const flatRessources: { [key: string]: any } = {};
-                Object.keys(azureRet).forEach(parentKey => {
-                    azureRet[parentKey].forEach((childObj: any) => {
-                    Object.keys(childObj).forEach(childKey => {
-                        const newKey = parentKey + '.' + childKey;
-                        flatRessources[newKey as string] = childObj[childKey];
-                    });
-                });
-                });
-                resources.push(flatRessources);
+                
+				const dataComplementary = await collectKexaRestructuredData(credential, subscriptionId, config);
+
+				const [ autoFlatResources, dataComplementaryFlat ] = await Promise.all([
+					collectAuto(credential, subscriptionId, config),
+					collectKexaRestructuredData(credential, subscriptionId, config)
+				]);
+				let finalResources = {...autoFlatResources, ...dataComplementary};
+                resources.push(finalResources);
             }
         } catch(e) {
             logger.error("error in collectAzureData with the subscription ID: " + (await getConfigOrEnvVar(config, "SUBSCRIPTIONID", prefix))??null);
             logger.error(e);
-        }
+        }	
     }
 	return resources??null;
 }
 
-//virtualMachines.listAll
-export async function virtualMachinesListing(client:ComputeManagementClient, monitor:MonitorClient, currentConfig: any): Promise<Array<VirtualMachine>|null> {
-    if(!currentConfig.ObjectNameNeed?.includes("vm")) return null;
-    logger.info("starting virtualMachinesListing");
+async function collectAuto(credential: any, subscriptionId: any, config: AzureConfig){
+	interface AzureRet {
+		[key: string]: any;
+	}
+	const azureRet: AzureRet = {};
+	logger.debug("allClients: ");
+	logger.debug(allClients);
+	for (const clientService in allClients) {
+		const constructor = clientConstructors[clientService];
+		const clientName = constructor.name;
+		let requireClient = false;
+		if (Array.isArray(config.ObjectNameNeed)) {
+			requireClient = config.ObjectNameNeed.some((item: string) => item.startsWith(constructor.name));
+		} else {
+			requireClient = false;
+		}
+		if (requireClient) {
+			try {
+				azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
+			} catch (e) {
+				logger.debug("Error constructing client", e);
+			}
+		}
+	}
+	const autoFlatResources: { [key: string]: any } = {};
+	Object.keys(azureRet).forEach(parentKey => {
+		azureRet[parentKey].forEach((childObj: any) => {
+			Object.keys(childObj).forEach(childKey => {
+				const newKey = parentKey + '.' + childKey;
+				autoFlatResources[newKey as string] = childObj[childKey];
+			});
+		});
+	});
+	return autoFlatResources;
+}
+
+
+/* *************************************** */
+/* 		AUTOMATED RESOURCES GATHERING      */
+/* *************************************** */
+
+function createGenericClient<T>(Client: new (credential: any, subscriptionId: any) => T, credential: any, subscriptionId: any): T {
+    return new Client(credential, subscriptionId);
+}
+
+async function callGenericClient(client: any, config: any) {
+    let results = [];
+    logger.info("starting " + client.constructor.name + " Listing");
+    results.push(await listAllResources(client, config));
+    return results;
+}
+
+async function listAllResources(client: any, currentConfig: any) {
+    logger.debug("Automatic gathering...");
+    const properties = Object.getOwnPropertyNames(client);
+    const resultList: Record<string, any> = {};
+
+    const promises = properties.map(async (element) => {
+		const toCheck = client.constructor.name + '.' + element;
+		if(!currentConfig.ObjectNameNeed?.includes(toCheck)) return Promise.resolve();
+        type StatusKey = keyof typeof client;
+        let key: StatusKey = element;
+        if (element.startsWith("_")) return Promise.resolve();
+		if (client[key]) {
+			const methods = ["listAll", "list"];
+
+            await Promise.all(
+                methods.map(async (method) => {
+                    const resource = client[key];
+                    if (typeof resource === 'object' && typeof resource[method as keyof typeof resource] === 'function') {
+                        const gotMethod = resource[method as keyof typeof resource] as (...args: any[]) => any[];
+                        const numberOfArgs = gotMethod.length;
+                        if (numberOfArgs > 2) {
+                            logger.debug(`Function ${key as string}.${method} requires ${numberOfArgs} arguments.`);
+                            return Promise.resolve();
+                        }
+                        const keyStr = key as string;
+                        const toExec = "resourcesClient." + (key as string) + "." + method + "()";
+                        logger.trace("To exec: " + toExec);
+                        let resultObject: any[] = [];
+                        try {
+                            //resultObject = await resource[method]();
+							for await (let item of resource[method]()) {
+								item = addingResourceGroups(item);
+								resultObject.push(item);
+							}
+							if(!resultList[keyStr]){
+								resultList[keyStr] = resultObject;
+							}else{
+								resultList[keyStr].push(...resultObject);
+							}
+							logger.debug(resultList);
+                        } catch (e) {
+                            logger.debug("Error on function :", e);
+                        }
+                    } else {
+                        logger.debug(`Invalid property ${key as string} or function call ${method}.`);
+                    }
+					return Promise.resolve();
+                })
+            );
+
+        }
+		return Promise.resolve();
+    });
+
+    await Promise.all(promises);
+    return resultList;
+}
+
+function addingResourceGroups(item: any): any {
+	if(item.id){
+		let rg = item.id?.split("/")[4] ?? "";
+		item.resourceGroupName = rg;
+	}
+	return item;
+}
+/* ************************************ */
+/*  	CUSTOM GATHER RESOURCES         */
+/* ************************************ */
+
+import {stringKeys} from "../../models/azure/resource.models";
+
+interface FunctionMap {
+    [key: string]: (name: string, credential: any, subscriptionId: any) => void;
+}
+
+const customGatherFunctions: FunctionMap = {
+
+    'KexaAzure.vm': async (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+
+		try {
+			const computeClient = new ComputeManagementClient(credential, subscriptionId);
+			const monitorClient = new MonitorClient(credential, subscriptionId);
+			return await virtualMachinesListing(computeClient, monitorClient);
+		} catch (e) {
+			logger.warning("Error creating Azure client: ", e);
+			return ;
+		}
+    },
+
+    'KexaAzure.mlWorkspaces': async (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+
+		try {
+			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
+			return await workspacesListing(mlClient)
+		} catch (e) {
+			logger.warning("Error creating Azure client: " + name, e);
+			return [];
+		}
+    },
+
+	'KexaAzure.mlJobs': async (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+
+		try {
+			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
+			let workspaces = await workspacesListing(mlClient);
+            return await jobsListing(mlClient, workspaces);
+		} catch (e) {
+			logger.warning("Error creating Azure client: " + name, e);
+			return [];
+		}
+    },
+
+	'KexaAzure.mlComputes': async (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+
+		try {
+			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
+			let workspaces = await workspacesListing(mlClient);
+            return await computeOperationsListing(mlClient, workspaces);
+		} catch (e) {
+			logger.warning("Error creating Azure client: " + name, e);
+			return [];
+		}
+    },
+
+	'KexaAzure.mlSchedules': async (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+		try {
+			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
+			let workspaces = await workspacesListing(mlClient);
+            return await schedulesListing(mlClient, workspaces);
+		} catch (e) {
+			logger.warning("Error creating Azure client: " + name, e);
+			return [];
+		}
+    },
+
+	'KexaAzure.storage': (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+		return [];
+    },
+
+	'KexaAzure.blob': (name: string, credential: any, subscriptionId: any) => {
+        console.log("Starting " + name + " listing...");
+		//listAllBlob();
+		return [];
+    },
+};
+
+
+async function collectKexaRestructuredData(credential: any, subscriptionId: any, currentConfig: any): Promise<any> {
+	let result = await Promise.all(stringKeys.map(async (element: any) => {
+		if(!currentConfig.ObjectNameNeed?.includes(element)) return {};
+		return { [element] : await customGatherFunctions[element](element, credential, subscriptionId)};
+	}));
+	return result.reduce((final, objet) => {
+		return { ...final, ...objet };
+	}, {});
+}
+
+export async function virtualMachinesListing(client:ComputeManagementClient, monitor:MonitorClient): Promise<Array<VirtualMachine>|null> {
     try {
         const resultList = new Array<VirtualMachine>;
         for await (let item of client.virtualMachines.listAll()){
@@ -1860,8 +2055,6 @@ function convertGbToBytes(gb: number): number {
     return gb * 1024 * 1024 * 1024;
 }
 
-// KEEP THIS //
-
 const VMSizeMemory: {[x:string]: any} = {}
 async function getVMDetails(VMSize:string): Promise<any> {
     if(VMSizeMemory[VMSize]) return VMSizeMemory[VMSize];
@@ -1875,7 +2068,6 @@ async function getVMDetails(VMSize:string): Promise<any> {
     }
 }
 
-// KEEP THIS //
 async function getMetrics(client: MonitorClient, vmId:string): Promise<any> {
     try {
         const vmMetrics = await client.metrics.list(vmId, {
@@ -1917,7 +2109,8 @@ function getMinMaxMeanMedian(array: Array<number>): any {
     }
 }
 
-export async function listAllBlob(client:StorageManagementClient, credentials: any): Promise<Array<StorageAccount>|null> {
+// verify
+async function listAllBlob(client:StorageManagementClient, credentials: any): Promise<Array<StorageAccount>|null> {
     logger.info("starting listAllBlob");
     try {
         const resultList = new Array<ResourceGroup>;
@@ -1937,162 +2130,79 @@ export async function listAllBlob(client:StorageManagementClient, credentials: a
             }
         }
         return resultList;
-    } catch (err:any) {
+    } catch (err) {
         logger.debug("error in resourceGroupListing:"+err);
         return null;
     }
 }
 
-import { AzureMachineLearningWorkspaces } from "@azure/arm-machinelearning";
+import { AzureMachineLearningWorkspaces, Workspace } from "@azure/arm-machinelearning";
 import { convertMinMaxMeanMedianToPercentage } from "../../helpers/statsNumbers";
-export async function mlListing(credential: DefaultAzureCredential, subscriptionId: string, currentConfig: any): Promise<any> {
-    if(
-        !currentConfig.ObjectNameNeed?.includes("mlWorkspaces")
-        && !currentConfig.ObjectNameNeed?.includes("mlJobs")
-        && !currentConfig.ObjectNameNeed?.includes("mlComputes")
-        && !currentConfig.ObjectNameNeed?.includes("mlSchedules")
-    ) return null;
-    logger.info("starting mlListing");
-    try{
-        const client = new AzureMachineLearningWorkspaces(credential, subscriptionId);
-        const result = {
-            "workspaces": new Array(),
-            "jobs": new Array(),
-            "computes": new Array(),
-            "schedule": new Array(),
-        }
-        for await (let item of client.workspaces.listBySubscription()) {
-            result.workspaces = [...result.workspaces??[], item];
-            let resourceGroupName = item?.id?.split("/")[4] ?? "";
-            let workspaceName = item?.name ?? "";
-            const promises = [
-                jobsListing(client, resourceGroupName, workspaceName, currentConfig),
-                computeOperationsListing(client, resourceGroupName, workspaceName, currentConfig),
-                schedulesListing(client, resourceGroupName, workspaceName, currentConfig),
-            ];
-            const [jobsList, computeOperationsList, schedulesList] = await Promise.all(promises);
-            result.jobs = [...result.jobs??[], ...jobsList];
-            result.computes = [...result.computes??[], ...computeOperationsList];
-            result.schedule = [...result.schedule??[], ...schedulesList];
-        }
-        return result;
-    }catch(e){
-        logger.debug("error in mlListing:"+e);
-        return null;
-    }
+
+async function workspacesListing(mlClient: AzureMachineLearningWorkspaces): Promise<any> {
+	let workspacesResult: any[] = [];
+	for await (let item of mlClient.workspaces.listBySubscription()) {
+		workspacesResult = [...workspacesResult??[], item];
+	}
+	return workspacesResult;
 }
 
-export async function jobsListing(client: AzureMachineLearningWorkspaces, resourceGroupName: string, workspaceName: string, currentConfig: any): Promise<any[]> {
-    if(!currentConfig.ObjectNameNeed?.includes("mlJobs")) return [];
-    //logger.info("starting jobsListing");
-    try{
-        const resArray = new Array();
-        for await (let item of client.jobs.list(resourceGroupName, workspaceName)) {
-            let result:any = item;
-            result.workspace = workspaceName;
-            result.resourceGroupName = resourceGroupName;
-            resArray.push(result);
-        }
-        return resArray;
-    }catch(e){
-        logger.debug("error in jobsListing:"+e);
-        return [];
-    }
+async function jobsListing(client: AzureMachineLearningWorkspaces, workspaces: Array<Workspace>): Promise<any> {
+	for (let i = 0; i < workspaces?.length; i++) {
+		try {
+			let resourceGroupName = workspaces[i]?.id?.split("/")[4] ?? "";
+			let workspaceName = workspaces[i]?.name ?? "";
+			const resArray = new Array();
+			for await (let item of client.jobs.list(resourceGroupName, workspaceName)) {
+				let result:any = item;
+				result.workspace = workspaceName;
+				result.resourceGroupName = resourceGroupName;
+				resArray.push(result);
+			}
+			return resArray;
+		} catch(e){
+			logger.debug("error in jobsListing:"+e);
+			return [];
+		}
+	}
 }
 
-export async function computeOperationsListing(client: AzureMachineLearningWorkspaces, resourceGroupName: string, workspaceName: string, currentConfig: any): Promise<any[]> {
-    if(!currentConfig.ObjectNameNeed?.includes("mlComputes")) return [];
-    //logger.info("starting computeOperationsListing");
-    try{
-        const resArray = new Array();
-        for await (let item of client.computeOperations.list(resourceGroupName, workspaceName)) {
-            let result:any = item;
-            result.workspace = workspaceName;
-            result.resourceGroupName = resourceGroupName;
-            resArray.push(item);
-        }
-        return resArray;
-    }catch(e){
-        logger.debug("error in computeOperationsListing:"+e);
-        return [];
-    }
+async function computeOperationsListing(client: AzureMachineLearningWorkspaces, workspaces: Array<Workspace>): Promise<any> {
+	for (let i = 0; i < workspaces?.length; i++) {
+		try{
+			let resourceGroupName = workspaces[i]?.id?.split("/")[4] ?? "";
+			let workspaceName = workspaces[i]?.name ?? "";
+			const resArray = new Array();
+			for await (let item of client.computeOperations.list(resourceGroupName, workspaceName)) {
+				let result:any = item;
+				result.workspace = workspaceName;
+				result.resourceGroupName = resourceGroupName;
+				resArray.push(item);
+			}
+			return resArray;
+		}catch(e){
+			logger.debug("error in computeOperationsListing:"+e);
+			return [];
+		}
+	}
 }
 
-export async function schedulesListing(client: AzureMachineLearningWorkspaces, resourceGroupName: string, workspaceName: string, currentConfig: any): Promise<any[]> {
-    if(!currentConfig.ObjectNameNeed?.includes("mlSchedules")) return [];
-    //logger.info("starting schedulesListing");
-    try{
-        const resArray = new Array();
-        for await (let item of client.schedules.list(resourceGroupName, workspaceName)) {
-            let result:any = item;
-            result.workspace = workspaceName;
-            result.resourceGroupName = resourceGroupName;
-            resArray.push(item);
-        }
-        return resArray;
-    }catch(e){
-        logger.debug("error in schedulesListing:"+e);
-        return [];
-    }
-}
-
-function createGenericClient<T>(Client: new (credential: any, subscriptionId: any) => T, credential: any, subscriptionId: any): T {
-    return new Client(credential, subscriptionId);
-}
-
-async function callGenericClient(client: any, config: any) {
-    let results = [];
-    logger.info("starting " + client.constructor.name + " Listing");
-    results.push(await listAllResources(client, config));
-    return results;
-}
-
-async function listAllResources(client: any, currentConfig: any) {
-    logger.trace("Automatic gathering...");
-    const properties = Object.getOwnPropertyNames(client);
-
-    const resultList: Record<string, any> = {};
-
-
-    const promises = properties.map(async (element) => {
-		const toCheck = client.constructor.name + '.' + element;
-		if(!currentConfig.ObjectNameNeed?.includes(toCheck))
-			return null;
-        type StatusKey = keyof typeof client;
-        let key: StatusKey = element;
-        const methods = ["listAll", "list"];
-        if (element.startsWith("_"))
-            return;
-        if (client[key]) {
-            await Promise.all(
-                methods.map(async (method) => {
-                    const resource = client[key];
-                    if (typeof resource === 'object' && typeof resource[method as keyof typeof resource] === 'function') {
-                        const gotMethod = resource[method as keyof typeof resource] as (...args: any[]) => any;
-                        const numberOfArgs = gotMethod.length;
-                        if (numberOfArgs > 2) {
-                            logger.debug(`Function ${key as string}.${method} requires ${numberOfArgs} arguments.`);
-                            return;
-                        }
-                        const keyStr = key as string;
-                        const toExec = "resourcesClient." + (key as string) + "." + method + "()";
-                        logger.trace("To exec: " + toExec);
-                        let resultObject: Record<string, any> = {};
-                        try {
-                            resultObject = await resource[method]();
-                            resultList[keyStr] = resultObject.value ? resultObject.value : [];
-                           // resultList[keyStr] = resultObject;
-                        } catch (e) {
-                            logger.debug("Error on function :", e);
-                        }
-                    } else {
-                        logger.debug(`Invalid property ${key as string} or function call ${method}.`);
-                        return;
-                    }
-                })
-            );
-        }
-    });
-    await Promise.all(promises);
-    return resultList;
+async function schedulesListing(client: AzureMachineLearningWorkspaces, workspaces: Array<Workspace>): Promise<any> {
+	for (let i = 0; i < workspaces?.length; i++) {
+		try {
+			let resourceGroupName = workspaces[i]?.id?.split("/")[4] ?? "";
+			let workspaceName = workspaces[i]?.name ?? "";
+			const resArray = new Array();
+			for await (let item of client.schedules.list(resourceGroupName, workspaceName)) {
+				let result:any = item;
+				result.workspace = workspaceName;
+				result.resourceGroupName = resourceGroupName;
+				resArray.push(item);
+			}
+			return resArray;
+		} catch(e){
+			logger.debug("error in schedulesListing:"+e);
+			return [];
+		}
+	}
 }
