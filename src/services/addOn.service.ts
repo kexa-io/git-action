@@ -45,6 +45,18 @@ async function loadAddOn(nameAddOn: string, addOnNeed: any): Promise<{ key: stri
         const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
         let start = Date.now();
         const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
+        addOnConfig?.forEach((config: any) => {
+            config.ObjectNameNeed = []
+            config.rules.forEach((rulesName: string) => {
+                let addOnNeedRules = addOnNeed["objectNameNeed"][rulesName];
+                if(addOnNeedRules){
+                    addOnNeedRules = addOnNeedRules[nameAddOn];
+                    if(addOnNeedRules){
+                        config.ObjectNameNeed = [...config.ObjectNameNeed, ...addOnNeedRules];
+                    }
+                }
+            });
+        });
         const data = await collectData(addOnConfig);
         let delta = Date.now() - start;
         logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
