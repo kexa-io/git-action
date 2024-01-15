@@ -12,7 +12,50 @@
         ],
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png",
         "documentation": "https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/welcome.html",
-        "freeRules": []
+        "freeRules": [
+            {
+                "name": "ec2-security-groups-source-defined",
+                "description": "this rule is to check if a ec2 SG has a defined source (not 0.0.0.0)",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "ec2SG",
+                "conditions": [
+                    {
+                        "property": "IpPermissions",
+                        "condition": "ALL",
+                        "value": [
+                            {
+                                "property": "IpRanges",
+                                "condition": "ALL",
+                                "value": [
+                                    {
+                                        "property": "CidrIp",
+                                        "condition": "DIFFERENT",
+                                        "value": "0.0.0.0/0"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "aws-ec2-public-ip-address",
+                "description": "this rule is to check if an ec2 ip address is public",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "aws",
+                "objectName": "ec2Instance",
+                "conditions": [
+                    {
+                        "property": "PublicIpAddress",
+                        "condition": "EQUAL",
+                        "value": null
+                    }
+                ]
+            }
+        ]
     },
     "azure": {
         "resources": [
@@ -1715,6 +1758,42 @@
         "documentation": "https://learn.microsoft.com/fr-fr/javascript/api/overview/azure/?view=azure-node-latest",
         "freeRules": [
             {
+                "name": "aks-is-scaleset-down",
+                "description": "check if aks have a scaleSet down",
+                "applied": true,
+                "level": 0,
+                "cloudProvider": "azure",
+                "objectName": "ContainerServiceClient.managedClusters",
+                "conditions": [
+                    {
+                        "property": "agentPoolProfiles",
+                        "condition": "ALL",
+                        "value": [
+                            {
+                                "property": "scaleSetEvictionPolicy",
+                                "condition": "EQUAL",
+                                "value": "Delete"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "azure-nsg-valid-subnet",
+                "description": "check if NSG have a valid subnet",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "azure",
+                "objectName": "ContainerServiceClient.managedClusters",
+                "conditions": [
+                    {
+                        "property": "agentPoolProfiles",
+                        "condition": "COUNT",
+                        "value": 2
+                    }
+                ]
+            },
+            {
                 "name": "azure-orphan-nsg",
                 "description": "this rules is to check if nsg is orphan",
                 "applied": true,
@@ -1942,6 +2021,46 @@
                                 "property": "protected",
                                 "condition": "EQUAL",
                                 "value": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "git-is-repository-private",
+                "description": "this rules is to check if git repo is private",
+                "applied": true,
+                "level": 0,
+                "cloudProvider": "github",
+                "objectName": "repositories",
+                "conditions": [
+                    {
+                        "property": "private",
+                        "condition": "EQUAL",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "name": "git-is-branch-protected",
+                "description": "this rules is to check if git branch is protected",
+                "applied": true,
+                "level": 0,
+                "cloudProvider": "github",
+                "objectName": "branches",
+                "conditions": [
+                    {
+                        "operator": "NAND",
+                        "criteria": [
+                            {
+                                "property": "protected",
+                                "condition": "DIFFERENT",
+                                "value": true
+                            },
+                            {
+                                "property": "name",
+                                "condition": "EQUAL",
+                                "value": "master"
                             }
                         ]
                     }
@@ -2851,6 +2970,27 @@
                         "property": "isUnmanagedSyncAppForTenantRestricted",
                         "condition": "EQUAL",
                         "value": true
+                    }
+                ]
+            },
+            {
+                "name": "o365-is-mfa-activated-on-user",
+                "description": "check if at least 2 auth factors are active",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "o365",
+                "objectName": "auth_methods",
+                "conditions": [
+                    {
+                        "property": "methods",
+                        "condition": "ONE",
+                        "value": [
+                            {
+                                "property": "dataType",
+                                "condition": "EQUAL",
+                                "value": "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+                            }
+                        ]
                     }
                 ]
             }

@@ -5,8 +5,9 @@
         "github",
         "http",
         "kubernetes",
-        "googleDrive",
-        "azure"
+        "azure",
+        "aws",
+        "googleDrive"
     ],
     "objectNameNeed": {
         "BenchmarkOffice365": {
@@ -48,6 +49,11 @@
                 "pods"
             ]
         },
+        "Performance": {
+            "azure": [
+                "ContainerServiceClient.managedClusters"
+            ]
+        },
         "PostDeployement": {
             "http": [
                 "request"
@@ -60,6 +66,22 @@
             ],
             "kubernetes": [
                 "namespaces"
+            ]
+        },
+        "Security": {
+            "azure": [
+                "ContainerServiceClient.managedClusters"
+            ],
+            "github": [
+                "repositories",
+                "branches"
+            ],
+            "aws": [
+                "ec2SG",
+                "ec2Instance"
+            ],
+            "o365": [
+                "auth_methods"
             ]
         },
         "driveRules": {
