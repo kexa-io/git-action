@@ -36004,3 +36004,20 @@ src/rules/rules-testing.yaml was changed
 src/rules/rulesByProvider/azureSetRules.yaml was changed
 
 
+## 1.1.12-SNAPSHOT.3.75fad7773
+
+### Files added: 0
+
+### Files changed: 5
+
+.github/workflows/ci.yml was changed
+
+lib/main.js was changed
+
+src/main.ts was changed
+
+src/models/azure/resource.models.ts was changed
+
+src/services/addOn/azureGathering.service.ts was changed
+
+
