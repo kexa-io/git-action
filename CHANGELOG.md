@@ -36049,3 +36049,51 @@ src/services/updateCapability.service.ts was changed
 ### Files changed: 0
 
 
+## 1.1.15-SNAPSHOT.1.c65b51bd1
+
+### Files added: 0
+
+### Files changed: 1
+
+package-lock.json was changed
+
+
+## 1.1.15-SNAPSHOT.3.49d0afad6
+
+### Files added: 0
+
+### Files changed: 16
+
+lib/services/addOn.service.js was changed
+
+lib/services/addOn/awsGathering.service.js was changed
+
+lib/services/addOn/azureGathering.service.js was changed
+
+lib/services/addOn/gcpGathering.service.js was changed
+
+lib/services/addOn/githubGathering.service.js was changed
+
+lib/services/addOn/googleWorkspaceGathering.service.js was changed
+
+lib/services/addOn/kubernetesGathering.service.js was changed
+
+lib/services/addOn/o365Gathering.service.js was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+src/services/addOn/azureGathering.service.ts was changed
+
+src/services/addOn/gcpGathering.service.ts was changed
+
+src/services/addOn/githubGathering.service.ts was changed
+
+src/services/addOn/googleWorkspaceGathering.service.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+src/services/addOn/o365Gathering.service.ts was changed
+
+

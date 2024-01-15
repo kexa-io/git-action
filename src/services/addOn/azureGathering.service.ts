@@ -1820,18 +1820,10 @@ async function collectAuto(credential: any, subscriptionId: any, config: AzureCo
 	for (const clientService in allClients) {
 		const constructor = clientConstructors[clientService];
 		const clientName = constructor.name;
-		let requireClient = false;
-		if (Array.isArray(config.ObjectNameNeed)) {
-			requireClient = config.ObjectNameNeed.some((item: string) => item.startsWith(constructor.name));
-		} else {
-			requireClient = false;
-		}
-		if (requireClient) {
-			try {
-				azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
-			} catch (e) {
-				logger.debug("Error constructing client", e);
-			}
+		try {
+			azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
+		} catch (e) {
+			logger.debug("Error constructing client", e);
 		}
 	}
 	const autoFlatResources: { [key: string]: any } = {};
@@ -1869,7 +1861,6 @@ async function listAllResources(client: any, currentConfig: any) {
 
     const promises = properties.map(async (element) => {
 		const toCheck = client.constructor.name + '.' + element;
-		if(!currentConfig.ObjectNameNeed?.includes(toCheck)) return Promise.resolve();
         type StatusKey = keyof typeof client;
         let key: StatusKey = element;
         if (element.startsWith("_")) return Promise.resolve();
@@ -2017,7 +2008,6 @@ const customGatherFunctions: FunctionMap = {
 
 async function collectKexaRestructuredData(credential: any, subscriptionId: any, currentConfig: any): Promise<any> {
 	let result = await Promise.all(stringKeys.map(async (element: any) => {
-		if(!currentConfig.ObjectNameNeed?.includes(element)) return {};
 		return { [element] : await customGatherFunctions[element](element, credential, subscriptionId)};
 	}));
 	return result.reduce((final: any, objet: any) => {
