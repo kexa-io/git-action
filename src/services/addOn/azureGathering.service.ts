@@ -1849,7 +1849,6 @@ function createGenericClient<T>(Client: new (credential: any, subscriptionId: an
 
 async function callGenericClient(client: any, config: any) {
     let results = [];
-    logger.info("starting " + client.constructor.name + " Listing");
     results.push(await listAllResources(client, config));
     return results;
 }
@@ -1931,7 +1930,6 @@ interface FunctionMap {
 const customGatherFunctions: FunctionMap = {
 
     'KexaAzure.vm': async (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 
 		try {
 			const computeClient = new ComputeManagementClient(credential, subscriptionId);
@@ -1944,7 +1942,6 @@ const customGatherFunctions: FunctionMap = {
     },
 
     'KexaAzure.mlWorkspaces': async (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
@@ -1956,7 +1953,6 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.mlJobs': async (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
@@ -1969,7 +1965,6 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.mlComputes': async (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
@@ -1982,7 +1977,6 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.mlSchedules': async (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
 			let workspaces = await workspacesListing(mlClient);
@@ -1994,12 +1988,10 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.storage': (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 		return [];
     },
 
 	'KexaAzure.blob': (name: string, credential: any, subscriptionId: any) => {
-        console.log("Starting " + name + " listing...");
 		//listAllBlob();
 		return [];
     },

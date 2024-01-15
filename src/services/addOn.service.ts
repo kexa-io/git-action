@@ -30,23 +30,31 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
         return await loadAddOn(file);
     });
     const results:any = await Promise.all(promises);
-    results.forEach((result: { key: string; data: Provider[]; }) => {
+    let addOnShortCollect: string[] = [];
+    results.forEach((result: { key: string; data: Provider[]; delta: number }) => {
         if (result?.data) {
             resources[result.key] = result.data;
         }
+        if((result?.delta)??0 > 15){
+            logger.info(`AddOn ${result.key} collect in ${result.delta}ms`);
+        }else{
+            if(result?.delta) addOnShortCollect.push(result.key);
+        }
     });
+    if(addOnShortCollect.length > 0){
+        logger.info(`AddOn ${addOnShortCollect} load in less than 15ms; No data has been collected for these addOns`);
+    }
     return resources;
 }
 
-async function loadAddOn(nameAddOn: string): Promise<{ key: string; data: Provider|null; } | null> {
+async function loadAddOn(nameAddOn: string): Promise<{ key: string; data: Provider|null; delta: number } | null> {
     try{
         const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
         let start = Date.now();
         const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
         const data = await collectData(addOnConfig);
         let delta = Date.now() - start;
-        logger.info(`AddOn ${nameAddOn} collect in ${delta}ms`);
-        return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null)};
+        return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null), delta};
     }catch(e:any){
         logger.warning(e);
     }
