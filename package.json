@@ -1,7 +1,7 @@
 {
     "name": "Kexa-Github-Action",
     "description": "A GitHub Action for Kexa",
-    "version": "1.1.7-SNAPSHOT.17.ab077f02e",
+    "version": "1.1.12-SNAPSHOT.6.a19b5ec4a",
     "author": "Esteban MATHIA",
     "private": true,
     "homepage": "https://github.com/4urcloud/Kexa_githubAction",
@@ -29,7 +29,7 @@
     },
     "scripts": {
         "update": "node lib/services/updateCapability.service.js",
-        "package": "rimraf ./lib && npx --node-options='--max-old-space-size=10000' tsc",
+        "package": "rimraf ./lib && tsc",
         "package:watch": "npm run package -- --watch",
         "test": "mocha --require ts-node/register --require source-map-support/register 'lib/__tests__/**/*.test.js'",
         "test:build": "npm run package && mocha --require ts-node/register --require source-map-support/register 'lib/__tests__/**/*.test.js'",

@@ -1,6 +1,4 @@
-import { Disk, VirtualMachine } from "@azure/arm-compute";
-import { NetworkSecurityGroup, VirtualNetwork } from "@azure/arm-network";
-import { ResourceGroup } from "@azure/arm-resources";
+import { NetworkSecurityGroup } from "@azure/arm-network";
 
 export interface AzureResources {
     'KexaAzure.vm': Array<NetworkSecurityGroup>|null;

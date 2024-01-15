@@ -1761,14 +1761,13 @@ import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service"
 import { AzureConfig } from "../../models/azure/config.models";
 import axios from "axios";
 
-import { getNewLogger } from "../logger.service";
+import {getNewLogger} from "../logger.service";
 const logger = getNewLogger("AzureLogger");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// LISTING CLOUD RESOURCES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|null>{
-
     let resources = new Array<Object>();
     for(let config of azureConfig??[]){
         logger.debug("config: ");
@@ -1950,7 +1949,7 @@ const customGatherFunctions: FunctionMap = {
 			const monitorClient = new MonitorClient(credential, subscriptionId);
 			return await virtualMachinesListing(computeClient, monitorClient);
 		} catch (e) {
-			logger.warn("Error creating Azure client: ", e);
+			logger.warning("Error creating Azure client: ", e);
 			return ;
 		}
     },
@@ -1962,7 +1961,7 @@ const customGatherFunctions: FunctionMap = {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
 			return await workspacesListing(mlClient)
 		} catch (e) {
-			logger.warn("Error creating Azure client: " + name, e);
+			logger.warning("Error creating Azure client: " + name, e);
 			return [];
 		}
     },
@@ -1975,7 +1974,7 @@ const customGatherFunctions: FunctionMap = {
 			let workspaces = await workspacesListing(mlClient);
             return await jobsListing(mlClient, workspaces);
 		} catch (e) {
-			logger.warn("Error creating Azure client: " + name, e);
+			logger.warning("Error creating Azure client: " + name, e);
 			return [];
 		}
     },
@@ -1988,7 +1987,7 @@ const customGatherFunctions: FunctionMap = {
 			let workspaces = await workspacesListing(mlClient);
             return await computeOperationsListing(mlClient, workspaces);
 		} catch (e) {
-			logger.warn("Error creating Azure client: " + name, e);
+			logger.warning("Error creating Azure client: " + name, e);
 			return [];
 		}
     },
@@ -2000,7 +1999,7 @@ const customGatherFunctions: FunctionMap = {
 			let workspaces = await workspacesListing(mlClient);
             return await schedulesListing(mlClient, workspaces);
 		} catch (e) {
-			logger.warn("Error creating Azure client: " + name, e);
+			logger.warning("Error creating Azure client: " + name, e);
 			return [];
 		}
     },
