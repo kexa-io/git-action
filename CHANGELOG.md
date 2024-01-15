@@ -36049,3 +36049,12 @@ src/services/updateCapability.service.ts was changed
 ### Files changed: 0
 
 
+## 1.1.15-SNAPSHOT.1.c65b51bd1
+
+### Files added: 0
+
+### Files changed: 1
+
+package-lock.json was changed
+
+
