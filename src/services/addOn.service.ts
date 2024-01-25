@@ -35,11 +35,10 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
         if (result?.data) {
             resources[result.key] = result.data;
         }
+        logger.debug(`AddOn ${result.key} delta in ${result.delta}ms`)
         if((result?.delta)??0 > 15){
             logger.info(`AddOn ${result.key} collect in ${result.delta}ms`);
-        }else{
-            if(result?.delta) addOnShortCollect.push(result.key);
-        }
+        }else if(result?.delta) addOnShortCollect.push(result.key);
     });
     if(addOnShortCollect.length > 0){
         logger.info(`AddOn ${addOnShortCollect} load in less than 15ms; No data has been collected for these addOns`);
