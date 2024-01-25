@@ -1715,7 +1715,6 @@
 
 
 import {ComputeManagementClient, VirtualMachine} from "@azure/arm-compute";
-import { ServiceClient } from "@azure/core-client";
 import * as AzureImports from "./imports/azurePackage.import";
 
 let allClients: AzureClients = {};
@@ -1741,9 +1740,6 @@ function extractClients(module: any): AzureClients {
 	return clients;
 }
 
-import { 
-    NetworkSecurityGroup
-} from "@azure/arm-network";
 import { ResourceManagementClient , ResourceGroup } from "@azure/arm-resources";
 import { MonitorClient } from "@azure/arm-monitor";
 import {StorageAccount, StorageManagementClient} from "@azure/arm-storage";
@@ -1755,19 +1751,20 @@ const clientConstructors: Record<string, any> = {
 Object.assign(clientConstructors, allClients);
 
 
-import * as ckiNetworkSecurityClass from "../../class/azure/ckiNetworkSecurityGroup.class";
 import { DefaultAzureCredential } from "@azure/identity";
 import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service";
 import { AzureConfig } from "../../models/azure/config.models";
 import axios from "axios";
 
-import {getNewLogger} from "../logger.service";
+import {getContext, getNewLogger} from "../logger.service";
 const logger = getNewLogger("AzureLogger");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// LISTING CLOUD RESOURCES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|null>{
+
+    let context = getContext();
     let resources = new Array<Object>();
     for(let config of azureConfig??[]){
         logger.debug("config: ");
@@ -1793,6 +1790,7 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|n
             if(!subscriptionId) {
                 throw new Error("- Please pass "+ prefix + "SUBSCRIPTIONID in your config file");
             } else {
+                context?.log("- loading client microsoft azure done-");
                 logger.info("- loading client microsoft azure done-");
 
 				const [ autoFlatResources, dataComplementaryFlat ] = await Promise.all([
@@ -1815,16 +1813,14 @@ async function collectAuto(credential: any, subscriptionId: any, config: AzureCo
 		[key: string]: any;
 	}
 	const azureRet: AzureRet = {};
-	logger.debug("allClients: ");
-	logger.debug(allClients);
 	for (const clientService in allClients) {
 		const constructor = clientConstructors[clientService];
 		const clientName = constructor.name;
 		try {
-			azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
-		} catch (e) {
-			logger.debug("Error constructing client", e);
-		}
+            azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
+        } catch (e) {
+            logger.debug("Error constructing client", e);
+        }
 	}
 	const autoFlatResources: { [key: string]: any } = {};
 	Object.keys(azureRet).forEach(parentKey => {
@@ -1849,6 +1845,7 @@ function createGenericClient<T>(Client: new (credential: any, subscriptionId: an
 
 async function callGenericClient(client: any, config: any) {
     let results = [];
+    logger.debug("starting " + client.constructor.name + " Listing");
     results.push(await listAllResources(client, config));
     return results;
 }
@@ -1860,7 +1857,7 @@ async function listAllResources(client: any, currentConfig: any) {
 
     const promises = properties.map(async (element) => {
 		const toCheck = client.constructor.name + '.' + element;
-        type StatusKey = keyof typeof client;
+		type StatusKey = keyof typeof client;
         let key: StatusKey = element;
         if (element.startsWith("_")) return Promise.resolve();
 		if (client[key]) {
@@ -1881,7 +1878,6 @@ async function listAllResources(client: any, currentConfig: any) {
                         logger.trace("To exec: " + toExec);
                         let resultObject: any[] = [];
                         try {
-                            //resultObject = await resource[method]();
 							for await (let item of resource[method]()) {
 								item = addingResourceGroups(item);
 								resultObject.push(item);
@@ -1930,6 +1926,7 @@ interface FunctionMap {
 const customGatherFunctions: FunctionMap = {
 
     'KexaAzure.vm': async (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
 
 		try {
 			const computeClient = new ComputeManagementClient(credential, subscriptionId);
@@ -1942,6 +1939,8 @@ const customGatherFunctions: FunctionMap = {
     },
 
     'KexaAzure.mlWorkspaces': async (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
+
 
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
@@ -1953,6 +1952,8 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.mlJobs': async (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
+
 
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
@@ -1965,6 +1966,8 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.mlComputes': async (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
+
 
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
@@ -1977,6 +1980,8 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.mlSchedules': async (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
+
 		try {
 			const mlClient = new AzureMachineLearningWorkspaces(credential, subscriptionId);
 			let workspaces = await workspacesListing(mlClient);
@@ -1988,10 +1993,13 @@ const customGatherFunctions: FunctionMap = {
     },
 
 	'KexaAzure.storage': (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
+
 		return [];
     },
 
 	'KexaAzure.blob': (name: string, credential: any, subscriptionId: any) => {
+        logger.debug("Starting " + name + " listing...");
 		//listAllBlob();
 		return [];
     },
@@ -2002,12 +2010,12 @@ async function collectKexaRestructuredData(credential: any, subscriptionId: any,
 	let result = await Promise.all(stringKeys.map(async (element: any) => {
 		return { [element] : await customGatherFunctions[element](element, credential, subscriptionId)};
 	}));
-	return result.reduce((final: any, objet: any) => {
+	return result.reduce((final:any, objet:any) => {
 		return { ...final, ...objet };
 	}, {});
 }
 
-export async function virtualMachinesListing(client:ComputeManagementClient, monitor:MonitorClient): Promise<Array<VirtualMachine>|null> {
+export async function virtualMachinesListing(client:ComputeManagementClient, monitor:MonitorClient): Promise<Array<VirtualMachine>> {
     try {
         const resultList = new Array<VirtualMachine>;
         for await (let item of client.virtualMachines.listAll()){
@@ -2024,10 +2032,10 @@ export async function virtualMachinesListing(client:ComputeManagementClient, mon
             vm.instanceView.availableMemoryBytes = convertMinMaxMeanMedianToPercentage(vm.instanceView.availableMemoryBytes, convertGbToBytes(vm.details?.MemoryGb??0));
             resultList.push(vm);
         }
-        return resultList;
+        return resultList ?? [];
     }catch (err) {
         logger.debug("error in virtualMachinesListing:"+err);
-        return null;
+        return [];
     } 
 }
 
@@ -2090,7 +2098,7 @@ function getMinMaxMeanMedian(array: Array<number>): any {
 }
 
 // verify
-async function listAllBlob(client:StorageManagementClient, credentials: any): Promise<Array<StorageAccount>|null> {
+async function listAllBlob(client:StorageManagementClient, credentials: any): Promise<Array<StorageAccount>> {
     logger.info("starting listAllBlob");
     try {
         const resultList = new Array<ResourceGroup>;
@@ -2109,10 +2117,10 @@ async function listAllBlob(client:StorageManagementClient, credentials: any): Pr
                 }
             }
         }
-        return resultList;
+        return resultList ?? [];
     } catch (err) {
         logger.debug("error in resourceGroupListing:"+err);
-        return null;
+        return [];
     }
 }
 
@@ -2124,7 +2132,7 @@ async function workspacesListing(mlClient: AzureMachineLearningWorkspaces): Prom
 	for await (let item of mlClient.workspaces.listBySubscription()) {
 		workspacesResult = [...workspacesResult??[], item];
 	}
-	return workspacesResult;
+	return workspacesResult ?? [];
 }
 
 async function jobsListing(client: AzureMachineLearningWorkspaces, workspaces: Array<Workspace>): Promise<any> {
@@ -2139,7 +2147,7 @@ async function jobsListing(client: AzureMachineLearningWorkspaces, workspaces: A
 				result.resourceGroupName = resourceGroupName;
 				resArray.push(result);
 			}
-			return resArray;
+			return resArray ?? [];
 		} catch(e){
 			logger.debug("error in jobsListing:"+e);
 			return [];
@@ -2159,7 +2167,7 @@ async function computeOperationsListing(client: AzureMachineLearningWorkspaces, 
 				result.resourceGroupName = resourceGroupName;
 				resArray.push(item);
 			}
-			return resArray;
+			return resArray ?? [];
 		}catch(e){
 			logger.debug("error in computeOperationsListing:"+e);
 			return [];
@@ -2179,7 +2187,7 @@ async function schedulesListing(client: AzureMachineLearningWorkspaces, workspac
 				result.resourceGroupName = resourceGroupName;
 				resArray.push(item);
 			}
-			return resArray;
+			return resArray ?? [];
 		} catch(e){
 			logger.debug("error in schedulesListing:"+e);
 			return [];
