@@ -1756,7 +1756,7 @@ import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service"
 import { AzureConfig } from "../../models/azure/config.models";
 import axios from "axios";
 
-import {getContext, getNewLogger} from "../logger.service";
+import { getNewLogger } from "../logger.service";
 const logger = getNewLogger("AzureLogger");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1764,7 +1764,6 @@ const logger = getNewLogger("AzureLogger");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|null>{
 
-    let context = getContext();
     let resources = new Array<Object>();
     for(let config of azureConfig??[]){
         logger.debug("config: ");
@@ -1790,7 +1789,6 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|n
             if(!subscriptionId) {
                 throw new Error("- Please pass "+ prefix + "SUBSCRIPTIONID in your config file");
             } else {
-                context?.log("- loading client microsoft azure done-");
                 logger.info("- loading client microsoft azure done-");
 
 				const [ autoFlatResources, dataComplementaryFlat ] = await Promise.all([
