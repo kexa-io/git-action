@@ -1873,10 +1873,12 @@ async function listAllResources(client: any, currentConfig: any) {
                         }
                         const keyStr = key as string;
                         const toExec = "resourcesClient." + (key as string) + "." + method + "()";
-                        logger.trace("To exec: " + toExec);
+                        logger.debug("To exec: " + toExec);
                         let resultObject: any[] = [];
                         try {
-							for await (let item of resource[method]()) {
+							const resourceMethodResult = await resource[method]();
+    
+							for await (let item of resourceMethodResult) {
 								item = addingResourceGroups(item);
 								resultObject.push(item);
 							}

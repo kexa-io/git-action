@@ -36155,3 +36155,27 @@ src/services/addOn/azureGathering.service.ts was changed
 src/services/addOn/azureGathering.service.ts was changed
 
 
+## 1.1.18-SNAPSHOT.9.86d4a2170
+
+### Files added: 0
+
+### Files changed: 2
+
+src/main.ts was changed
+
+src/services/addOn.service.ts was changed
+
+
+## 1.1.18-SNAPSHOT.13.b081b4672
+
+### Files added: 0
+
+### Files changed: 3
+
+lib/main.js was changed
+
+lib/services/addOn/azureGathering.service.js was changed
+
+src/services/addOn/azureGathering.service.ts was changed
+
+
