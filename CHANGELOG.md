@@ -36431,3 +36431,20 @@ package.json was changed
 ### Files changed: 0
 
 
+## 1.2.1
+
+### Files added: 0
+
+### Files changed: 5
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+lib/services/addOn.service.js was changed
+
+lib/services/analyse.service.js was changed
+
+package.json was changed
+
+
