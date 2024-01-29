@@ -36179,3 +36179,12 @@ lib/services/addOn/azureGathering.service.js was changed
 src/services/addOn/azureGathering.service.ts was changed
 
 
+## 1.0.0
+
+### Files added: 0
+
+### Files changed: 1
+
+VERSION was changed
+
+
