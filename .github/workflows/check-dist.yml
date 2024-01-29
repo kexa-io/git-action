@@ -40,23 +40,23 @@ jobs:
                     node-version: 18
                     cache: npm
 
-            #-   name: Build dist/ Directory
-            #    id: build
-            #    run: npm run package:watch
-#
-            #-   name: Compare Expected and Actual Directories
-            #    id: diff
-            #    run: |
-            #        if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
-            #            echo "Detected uncommitted changes after build. See status below:"
-            #            git diff --ignore-space-at-eol --text dist/
-            #            exit 1
-            #        fi
-#
-            ## If index.js was different than expected, upload the expected version as
-            ## a workflow artifact.
-            #-   uses: actions/upload-artifact@v3
-            #    if: ${{ failure() && steps.diff.conclusion == 'failure' }}
-            #    with:
-            #        name: dist
-            #        path: dist/
+            -   name: Build dist/ Directory
+                id: build
+                run: npm run package:watch
+
+            -   name: Compare Expected and Actual Directories
+                id: diff
+                run: |
+                    if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+                        echo "Detected uncommitted changes after build. See status below:"
+                        git diff --ignore-space-at-eol --text dist/
+                        exit 1
+                    fi
+
+            # If index.js was different than expected, upload the expected version as
+            # a workflow artifact.
+            -   uses: actions/upload-artifact@v3
+                if: ${{ failure() && steps.diff.conclusion == 'failure' }}
+                with:
+                    name: dist
+                    path: dist/
