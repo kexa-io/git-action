@@ -40,6 +40,9 @@ jobs:
                     node-version: 18
                     cache: npm
 
+            -   name: Install Dependencies
+                run: npm ci
+
             -   name: Build dist/ Directory
                 id: build
                 run: npm run package:watch
