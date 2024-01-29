@@ -36666,3 +36666,16 @@ lib/services/addOn.service.js was changed
 lib/services/analyse.service.js was changed
 
 
+## 1.1.0
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+
