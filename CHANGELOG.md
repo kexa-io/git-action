@@ -36642,3 +36642,16 @@ src/services/addOn.service.ts was changed
 src/services/analyse.service.ts was changed
 
 
+## 1.2.2
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+
