@@ -36655,3 +36655,14 @@ VERSION was changed
 package.json was changed
 
 
+## 1.2.3
+
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/addOn.service.js was changed
+
+lib/services/analyse.service.js was changed
+
+
