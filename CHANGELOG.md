@@ -1,8 +1,5 @@
 # CHANGELOG
 
-
-
-
 ## 0.0.32
 ### Files added: 0
 
@@ -36212,6 +36209,23 @@ src/helpers/dowloadFile.ts was added
 lib/helpers/dowloadFile.js was changed
 
 src/helpers/dowloadFile.ts was changed
+## 1.1.18-SNAPSHOT.15.b556ba525
+
+### Files added: 2
+
+lib/helpers/loaderConfig.js was added
+
+src/helpers/loaderConfig.ts was added
+
+### Files changed: 6
+
+lib/helpers/loaderConfig.js was changed
+
+src/helpers/loaderConfig.ts was changed
+
+action.yml was changed
+
+lib/services/addOn.service.js was changed
 
 lib/services/analyse.service.js was changed
 
@@ -36409,5 +36423,11 @@ node_modules/follow-redirects/package.json was changed
 package-lock.json was changed
 
 package.json was changed
+
+## 1.1.22-SNAPSHOT.3.2fc6979a6
+
+### Files added: 0
+
+### Files changed: 0
 
 
