@@ -36199,3 +36199,22 @@ lib/services/addOn.service.js was changed
 src/services/addOn.service.ts was changed
 
 
+## 1.0.2
+
+### Files added: 2
+
+lib/helpers/dowloadFile.js was added
+
+src/helpers/dowloadFile.ts was added
+
+### Files changed: 4
+
+lib/helpers/dowloadFile.js was changed
+
+src/helpers/dowloadFile.ts was changed
+
+lib/services/analyse.service.js was changed
+
+src/services/analyse.service.ts was changed
+
+
