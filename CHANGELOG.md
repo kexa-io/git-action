@@ -1,8 +1,5 @@
 # CHANGELOG
 
-
-
-
 ## 0.0.32
 ### Files added: 0
 
@@ -36179,6 +36176,39 @@ lib/services/addOn/azureGathering.service.js was changed
 src/services/addOn/azureGathering.service.ts was changed
 
 
+## 1.0.0
+
+### Files added: 0
+
+### Files changed: 1
+
+VERSION was changed
+
+
+## 1.0.1
+
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/addOn.service.js was changed
+
+src/services/addOn.service.ts was changed
+
+
+## 1.0.2
+
+### Files added: 2
+
+lib/helpers/dowloadFile.js was added
+
+src/helpers/dowloadFile.ts was added
+
+### Files changed: 4
+
+lib/helpers/dowloadFile.js was changed
+
+src/helpers/dowloadFile.ts was changed
 ## 1.1.18-SNAPSHOT.15.b556ba525
 
 ### Files added: 2
@@ -36201,6 +36231,198 @@ lib/services/analyse.service.js was changed
 
 src/services/analyse.service.ts was changed
 
+
+## 1.0.3
+
+### Files added: 44
+
+node_modules/.bin/extract-zip was added
+
+node_modules/.bin/extract-zip.cmd was added
+
+node_modules/.bin/extract-zip.ps1 was added
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/LICENSE was added
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/README.md was added
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/package.json was added
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/sdk-napi.win32-x64-msvc.node was added
+
+node_modules/@types/yauzl/LICENSE was added
+
+node_modules/@types/yauzl/README.md was added
+
+node_modules/@types/yauzl/index.d.ts was added
+
+node_modules/@types/yauzl/package.json was added
+
+node_modules/buffer-crc32/LICENSE was added
+
+node_modules/buffer-crc32/README.md was added
+
+node_modules/buffer-crc32/index.js was added
+
+node_modules/buffer-crc32/package.json was added
+
+node_modules/extract-zip/LICENSE was added
+
+node_modules/extract-zip/cli.js was added
+
+node_modules/extract-zip/index.d.ts was added
+
+node_modules/extract-zip/index.js was added
+
+node_modules/extract-zip/node_modules/get-stream/buffer-stream.js was added
+
+node_modules/extract-zip/node_modules/get-stream/index.d.ts was added
+
+node_modules/extract-zip/node_modules/get-stream/index.js was added
+
+node_modules/extract-zip/node_modules/get-stream/license was added
+
+node_modules/extract-zip/node_modules/get-stream/package.json was added
+
+node_modules/extract-zip/node_modules/get-stream/readme.md was added
+
+node_modules/extract-zip/package.json was added
+
+node_modules/extract-zip/readme.md was added
+
+node_modules/fd-slicer/.npmignore was added
+
+node_modules/fd-slicer/.travis.yml was added
+
+node_modules/fd-slicer/CHANGELOG.md was added
+
+node_modules/fd-slicer/LICENSE was added
+
+node_modules/fd-slicer/README.md was added
+
+node_modules/fd-slicer/index.js was added
+
+node_modules/fd-slicer/package.json was added
+
+node_modules/fd-slicer/test/test.js was added
+
+node_modules/pend/LICENSE was added
+
+node_modules/pend/README.md was added
+
+node_modules/pend/index.js was added
+
+node_modules/pend/package.json was added
+
+node_modules/pend/test.js was added
+
+node_modules/yauzl/LICENSE was added
+
+node_modules/yauzl/README.md was added
+
+node_modules/yauzl/index.js was added
+
+node_modules/yauzl/package.json was added
+
+### Files changed: 49
+
+node_modules/.bin/extract-zip was changed
+
+node_modules/.bin/extract-zip.cmd was changed
+
+node_modules/.bin/extract-zip.ps1 was changed
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/LICENSE was changed
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/README.md was changed
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/package.json was changed
+
+node_modules/@bitwarden/sdk-napi-win32-x64-msvc/sdk-napi.win32-x64-msvc.node was changed
+
+node_modules/@types/yauzl/LICENSE was changed
+
+node_modules/@types/yauzl/README.md was changed
+
+node_modules/@types/yauzl/index.d.ts was changed
+
+node_modules/@types/yauzl/package.json was changed
+
+node_modules/buffer-crc32/LICENSE was changed
+
+node_modules/buffer-crc32/README.md was changed
+
+node_modules/buffer-crc32/index.js was changed
+
+node_modules/buffer-crc32/package.json was changed
+
+node_modules/extract-zip/LICENSE was changed
+
+node_modules/extract-zip/cli.js was changed
+
+node_modules/extract-zip/index.d.ts was changed
+
+node_modules/extract-zip/index.js was changed
+
+node_modules/extract-zip/node_modules/get-stream/buffer-stream.js was changed
+
+node_modules/extract-zip/node_modules/get-stream/index.d.ts was changed
+
+node_modules/extract-zip/node_modules/get-stream/index.js was changed
+
+node_modules/extract-zip/node_modules/get-stream/license was changed
+
+node_modules/extract-zip/node_modules/get-stream/package.json was changed
+
+node_modules/extract-zip/node_modules/get-stream/readme.md was changed
+
+node_modules/extract-zip/package.json was changed
+
+node_modules/extract-zip/readme.md was changed
+
+node_modules/fd-slicer/.npmignore was changed
+
+node_modules/fd-slicer/.travis.yml was changed
+
+node_modules/fd-slicer/CHANGELOG.md was changed
+
+node_modules/fd-slicer/LICENSE was changed
+
+node_modules/fd-slicer/README.md was changed
+
+node_modules/fd-slicer/index.js was changed
+
+node_modules/fd-slicer/package.json was changed
+
+node_modules/fd-slicer/test/test.js was changed
+
+node_modules/pend/LICENSE was changed
+
+node_modules/pend/README.md was changed
+
+node_modules/pend/index.js was changed
+
+node_modules/pend/package.json was changed
+
+node_modules/pend/test.js was changed
+
+node_modules/yauzl/LICENSE was changed
+
+node_modules/yauzl/README.md was changed
+
+node_modules/yauzl/index.js was changed
+
+node_modules/yauzl/package.json was changed
+
+node_modules/.package-lock.json was changed
+
+node_modules/follow-redirects/index.js was changed
+
+node_modules/follow-redirects/package.json was changed
+
+package-lock.json was changed
+
+package.json was changed
 
 ## 1.1.22-SNAPSHOT.3.2fc6979a6
 
