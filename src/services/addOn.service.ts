@@ -10,7 +10,9 @@ const fs = require('fs');
 import {getNewLogger} from "./logger.service";
 import { Capacity } from "../models/settingFile/capacity.models";
 import { getEnvVar, setEnvVar } from "./manageVarEnvironnement.service";
+import { getConfig } from "../helpers/loaderConfig";
 const logger = getNewLogger("LoaderAddOnLogger");
+const config = getConfig();
 
 const addOnName = [
     "aws",
@@ -27,11 +29,15 @@ const addOnName = [
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const promises = addOnName.map(async (file: string) => {
-        return await loadAddOn(file);
+        if(config?.[file]){
+            return await loadAddOn(file);
+        }
+        return null;
     });
     const results:any = await Promise.all(promises);
     let addOnShortCollect: string[] = [];
     results.forEach((result: { key: string; data: Provider[]; delta: number }) => {
+        if(!result) return;
         if (result?.data) {
             resources[result.key] = result.data;
         }
