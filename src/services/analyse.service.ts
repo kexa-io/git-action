@@ -23,6 +23,7 @@ import { getConfig } from '../helpers/loaderConfig';
 
 import { getNewLogger } from "./logger.service";
 import { splitProperty } from '../helpers/spliter';
+import { downloadFile, unzipFile } from '../helpers/dowloadFile';
 const logger = getNewLogger("AnalyseLogger");
 
 const jsome = require('jsome');
@@ -34,12 +35,18 @@ const varEnvMin = {
 const config = require('node-config-ts').config;
 const levelAlert = ["info", "warning", "error", "critical"];
 let headers: any;
+const defaultRulesDirectory = "./rules";
 // Analyze  list
 // read the yaml file with rules
 // exam each rules and raise alarm or not
 export async function gatheringRules(rulesDirectory:string, getAll:boolean=false): Promise<SettingFile[]> {
     //await extractHeaders();
     // list directory
+    if(rulesDirectory.startsWith("http")){
+        logger.debug("gathering distant rules");
+        await gatheringDistantRules(rulesDirectory);
+        rulesDirectory = defaultRulesDirectory;
+    }
     const paths = fs.readdirSync(rulesDirectory, { withFileTypes: true});
     logger.debug("listing rules files.");
     let settingFileList = new Array<SettingFile>;
@@ -57,6 +64,17 @@ export async function gatheringRules(rulesDirectory:string, getAll:boolean=false
     logger.debug("rules list:");
     logger.debug(settingFileList.map((value) => value.alert.global.name).join(", "));
     return settingFileList;
+}
+
+export async function gatheringDistantRules(rulesOrigin:string, rulesDirectory:string=defaultRulesDirectory): Promise<boolean> {
+    try{
+        await downloadFile(rulesOrigin, rulesDirectory, "application/zip");
+        await unzipFile(rulesDirectory);
+        return true;
+    }catch(err){
+        logger.error("error in gatheringDistantRules:"+err);
+        return false;
+    }
 }
 
 export function extractAddOnNeed(settingFileList: SettingFile[]){
