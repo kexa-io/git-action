@@ -36179,3 +36179,26 @@ lib/services/addOn/azureGathering.service.js was changed
 src/services/addOn/azureGathering.service.ts was changed
 
 
+## 1.1.18-SNAPSHOT.15.b556ba525
+
+### Files added: 2
+
+lib/helpers/loaderConfig.js was added
+
+src/helpers/loaderConfig.ts was added
+
+### Files changed: 6
+
+lib/helpers/loaderConfig.js was changed
+
+src/helpers/loaderConfig.ts was changed
+
+action.yml was changed
+
+lib/services/addOn.service.js was changed
+
+lib/services/analyse.service.js was changed
+
+src/services/analyse.service.ts was changed
+
+
