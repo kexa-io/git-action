@@ -36731,3 +36731,16 @@ package.json was changed
 .github/workflows/check-dist.yml was changed
 
 
+## 1.2.5
+
+### Files added: 0
+
+### Files changed: 3
+
+.github/workflows/check-dist.yml was changed
+
+.github/workflows/ci.yml was changed
+
+CHANGELOG.md was changed
+
+
