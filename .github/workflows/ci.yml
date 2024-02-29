@@ -5,10 +5,13 @@ on:
     branches:
       - main
       - dev
+  pull_request:
+    paths-ignore:
+        - '**.md'
+  workflow_dispatch:
 permissions:
   actions: write
 jobs:
-
   ci:
     runs-on: ubuntu-latest
     permissions:

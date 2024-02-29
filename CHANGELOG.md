@@ -36691,5 +36691,43 @@ CODE_OF_CONDUCT.md was changed
 CONTRIBUTING.md was changed
 
 SECURITY.md was changed
+## 1.1.0 / Forked
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+
+## 1.1.1 / Forked
+
+### Files added: 0
+
+### Files changed: 1
+
+.github/workflows/check-dist.yml was changed
+
+
+## 1.1.2 / Forked
+
+### Files added: 0
+
+### Files changed: 1
+
+.github/workflows/check-dist.yml was changed
+
+
+## 1.1.3 / Forked
+
+### Files added: 0
+
+### Files changed: 1
+
+.github/workflows/check-dist.yml was changed
 
 
