@@ -1,0 +1,11 @@
+import { TranscribeExtensionConfiguration } from "./extensionConfiguration";
+export interface RuntimeExtension {
+  configure(extensionConfiguration: TranscribeExtensionConfiguration): void;
+}
+export interface RuntimeExtensionsConfig {
+  extensions: RuntimeExtension[];
+}
+export declare const resolveRuntimeExtensions: (
+  runtimeConfig: any,
+  extensions: RuntimeExtension[]
+) => any;
