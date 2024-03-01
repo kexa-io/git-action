@@ -36744,3 +36744,12 @@ package.json was changed
 CHANGELOG.md was changed
 
 
+## 1.2.6
+
+### Files added: 0
+
+### Files changed: 1
+
+src/services/addOn/imports/azurePackage.import.ts was changed
+
+
