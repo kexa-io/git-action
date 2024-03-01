@@ -4581,3 +4581,12 @@ package.json was changed
 src/main.ts was changed
 
 
+## 1.3.0
+
+### Files added: 0
+
+### Files changed: 1
+
+CHANGELOG.md was changed
+
+
