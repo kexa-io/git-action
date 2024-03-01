@@ -10,7 +10,6 @@ import { saveResult } from "./services/save.service";
 
 const core = require('@actions/core');
 require('dotenv').config();
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
 
 export async function main() {
     let customRules = await getEnvVar("MYOWNRULES");
