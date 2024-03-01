@@ -160,6 +160,7 @@ import * as armhardwaresecuritymodules from '@azure/arm-hardwaresecuritymodules'
 import * as armazureadexternalidentities from '@azure/arm-azureadexternalidentities';
 import * as armdashboard from '@azure/arm-dashboard';
 import * as armscvmm from '@azure/arm-scvmm';
+
 export {
 armresources,
 armsubscriptions,
