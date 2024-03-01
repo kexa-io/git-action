@@ -36744,3 +36744,14 @@ package.json was changed
 CHANGELOG.md was changed
 
 
+## 1.2.6
+
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/addOn/imports/azurePackage.import.js was changed
+
+src/services/addOn/gcpGathering.service.ts was changed
+
+
