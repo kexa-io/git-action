@@ -1,7 +1,7 @@
 {
     "name": "Kexa-Github-Action",
     "description": "A GitHub Action for Kexa",
-    "version": "1.2.6-dependabotnpmandyarnundici5283.29.1baeb8d88",
+    "version": "1.2.6",
     "author": "Esteban MATHIA",
     "private": true,
     "homepage": "https://github.com/4urcloud/Kexa_githubAction",
