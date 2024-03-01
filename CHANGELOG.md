@@ -36750,6 +36750,9 @@ CHANGELOG.md was changed
 
 ### Files changed: 2
 
+package-lock.json was changed
+
+package.json was changed
 lib/services/addOn/imports/azurePackage.import.js was changed
 
 src/services/addOn/gcpGathering.service.ts was changed
