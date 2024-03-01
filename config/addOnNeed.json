@@ -6,6 +6,8 @@
         "http",
         "kubernetes",
         "azure",
+        "aws",
+        "gcp",
         "googleDrive"
     ],
     "objectNameNeed": {
@@ -37,6 +39,25 @@
                 "pods"
             ]
         },
+        "Economy": {
+            "azure": [
+                "ComputeManagementClient.virtualMachines",
+                "ComputeManagementClient.disks",
+                "ContainerServiceClient.managedClusters",
+                "NetworkManagementClient.networkSecurityGroups",
+                "NetworkManagementClient.virtualNetworks",
+                "KexaAzure.vm"
+            ],
+            "aws": [
+                "EC2Client.Volumes"
+            ],
+            "gcp": [
+                "disk"
+            ],
+            "o365": [
+                "sku"
+            ]
+        },
         "HTTPRules": {
             "http": [
                 "request"
@@ -46,6 +67,19 @@
             "kubernetes": [
                 "namespaces",
                 "pods"
+            ]
+        },
+        "OperationalExcellence": {
+            "azure": [
+                "NetworkManagementClient.virtualNetworks",
+                "KexaAzure.mlJobs"
+            ],
+            "aws": [
+                "EC2Client.Volumes",
+                "KexaAwsCustoms.tagsValueListing"
+            ],
+            "o365": [
+                "user"
             ]
         },
         "Performance": {
@@ -67,18 +101,33 @@
                 "namespaces"
             ]
         },
+        "Security": {
+            "azure": [
+                "ContainerServiceClient.managedClusters"
+            ],
+            "github": [
+                "repositories",
+                "branches"
+            ],
+            "aws": [
+                "EC2Client.SecurityGroups",
+                "EC2Client.Instances"
+            ],
+            "o365": [
+                "auth_methods"
+            ]
+        },
+        "awsSetRules": {
+            "aws": [
+                "EC2Client.Volumes",
+                "KexaAwsCustoms.tagsValueListing",
+                "EC2Client.SecurityGroups",
+                "EC2Client.Instances"
+            ]
+        },
         "driveRules": {
             "googleDrive": [
                 "files"
-            ]
-        },
-        "testingAutomate": {
-            "azure": [
-                "NetworkManagementClient.networkSecurityGroups",
-                "ComputeManagementClient.virtualMachines",
-                "ComputeManagementClient.disks",
-                "ContainerServiceClient.managedClusters",
-                "NetworkManagementClient.virtualNetworks"
             ]
         }
     }

@@ -799,8 +799,10 @@
             "CloudFormationClient.AccountLimits",
             "CloudFormationClient.ChangeSet",
             "CloudFormationClient.ChangeSetHooks",
+            "CloudFormationClient.GeneratedTemplate",
             "CloudFormationClient.OrganizationsAccess",
             "CloudFormationClient.Publisher",
+            "CloudFormationClient.ResourceScan",
             "CloudFormationClient.StackDriftDetectionStatus",
             "CloudFormationClient.StackEvents",
             "CloudFormationClient.StackInstance",
@@ -812,12 +814,17 @@
             "CloudFormationClient.Stacks",
             "CloudFormationClient.Type",
             "CloudFormationClient.TypeRegistration",
+            "CloudFormationClient.GeneratedTemplate",
             "CloudFormationClient.StackPolicy",
             "CloudFormationClient.Template",
             "CloudFormationClient.TemplateSummary",
             "CloudFormationClient.ChangeSets",
             "CloudFormationClient.Exports",
+            "CloudFormationClient.GeneratedTemplates",
             "CloudFormationClient.Imports",
+            "CloudFormationClient.ResourceScanRelatedResources",
+            "CloudFormationClient.ResourceScanResources",
+            "CloudFormationClient.ResourceScans",
             "CloudFormationClient.StackInstanceResourceDrifts",
             "CloudFormationClient.StackInstances",
             "CloudFormationClient.StackResources",
@@ -969,6 +976,7 @@
             "RDSClient.DBProxyTargets",
             "RDSClient.DBRecommendations",
             "RDSClient.DBSecurityGroups",
+            "RDSClient.DBShardGroups",
             "RDSClient.DBSnapshotAttributes",
             "RDSClient.DBSnapshotTenantDatabases",
             "RDSClient.DBSnapshots",
@@ -1000,6 +1008,7 @@
             "CodeBuildClient.Builds",
             "CodeBuildClient.BuildsForProject",
             "CodeBuildClient.CuratedEnvironmentImages",
+            "CodeBuildClient.Fleets",
             "CodeBuildClient.Projects",
             "CodeBuildClient.ReportGroups",
             "CodeBuildClient.Reports",
@@ -1491,6 +1500,7 @@
             "RedshiftClient.ReservedNodeExchangeConfigurationOptions",
             "RedshiftClient.ReservedNodeExchangeOfferings",
             "RedshiftClient.ResourcePolicy",
+            "RedshiftClient.Recommendations",
             "MediaConvertClient.Endpoints",
             "MediaConvertClient.Job",
             "MediaConvertClient.JobTemplate",
@@ -1535,6 +1545,7 @@
             "CloudTrailClient.EventDataStores",
             "CloudTrailClient.ImportFailures",
             "CloudTrailClient.Imports",
+            "CloudTrailClient.InsightsMetricData",
             "CloudTrailClient.PublicKeys",
             "CloudTrailClient.Queries",
             "CloudTrailClient.Tags",
@@ -1650,12 +1661,14 @@
             "KinesisVideoClient.TagsForStream",
             "IvsClient.Channel",
             "IvsClient.PlaybackKeyPair",
+            "IvsClient.PlaybackRestrictionPolicy",
             "IvsClient.RecordingConfiguration",
             "IvsClient.Stream",
             "IvsClient.StreamKey",
             "IvsClient.StreamSession",
             "IvsClient.Channels",
             "IvsClient.PlaybackKeyPairs",
+            "IvsClient.PlaybackRestrictionPolicies",
             "IvsClient.RecordingConfigurations",
             "IvsClient.StreamKeys",
             "IvsClient.StreamSessions",
@@ -1668,6 +1681,7 @@
             "AppSyncClient.DomainName",
             "AppSyncClient.Function",
             "AppSyncClient.GraphqlApi",
+            "AppSyncClient.GraphqlApiEnvironmentVariables",
             "AppSyncClient.IntrospectionSchema",
             "AppSyncClient.Resolver",
             "AppSyncClient.SchemaCreationStatus",
@@ -2344,6 +2358,7 @@
             "CostExplorerClient.Anomalies",
             "CostExplorerClient.AnomalyMonitors",
             "CostExplorerClient.AnomalySubscriptions",
+            "CostExplorerClient.ApproximateUsageRecords",
             "CostExplorerClient.CostAndUsage",
             "CostExplorerClient.CostAndUsageWithResources",
             "CostExplorerClient.CostCategories",
@@ -3001,6 +3016,7 @@
             "LightsailClient.RelationalDatabaseSnapshot",
             "LightsailClient.RelationalDatabaseSnapshots",
             "LightsailClient.RelationalDatabases",
+            "LightsailClient.SetupHistory",
             "LightsailClient.StaticIp",
             "LightsailClient.StaticIps",
             "NeptuneClient.DBClusterEndpoints",
@@ -3334,12 +3350,14 @@
             "AmplifyUIBuilderClient.CodegenJobs",
             "AmplifyUIBuilderClient.Components",
             "AmplifyUIBuilderClient.Forms",
+            "AmplifyUIBuilderClient.TagsForResource",
             "AmplifyUIBuilderClient.Themes",
             "KafkaConnectClient.Connector",
             "KafkaConnectClient.CustomPlugin",
             "KafkaConnectClient.WorkerConfiguration",
             "KafkaConnectClient.Connectors",
             "KafkaConnectClient.CustomPlugins",
+            "KafkaConnectClient.TagsForResource",
             "KafkaConnectClient.WorkerConfigurations",
             "PanoramaClient.ApplicationInstance",
             "PanoramaClient.ApplicationInstanceDetails",
@@ -3548,6 +3566,7 @@
             "ApplicationCostProfilerClient.ReportDefinition",
             "ApplicationCostProfilerClient.ReportDefinitions",
             "KeyspacesClient.Keyspace",
+            "KeyspacesClient.TableAutoScalingSettings",
             "KeyspacesClient.Table",
             "KeyspacesClient.Keyspaces",
             "KeyspacesClient.Tables",
@@ -4800,7 +4819,190 @@
         ],
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png",
         "documentation": "https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/welcome.html",
-        "freeRules": []
+        "freeRules": [
+            {
+                "name": "aws-ec2-volume-unattached",
+                "description": "this rule is to check if an ec2 volume is unattached",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.Volumes",
+                "conditions": [
+                    {
+                        "property": "Attachments",
+                        "condition": "COUNT_SUP",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "name": "ec2-volume-check-create-less-2-month-expiration",
+                "description": "this rule is to check for a ec2 volume create date inferior than 2 months",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.Volumes",
+                "conditions": [
+                    {
+                        "property": "CreateTime",
+                        "condition": "DATE_INF",
+                        "value": "0 0 0 0 0 2 0",
+                        "date": "YYYY-MM-DDThh:mm:ss.SSSZ"
+                    }
+                ]
+            },
+            {
+                "name": "aws-tagsvalue-check-for-expiration-date",
+                "description": "this rule is to check if tags contain an expiration date (separate with \"-\")",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "KexaAwsCustoms.tagsValueListing",
+                "conditions": [
+                    {
+                        "property": "name",
+                        "condition": "REGEX",
+                        "value": "\\b\\d{1,4}[-]\\d{1,4}[-]\\d{1,4}\\b"
+                    }
+                ]
+            },
+            {
+                "name": "ec2-security-groups-source-defined",
+                "description": "this rule is to check if a ec2 SG has a defined source (not 0.0.0.0)",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.SecurityGroups",
+                "conditions": [
+                    {
+                        "property": "IpPermissions",
+                        "condition": "ALL",
+                        "value": [
+                            {
+                                "property": "IpRanges",
+                                "condition": "ALL",
+                                "value": [
+                                    {
+                                        "property": "CidrIp",
+                                        "condition": "DIFFERENT",
+                                        "value": "0.0.0.0/0"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "aws-ec2-public-ip-address",
+                "description": "this rule is to check if an ec2 ip address is public",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.Instances",
+                "conditions": [
+                    {
+                        "property": "PublicIpAddress",
+                        "condition": "EQUAL",
+                        "value": null
+                    }
+                ]
+            },
+            {
+                "name": "aws-ec2-volume-unattached",
+                "description": "this rule is to check if an ec2 volume is unattached",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.Volumes",
+                "conditions": [
+                    {
+                        "property": "Attachments",
+                        "condition": "COUNT_SUP",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "name": "ec2-volume-check-create-less-2-month-expiration",
+                "description": "this rule is to check for a ec2 volume create date inferior than 2 months",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.Volumes",
+                "conditions": [
+                    {
+                        "property": "CreateTime",
+                        "condition": "DATE_INF",
+                        "value": "0 0 0 0 0 2 0",
+                        "date": "YYYY-MM-DDThh:mm:ss.SSSZ"
+                    }
+                ]
+            },
+            {
+                "name": "aws-tagsvalue-check-for-expiration-date",
+                "description": "this rule is to check if tags contain an expiration date (separate with \"-\")",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "KexaAwsCustoms.tagsValueListing",
+                "conditions": [
+                    {
+                        "property": "name",
+                        "condition": "REGEX",
+                        "value": "\\b\\d{1,4}[-]\\d{1,4}[-]\\d{1,4}\\b"
+                    }
+                ]
+            },
+            {
+                "name": "ec2-security-groups-source-defined",
+                "description": "this rule is to check if a ec2 SG has a defined source (not 0.0.0.0)",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.SecurityGroups",
+                "conditions": [
+                    {
+                        "property": "IpPermissions",
+                        "condition": "ALL",
+                        "value": [
+                            {
+                                "property": "IpRanges",
+                                "condition": "ALL",
+                                "value": [
+                                    {
+                                        "property": "CidrIp",
+                                        "condition": "DIFFERENT",
+                                        "value": "0.0.0.0/0"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "aws-ec2-public-ip-address",
+                "description": "this rule is to check if an ec2 ip address is public",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "aws",
+                "objectName": "EC2Client.Instances",
+                "conditions": [
+                    {
+                        "property": "Instances",
+                        "condition": "ALL",
+                        "value": [
+                            {
+                                "property": "PublicIpAddress",
+                                "condition": "EQUAL",
+                                "value": null
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     "azure": {
         "resources": [
@@ -6510,52 +6712,6 @@
         "documentation": "https://learn.microsoft.com/fr-fr/javascript/api/overview/azure/?view=azure-node-latest",
         "freeRules": [
             {
-                "name": "aks-is-scaleset-down",
-                "description": "check if aks have a scaleSet down",
-                "applied": true,
-                "level": 0,
-                "cloudProvider": "azure",
-                "objectName": "ContainerServiceClient.managedClusters",
-                "conditions": [
-                    {
-                        "property": "agentPoolProfiles",
-                        "condition": "ALL",
-                        "value": [
-                            {
-                                "property": "scaleSetEvictionPolicy",
-                                "condition": "EQUAL",
-                                "value": "Delete"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "azure-orphan-nsg",
-                "description": "this rules is to check if nsg is orphan",
-                "applied": true,
-                "level": 1,
-                "cloudProvider": "azure",
-                "objectName": "NetworkManagementClient.networkSecurityGroups",
-                "conditions": [
-                    {
-                        "operator": "OR",
-                        "criteria": [
-                            {
-                                "property": "networkInterfaces",
-                                "condition": "COUNT_SUP_OR_EQUAL",
-                                "value": 1
-                            },
-                            {
-                                "property": "subnets",
-                                "condition": "COUNT_SUP_OR_EQUAL",
-                                "value": 1
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 "name": "check-vm-reservation",
                 "description": "check if VM have a reservation",
                 "applied": true,
@@ -6607,6 +6763,31 @@
                 ]
             },
             {
+                "name": "azure-orphan-nsg",
+                "description": "this rules is to check if nsg is orphan",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "azure",
+                "objectName": "NetworkManagementClient.networkSecurityGroups",
+                "conditions": [
+                    {
+                        "operator": "OR",
+                        "criteria": [
+                            {
+                                "property": "networkInterfaces",
+                                "condition": "COUNT_SUP_OR_EQUAL",
+                                "value": 1
+                            },
+                            {
+                                "property": "subnets",
+                                "condition": "COUNT_SUP_OR_EQUAL",
+                                "value": 1
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "name": "Orphan virtualNetwork",
                 "description": "this rules is to check if virtualNetwork is orphan",
                 "applied": true,
@@ -6618,6 +6799,118 @@
                         "property": "subnets",
                         "condition": "COUNT_SUP_OR_EQUAL",
                         "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "not-under-use-VM",
+                "description": "this rule is if a VM is under-used (50% > CPU or 50%>RAM over 2 weeks) ",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "azure",
+                "objectName": "KexaAzure.vm",
+                "conditions": [
+                    {
+                        "operator": "OR",
+                        "criteria": [
+                            {
+                                "property": "instanceView.percentageCPU.mean",
+                                "condition": "SUP",
+                                "value": 50
+                            },
+                            {
+                                "property": "instanceView.availableMemoryBytes.mean",
+                                "condition": "SUP",
+                                "value": 50
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "azure-virtual-network-minimum-subnets",
+                "description": "check if NSG have a minimum of subnets",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "azure",
+                "objectName": "NetworkManagementClient.virtualNetworks",
+                "conditions": [
+                    {
+                        "property": "subnets",
+                        "condition": "COUNT_SUP",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "name": "az-job-ml-check",
+                "description": "this rule is to check for ml job if they are not failed",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "azure",
+                "objectName": "KexaAzure.mlJobs",
+                "conditions": [
+                    {
+                        "operator": "NAND",
+                        "criteria": [
+                            {
+                                "property": "workspace",
+                                "condition": "EQUAL",
+                                "value": "Test-Kexa-Machine-Learning"
+                            },
+                            {
+                                "property": "properties.displayName",
+                                "condition": "EQUAL",
+                                "value": "hello-world-example"
+                            },
+                            {
+                                "property": "properties.status",
+                                "condition": "EQUAL",
+                                "value": "Failed"
+                            },
+                            {
+                                "property": "properties.properties.StartTimeUtc",
+                                "condition": "DATE_INF",
+                                "value": "0 0 0 1 0 0",
+                                "date": "YYYY-MM-DD hh:mm:ss"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "aks-is-scaleset-down",
+                "description": "check if aks have a scaleSet down",
+                "applied": true,
+                "level": 0,
+                "cloudProvider": "azure",
+                "objectName": "ContainerServiceClient.managedClusters",
+                "conditions": [
+                    {
+                        "property": "agentPoolProfiles",
+                        "condition": "ALL",
+                        "value": [
+                            {
+                                "property": "scaleSetEvictionPolicy",
+                                "condition": "EQUAL",
+                                "value": "Delete"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "azure-nsg-valid-subnet",
+                "description": "check if NSG have a valid subnet",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "azure",
+                "objectName": "ContainerServiceClient.managedClusters",
+                "conditions": [
+                    {
+                        "property": "agentPoolProfiles",
+                        "condition": "COUNT",
+                        "value": 2
                     }
                 ]
             }
@@ -6649,7 +6942,24 @@
         ],
         "thumbnail": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/google-cloud-square.png",
         "documentation": "https://cloud.google.com/nodejs/docs/reference",
-        "freeRules": []
+        "freeRules": [
+            {
+                "name": "gcp-disk-check-create-date-2-month-expiration",
+                "description": "this rule is to check for a persistent disk create date is inferior than 2 months ago",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "gcp",
+                "objectName": "disk",
+                "conditions": [
+                    {
+                        "property": "creationTimestamp",
+                        "condition": "DATE_INF",
+                        "value": "0 0 0 2 0 0 0",
+                        "date": "YYYY-MM-DDThh:mm:ss.SSSZ"
+                    }
+                ]
+            }
+        ]
     },
     "github": {
         "resources": [
@@ -6758,6 +7068,46 @@
                                 "property": "protected",
                                 "condition": "EQUAL",
                                 "value": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "git-is-repository-private",
+                "description": "this rules is to check if git repo is private",
+                "applied": true,
+                "level": 0,
+                "cloudProvider": "github",
+                "objectName": "repositories",
+                "conditions": [
+                    {
+                        "property": "private",
+                        "condition": "EQUAL",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "name": "git-is-branch-protected",
+                "description": "this rules is to check if git branch is protected",
+                "applied": true,
+                "level": 0,
+                "cloudProvider": "github",
+                "objectName": "branches",
+                "conditions": [
+                    {
+                        "operator": "NAND",
+                        "criteria": [
+                            {
+                                "property": "protected",
+                                "condition": "DIFFERENT",
+                                "value": true
+                            },
+                            {
+                                "property": "name",
+                                "condition": "EQUAL",
+                                "value": "master"
                             }
                         ]
                     }
@@ -7667,6 +8017,72 @@
                         "property": "isUnmanagedSyncAppForTenantRestricted",
                         "condition": "EQUAL",
                         "value": true
+                    }
+                ]
+            },
+            {
+                "name": "o365-is-skus-not-used",
+                "description": "this rule is if a subscribed sku is not being used",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "o365",
+                "objectName": "sku",
+                "conditions": [
+                    {
+                        "property": "consumedUnits",
+                        "condition": "SUP",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "name": "o365-check-jobtitle-defined",
+                "description": "this rule is to check for non defined job title",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "o365",
+                "objectName": "user",
+                "conditions": [
+                    {
+                        "property": "jobTitle",
+                        "condition": "DIFFERENT",
+                        "value": null
+                    }
+                ]
+            },
+            {
+                "name": "o365-is-simple-member",
+                "description": "this rule is to check for simple members",
+                "applied": true,
+                "level": 1,
+                "cloudProvider": "o365",
+                "objectName": "user",
+                "conditions": [
+                    {
+                        "property": "userType",
+                        "condition": "EQUAL",
+                        "value": "Member"
+                    }
+                ]
+            },
+            {
+                "name": "o365-is-mfa-activated-on-user",
+                "description": "check if at least 2 auth factors are active",
+                "applied": true,
+                "level": 2,
+                "cloudProvider": "o365",
+                "objectName": "auth_methods",
+                "conditions": [
+                    {
+                        "property": "methods",
+                        "condition": "ONE",
+                        "value": [
+                            {
+                                "property": "dataType",
+                                "condition": "EQUAL",
+                                "value": "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+                            }
+                        ]
                     }
                 ]
             }

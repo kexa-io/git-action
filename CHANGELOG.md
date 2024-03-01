@@ -4657,3 +4657,16 @@ src/__tests__/services/addOn.test.ts was changed
 src/__tests__/services/analyse.test.ts was changed
 
 
+## 1.4.1-SNAPSHOT.8.c18291d32
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+
