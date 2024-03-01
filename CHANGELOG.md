@@ -36835,3 +36835,18 @@ src/services/addOn/awsGathering.service.ts was changed
 src/main.ts was changed
 
 
+## 1.2.6-dev.44.ada5f5c73
+
+### Files added: 0
+
+### Files changed: 4
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+src/main.ts was changed
+
+
