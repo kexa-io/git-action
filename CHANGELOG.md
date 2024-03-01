@@ -36744,3 +36744,14 @@ package.json was changed
 CHANGELOG.md was changed
 
 
+## 1.2.6-dependabotnpmandyarnnodemailer.24.30eae6f7c
+
+### Files added: 0
+
+### Files changed: 2
+
+package-lock.json was changed
+
+package.json was changed
+
+
