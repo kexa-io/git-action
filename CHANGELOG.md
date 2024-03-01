@@ -4572,4 +4572,88 @@ src/main.ts was changed
 
 ### Files changed: 0
 
+## 1.2.6
+
+### Files added: 0
+
+### Files changed: 4
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+src/main.ts was changed
+
+
+## 1.3.0
+
+### Files added: 0
+
+### Files changed: 1
+
+CHANGELOG.md was changed
+
+
+## 1.4.0
+
+### Files added: 9
+
+lib/__tests__/services/updateCapability.test.js was added
+
+src/__tests__/filesForTest/capacity.json was added
+
+src/__tests__/rules/var/test1/default.json was added
+
+src/__tests__/rules/var/test1/rule-test.yaml was added
+
+src/__tests__/rules/var/test2/default.json was added
+
+src/__tests__/rules/var/test2/rule-test.yaml was added
+
+src/__tests__/rules/var/test3/default.json was added
+
+src/__tests__/rules/var/test3/rule-test.yaml was added
+
+src/__tests__/services/updateCapability.test.ts was added
+
+### Files changed: 18
+
+lib/__tests__/services/updateCapability.test.js was changed
+
+src/__tests__/filesForTest/capacity.json was changed
+
+src/__tests__/rules/var/test1/default.json was changed
+
+src/__tests__/rules/var/test1/rule-test.yaml was changed
+
+src/__tests__/rules/var/test2/default.json was changed
+
+src/__tests__/rules/var/test2/rule-test.yaml was changed
+
+src/__tests__/rules/var/test3/default.json was changed
+
+src/__tests__/rules/var/test3/rule-test.yaml was changed
+
+src/__tests__/services/updateCapability.test.ts was changed
+
+lib/__tests__/services/addOn.test.js was changed
+
+lib/__tests__/services/analyse.test.js was changed
+
+lib/main.js was changed
+
+src/__tests__/rules/test1/rule-test.yaml was changed
+
+src/__tests__/rules/test2/rule-test.yaml was changed
+
+src/__tests__/rules/test2/rule-test2.yaml was changed
+
+src/__tests__/rules/test3/rule-test.yaml was changed
+
+src/__tests__/services/addOn.test.ts was changed
+
+src/__tests__/services/analyse.test.ts was changed
+
 
