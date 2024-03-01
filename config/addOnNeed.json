@@ -6,8 +6,6 @@
         "http",
         "kubernetes",
         "azure",
-        "aws",
-        "gcp",
         "googleDrive"
     ],
     "objectNameNeed": {
@@ -39,25 +37,6 @@
                 "pods"
             ]
         },
-        "Economy": {
-            "azure": [
-                "ComputeManagementClient.virtualMachines",
-                "ComputeManagementClient.disks",
-                "ContainerServiceClient.managedClusters",
-                "NetworkManagementClient.networkSecurityGroups",
-                "NetworkManagementClient.virtualNetworks",
-                "KexaAzure.vm"
-            ],
-            "aws": [
-                "ec2Volume"
-            ],
-            "gcp": [
-                "disk"
-            ],
-            "o365": [
-                "sku"
-            ]
-        },
         "HTTPRules": {
             "http": [
                 "request"
@@ -67,19 +46,6 @@
             "kubernetes": [
                 "namespaces",
                 "pods"
-            ]
-        },
-        "OperationalExcellence": {
-            "azure": [
-                "NetworkManagementClient.virtualNetworks",
-                "KexaAzure.mlJobs"
-            ],
-            "aws": [
-                "ec2Volume",
-                "tagsValue"
-            ],
-            "o365": [
-                "user"
             ]
         },
         "Performance": {
@@ -99,22 +65,6 @@
             ],
             "kubernetes": [
                 "namespaces"
-            ]
-        },
-        "Security": {
-            "azure": [
-                "ContainerServiceClient.managedClusters"
-            ],
-            "github": [
-                "repositories",
-                "branches"
-            ],
-            "aws": [
-                "ec2SG",
-                "ec2Instance"
-            ],
-            "o365": [
-                "auth_methods"
             ]
         },
         "driveRules": {
