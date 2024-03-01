@@ -4670,3 +4670,70 @@ VERSION was changed
 package.json was changed
 
 
+## 1.5.0
+
+### Files added: 6
+
+lib/services/updatePkgImport.service.js was added
+
+src/models/aws/ressource.models.js was added
+
+src/models/azure/resource.models.js was added
+
+src/rules/awsSetRules.yaml was added
+
+src/rules/rules-with-var.yaml was added
+
+src/services/updatePkgImport.service.ts was added
+
+### Files changed: 25
+
+lib/services/updatePkgImport.service.js was changed
+
+src/models/aws/ressource.models.js was changed
+
+src/models/azure/resource.models.js was changed
+
+src/rules/awsSetRules.yaml was changed
+
+src/rules/rules-with-var.yaml was changed
+
+src/services/updatePkgImport.service.ts was changed
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+capacity.json was changed
+
+config/addOnNeed.json was changed
+
+config/headers.json was changed
+
+lib/services/addOn/awsGathering.service.js was changed
+
+lib/services/addOn/imports/awsPackage.import.js was changed
+
+lib/services/updateCapability.service.js was changed
+
+package.json was changed
+
+src/rules/Economy.yaml was changed
+
+src/rules/OperationalExcellence.yaml was changed
+
+src/rules/Security.yaml was changed
+
+src/rules/rulesByProvider/awsSetRules.yaml was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+src/services/addOn/imports/awsPackage.import.ts was changed
+
+src/services/addOn/imports/scripts/awsPackageInstall.script.sh was changed
+
+src/services/updateCapability.service.ts was changed
+
+tsconfig.json was changed
+
+

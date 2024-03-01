@@ -1008,8 +1008,10 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ CloudFormationClient.AccountLimits
 - ✅ CloudFormationClient.ChangeSet
 - ✅ CloudFormationClient.ChangeSetHooks
+- ✅ CloudFormationClient.GeneratedTemplate
 - ✅ CloudFormationClient.OrganizationsAccess
 - ✅ CloudFormationClient.Publisher
+- ✅ CloudFormationClient.ResourceScan
 - ✅ CloudFormationClient.StackDriftDetectionStatus
 - ✅ CloudFormationClient.StackEvents
 - ✅ CloudFormationClient.StackInstance
@@ -1021,12 +1023,17 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ CloudFormationClient.Stacks
 - ✅ CloudFormationClient.Type
 - ✅ CloudFormationClient.TypeRegistration
+- ✅ CloudFormationClient.GeneratedTemplate
 - ✅ CloudFormationClient.StackPolicy
 - ✅ CloudFormationClient.Template
 - ✅ CloudFormationClient.TemplateSummary
 - ✅ CloudFormationClient.ChangeSets
 - ✅ CloudFormationClient.Exports
+- ✅ CloudFormationClient.GeneratedTemplates
 - ✅ CloudFormationClient.Imports
+- ✅ CloudFormationClient.ResourceScanRelatedResources
+- ✅ CloudFormationClient.ResourceScanResources
+- ✅ CloudFormationClient.ResourceScans
 - ✅ CloudFormationClient.StackInstanceResourceDrifts
 - ✅ CloudFormationClient.StackInstances
 - ✅ CloudFormationClient.StackResources
@@ -1178,6 +1185,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ RDSClient.DBProxyTargets
 - ✅ RDSClient.DBRecommendations
 - ✅ RDSClient.DBSecurityGroups
+- ✅ RDSClient.DBShardGroups
 - ✅ RDSClient.DBSnapshotAttributes
 - ✅ RDSClient.DBSnapshotTenantDatabases
 - ✅ RDSClient.DBSnapshots
@@ -1209,6 +1217,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ CodeBuildClient.Builds
 - ✅ CodeBuildClient.BuildsForProject
 - ✅ CodeBuildClient.CuratedEnvironmentImages
+- ✅ CodeBuildClient.Fleets
 - ✅ CodeBuildClient.Projects
 - ✅ CodeBuildClient.ReportGroups
 - ✅ CodeBuildClient.Reports
@@ -1700,6 +1709,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ RedshiftClient.ReservedNodeExchangeConfigurationOptions
 - ✅ RedshiftClient.ReservedNodeExchangeOfferings
 - ✅ RedshiftClient.ResourcePolicy
+- ✅ RedshiftClient.Recommendations
 - ✅ MediaConvertClient.Endpoints
 - ✅ MediaConvertClient.Job
 - ✅ MediaConvertClient.JobTemplate
@@ -1744,6 +1754,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ CloudTrailClient.EventDataStores
 - ✅ CloudTrailClient.ImportFailures
 - ✅ CloudTrailClient.Imports
+- ✅ CloudTrailClient.InsightsMetricData
 - ✅ CloudTrailClient.PublicKeys
 - ✅ CloudTrailClient.Queries
 - ✅ CloudTrailClient.Tags
@@ -1859,12 +1870,14 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ KinesisVideoClient.TagsForStream
 - ✅ IvsClient.Channel
 - ✅ IvsClient.PlaybackKeyPair
+- ✅ IvsClient.PlaybackRestrictionPolicy
 - ✅ IvsClient.RecordingConfiguration
 - ✅ IvsClient.Stream
 - ✅ IvsClient.StreamKey
 - ✅ IvsClient.StreamSession
 - ✅ IvsClient.Channels
 - ✅ IvsClient.PlaybackKeyPairs
+- ✅ IvsClient.PlaybackRestrictionPolicies
 - ✅ IvsClient.RecordingConfigurations
 - ✅ IvsClient.StreamKeys
 - ✅ IvsClient.StreamSessions
@@ -1877,6 +1890,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ AppSyncClient.DomainName
 - ✅ AppSyncClient.Function
 - ✅ AppSyncClient.GraphqlApi
+- ✅ AppSyncClient.GraphqlApiEnvironmentVariables
 - ✅ AppSyncClient.IntrospectionSchema
 - ✅ AppSyncClient.Resolver
 - ✅ AppSyncClient.SchemaCreationStatus
@@ -2553,6 +2567,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ CostExplorerClient.Anomalies
 - ✅ CostExplorerClient.AnomalyMonitors
 - ✅ CostExplorerClient.AnomalySubscriptions
+- ✅ CostExplorerClient.ApproximateUsageRecords
 - ✅ CostExplorerClient.CostAndUsage
 - ✅ CostExplorerClient.CostAndUsageWithResources
 - ✅ CostExplorerClient.CostCategories
@@ -3210,6 +3225,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ LightsailClient.RelationalDatabaseSnapshot
 - ✅ LightsailClient.RelationalDatabaseSnapshots
 - ✅ LightsailClient.RelationalDatabases
+- ✅ LightsailClient.SetupHistory
 - ✅ LightsailClient.StaticIp
 - ✅ LightsailClient.StaticIps
 - ✅ NeptuneClient.DBClusterEndpoints
@@ -3543,12 +3559,14 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ AmplifyUIBuilderClient.CodegenJobs
 - ✅ AmplifyUIBuilderClient.Components
 - ✅ AmplifyUIBuilderClient.Forms
+- ✅ AmplifyUIBuilderClient.TagsForResource
 - ✅ AmplifyUIBuilderClient.Themes
 - ✅ KafkaConnectClient.Connector
 - ✅ KafkaConnectClient.CustomPlugin
 - ✅ KafkaConnectClient.WorkerConfiguration
 - ✅ KafkaConnectClient.Connectors
 - ✅ KafkaConnectClient.CustomPlugins
+- ✅ KafkaConnectClient.TagsForResource
 - ✅ KafkaConnectClient.WorkerConfigurations
 - ✅ PanoramaClient.ApplicationInstance
 - ✅ PanoramaClient.ApplicationInstanceDetails
@@ -3757,6 +3775,7 @@ En the end, the reading grid for github Action and classic Kexa is the same : se
 - ✅ ApplicationCostProfilerClient.ReportDefinition
 - ✅ ApplicationCostProfilerClient.ReportDefinitions
 - ✅ KeyspacesClient.Keyspace
+- ✅ KeyspacesClient.TableAutoScalingSettings
 - ✅ KeyspacesClient.Table
 - ✅ KeyspacesClient.Keyspaces
 - ✅ KeyspacesClient.Tables
