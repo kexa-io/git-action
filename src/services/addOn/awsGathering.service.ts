@@ -5122,7 +5122,8 @@ async function collectAuto(credential: any, region: string) {
 	
 		for (const dependence of awsGatherDependencies) {
 			if (Array.isArray(dependence.functions)) {
-				for( let func of dependence.functions) {
+				for (let i = 0; i < dependence.functions.length; i++) {
+					const func = dependence.functions[i];
 					dependence.objects.forEach(async (element: any) => {
 						if (element.name == func.objectName) {
 							const input = {};
@@ -5135,9 +5136,10 @@ async function collectAuto(credential: any, region: string) {
 									data = await client.send(command);
 									element.results = data[element.subGatherName];
 								} catch (e) {
-									logger.warning("Error when retrieving resources dependencies from : " + func.clientName + "." + func.objectName);
+									logger.warn("Error when retrieving resources dependencies from : " + func.clientName + "." + func.objectName);
 								}
 							})();
+	
 							promises.push(promise);
 						}
 					});
