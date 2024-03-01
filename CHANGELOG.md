@@ -4737,3 +4737,18 @@ src/services/updateCapability.service.ts was changed
 tsconfig.json was changed
 
 
+## 1.2.0
+
+### Files added: 0
+
+### Files changed: 4
+
+CHANGELOG.md was changed
+
+README.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+
