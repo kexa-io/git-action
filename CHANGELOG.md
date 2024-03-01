@@ -36744,7 +36744,7 @@ package.json was changed
 CHANGELOG.md was changed
 
 
-## 1.2.6-dependabotnpmandyarnnodemailer.24.30eae6f7c
+## 1.2.6
 
 ### Files added: 0
 
@@ -36753,5 +36753,8 @@ CHANGELOG.md was changed
 package-lock.json was changed
 
 package.json was changed
+lib/services/addOn/imports/azurePackage.import.js was changed
+
+src/services/addOn/gcpGathering.service.ts was changed
 
 

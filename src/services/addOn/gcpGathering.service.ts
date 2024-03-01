@@ -892,6 +892,7 @@ async function listAppGateways(projectId: any, regionsList: Array<string>): Prom
 /////////////////////////////////////////////////////////
 /// THE FOLLOWINGS RESOURCES HAVE NOT BEEN TESTED YET ///
 /////////////////////////////////////////////////////////
+
 /*
 async function listAppConnectors(projectId: any): Promise<Array<any> | null> {
     const {AppConnectorsServiceClient} = require('@google-cloud/appconnectors').v1;
