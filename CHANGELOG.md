@@ -36850,3 +36850,18 @@ package.json was changed
 src/main.ts was changed
 
 
+## 1.2.6
+
+### Files added: 0
+
+### Files changed: 4
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+src/main.ts was changed
+
+
