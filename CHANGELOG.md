@@ -36809,3 +36809,20 @@ package-lock.json was changed
 package.json was changed
 
 
+## 1.2.6
+
+### Files added: 0
+
+### Files changed: 5
+
+lib/services/addOn/awsGathering.service.js was changed
+
+lib/services/addOn/gcpGathering.service.js was changed
+
+lib/services/addOn/imports/azurePackage.import.js was changed
+
+lib/services/updateCapability.service.js was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+
