@@ -36826,3 +36826,12 @@ lib/services/updateCapability.service.js was changed
 src/services/addOn/awsGathering.service.ts was changed
 
 
+## 1.2.6-dev.40.fc11cfa31
+
+### Files added: 0
+
+### Files changed: 1
+
+src/main.ts was changed
+
+
