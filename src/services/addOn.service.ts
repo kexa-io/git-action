@@ -26,6 +26,31 @@ const addOnName = [
     "o365"
 ]
 
+import { collectData as AWScollectData}  from "./addOn/awsGathering.service";
+import { collectData as AzurecollectData}  from "./addOn/azureGathering.service";
+import { collectData as GCPcollectData}  from "./addOn/gcpGathering.service";
+import { collectData as KubernetescollectData}  from "./addOn/kubernetesGathering.service";
+import { collectData as GithubcollectData}  from "./addOn/githubGathering.service";
+import { collectData as GoogleDrivecollectData}  from "./addOn/googleDriveGathering.service";
+import { collectData as GoogleWorkspacecollectData}  from "./addOn/googleWorkspaceGathering.service";
+import { collectData as HttpcollectData}  from "./addOn/httpGathering.service";
+import { collectData as O365collectData}  from "./addOn/o365Gathering.service";
+
+const addOnCollect:{
+    [key: string]: Function;
+} = {
+    "aws": AWScollectData,
+    "azure": AzurecollectData,
+    "gcp": GCPcollectData,
+    "kubernetes": KubernetescollectData,
+    "github": GithubcollectData,
+    "googleDrive": GoogleDrivecollectData,
+    "googleWorkspace": GoogleWorkspacecollectData,
+    "http": HttpcollectData,
+    "o365": O365collectData,
+}
+
+
 export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
     logger.info("Loading addOns");
     const promises = addOnName.map(async (file: string) => {
@@ -54,7 +79,8 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
 
 async function loadAddOn(nameAddOn: string): Promise<{ key: string; data: Provider|null; delta: number } | null> {
     try{
-        const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
+        //const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
+        const collectData = addOnCollect[nameAddOn];
         let start = Date.now();
         const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
         const data = await collectData(addOnConfig);
@@ -84,6 +110,55 @@ const addOnNameCustomUtility:{ [key: string]: string[]; } = {
         "mongoDB",
         "prometheus",
     ],
+    "exportation": [
+        "azureBlobStorage",
+        "mongoDB",
+        "mySQL",
+    ]
+}
+
+import { propertyToSend as displayAWS}  from "./addOn/display/awsDisplay.service";
+import { propertyToSend as displayAzure}  from "./addOn/display/azureDisplay.service";
+import { propertyToSend as displayGCP}  from "./addOn/display/gcpDisplay.service";
+import { propertyToSend as displayKubernetes}  from "./addOn/display/kubernetesDisplay.service";
+import { propertyToSend as displayGithub}  from "./addOn/display/githubDisplay.service";
+import { propertyToSend as displayGoogleDrive}  from "./addOn/display/googleDriveDisplay.service";
+import { propertyToSend as displayGoogleWorkspace}  from "./addOn/display/googleWorkspaceDisplay.service";
+import { propertyToSend as displayHttp}  from "./addOn/display/httpDisplay.service";
+import { propertyToSend as displayO365}  from "./addOn/display/o365Display.service";
+import { save as saveAmazonS3}  from "./addOn/save/amazonS3Save.service";
+import { save as saveAzureBlobStorage}  from "./addOn/save/azureBlobStorageSave.service";
+import { save as saveMongoDB}  from "./addOn/save/mongoDBSave.service";
+import { save as savePrometheus}  from "./addOn/save/prometheusSave.service";
+import { exportation as exportAzureBlobStorage}  from "./addOn/exportation/azureBlobStorageExportation.service";
+import { exportation as exportMongoDB}  from "./addOn/exportation/mongoDBExportation.service";
+import { exportation as exportMySQL}  from "./addOn/exportation/mySQLExportation.service";
+
+const addOnCustomUtility: {
+    [key: string]: { [key: string]: Function; };
+} = {
+    "display": {
+        "aws": displayAWS,
+        "azure": displayAzure,
+        "gcp": displayGCP,
+        "kubernetes": displayKubernetes,
+        "github": displayGithub,
+        "googleDrive": displayGoogleDrive,
+        "googleWorkspace": displayGoogleWorkspace,
+        "http": displayHttp,
+        "o365": displayO365,
+    },
+    "save": {
+        "amazonS3": saveAmazonS3,
+        "azureBlobStorage": saveAzureBlobStorage,
+        "mongoDB": saveMongoDB,
+        "prometheus": savePrometheus,
+    },
+    "exportation": {
+        "azureBlobStorage": exportAzureBlobStorage,
+        "mongoDB": exportMongoDB,
+        "mySQL": exportMySQL,
+    }
 }
 
 export function loadAddOnsCustomUtility(usage: string, funcName:string, onlyFiles: string[]|null = null) : { [key: string]: Function; }{
@@ -110,8 +185,9 @@ export function loadAddOnsCustomUtility(usage: string, funcName:string, onlyFile
 function loadAddOnCustomUtility(file: string, usage: string, funcName:string): { key: string; data: Function; } | null {
     try{
         let formatUsage = usage.slice(0,1).toUpperCase() + usage.slice(1);
-        const moduleExports = require(`./addOn/${usage}/${file}${formatUsage}.service.js`);
-        const funcCall = moduleExports[funcName];
+        //const moduleExports = require(`./addOn/${usage}/${file}${formatUsage}.service.js`);
+        //const funcCall = moduleExports[funcName];
+        const funcCall = addOnCustomUtility[usage][file];
         return { key: file, data:funcCall};
     }catch(e){
         logger.warning("Error loading addOn " + file + " : " + e);
