@@ -25,10 +25,10 @@
         ".": "./dist/index.js"
     },
     "engines": {
-        "node": ">=16"
+        "node": ">=20"
     },
     "scripts": {
-        "update": "node lib/services/updateCapability.service.js",
+        "update": "node src/services/updateCapability.service.js",
         "pkg": "node lib/services/updatePkgImport.service.js",
         "package": "rimraf ./dist && npm run prepackage && npm run pkg && npm run prepackage && ncc build lib/main.js && rimraf ./lib",
         "prepackage": "rimraf ./lib && tsc",
