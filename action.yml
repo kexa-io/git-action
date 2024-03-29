@@ -80,6 +80,6 @@ outputs:
     description: 'A list of result scan for each rules applied'
 
 runs:
-  using: node16
-  #main: dist/index.js
-  main: lib/main.js
+  using: node20
+  main: dist/index.js
+  #main: lib/main.js
