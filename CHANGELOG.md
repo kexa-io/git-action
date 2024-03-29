@@ -4777,3 +4777,32 @@ src/services/display.service.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 1.5.1
+
+### Files added: 1
+
+src/services/updateCapability.service.js was added
+
+### Files changed: 10
+
+src/services/updateCapability.service.js was changed
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+action.yml was changed
+
+dist/index.js was changed
+
+package-lock.json was changed
+
+package.json was changed
+
+src/__tests__/services/updateCapability.test.ts was changed
+
+src/services/display.service.ts was changed
+
+src/services/updateCapability.service.ts was changed
+
+
