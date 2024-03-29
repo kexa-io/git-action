@@ -4777,6 +4777,7 @@ src/services/display.service.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+
 ## 1.5.1
 
 ### Files added: 1
@@ -4799,10 +4800,2005 @@ package-lock.json was changed
 
 package.json was changed
 
+src/models/export/azureBlobStorage/config.models.ts was changed
+
+src/services/addOn.service.ts was changed
+
 src/__tests__/services/updateCapability.test.ts was changed
 
 src/services/display.service.ts was changed
 
 src/services/updateCapability.service.ts was changed
+
+
+## 1.5.2-SNAPSHOT.6.068b3711c
+
+### Files added: 491
+
+dist/awsGathering.service.ts was added
+
+dist/azureGathering.service.ts was added
+
+dist/proto/channelz.proto was added
+
+dist/proto1/channelz.proto was added
+
+dist/proto2/channelz.proto was added
+
+dist/protos.json was added
+
+dist/protos/compute_operations.d.ts was added
+
+dist/protos/compute_operations.js was added
+
+dist/protos/compute_operations.json was added
+
+dist/protos/google/api/annotations.proto was added
+
+dist/protos/google/api/apikeys/v2/apikeys.proto was added
+
+dist/protos/google/api/apikeys/v2/resources.proto was added
+
+dist/protos/google/api/auth.proto was added
+
+dist/protos/google/api/backend.proto was added
+
+dist/protos/google/api/billing.proto was added
+
+dist/protos/google/api/client.proto was added
+
+dist/protos/google/api/config_change.proto was added
+
+dist/protos/google/api/consumer.proto was added
+
+dist/protos/google/api/context.proto was added
+
+dist/protos/google/api/control.proto was added
+
+dist/protos/google/api/distribution.proto was added
+
+dist/protos/google/api/documentation.proto was added
+
+dist/protos/google/api/endpoint.proto was added
+
+dist/protos/google/api/error_reason.proto was added
+
+dist/protos/google/api/expr/conformance/v1alpha1/conformance_service.proto was added
+
+dist/protos/google/api/expr/v1alpha1/checked.proto was added
+
+dist/protos/google/api/expr/v1alpha1/eval.proto was added
+
+dist/protos/google/api/expr/v1alpha1/explain.proto was added
+
+dist/protos/google/api/expr/v1alpha1/syntax.proto was added
+
+dist/protos/google/api/expr/v1alpha1/value.proto was added
+
+dist/protos/google/api/expr/v1beta1/decl.proto was added
+
+dist/protos/google/api/expr/v1beta1/eval.proto was added
+
+dist/protos/google/api/expr/v1beta1/expr.proto was added
+
+dist/protos/google/api/expr/v1beta1/source.proto was added
+
+dist/protos/google/api/expr/v1beta1/value.proto was added
+
+dist/protos/google/api/field_behavior.proto was added
+
+dist/protos/google/api/http.proto was added
+
+dist/protos/google/api/httpbody.proto was added
+
+dist/protos/google/api/label.proto was added
+
+dist/protos/google/api/launch_stage.proto was added
+
+dist/protos/google/api/log.proto was added
+
+dist/protos/google/api/logging.proto was added
+
+dist/protos/google/api/metric.proto was added
+
+dist/protos/google/api/monitored_resource.proto was added
+
+dist/protos/google/api/monitoring.proto was added
+
+dist/protos/google/api/quota.proto was added
+
+dist/protos/google/api/resource.proto was added
+
+dist/protos/google/api/routing.proto was added
+
+dist/protos/google/api/service.proto was added
+
+dist/protos/google/api/servicecontrol/v1/check_error.proto was added
+
+dist/protos/google/api/servicecontrol/v1/distribution.proto was added
+
+dist/protos/google/api/servicecontrol/v1/http_request.proto was added
+
+dist/protos/google/api/servicecontrol/v1/log_entry.proto was added
+
+dist/protos/google/api/servicecontrol/v1/metric_value.proto was added
+
+dist/protos/google/api/servicecontrol/v1/operation.proto was added
+
+dist/protos/google/api/servicecontrol/v1/quota_controller.proto was added
+
+dist/protos/google/api/servicecontrol/v1/service_controller.proto was added
+
+dist/protos/google/api/servicecontrol/v2/service_controller.proto was added
+
+dist/protos/google/api/servicemanagement/v1/resources.proto was added
+
+dist/protos/google/api/servicemanagement/v1/servicemanager.proto was added
+
+dist/protos/google/api/serviceusage/v1/resources.proto was added
+
+dist/protos/google/api/serviceusage/v1/serviceusage.proto was added
+
+dist/protos/google/api/serviceusage/v1beta1/resources.proto was added
+
+dist/protos/google/api/serviceusage/v1beta1/serviceusage.proto was added
+
+dist/protos/google/api/source_info.proto was added
+
+dist/protos/google/api/system_parameter.proto was added
+
+dist/protos/google/api/usage.proto was added
+
+dist/protos/google/api/visibility.proto was added
+
+dist/protos/google/cloud/location/locations.proto was added
+
+dist/protos/google/iam/v1/iam_policy.proto was added
+
+dist/protos/google/iam/v1/logging/audit_data.proto was added
+
+dist/protos/google/iam/v1/options.proto was added
+
+dist/protos/google/iam/v1/policy.proto was added
+
+dist/protos/google/logging/type/http_request.proto was added
+
+dist/protos/google/logging/type/log_severity.proto was added
+
+dist/protos/google/longrunning/operations.proto was added
+
+dist/protos/google/monitoring/v3/alert.proto was added
+
+dist/protos/google/monitoring/v3/alert_service.proto was added
+
+dist/protos/google/monitoring/v3/common.proto was added
+
+dist/protos/google/monitoring/v3/dropped_labels.proto was added
+
+dist/protos/google/monitoring/v3/group.proto was added
+
+dist/protos/google/monitoring/v3/group_service.proto was added
+
+dist/protos/google/monitoring/v3/metric.proto was added
+
+dist/protos/google/monitoring/v3/metric_service.proto was added
+
+dist/protos/google/monitoring/v3/mutation_record.proto was added
+
+dist/protos/google/monitoring/v3/notification.proto was added
+
+dist/protos/google/monitoring/v3/notification_service.proto was added
+
+dist/protos/google/monitoring/v3/query_service.proto was added
+
+dist/protos/google/monitoring/v3/service.proto was added
+
+dist/protos/google/monitoring/v3/service_service.proto was added
+
+dist/protos/google/monitoring/v3/snooze.proto was added
+
+dist/protos/google/monitoring/v3/snooze_service.proto was added
+
+dist/protos/google/monitoring/v3/span_context.proto was added
+
+dist/protos/google/monitoring/v3/uptime.proto was added
+
+dist/protos/google/monitoring/v3/uptime_service.proto was added
+
+dist/protos/google/protobuf/any.proto was added
+
+dist/protos/google/protobuf/api.proto was added
+
+dist/protos/google/protobuf/bridge/message_set.proto was added
+
+dist/protos/google/protobuf/compiler/plugin.proto was added
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_code.proto was added
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_code_proto2.proto was added
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_code_proto2_import.proto was added
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit.proto was added
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit_legacy.proto was added
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_pkg_implicit.proto was added
+
+dist/protos/google/protobuf/descriptor.proto was added
+
+dist/protos/google/protobuf/duration.proto was added
+
+dist/protos/google/protobuf/empty.proto was added
+
+dist/protos/google/protobuf/field_mask.proto was added
+
+dist/protos/google/protobuf/source_context.proto was added
+
+dist/protos/google/protobuf/struct.proto was added
+
+dist/protos/google/protobuf/timestamp.proto was added
+
+dist/protos/google/protobuf/type.proto was added
+
+dist/protos/google/protobuf/util/json_format.proto was added
+
+dist/protos/google/protobuf/util/json_format_proto3.proto was added
+
+dist/protos/google/protobuf/wrappers.proto was added
+
+dist/protos/google/rpc/code.proto was added
+
+dist/protos/google/rpc/context/attribute_context.proto was added
+
+dist/protos/google/rpc/context/audit_context.proto was added
+
+dist/protos/google/rpc/error_details.proto was added
+
+dist/protos/google/rpc/http.proto was added
+
+dist/protos/google/rpc/status.proto was added
+
+dist/protos/google/type/calendar_period.proto was added
+
+dist/protos/google/type/color.proto was added
+
+dist/protos/google/type/date.proto was added
+
+dist/protos/google/type/datetime.proto was added
+
+dist/protos/google/type/dayofweek.proto was added
+
+dist/protos/google/type/decimal.proto was added
+
+dist/protos/google/type/expr.proto was added
+
+dist/protos/google/type/fraction.proto was added
+
+dist/protos/google/type/interval.proto was added
+
+dist/protos/google/type/latlng.proto was added
+
+dist/protos/google/type/localized_text.proto was added
+
+dist/protos/google/type/money.proto was added
+
+dist/protos/google/type/month.proto was added
+
+dist/protos/google/type/phone_number.proto was added
+
+dist/protos/google/type/postal_address.proto was added
+
+dist/protos/google/type/quaternion.proto was added
+
+dist/protos/google/type/timeofday.proto was added
+
+dist/protos/http.d.ts was added
+
+dist/protos/http.js was added
+
+dist/protos/iam_service.d.ts was added
+
+dist/protos/iam_service.js was added
+
+dist/protos/iam_service.json was added
+
+dist/protos/locations.d.ts was added
+
+dist/protos/locations.js was added
+
+dist/protos/locations.json was added
+
+dist/protos/operations.d.ts was added
+
+dist/protos/operations.js was added
+
+dist/protos/operations.json was added
+
+dist/protos/status.json was added
+
+dist/protos1/compute_operations.d.ts was added
+
+dist/protos1/compute_operations.js was added
+
+dist/protos1/compute_operations.json was added
+
+dist/protos1/google/api/annotations.proto was added
+
+dist/protos1/google/api/apikeys/v2/apikeys.proto was added
+
+dist/protos1/google/api/apikeys/v2/resources.proto was added
+
+dist/protos1/google/api/auth.proto was added
+
+dist/protos1/google/api/backend.proto was added
+
+dist/protos1/google/api/billing.proto was added
+
+dist/protos1/google/api/client.proto was added
+
+dist/protos1/google/api/config_change.proto was added
+
+dist/protos1/google/api/consumer.proto was added
+
+dist/protos1/google/api/context.proto was added
+
+dist/protos1/google/api/control.proto was added
+
+dist/protos1/google/api/distribution.proto was added
+
+dist/protos1/google/api/documentation.proto was added
+
+dist/protos1/google/api/endpoint.proto was added
+
+dist/protos1/google/api/error_reason.proto was added
+
+dist/protos1/google/api/expr/conformance/v1alpha1/conformance_service.proto was added
+
+dist/protos1/google/api/expr/v1alpha1/checked.proto was added
+
+dist/protos1/google/api/expr/v1alpha1/eval.proto was added
+
+dist/protos1/google/api/expr/v1alpha1/explain.proto was added
+
+dist/protos1/google/api/expr/v1alpha1/syntax.proto was added
+
+dist/protos1/google/api/expr/v1alpha1/value.proto was added
+
+dist/protos1/google/api/expr/v1beta1/decl.proto was added
+
+dist/protos1/google/api/expr/v1beta1/eval.proto was added
+
+dist/protos1/google/api/expr/v1beta1/expr.proto was added
+
+dist/protos1/google/api/expr/v1beta1/source.proto was added
+
+dist/protos1/google/api/expr/v1beta1/value.proto was added
+
+dist/protos1/google/api/field_behavior.proto was added
+
+dist/protos1/google/api/http.proto was added
+
+dist/protos1/google/api/httpbody.proto was added
+
+dist/protos1/google/api/label.proto was added
+
+dist/protos1/google/api/launch_stage.proto was added
+
+dist/protos1/google/api/log.proto was added
+
+dist/protos1/google/api/logging.proto was added
+
+dist/protos1/google/api/metric.proto was added
+
+dist/protos1/google/api/monitored_resource.proto was added
+
+dist/protos1/google/api/monitoring.proto was added
+
+dist/protos1/google/api/quota.proto was added
+
+dist/protos1/google/api/resource.proto was added
+
+dist/protos1/google/api/routing.proto was added
+
+dist/protos1/google/api/service.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/check_error.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/distribution.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/http_request.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/log_entry.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/metric_value.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/operation.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/quota_controller.proto was added
+
+dist/protos1/google/api/servicecontrol/v1/service_controller.proto was added
+
+dist/protos1/google/api/servicecontrol/v2/service_controller.proto was added
+
+dist/protos1/google/api/servicemanagement/v1/resources.proto was added
+
+dist/protos1/google/api/servicemanagement/v1/servicemanager.proto was added
+
+dist/protos1/google/api/serviceusage/v1/resources.proto was added
+
+dist/protos1/google/api/serviceusage/v1/serviceusage.proto was added
+
+dist/protos1/google/api/serviceusage/v1beta1/resources.proto was added
+
+dist/protos1/google/api/serviceusage/v1beta1/serviceusage.proto was added
+
+dist/protos1/google/api/source_info.proto was added
+
+dist/protos1/google/api/system_parameter.proto was added
+
+dist/protos1/google/api/usage.proto was added
+
+dist/protos1/google/api/visibility.proto was added
+
+dist/protos1/google/cloud/location/locations.proto was added
+
+dist/protos1/google/iam/v1/iam_policy.proto was added
+
+dist/protos1/google/iam/v1/logging/audit_data.proto was added
+
+dist/protos1/google/iam/v1/options.proto was added
+
+dist/protos1/google/iam/v1/policy.proto was added
+
+dist/protos1/google/logging/type/http_request.proto was added
+
+dist/protos1/google/logging/type/log_severity.proto was added
+
+dist/protos1/google/longrunning/operations.proto was added
+
+dist/protos1/google/monitoring/v3/alert.proto was added
+
+dist/protos1/google/monitoring/v3/alert_service.proto was added
+
+dist/protos1/google/monitoring/v3/common.proto was added
+
+dist/protos1/google/monitoring/v3/dropped_labels.proto was added
+
+dist/protos1/google/monitoring/v3/group.proto was added
+
+dist/protos1/google/monitoring/v3/group_service.proto was added
+
+dist/protos1/google/monitoring/v3/metric.proto was added
+
+dist/protos1/google/monitoring/v3/metric_service.proto was added
+
+dist/protos1/google/monitoring/v3/mutation_record.proto was added
+
+dist/protos1/google/monitoring/v3/notification.proto was added
+
+dist/protos1/google/monitoring/v3/notification_service.proto was added
+
+dist/protos1/google/monitoring/v3/query_service.proto was added
+
+dist/protos1/google/monitoring/v3/service.proto was added
+
+dist/protos1/google/monitoring/v3/service_service.proto was added
+
+dist/protos1/google/monitoring/v3/snooze.proto was added
+
+dist/protos1/google/monitoring/v3/snooze_service.proto was added
+
+dist/protos1/google/monitoring/v3/span_context.proto was added
+
+dist/protos1/google/monitoring/v3/uptime.proto was added
+
+dist/protos1/google/monitoring/v3/uptime_service.proto was added
+
+dist/protos1/google/protobuf/any.proto was added
+
+dist/protos1/google/protobuf/api.proto was added
+
+dist/protos1/google/protobuf/bridge/message_set.proto was added
+
+dist/protos1/google/protobuf/compiler/plugin.proto was added
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_code.proto was added
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_code_proto2.proto was added
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_code_proto2_import.proto was added
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit.proto was added
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit_legacy.proto was added
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_pkg_implicit.proto was added
+
+dist/protos1/google/protobuf/descriptor.proto was added
+
+dist/protos1/google/protobuf/duration.proto was added
+
+dist/protos1/google/protobuf/empty.proto was added
+
+dist/protos1/google/protobuf/field_mask.proto was added
+
+dist/protos1/google/protobuf/source_context.proto was added
+
+dist/protos1/google/protobuf/struct.proto was added
+
+dist/protos1/google/protobuf/timestamp.proto was added
+
+dist/protos1/google/protobuf/type.proto was added
+
+dist/protos1/google/protobuf/util/json_format.proto was added
+
+dist/protos1/google/protobuf/util/json_format_proto3.proto was added
+
+dist/protos1/google/protobuf/wrappers.proto was added
+
+dist/protos1/google/rpc/code.proto was added
+
+dist/protos1/google/rpc/context/attribute_context.proto was added
+
+dist/protos1/google/rpc/context/audit_context.proto was added
+
+dist/protos1/google/rpc/error_details.proto was added
+
+dist/protos1/google/rpc/http.proto was added
+
+dist/protos1/google/rpc/status.proto was added
+
+dist/protos1/google/type/calendar_period.proto was added
+
+dist/protos1/google/type/color.proto was added
+
+dist/protos1/google/type/date.proto was added
+
+dist/protos1/google/type/datetime.proto was added
+
+dist/protos1/google/type/dayofweek.proto was added
+
+dist/protos1/google/type/decimal.proto was added
+
+dist/protos1/google/type/expr.proto was added
+
+dist/protos1/google/type/fraction.proto was added
+
+dist/protos1/google/type/interval.proto was added
+
+dist/protos1/google/type/latlng.proto was added
+
+dist/protos1/google/type/localized_text.proto was added
+
+dist/protos1/google/type/money.proto was added
+
+dist/protos1/google/type/month.proto was added
+
+dist/protos1/google/type/phone_number.proto was added
+
+dist/protos1/google/type/postal_address.proto was added
+
+dist/protos1/google/type/quaternion.proto was added
+
+dist/protos1/google/type/timeofday.proto was added
+
+dist/protos1/http.d.ts was added
+
+dist/protos1/http.js was added
+
+dist/protos1/iam_service.d.ts was added
+
+dist/protos1/iam_service.js was added
+
+dist/protos1/iam_service.json was added
+
+dist/protos1/locations.d.ts was added
+
+dist/protos1/locations.js was added
+
+dist/protos1/locations.json was added
+
+dist/protos1/operations.d.ts was added
+
+dist/protos1/operations.js was added
+
+dist/protos1/operations.json was added
+
+dist/protos1/status.json was added
+
+dist/protos2/compute_operations.d.ts was added
+
+dist/protos2/compute_operations.js was added
+
+dist/protos2/compute_operations.json was added
+
+dist/protos2/google/api/annotations.proto was added
+
+dist/protos2/google/api/apikeys/v2/apikeys.proto was added
+
+dist/protos2/google/api/apikeys/v2/resources.proto was added
+
+dist/protos2/google/api/auth.proto was added
+
+dist/protos2/google/api/backend.proto was added
+
+dist/protos2/google/api/billing.proto was added
+
+dist/protos2/google/api/client.proto was added
+
+dist/protos2/google/api/config_change.proto was added
+
+dist/protos2/google/api/consumer.proto was added
+
+dist/protos2/google/api/context.proto was added
+
+dist/protos2/google/api/control.proto was added
+
+dist/protos2/google/api/distribution.proto was added
+
+dist/protos2/google/api/documentation.proto was added
+
+dist/protos2/google/api/endpoint.proto was added
+
+dist/protos2/google/api/error_reason.proto was added
+
+dist/protos2/google/api/expr/conformance/v1alpha1/conformance_service.proto was added
+
+dist/protos2/google/api/expr/v1alpha1/checked.proto was added
+
+dist/protos2/google/api/expr/v1alpha1/eval.proto was added
+
+dist/protos2/google/api/expr/v1alpha1/explain.proto was added
+
+dist/protos2/google/api/expr/v1alpha1/syntax.proto was added
+
+dist/protos2/google/api/expr/v1alpha1/value.proto was added
+
+dist/protos2/google/api/expr/v1beta1/decl.proto was added
+
+dist/protos2/google/api/expr/v1beta1/eval.proto was added
+
+dist/protos2/google/api/expr/v1beta1/expr.proto was added
+
+dist/protos2/google/api/expr/v1beta1/source.proto was added
+
+dist/protos2/google/api/expr/v1beta1/value.proto was added
+
+dist/protos2/google/api/field_behavior.proto was added
+
+dist/protos2/google/api/http.proto was added
+
+dist/protos2/google/api/httpbody.proto was added
+
+dist/protos2/google/api/label.proto was added
+
+dist/protos2/google/api/launch_stage.proto was added
+
+dist/protos2/google/api/log.proto was added
+
+dist/protos2/google/api/logging.proto was added
+
+dist/protos2/google/api/metric.proto was added
+
+dist/protos2/google/api/monitored_resource.proto was added
+
+dist/protos2/google/api/monitoring.proto was added
+
+dist/protos2/google/api/policy.proto was added
+
+dist/protos2/google/api/quota.proto was added
+
+dist/protos2/google/api/resource.proto was added
+
+dist/protos2/google/api/routing.proto was added
+
+dist/protos2/google/api/service.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/check_error.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/distribution.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/http_request.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/log_entry.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/metric_value.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/operation.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/quota_controller.proto was added
+
+dist/protos2/google/api/servicecontrol/v1/service_controller.proto was added
+
+dist/protos2/google/api/servicecontrol/v2/service_controller.proto was added
+
+dist/protos2/google/api/servicemanagement/v1/resources.proto was added
+
+dist/protos2/google/api/servicemanagement/v1/servicemanager.proto was added
+
+dist/protos2/google/api/serviceusage/v1/resources.proto was added
+
+dist/protos2/google/api/serviceusage/v1/serviceusage.proto was added
+
+dist/protos2/google/api/serviceusage/v1beta1/resources.proto was added
+
+dist/protos2/google/api/serviceusage/v1beta1/serviceusage.proto was added
+
+dist/protos2/google/api/source_info.proto was added
+
+dist/protos2/google/api/system_parameter.proto was added
+
+dist/protos2/google/api/usage.proto was added
+
+dist/protos2/google/api/visibility.proto was added
+
+dist/protos2/google/cloud/location/locations.proto was added
+
+dist/protos2/google/iam/v1/iam_policy.proto was added
+
+dist/protos2/google/iam/v1/logging/audit_data.proto was added
+
+dist/protos2/google/iam/v1/options.proto was added
+
+dist/protos2/google/iam/v1/policy.proto was added
+
+dist/protos2/google/logging/type/http_request.proto was added
+
+dist/protos2/google/logging/type/log_severity.proto was added
+
+dist/protos2/google/longrunning/operations.proto was added
+
+dist/protos2/google/monitoring/v3/alert.proto was added
+
+dist/protos2/google/monitoring/v3/alert_service.proto was added
+
+dist/protos2/google/monitoring/v3/common.proto was added
+
+dist/protos2/google/monitoring/v3/dropped_labels.proto was added
+
+dist/protos2/google/monitoring/v3/group.proto was added
+
+dist/protos2/google/monitoring/v3/group_service.proto was added
+
+dist/protos2/google/monitoring/v3/metric.proto was added
+
+dist/protos2/google/monitoring/v3/metric_service.proto was added
+
+dist/protos2/google/monitoring/v3/mutation_record.proto was added
+
+dist/protos2/google/monitoring/v3/notification.proto was added
+
+dist/protos2/google/monitoring/v3/notification_service.proto was added
+
+dist/protos2/google/monitoring/v3/query_service.proto was added
+
+dist/protos2/google/monitoring/v3/service.proto was added
+
+dist/protos2/google/monitoring/v3/service_service.proto was added
+
+dist/protos2/google/monitoring/v3/snooze.proto was added
+
+dist/protos2/google/monitoring/v3/snooze_service.proto was added
+
+dist/protos2/google/monitoring/v3/span_context.proto was added
+
+dist/protos2/google/monitoring/v3/uptime.proto was added
+
+dist/protos2/google/monitoring/v3/uptime_service.proto was added
+
+dist/protos2/google/protobuf/any.proto was added
+
+dist/protos2/google/protobuf/api.proto was added
+
+dist/protos2/google/protobuf/bridge/message_set.proto was added
+
+dist/protos2/google/protobuf/compiler/plugin.proto was added
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_code.proto was added
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_code_proto2.proto was added
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_code_proto2_import.proto was added
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit.proto was added
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit_legacy.proto was added
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_pkg_implicit.proto was added
+
+dist/protos2/google/protobuf/cpp_features.proto was added
+
+dist/protos2/google/protobuf/descriptor.proto was added
+
+dist/protos2/google/protobuf/duration.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_enum.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_group.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_import.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_optional.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_packed.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_proto3_enum.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_required.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_unpacked.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_utf8_disabled.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_utf8_lite.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_utf8_verify.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_enum.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_implicit.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_import.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_optional.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_packed.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_unpacked.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_utf8_disabled.proto was added
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_utf8_strict.proto was added
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto2.proto was added
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto2_lite.proto was added
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto2_utf8_disabled.proto was added
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto3.proto was added
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto3_utf8_disabled.proto was added
+
+dist/protos2/google/protobuf/editions/golden/simple_proto2.proto was added
+
+dist/protos2/google/protobuf/editions/golden/simple_proto2_import.proto was added
+
+dist/protos2/google/protobuf/editions/golden/simple_proto3.proto was added
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto2.proto was added
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto2_lite.proto was added
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto2_utf8_disabled.proto was added
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto3.proto was added
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto3_utf8_disabled.proto was added
+
+dist/protos2/google/protobuf/empty.proto was added
+
+dist/protos2/google/protobuf/field_mask.proto was added
+
+dist/protos2/google/protobuf/source_context.proto was added
+
+dist/protos2/google/protobuf/struct.proto was added
+
+dist/protos2/google/protobuf/timestamp.proto was added
+
+dist/protos2/google/protobuf/type.proto was added
+
+dist/protos2/google/protobuf/util/json_format.proto was added
+
+dist/protos2/google/protobuf/util/json_format_proto3.proto was added
+
+dist/protos2/google/protobuf/wrappers.proto was added
+
+dist/protos2/google/rpc/code.proto was added
+
+dist/protos2/google/rpc/context/attribute_context.proto was added
+
+dist/protos2/google/rpc/context/audit_context.proto was added
+
+dist/protos2/google/rpc/error_details.proto was added
+
+dist/protos2/google/rpc/http.proto was added
+
+dist/protos2/google/rpc/status.proto was added
+
+dist/protos2/google/type/calendar_period.proto was added
+
+dist/protos2/google/type/color.proto was added
+
+dist/protos2/google/type/date.proto was added
+
+dist/protos2/google/type/datetime.proto was added
+
+dist/protos2/google/type/dayofweek.proto was added
+
+dist/protos2/google/type/decimal.proto was added
+
+dist/protos2/google/type/expr.proto was added
+
+dist/protos2/google/type/fraction.proto was added
+
+dist/protos2/google/type/interval.proto was added
+
+dist/protos2/google/type/latlng.proto was added
+
+dist/protos2/google/type/localized_text.proto was added
+
+dist/protos2/google/type/money.proto was added
+
+dist/protos2/google/type/month.proto was added
+
+dist/protos2/google/type/phone_number.proto was added
+
+dist/protos2/google/type/postal_address.proto was added
+
+dist/protos2/google/type/quaternion.proto was added
+
+dist/protos2/google/type/timeofday.proto was added
+
+dist/protos2/http.d.ts was added
+
+dist/protos2/http.js was added
+
+dist/protos2/iam_service.d.ts was added
+
+dist/protos2/iam_service.js was added
+
+dist/protos2/iam_service.json was added
+
+dist/protos2/locations.d.ts was added
+
+dist/protos2/locations.js was added
+
+dist/protos2/locations.json was added
+
+dist/protos2/operations.d.ts was added
+
+dist/protos2/operations.js was added
+
+dist/protos2/operations.json was added
+
+dist/protos2/status.json was added
+
+dist/xdg-open1 was added
+
+src/models/export/mysql/config.models.ts was added
+
+src/query/CRUD/origins.iquery.ts was added
+
+src/query/CRUD/providerItems.iquery.ts was added
+
+src/query/CRUD/providers.iquery.ts was added
+
+src/query/CRUD/resources.iquery.ts was added
+
+src/query/CRUD/rules.iquery.ts was added
+
+src/query/CRUD/scans.iquery.ts was added
+
+src/query/table.iquery.ts was added
+
+src/services/addOn/exportation/azureBlobStorageExportation.service.ts was added
+
+src/services/addOn/exportation/mongoDBExportation.service.ts was added
+
+src/services/addOn/exportation/mySQLExportation.service.ts was added
+
+src/services/exportation.service.ts was added
+
+src/services/saving/azureBlobStorage.service.ts was added
+
+src/services/saving/mongoDB.service.ts was added
+
+src/services/saving/mySQL.service.ts was added
+
+### Files changed: 501
+
+dist/awsGathering.service.ts was changed
+
+dist/azureGathering.service.ts was changed
+
+dist/proto/channelz.proto was changed
+
+dist/proto1/channelz.proto was changed
+
+dist/proto2/channelz.proto was changed
+
+dist/protos.json was changed
+
+dist/protos/compute_operations.d.ts was changed
+
+dist/protos/compute_operations.js was changed
+
+dist/protos/compute_operations.json was changed
+
+dist/protos/google/api/annotations.proto was changed
+
+dist/protos/google/api/apikeys/v2/apikeys.proto was changed
+
+dist/protos/google/api/apikeys/v2/resources.proto was changed
+
+dist/protos/google/api/auth.proto was changed
+
+dist/protos/google/api/backend.proto was changed
+
+dist/protos/google/api/billing.proto was changed
+
+dist/protos/google/api/client.proto was changed
+
+dist/protos/google/api/config_change.proto was changed
+
+dist/protos/google/api/consumer.proto was changed
+
+dist/protos/google/api/context.proto was changed
+
+dist/protos/google/api/control.proto was changed
+
+dist/protos/google/api/distribution.proto was changed
+
+dist/protos/google/api/documentation.proto was changed
+
+dist/protos/google/api/endpoint.proto was changed
+
+dist/protos/google/api/error_reason.proto was changed
+
+dist/protos/google/api/expr/conformance/v1alpha1/conformance_service.proto was changed
+
+dist/protos/google/api/expr/v1alpha1/checked.proto was changed
+
+dist/protos/google/api/expr/v1alpha1/eval.proto was changed
+
+dist/protos/google/api/expr/v1alpha1/explain.proto was changed
+
+dist/protos/google/api/expr/v1alpha1/syntax.proto was changed
+
+dist/protos/google/api/expr/v1alpha1/value.proto was changed
+
+dist/protos/google/api/expr/v1beta1/decl.proto was changed
+
+dist/protos/google/api/expr/v1beta1/eval.proto was changed
+
+dist/protos/google/api/expr/v1beta1/expr.proto was changed
+
+dist/protos/google/api/expr/v1beta1/source.proto was changed
+
+dist/protos/google/api/expr/v1beta1/value.proto was changed
+
+dist/protos/google/api/field_behavior.proto was changed
+
+dist/protos/google/api/http.proto was changed
+
+dist/protos/google/api/httpbody.proto was changed
+
+dist/protos/google/api/label.proto was changed
+
+dist/protos/google/api/launch_stage.proto was changed
+
+dist/protos/google/api/log.proto was changed
+
+dist/protos/google/api/logging.proto was changed
+
+dist/protos/google/api/metric.proto was changed
+
+dist/protos/google/api/monitored_resource.proto was changed
+
+dist/protos/google/api/monitoring.proto was changed
+
+dist/protos/google/api/quota.proto was changed
+
+dist/protos/google/api/resource.proto was changed
+
+dist/protos/google/api/routing.proto was changed
+
+dist/protos/google/api/service.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/check_error.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/distribution.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/http_request.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/log_entry.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/metric_value.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/operation.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/quota_controller.proto was changed
+
+dist/protos/google/api/servicecontrol/v1/service_controller.proto was changed
+
+dist/protos/google/api/servicecontrol/v2/service_controller.proto was changed
+
+dist/protos/google/api/servicemanagement/v1/resources.proto was changed
+
+dist/protos/google/api/servicemanagement/v1/servicemanager.proto was changed
+
+dist/protos/google/api/serviceusage/v1/resources.proto was changed
+
+dist/protos/google/api/serviceusage/v1/serviceusage.proto was changed
+
+dist/protos/google/api/serviceusage/v1beta1/resources.proto was changed
+
+dist/protos/google/api/serviceusage/v1beta1/serviceusage.proto was changed
+
+dist/protos/google/api/source_info.proto was changed
+
+dist/protos/google/api/system_parameter.proto was changed
+
+dist/protos/google/api/usage.proto was changed
+
+dist/protos/google/api/visibility.proto was changed
+
+dist/protos/google/cloud/location/locations.proto was changed
+
+dist/protos/google/iam/v1/iam_policy.proto was changed
+
+dist/protos/google/iam/v1/logging/audit_data.proto was changed
+
+dist/protos/google/iam/v1/options.proto was changed
+
+dist/protos/google/iam/v1/policy.proto was changed
+
+dist/protos/google/logging/type/http_request.proto was changed
+
+dist/protos/google/logging/type/log_severity.proto was changed
+
+dist/protos/google/longrunning/operations.proto was changed
+
+dist/protos/google/monitoring/v3/alert.proto was changed
+
+dist/protos/google/monitoring/v3/alert_service.proto was changed
+
+dist/protos/google/monitoring/v3/common.proto was changed
+
+dist/protos/google/monitoring/v3/dropped_labels.proto was changed
+
+dist/protos/google/monitoring/v3/group.proto was changed
+
+dist/protos/google/monitoring/v3/group_service.proto was changed
+
+dist/protos/google/monitoring/v3/metric.proto was changed
+
+dist/protos/google/monitoring/v3/metric_service.proto was changed
+
+dist/protos/google/monitoring/v3/mutation_record.proto was changed
+
+dist/protos/google/monitoring/v3/notification.proto was changed
+
+dist/protos/google/monitoring/v3/notification_service.proto was changed
+
+dist/protos/google/monitoring/v3/query_service.proto was changed
+
+dist/protos/google/monitoring/v3/service.proto was changed
+
+dist/protos/google/monitoring/v3/service_service.proto was changed
+
+dist/protos/google/monitoring/v3/snooze.proto was changed
+
+dist/protos/google/monitoring/v3/snooze_service.proto was changed
+
+dist/protos/google/monitoring/v3/span_context.proto was changed
+
+dist/protos/google/monitoring/v3/uptime.proto was changed
+
+dist/protos/google/monitoring/v3/uptime_service.proto was changed
+
+dist/protos/google/protobuf/any.proto was changed
+
+dist/protos/google/protobuf/api.proto was changed
+
+dist/protos/google/protobuf/bridge/message_set.proto was changed
+
+dist/protos/google/protobuf/compiler/plugin.proto was changed
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_code.proto was changed
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_code_proto2.proto was changed
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_code_proto2_import.proto was changed
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit.proto was changed
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit_legacy.proto was changed
+
+dist/protos/google/protobuf/compiler/ruby/ruby_generated_pkg_implicit.proto was changed
+
+dist/protos/google/protobuf/descriptor.proto was changed
+
+dist/protos/google/protobuf/duration.proto was changed
+
+dist/protos/google/protobuf/empty.proto was changed
+
+dist/protos/google/protobuf/field_mask.proto was changed
+
+dist/protos/google/protobuf/source_context.proto was changed
+
+dist/protos/google/protobuf/struct.proto was changed
+
+dist/protos/google/protobuf/timestamp.proto was changed
+
+dist/protos/google/protobuf/type.proto was changed
+
+dist/protos/google/protobuf/util/json_format.proto was changed
+
+dist/protos/google/protobuf/util/json_format_proto3.proto was changed
+
+dist/protos/google/protobuf/wrappers.proto was changed
+
+dist/protos/google/rpc/code.proto was changed
+
+dist/protos/google/rpc/context/attribute_context.proto was changed
+
+dist/protos/google/rpc/context/audit_context.proto was changed
+
+dist/protos/google/rpc/error_details.proto was changed
+
+dist/protos/google/rpc/http.proto was changed
+
+dist/protos/google/rpc/status.proto was changed
+
+dist/protos/google/type/calendar_period.proto was changed
+
+dist/protos/google/type/color.proto was changed
+
+dist/protos/google/type/date.proto was changed
+
+dist/protos/google/type/datetime.proto was changed
+
+dist/protos/google/type/dayofweek.proto was changed
+
+dist/protos/google/type/decimal.proto was changed
+
+dist/protos/google/type/expr.proto was changed
+
+dist/protos/google/type/fraction.proto was changed
+
+dist/protos/google/type/interval.proto was changed
+
+dist/protos/google/type/latlng.proto was changed
+
+dist/protos/google/type/localized_text.proto was changed
+
+dist/protos/google/type/money.proto was changed
+
+dist/protos/google/type/month.proto was changed
+
+dist/protos/google/type/phone_number.proto was changed
+
+dist/protos/google/type/postal_address.proto was changed
+
+dist/protos/google/type/quaternion.proto was changed
+
+dist/protos/google/type/timeofday.proto was changed
+
+dist/protos/http.d.ts was changed
+
+dist/protos/http.js was changed
+
+dist/protos/iam_service.d.ts was changed
+
+dist/protos/iam_service.js was changed
+
+dist/protos/iam_service.json was changed
+
+dist/protos/locations.d.ts was changed
+
+dist/protos/locations.js was changed
+
+dist/protos/locations.json was changed
+
+dist/protos/operations.d.ts was changed
+
+dist/protos/operations.js was changed
+
+dist/protos/operations.json was changed
+
+dist/protos/status.json was changed
+
+dist/protos1/compute_operations.d.ts was changed
+
+dist/protos1/compute_operations.js was changed
+
+dist/protos1/compute_operations.json was changed
+
+dist/protos1/google/api/annotations.proto was changed
+
+dist/protos1/google/api/apikeys/v2/apikeys.proto was changed
+
+dist/protos1/google/api/apikeys/v2/resources.proto was changed
+
+dist/protos1/google/api/auth.proto was changed
+
+dist/protos1/google/api/backend.proto was changed
+
+dist/protos1/google/api/billing.proto was changed
+
+dist/protos1/google/api/client.proto was changed
+
+dist/protos1/google/api/config_change.proto was changed
+
+dist/protos1/google/api/consumer.proto was changed
+
+dist/protos1/google/api/context.proto was changed
+
+dist/protos1/google/api/control.proto was changed
+
+dist/protos1/google/api/distribution.proto was changed
+
+dist/protos1/google/api/documentation.proto was changed
+
+dist/protos1/google/api/endpoint.proto was changed
+
+dist/protos1/google/api/error_reason.proto was changed
+
+dist/protos1/google/api/expr/conformance/v1alpha1/conformance_service.proto was changed
+
+dist/protos1/google/api/expr/v1alpha1/checked.proto was changed
+
+dist/protos1/google/api/expr/v1alpha1/eval.proto was changed
+
+dist/protos1/google/api/expr/v1alpha1/explain.proto was changed
+
+dist/protos1/google/api/expr/v1alpha1/syntax.proto was changed
+
+dist/protos1/google/api/expr/v1alpha1/value.proto was changed
+
+dist/protos1/google/api/expr/v1beta1/decl.proto was changed
+
+dist/protos1/google/api/expr/v1beta1/eval.proto was changed
+
+dist/protos1/google/api/expr/v1beta1/expr.proto was changed
+
+dist/protos1/google/api/expr/v1beta1/source.proto was changed
+
+dist/protos1/google/api/expr/v1beta1/value.proto was changed
+
+dist/protos1/google/api/field_behavior.proto was changed
+
+dist/protos1/google/api/http.proto was changed
+
+dist/protos1/google/api/httpbody.proto was changed
+
+dist/protos1/google/api/label.proto was changed
+
+dist/protos1/google/api/launch_stage.proto was changed
+
+dist/protos1/google/api/log.proto was changed
+
+dist/protos1/google/api/logging.proto was changed
+
+dist/protos1/google/api/metric.proto was changed
+
+dist/protos1/google/api/monitored_resource.proto was changed
+
+dist/protos1/google/api/monitoring.proto was changed
+
+dist/protos1/google/api/quota.proto was changed
+
+dist/protos1/google/api/resource.proto was changed
+
+dist/protos1/google/api/routing.proto was changed
+
+dist/protos1/google/api/service.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/check_error.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/distribution.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/http_request.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/log_entry.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/metric_value.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/operation.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/quota_controller.proto was changed
+
+dist/protos1/google/api/servicecontrol/v1/service_controller.proto was changed
+
+dist/protos1/google/api/servicecontrol/v2/service_controller.proto was changed
+
+dist/protos1/google/api/servicemanagement/v1/resources.proto was changed
+
+dist/protos1/google/api/servicemanagement/v1/servicemanager.proto was changed
+
+dist/protos1/google/api/serviceusage/v1/resources.proto was changed
+
+dist/protos1/google/api/serviceusage/v1/serviceusage.proto was changed
+
+dist/protos1/google/api/serviceusage/v1beta1/resources.proto was changed
+
+dist/protos1/google/api/serviceusage/v1beta1/serviceusage.proto was changed
+
+dist/protos1/google/api/source_info.proto was changed
+
+dist/protos1/google/api/system_parameter.proto was changed
+
+dist/protos1/google/api/usage.proto was changed
+
+dist/protos1/google/api/visibility.proto was changed
+
+dist/protos1/google/cloud/location/locations.proto was changed
+
+dist/protos1/google/iam/v1/iam_policy.proto was changed
+
+dist/protos1/google/iam/v1/logging/audit_data.proto was changed
+
+dist/protos1/google/iam/v1/options.proto was changed
+
+dist/protos1/google/iam/v1/policy.proto was changed
+
+dist/protos1/google/logging/type/http_request.proto was changed
+
+dist/protos1/google/logging/type/log_severity.proto was changed
+
+dist/protos1/google/longrunning/operations.proto was changed
+
+dist/protos1/google/monitoring/v3/alert.proto was changed
+
+dist/protos1/google/monitoring/v3/alert_service.proto was changed
+
+dist/protos1/google/monitoring/v3/common.proto was changed
+
+dist/protos1/google/monitoring/v3/dropped_labels.proto was changed
+
+dist/protos1/google/monitoring/v3/group.proto was changed
+
+dist/protos1/google/monitoring/v3/group_service.proto was changed
+
+dist/protos1/google/monitoring/v3/metric.proto was changed
+
+dist/protos1/google/monitoring/v3/metric_service.proto was changed
+
+dist/protos1/google/monitoring/v3/mutation_record.proto was changed
+
+dist/protos1/google/monitoring/v3/notification.proto was changed
+
+dist/protos1/google/monitoring/v3/notification_service.proto was changed
+
+dist/protos1/google/monitoring/v3/query_service.proto was changed
+
+dist/protos1/google/monitoring/v3/service.proto was changed
+
+dist/protos1/google/monitoring/v3/service_service.proto was changed
+
+dist/protos1/google/monitoring/v3/snooze.proto was changed
+
+dist/protos1/google/monitoring/v3/snooze_service.proto was changed
+
+dist/protos1/google/monitoring/v3/span_context.proto was changed
+
+dist/protos1/google/monitoring/v3/uptime.proto was changed
+
+dist/protos1/google/monitoring/v3/uptime_service.proto was changed
+
+dist/protos1/google/protobuf/any.proto was changed
+
+dist/protos1/google/protobuf/api.proto was changed
+
+dist/protos1/google/protobuf/bridge/message_set.proto was changed
+
+dist/protos1/google/protobuf/compiler/plugin.proto was changed
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_code.proto was changed
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_code_proto2.proto was changed
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_code_proto2_import.proto was changed
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit.proto was changed
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit_legacy.proto was changed
+
+dist/protos1/google/protobuf/compiler/ruby/ruby_generated_pkg_implicit.proto was changed
+
+dist/protos1/google/protobuf/descriptor.proto was changed
+
+dist/protos1/google/protobuf/duration.proto was changed
+
+dist/protos1/google/protobuf/empty.proto was changed
+
+dist/protos1/google/protobuf/field_mask.proto was changed
+
+dist/protos1/google/protobuf/source_context.proto was changed
+
+dist/protos1/google/protobuf/struct.proto was changed
+
+dist/protos1/google/protobuf/timestamp.proto was changed
+
+dist/protos1/google/protobuf/type.proto was changed
+
+dist/protos1/google/protobuf/util/json_format.proto was changed
+
+dist/protos1/google/protobuf/util/json_format_proto3.proto was changed
+
+dist/protos1/google/protobuf/wrappers.proto was changed
+
+dist/protos1/google/rpc/code.proto was changed
+
+dist/protos1/google/rpc/context/attribute_context.proto was changed
+
+dist/protos1/google/rpc/context/audit_context.proto was changed
+
+dist/protos1/google/rpc/error_details.proto was changed
+
+dist/protos1/google/rpc/http.proto was changed
+
+dist/protos1/google/rpc/status.proto was changed
+
+dist/protos1/google/type/calendar_period.proto was changed
+
+dist/protos1/google/type/color.proto was changed
+
+dist/protos1/google/type/date.proto was changed
+
+dist/protos1/google/type/datetime.proto was changed
+
+dist/protos1/google/type/dayofweek.proto was changed
+
+dist/protos1/google/type/decimal.proto was changed
+
+dist/protos1/google/type/expr.proto was changed
+
+dist/protos1/google/type/fraction.proto was changed
+
+dist/protos1/google/type/interval.proto was changed
+
+dist/protos1/google/type/latlng.proto was changed
+
+dist/protos1/google/type/localized_text.proto was changed
+
+dist/protos1/google/type/money.proto was changed
+
+dist/protos1/google/type/month.proto was changed
+
+dist/protos1/google/type/phone_number.proto was changed
+
+dist/protos1/google/type/postal_address.proto was changed
+
+dist/protos1/google/type/quaternion.proto was changed
+
+dist/protos1/google/type/timeofday.proto was changed
+
+dist/protos1/http.d.ts was changed
+
+dist/protos1/http.js was changed
+
+dist/protos1/iam_service.d.ts was changed
+
+dist/protos1/iam_service.js was changed
+
+dist/protos1/iam_service.json was changed
+
+dist/protos1/locations.d.ts was changed
+
+dist/protos1/locations.js was changed
+
+dist/protos1/locations.json was changed
+
+dist/protos1/operations.d.ts was changed
+
+dist/protos1/operations.js was changed
+
+dist/protos1/operations.json was changed
+
+dist/protos1/status.json was changed
+
+dist/protos2/compute_operations.d.ts was changed
+
+dist/protos2/compute_operations.js was changed
+
+dist/protos2/compute_operations.json was changed
+
+dist/protos2/google/api/annotations.proto was changed
+
+dist/protos2/google/api/apikeys/v2/apikeys.proto was changed
+
+dist/protos2/google/api/apikeys/v2/resources.proto was changed
+
+dist/protos2/google/api/auth.proto was changed
+
+dist/protos2/google/api/backend.proto was changed
+
+dist/protos2/google/api/billing.proto was changed
+
+dist/protos2/google/api/client.proto was changed
+
+dist/protos2/google/api/config_change.proto was changed
+
+dist/protos2/google/api/consumer.proto was changed
+
+dist/protos2/google/api/context.proto was changed
+
+dist/protos2/google/api/control.proto was changed
+
+dist/protos2/google/api/distribution.proto was changed
+
+dist/protos2/google/api/documentation.proto was changed
+
+dist/protos2/google/api/endpoint.proto was changed
+
+dist/protos2/google/api/error_reason.proto was changed
+
+dist/protos2/google/api/expr/conformance/v1alpha1/conformance_service.proto was changed
+
+dist/protos2/google/api/expr/v1alpha1/checked.proto was changed
+
+dist/protos2/google/api/expr/v1alpha1/eval.proto was changed
+
+dist/protos2/google/api/expr/v1alpha1/explain.proto was changed
+
+dist/protos2/google/api/expr/v1alpha1/syntax.proto was changed
+
+dist/protos2/google/api/expr/v1alpha1/value.proto was changed
+
+dist/protos2/google/api/expr/v1beta1/decl.proto was changed
+
+dist/protos2/google/api/expr/v1beta1/eval.proto was changed
+
+dist/protos2/google/api/expr/v1beta1/expr.proto was changed
+
+dist/protos2/google/api/expr/v1beta1/source.proto was changed
+
+dist/protos2/google/api/expr/v1beta1/value.proto was changed
+
+dist/protos2/google/api/field_behavior.proto was changed
+
+dist/protos2/google/api/http.proto was changed
+
+dist/protos2/google/api/httpbody.proto was changed
+
+dist/protos2/google/api/label.proto was changed
+
+dist/protos2/google/api/launch_stage.proto was changed
+
+dist/protos2/google/api/log.proto was changed
+
+dist/protos2/google/api/logging.proto was changed
+
+dist/protos2/google/api/metric.proto was changed
+
+dist/protos2/google/api/monitored_resource.proto was changed
+
+dist/protos2/google/api/monitoring.proto was changed
+
+dist/protos2/google/api/policy.proto was changed
+
+dist/protos2/google/api/quota.proto was changed
+
+dist/protos2/google/api/resource.proto was changed
+
+dist/protos2/google/api/routing.proto was changed
+
+dist/protos2/google/api/service.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/check_error.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/distribution.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/http_request.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/log_entry.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/metric_value.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/operation.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/quota_controller.proto was changed
+
+dist/protos2/google/api/servicecontrol/v1/service_controller.proto was changed
+
+dist/protos2/google/api/servicecontrol/v2/service_controller.proto was changed
+
+dist/protos2/google/api/servicemanagement/v1/resources.proto was changed
+
+dist/protos2/google/api/servicemanagement/v1/servicemanager.proto was changed
+
+dist/protos2/google/api/serviceusage/v1/resources.proto was changed
+
+dist/protos2/google/api/serviceusage/v1/serviceusage.proto was changed
+
+dist/protos2/google/api/serviceusage/v1beta1/resources.proto was changed
+
+dist/protos2/google/api/serviceusage/v1beta1/serviceusage.proto was changed
+
+dist/protos2/google/api/source_info.proto was changed
+
+dist/protos2/google/api/system_parameter.proto was changed
+
+dist/protos2/google/api/usage.proto was changed
+
+dist/protos2/google/api/visibility.proto was changed
+
+dist/protos2/google/cloud/location/locations.proto was changed
+
+dist/protos2/google/iam/v1/iam_policy.proto was changed
+
+dist/protos2/google/iam/v1/logging/audit_data.proto was changed
+
+dist/protos2/google/iam/v1/options.proto was changed
+
+dist/protos2/google/iam/v1/policy.proto was changed
+
+dist/protos2/google/logging/type/http_request.proto was changed
+
+dist/protos2/google/logging/type/log_severity.proto was changed
+
+dist/protos2/google/longrunning/operations.proto was changed
+
+dist/protos2/google/monitoring/v3/alert.proto was changed
+
+dist/protos2/google/monitoring/v3/alert_service.proto was changed
+
+dist/protos2/google/monitoring/v3/common.proto was changed
+
+dist/protos2/google/monitoring/v3/dropped_labels.proto was changed
+
+dist/protos2/google/monitoring/v3/group.proto was changed
+
+dist/protos2/google/monitoring/v3/group_service.proto was changed
+
+dist/protos2/google/monitoring/v3/metric.proto was changed
+
+dist/protos2/google/monitoring/v3/metric_service.proto was changed
+
+dist/protos2/google/monitoring/v3/mutation_record.proto was changed
+
+dist/protos2/google/monitoring/v3/notification.proto was changed
+
+dist/protos2/google/monitoring/v3/notification_service.proto was changed
+
+dist/protos2/google/monitoring/v3/query_service.proto was changed
+
+dist/protos2/google/monitoring/v3/service.proto was changed
+
+dist/protos2/google/monitoring/v3/service_service.proto was changed
+
+dist/protos2/google/monitoring/v3/snooze.proto was changed
+
+dist/protos2/google/monitoring/v3/snooze_service.proto was changed
+
+dist/protos2/google/monitoring/v3/span_context.proto was changed
+
+dist/protos2/google/monitoring/v3/uptime.proto was changed
+
+dist/protos2/google/monitoring/v3/uptime_service.proto was changed
+
+dist/protos2/google/protobuf/any.proto was changed
+
+dist/protos2/google/protobuf/api.proto was changed
+
+dist/protos2/google/protobuf/bridge/message_set.proto was changed
+
+dist/protos2/google/protobuf/compiler/plugin.proto was changed
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_code.proto was changed
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_code_proto2.proto was changed
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_code_proto2_import.proto was changed
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit.proto was changed
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_pkg_explicit_legacy.proto was changed
+
+dist/protos2/google/protobuf/compiler/ruby/ruby_generated_pkg_implicit.proto was changed
+
+dist/protos2/google/protobuf/cpp_features.proto was changed
+
+dist/protos2/google/protobuf/descriptor.proto was changed
+
+dist/protos2/google/protobuf/duration.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_enum.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_group.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_import.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_optional.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_packed.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_proto3_enum.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_required.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_unpacked.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_utf8_disabled.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_utf8_lite.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto2_utf8_verify.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_enum.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_implicit.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_import.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_optional.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_packed.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_unpacked.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_utf8_disabled.proto was changed
+
+dist/protos2/google/protobuf/editions/codegen_tests/proto3_utf8_strict.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto2.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto2_lite.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto2_utf8_disabled.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto3.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/editions_transform_proto3_utf8_disabled.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/simple_proto2.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/simple_proto2_import.proto was changed
+
+dist/protos2/google/protobuf/editions/golden/simple_proto3.proto was changed
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto2.proto was changed
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto2_lite.proto was changed
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto2_utf8_disabled.proto was changed
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto3.proto was changed
+
+dist/protos2/google/protobuf/editions/proto/editions_transform_proto3_utf8_disabled.proto was changed
+
+dist/protos2/google/protobuf/empty.proto was changed
+
+dist/protos2/google/protobuf/field_mask.proto was changed
+
+dist/protos2/google/protobuf/source_context.proto was changed
+
+dist/protos2/google/protobuf/struct.proto was changed
+
+dist/protos2/google/protobuf/timestamp.proto was changed
+
+dist/protos2/google/protobuf/type.proto was changed
+
+dist/protos2/google/protobuf/util/json_format.proto was changed
+
+dist/protos2/google/protobuf/util/json_format_proto3.proto was changed
+
+dist/protos2/google/protobuf/wrappers.proto was changed
+
+dist/protos2/google/rpc/code.proto was changed
+
+dist/protos2/google/rpc/context/attribute_context.proto was changed
+
+dist/protos2/google/rpc/context/audit_context.proto was changed
+
+dist/protos2/google/rpc/error_details.proto was changed
+
+dist/protos2/google/rpc/http.proto was changed
+
+dist/protos2/google/rpc/status.proto was changed
+
+dist/protos2/google/type/calendar_period.proto was changed
+
+dist/protos2/google/type/color.proto was changed
+
+dist/protos2/google/type/date.proto was changed
+
+dist/protos2/google/type/datetime.proto was changed
+
+dist/protos2/google/type/dayofweek.proto was changed
+
+dist/protos2/google/type/decimal.proto was changed
+
+dist/protos2/google/type/expr.proto was changed
+
+dist/protos2/google/type/fraction.proto was changed
+
+dist/protos2/google/type/interval.proto was changed
+
+dist/protos2/google/type/latlng.proto was changed
+
+dist/protos2/google/type/localized_text.proto was changed
+
+dist/protos2/google/type/money.proto was changed
+
+dist/protos2/google/type/month.proto was changed
+
+dist/protos2/google/type/phone_number.proto was changed
+
+dist/protos2/google/type/postal_address.proto was changed
+
+dist/protos2/google/type/quaternion.proto was changed
+
+dist/protos2/google/type/timeofday.proto was changed
+
+dist/protos2/http.d.ts was changed
+
+dist/protos2/http.js was changed
+
+dist/protos2/iam_service.d.ts was changed
+
+dist/protos2/iam_service.js was changed
+
+dist/protos2/iam_service.json was changed
+
+dist/protos2/locations.d.ts was changed
+
+dist/protos2/locations.js was changed
+
+dist/protos2/locations.json was changed
+
+dist/protos2/operations.d.ts was changed
+
+dist/protos2/operations.js was changed
+
+dist/protos2/operations.json was changed
+
+dist/protos2/status.json was changed
+
+dist/xdg-open1 was changed
+
+src/models/export/mysql/config.models.ts was changed
+
+src/query/CRUD/origins.iquery.ts was changed
+
+src/query/CRUD/providerItems.iquery.ts was changed
+
+src/query/CRUD/providers.iquery.ts was changed
+
+src/query/CRUD/resources.iquery.ts was changed
+
+src/query/CRUD/rules.iquery.ts was changed
+
+src/query/CRUD/scans.iquery.ts was changed
+
+src/query/table.iquery.ts was changed
+
+src/services/addOn/exportation/azureBlobStorageExportation.service.ts was changed
+
+src/services/addOn/exportation/mongoDBExportation.service.ts was changed
+
+src/services/addOn/exportation/mySQLExportation.service.ts was changed
+
+src/services/exportation.service.ts was changed
+
+src/services/saving/azureBlobStorage.service.ts was changed
+
+src/services/saving/mongoDB.service.ts was changed
+
+src/services/saving/mySQL.service.ts was changed
+
+.gitattributes was changed
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+dist/index.js was changed
+
+package-lock.json was changed
+
+package.json was changed
+
+src/models/export/azureBlobStorage/config.models.ts was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+src/services/save.service.ts was changed
 
 
