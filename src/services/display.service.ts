@@ -110,5 +110,5 @@ export function AsciiArtText(text:string){
 }
 
 export function talkAboutOtherProject(){
-    logger.info("You can go check our other project : https://www.thecloudprices.com/");
+    logger.info("\u001b[4m\u001b[You can go check our other project : https://www.thecloudprices.com/");
 }
