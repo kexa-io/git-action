@@ -30,7 +30,7 @@
     "scripts": {
         "update": "node lib/services/updateCapability.service.js",
         "pkg": "node lib/services/updatePkgImport.service.js",
-        "package": "npm run prepackage && npm run pkg && npm run prepackage && ncc build lib/main.js && rimraf ./lib",
+        "package": "rimraf ./dist && npm run prepackage && npm run pkg && npm run prepackage && ncc build lib/main.js && rimraf ./lib",
         "prepackage": "rimraf ./lib && tsc",
         "package:watch": "npm run package -- --watch",
         "test": "mocha --require ts-node/register --require source-map-support/register 'lib/__tests__/**/*.test.js'",
