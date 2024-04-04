@@ -8812,3 +8812,14 @@ src/services/addOn/display/kubernetesDisplay.service.ts was changed
 src/services/addOn/kubernetesGathering.service.ts was changed
 
 
+## 1.5.3-SNAPSHOT.4.e2104ffbd
+
+### Files added: 0
+
+### Files changed: 2
+
+VERSION was changed
+
+package.json was changed
+
+
