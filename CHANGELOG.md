@@ -8812,3 +8812,20 @@ src/services/addOn/display/kubernetesDisplay.service.ts was changed
 src/services/addOn/kubernetesGathering.service.ts was changed
 
 
+## 1.5.3
+
+### Files added: 0
+
+### Files changed: 5
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+src/models/kubernetes/kubernetes.models.ts was changed
+
+src/services/addOn/display/kubernetesDisplay.service.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+
