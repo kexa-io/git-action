@@ -8793,3 +8793,22 @@ src/services/addOn/awsGathering.service.ts was changed
 src/services/save.service.ts was changed
 
 
+## 1.5.2-SNAPSHOT.9.bf1dcd581
+
+### Files added: 0
+
+### Files changed: 6
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+src/models/kubernetes/kubernetes.models.ts was changed
+
+src/services/addOn/display/kubernetesDisplay.service.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+
