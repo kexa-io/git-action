@@ -26,7 +26,7 @@ export async function saveResult(result: ResultScan[][]): Promise<void> {
                 logger.debug(e);
             }
         }else{
-            logger.warn('Unknown save type: ' + save.type);
+            logger.warning('Unknown save type: ' + save.type);
         }
     }));
 }

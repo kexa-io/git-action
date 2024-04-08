@@ -1,7 +1,7 @@
 {
     "name": "Kexa-Github-Action",
     "description": "A GitHub Action for Kexa",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "author": "Esteban MATHIA",
     "private": true,
     "homepage": "https://github.com/4urcloud/Kexa_githubAction",
@@ -25,10 +25,10 @@
         ".": "./dist/index.js"
     },
     "engines": {
-        "node": ">=16"
+        "node": ">=20"
     },
     "scripts": {
-        "update": "node lib/services/updateCapability.service.js",
+        "update": "node src/services/updateCapability.service.js",
         "pkg": "node lib/services/updatePkgImport.service.js",
         "package": "rimraf ./dist && npm run prepackage && npm run pkg && npm run prepackage && ncc build lib/main.js && rimraf ./lib",
         "prepackage": "rimraf ./lib && tsc",
@@ -476,7 +476,7 @@
         "@azure/graph": "^5.0.3",
         "@azure/keyvault-secrets": "^4.7.0",
         "@azure/logger": "^1.0.3",
-        "@azure/storage-blob": "^12.16.0",
+        "@azure/storage-blob": "^12.17.0",
         "@bitwarden/sdk-napi": "^0.3.1",
         "@google-cloud/appgateways": "^1.0.0",
         "@google-cloud/artifact-registry": "^3.0.0",
@@ -508,7 +508,7 @@
         "@google-cloud/security-private-ca": "^5.0.0",
         "@google-cloud/service-directory": "^5.0.0",
         "@google-cloud/service-usage": "^3.0.0",
-        "@google-cloud/storage": "^7.0.0",
+        "@google-cloud/storage": "^7.9.0",
         "@google-cloud/storageinsights": "^1.0.0",
         "@google-cloud/tasks": "^3.2.0",
         "@google-cloud/vmwareengine": "^1.0.0",
@@ -523,6 +523,7 @@
         "@types/glob": "^8.1.0",
         "@types/minimatch": "^5.1.2",
         "@types/rimraf": "^4.0.5",
+        "@vercel/ncc": "^0.38.1",
         "aws-sdk": "^2.1424.0",
         "cfonts": "^3.2.0",
         "config": "^3.3.9",
@@ -535,6 +536,8 @@
         "jsome": "^2.3.26",
         "moment": "^2.29.4",
         "mongoose": "^8.0.3",
+        "mysql2": "^3.9.3",
+        "mysql2-promise": "^0.1.4",
         "node-config-ts": "^3.3.1",
         "nodemailer": "^6.9.9",
         "octokit": "^2.1.0",
