@@ -10838,3 +10838,14 @@ src/services/save.service.ts was changed
 src/services/updateCapability.service.ts was changed
 
 
+## 1.2.2
+
+### Files added: 0
+
+### Files changed: 2
+
+package-lock.json was changed
+
+package.json was changed
+
+
