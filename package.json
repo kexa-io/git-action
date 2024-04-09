@@ -22,7 +22,7 @@
         "reporting"
     ],
     "exports": {
-        ".": "./dist/index.js"
+        ".": "./lib/index.js"
     },
     "engines": {
         "node": ">=20"
@@ -30,7 +30,7 @@
     "scripts": {
         "update": "node src/services/updateCapability.service.js",
         "pkg": "node lib/services/updatePkgImport.service.js",
-        "package": "rimraf ./dist && npm run prepackage && npm run pkg && npm run prepackage && ncc build lib/main.js && rimraf ./lib",
+        "package": "rimraf ./lib && npm run prepackage && npm run pkg && npm run prepackage && tsc",
         "prepackage": "rimraf ./lib && tsc",
         "package:watch": "npm run package -- --watch",
         "test": "mocha --require ts-node/register --require source-map-support/register 'lib/__tests__/**/*.test.js'",
