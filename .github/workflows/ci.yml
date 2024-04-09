@@ -60,6 +60,10 @@ jobs:
             echo "" >> CHANGELOG.md
           done
           echo "" >> CHANGELOG.md
+
+      - name: remove useless node files
+        run: curl -sf https://gobinaries.com/tj/node-prune | sh 
+          node-prune
       
       - name: commit changes
         uses: EndBug/add-and-commit@v4
