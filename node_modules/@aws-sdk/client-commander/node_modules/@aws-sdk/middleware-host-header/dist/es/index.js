@@ -1,0 +1,38 @@
+import { __awaiter, __generator } from "tslib";
+import { HttpRequest } from "@aws-sdk/protocol-http";
+export function resolveHostHeaderConfig(input) {
+    return input;
+}
+export var hostHeaderMiddleware = function (options) { return function (next) { return function (args) { return __awaiter(void 0, void 0, void 0, function () {
+    var request, _a, handlerProtocol;
+    return __generator(this, function (_b) {
+        if (!HttpRequest.isInstance(args.request))
+            return [2 /*return*/, next(args)];
+        request = args.request;
+        _a = (options.requestHandler.metadata || {}).handlerProtocol, handlerProtocol = _a === void 0 ? "" : _a;
+        //For H2 request, remove 'host' header and use ':authority' header instead
+        //reference: https://nodejs.org/dist/latest-v13.x/docs/api/errors.html#ERR_HTTP2_INVALID_CONNECTION_HEADERS
+        if (handlerProtocol.indexOf("h2") >= 0 && !request.headers[":authority"]) {
+            delete request.headers["host"];
+            request.headers[":authority"] = "";
+            //non-H2 request and 'host' header is not set, set the 'host' header to request's hostname.
+        }
+        else if (!request.headers["host"]) {
+            request.headers["host"] = request.hostname;
+        }
+        return [2 /*return*/, next(args)];
+    });
+}); }; }; };
+export var hostHeaderMiddlewareOptions = {
+    name: "hostHeaderMiddleware",
+    step: "build",
+    priority: "low",
+    tags: ["HOST"],
+    override: true,
+};
+export var getHostHeaderPlugin = function (options) { return ({
+    applyToStack: function (clientStack) {
+        clientStack.add(hostHeaderMiddleware(options), hostHeaderMiddlewareOptions);
+    },
+}); };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxXQUFXLEVBQUUsTUFBTSx3QkFBd0IsQ0FBQztBQWFyRCxNQUFNLFVBQVUsdUJBQXVCLENBQ3JDLEtBQXFEO0lBRXJELE9BQU8sS0FBSyxDQUFDO0FBQ2YsQ0FBQztBQUVELE1BQU0sQ0FBQyxJQUFNLG9CQUFvQixHQUFHLFVBQ2xDLE9BQWlDLElBQ0UsT0FBQSxVQUFDLElBQUksSUFBSyxPQUFBLFVBQU8sSUFBSTs7O1FBQ3hELElBQUksQ0FBQyxXQUFXLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUM7WUFBRSxzQkFBTyxJQUFJLENBQUMsSUFBSSxDQUFDLEVBQUM7UUFDckQsT0FBTyxHQUFLLElBQUksUUFBVCxDQUFVO1FBQ2pCLEtBQXlCLENBQUEsT0FBTyxDQUFDLGNBQWMsQ0FBQyxRQUFRLElBQUksRUFBRSxDQUFBLGdCQUExQyxFQUFwQixlQUFlLG1CQUFHLEVBQUUsS0FBQSxDQUEyQztRQUN2RSwwRUFBMEU7UUFDMUUsMkdBQTJHO1FBQzNHLElBQUksZUFBZSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLFlBQVksQ0FBQyxFQUFFO1lBQ3hFLE9BQU8sT0FBTyxDQUFDLE9BQU8sQ0FBQyxNQUFNLENBQUMsQ0FBQztZQUMvQixPQUFPLENBQUMsT0FBTyxDQUFDLFlBQVksQ0FBQyxHQUFHLEVBQUUsQ0FBQztZQUNuQywyRkFBMkY7U0FDNUY7YUFBTSxJQUFJLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxNQUFNLENBQUMsRUFBRTtZQUNuQyxPQUFPLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxHQUFHLE9BQU8sQ0FBQyxRQUFRLENBQUM7U0FDNUM7UUFDRCxzQkFBTyxJQUFJLENBQUMsSUFBSSxDQUFDLEVBQUM7O0tBQ25CLEVBZDhDLENBYzlDLEVBZG9DLENBY3BDLENBQUM7QUFFRixNQUFNLENBQUMsSUFBTSwyQkFBMkIsR0FBMkM7SUFDakYsSUFBSSxFQUFFLHNCQUFzQjtJQUM1QixJQUFJLEVBQUUsT0FBTztJQUNiLFFBQVEsRUFBRSxLQUFLO0lBQ2YsSUFBSSxFQUFFLENBQUMsTUFBTSxDQUFDO0lBQ2QsUUFBUSxFQUFFLElBQUk7Q0FDZixDQUFDO0FBRUYsTUFBTSxDQUFDLElBQU0sbUJBQW1CLEdBQUcsVUFBQyxPQUFpQyxJQUEwQixPQUFBLENBQUM7SUFDOUYsWUFBWSxFQUFFLFVBQUMsV0FBVztRQUN4QixXQUFXLENBQUMsR0FBRyxDQUFDLG9CQUFvQixDQUFDLE9BQU8sQ0FBQyxFQUFFLDJCQUEyQixDQUFDLENBQUM7SUFDOUUsQ0FBQztDQUNGLENBQUMsRUFKNkYsQ0FJN0YsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEh0dHBSZXF1ZXN0IH0gZnJvbSBcIkBhd3Mtc2RrL3Byb3RvY29sLWh0dHBcIjtcbmltcG9ydCB7IEFic29sdXRlTG9jYXRpb24sIEJ1aWxkSGFuZGxlck9wdGlvbnMsIEJ1aWxkTWlkZGxld2FyZSwgUGx1Z2dhYmxlLCBSZXF1ZXN0SGFuZGxlciB9IGZyb20gXCJAYXdzLXNkay90eXBlc1wiO1xuXG5leHBvcnQgaW50ZXJmYWNlIEhvc3RIZWFkZXJJbnB1dENvbmZpZyB7fVxuaW50ZXJmYWNlIFByZXZpb3VzbHlSZXNvbHZlZCB7XG4gIHJlcXVlc3RIYW5kbGVyOiBSZXF1ZXN0SGFuZGxlcjxhbnksIGFueT47XG59XG5leHBvcnQgaW50ZXJmYWNlIEhvc3RIZWFkZXJSZXNvbHZlZENvbmZpZyB7XG4gIC8qKlxuICAgKiBUaGUgSFRUUCBoYW5kbGVyIHRvIHVzZS4gRmV0Y2ggaW4gYnJvd3NlciBhbmQgSHR0cHMgaW4gTm9kZWpzLlxuICAgKi9cbiAgcmVxdWVzdEhhbmRsZXI6IFJlcXVlc3RIYW5kbGVyPGFueSwgYW55Pjtcbn1cbmV4cG9ydCBmdW5jdGlvbiByZXNvbHZlSG9zdEhlYWRlckNvbmZpZzxUPihcbiAgaW5wdXQ6IFQgJiBQcmV2aW91c2x5UmVzb2x2ZWQgJiBIb3N0SGVhZGVySW5wdXRDb25maWdcbik6IFQgJiBIb3N0SGVhZGVyUmVzb2x2ZWRDb25maWcge1xuICByZXR1cm4gaW5wdXQ7XG59XG5cbmV4cG9ydCBjb25zdCBob3N0SGVhZGVyTWlkZGxld2FyZSA9IDxJbnB1dCBleHRlbmRzIG9iamVjdCwgT3V0cHV0IGV4dGVuZHMgb2JqZWN0PihcbiAgb3B0aW9uczogSG9zdEhlYWRlclJlc29sdmVkQ29uZmlnXG4pOiBCdWlsZE1pZGRsZXdhcmU8SW5wdXQsIE91dHB1dD4gPT4gKG5leHQpID0+IGFzeW5jIChhcmdzKSA9PiB7XG4gIGlmICghSHR0cFJlcXVlc3QuaXNJbnN0YW5jZShhcmdzLnJlcXVlc3QpKSByZXR1cm4gbmV4dChhcmdzKTtcbiAgY29uc3QgeyByZXF1ZXN0IH0gPSBhcmdzO1xuICBjb25zdCB7IGhhbmRsZXJQcm90b2NvbCA9IFwiXCIgfSA9IG9wdGlvbnMucmVxdWVzdEhhbmRsZXIubWV0YWRhdGEgfHwge307XG4gIC8vRm9yIEgyIHJlcXVlc3QsIHJlbW92ZSAnaG9zdCcgaGVhZGVyIGFuZCB1c2UgJzphdXRob3JpdHknIGhlYWRlciBpbnN0ZWFkXG4gIC8vcmVmZXJlbmNlOiBodHRwczovL25vZGVqcy5vcmcvZGlzdC9sYXRlc3QtdjEzLngvZG9jcy9hcGkvZXJyb3JzLmh0bWwjRVJSX0hUVFAyX0lOVkFMSURfQ09OTkVDVElPTl9IRUFERVJTXG4gIGlmIChoYW5kbGVyUHJvdG9jb2wuaW5kZXhPZihcImgyXCIpID49IDAgJiYgIXJlcXVlc3QuaGVhZGVyc1tcIjphdXRob3JpdHlcIl0pIHtcbiAgICBkZWxldGUgcmVxdWVzdC5oZWFkZXJzW1wiaG9zdFwiXTtcbiAgICByZXF1ZXN0LmhlYWRlcnNbXCI6YXV0aG9yaXR5XCJdID0gXCJcIjtcbiAgICAvL25vbi1IMiByZXF1ZXN0IGFuZCAnaG9zdCcgaGVhZGVyIGlzIG5vdCBzZXQsIHNldCB0aGUgJ2hvc3QnIGhlYWRlciB0byByZXF1ZXN0J3MgaG9zdG5hbWUuXG4gIH0gZWxzZSBpZiAoIXJlcXVlc3QuaGVhZGVyc1tcImhvc3RcIl0pIHtcbiAgICByZXF1ZXN0LmhlYWRlcnNbXCJob3N0XCJdID0gcmVxdWVzdC5ob3N0bmFtZTtcbiAgfVxuICByZXR1cm4gbmV4dChhcmdzKTtcbn07XG5cbmV4cG9ydCBjb25zdCBob3N0SGVhZGVyTWlkZGxld2FyZU9wdGlvbnM6IEJ1aWxkSGFuZGxlck9wdGlvbnMgJiBBYnNvbHV0ZUxvY2F0aW9uID0ge1xuICBuYW1lOiBcImhvc3RIZWFkZXJNaWRkbGV3YXJlXCIsXG4gIHN0ZXA6IFwiYnVpbGRcIixcbiAgcHJpb3JpdHk6IFwibG93XCIsXG4gIHRhZ3M6IFtcIkhPU1RcIl0sXG4gIG92ZXJyaWRlOiB0cnVlLFxufTtcblxuZXhwb3J0IGNvbnN0IGdldEhvc3RIZWFkZXJQbHVnaW4gPSAob3B0aW9uczogSG9zdEhlYWRlclJlc29sdmVkQ29uZmlnKTogUGx1Z2dhYmxlPGFueSwgYW55PiA9PiAoe1xuICBhcHBseVRvU3RhY2s6IChjbGllbnRTdGFjaykgPT4ge1xuICAgIGNsaWVudFN0YWNrLmFkZChob3N0SGVhZGVyTWlkZGxld2FyZShvcHRpb25zKSwgaG9zdEhlYWRlck1pZGRsZXdhcmVPcHRpb25zKTtcbiAgfSxcbn0pO1xuIl19
