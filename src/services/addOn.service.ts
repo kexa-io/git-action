@@ -114,7 +114,7 @@ function loadAddOnCustomUtility(file: string, usage: string, funcName:string): {
         const funcCall = moduleExports[funcName];
         return { key: file, data:funcCall};
     }catch(e){
-        logger.warn("Error loading addOn " + file + " : " + e);
+        logger.warning("Error loading addOn " + file + " : " + e);
     }
     return null;
 }
