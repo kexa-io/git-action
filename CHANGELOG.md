@@ -31248,3 +31248,12 @@ node_modules/sqlstring/package.json was changed
 src/services/addOn/save/mySQLSave.service.ts was changed
 
 
+## 1.2.4
+
+### Files added: 0
+
+### Files changed: 497
+
+package.json was changed
+
+
