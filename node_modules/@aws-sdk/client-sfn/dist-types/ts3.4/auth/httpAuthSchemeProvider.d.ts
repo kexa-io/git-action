@@ -1,0 +1,43 @@
+import {
+  AwsSdkSigV4AuthInputConfig,
+  AwsSdkSigV4AuthResolvedConfig,
+  AwsSdkSigV4PreviouslyResolved,
+} from "@aws-sdk/core";
+import {
+  HandlerExecutionContext,
+  HttpAuthScheme,
+  HttpAuthSchemeParameters,
+  HttpAuthSchemeParametersProvider,
+  HttpAuthSchemeProvider,
+} from "@smithy/types";
+import { SFNClientResolvedConfig } from "../SFNClient";
+export interface SFNHttpAuthSchemeParameters extends HttpAuthSchemeParameters {
+  region?: string;
+}
+export interface SFNHttpAuthSchemeParametersProvider
+  extends HttpAuthSchemeParametersProvider<
+    SFNClientResolvedConfig,
+    HandlerExecutionContext,
+    SFNHttpAuthSchemeParameters,
+    object
+  > {}
+export declare const defaultSFNHttpAuthSchemeParametersProvider: (
+  config: SFNClientResolvedConfig,
+  context: HandlerExecutionContext,
+  input: object
+) => Promise<SFNHttpAuthSchemeParameters>;
+export interface SFNHttpAuthSchemeProvider
+  extends HttpAuthSchemeProvider<SFNHttpAuthSchemeParameters> {}
+export declare const defaultSFNHttpAuthSchemeProvider: SFNHttpAuthSchemeProvider;
+export interface HttpAuthSchemeInputConfig extends AwsSdkSigV4AuthInputConfig {
+  httpAuthSchemes?: HttpAuthScheme[];
+  httpAuthSchemeProvider?: SFNHttpAuthSchemeProvider;
+}
+export interface HttpAuthSchemeResolvedConfig
+  extends AwsSdkSigV4AuthResolvedConfig {
+  readonly httpAuthSchemes: HttpAuthScheme[];
+  readonly httpAuthSchemeProvider: SFNHttpAuthSchemeProvider;
+}
+export declare const resolveHttpAuthSchemeConfig: <T>(
+  config: T & HttpAuthSchemeInputConfig & AwsSdkSigV4PreviouslyResolved
+) => T & HttpAuthSchemeResolvedConfig;
