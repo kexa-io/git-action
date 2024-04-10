@@ -61865,3 +61865,18 @@ action.yml was changed
 .github/workflows/ci.yml was changed
 
 
+## 1.2.10
+
+### Files added: 0
+
+### Files changed: 4
+
+lib/services/addOn.service.js was changed
+
+lib/services/addOn/save/prometheusSave.service.js was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/save/prometheusSave.service.ts was changed
+
+
