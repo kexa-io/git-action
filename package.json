@@ -1,7 +1,7 @@
 {
     "name": "Kexa-Github-Action",
     "description": "A GitHub Action for Kexa",
-    "version": "1.5.3",
+    "version": "1.2.10",
     "author": "Esteban MATHIA",
     "private": true,
     "homepage": "https://github.com/4urcloud/Kexa_githubAction",
@@ -22,7 +22,7 @@
         "reporting"
     ],
     "exports": {
-        ".": "./dist/index.js"
+        ".": "./lib/main.js"
     },
     "engines": {
         "node": ">=20"
@@ -30,7 +30,7 @@
     "scripts": {
         "update": "node src/services/updateCapability.service.js",
         "pkg": "node lib/services/updatePkgImport.service.js",
-        "package": "rimraf ./dist && npm run prepackage && npm run pkg && npm run prepackage && ncc build lib/main.js && rimraf ./lib",
+        "package": "rimraf ./lib && npm run prepackage && npm run pkg && npm run prepackage && tsc",
         "prepackage": "rimraf ./lib && tsc",
         "package:watch": "npm run package -- --watch",
         "test": "mocha --require ts-node/register --require source-map-support/register 'lib/__tests__/**/*.test.js'",
@@ -551,7 +551,7 @@
         "@types/chai": "^4.3.5",
         "@types/js-yaml": "^4.0.5",
         "@types/mocha": "^10.0.1",
-        "@types/node": "^20.8.4",
+        "@types/node": "^20.11.30",
         "@types/rimraf": "^4.0.5",
         "chai": "^4.3.7",
         "mocha": "^10.2.0",

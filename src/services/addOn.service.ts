@@ -108,7 +108,7 @@ const addOnNameCustomUtility:{ [key: string]: string[]; } = {
         "amazonS3",
         "azureBlobStorage",
         "mongoDB",
-        "prometheus",
+        //"prometheus",
     ],
     "exportation": [
         "azureBlobStorage",
@@ -152,7 +152,7 @@ const addOnCustomUtility: {
         "amazonS3": saveAmazonS3,
         "azureBlobStorage": saveAzureBlobStorage,
         "mongoDB": saveMongoDB,
-        "prometheus": savePrometheus,
+        //"prometheus": savePrometheus,
     },
     "exportation": {
         "azureBlobStorage": exportAzureBlobStorage,
