@@ -61880,3 +61880,12 @@ src/services/addOn.service.ts was changed
 src/services/addOn/save/prometheusSave.service.ts was changed
 
 
+## 1.5.4
+
+### Files added: 0
+
+### Files changed: 1
+
+LICENSE was changed
+
+
