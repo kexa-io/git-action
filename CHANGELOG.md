@@ -4929,40 +4929,6 @@ dist/protos/google/api/servicecontrol/v1/quota_controller.proto was added
 
 dist/protos/google/api/servicecontrol/v1/service_controller.proto was added
 
-dist/protos/google/api/servicecontrol/v2/service_controller.proto was added
-
-dist/protos/google/api/servicemanagement/v1/resources.proto was added
-
-dist/protos/google/api/servicemanagement/v1/servicemanager.proto was added
-
-dist/protos/google/api/serviceusage/v1/resources.proto was added
-
-dist/protos/google/api/serviceusage/v1/serviceusage.proto was added
-
-dist/protos/google/api/serviceusage/v1beta1/resources.proto was added
-
-dist/protos/google/api/serviceusage/v1beta1/serviceusage.proto was added
-
-dist/protos/google/api/source_info.proto was added
-
-dist/protos/google/api/system_parameter.proto was added
-
-dist/protos/google/api/usage.proto was added
-
-dist/protos/google/api/visibility.proto was added
-
-dist/protos/google/cloud/location/locations.proto was added
-
-dist/protos/google/iam/v1/iam_policy.proto was added
-
-dist/protos/google/iam/v1/logging/audit_data.proto was added
-
-dist/protos/google/iam/v1/options.proto was added
-
-dist/protos/google/iam/v1/policy.proto was added
-
-dist/protos/google/logging/type/http_request.proto was added
-
 dist/protos/google/logging/type/log_severity.proto was added
 
 dist/protos/google/longrunning/operations.proto was added
