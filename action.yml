@@ -81,5 +81,5 @@ outputs:
 
 runs:
   using: node20
-  main: dist/index.js
-  #main: lib/main.js
+  #main: dist/index.js
+  main: lib/main.js
