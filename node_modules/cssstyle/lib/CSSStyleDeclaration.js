@@ -18,11 +18,8 @@ var CSSStyleDeclaration = function CSSStyleDeclaration(onChangeCallback) {
   this._values = {};
   this._importants = {};
   this._length = 0;
-  this._onChange =
-    onChangeCallback ||
-    function () {
-      return;
-    };
+  this._onChange = onChangeCallback;
+  this._setInProgress = false;
 };
 CSSStyleDeclaration.prototype = {
   constructor: CSSStyleDeclaration,
@@ -77,6 +74,12 @@ CSSStyleDeclaration.prototype = {
       this.removeProperty(name);
       return;
     }
+
+    var originalText;
+    if (this._onChange) {
+      originalText = this.cssText;
+    }
+
     if (this._values[name]) {
       // Property already exist. Overwrite it.
       var index = Array.prototype.indexOf.call(this, name);
@@ -91,7 +94,9 @@ CSSStyleDeclaration.prototype = {
     }
     this._values[name] = value;
     this._importants[name] = priority;
-    this._onChange(this.cssText);
+    if (this._onChange && this.cssText !== originalText && !this._setInProgress) {
+      this._onChange(this.cssText);
+    }
   },
 
   /**
@@ -121,7 +126,9 @@ CSSStyleDeclaration.prototype = {
     // That's what Firefox does
     //this[index] = ""
 
-    this._onChange(this.cssText);
+    if (this._onChange) {
+      this._onChange(this.cssText);
+    }
     return prevValue;
   },
 
@@ -196,6 +203,7 @@ Object.defineProperties(CSSStyleDeclaration.prototype, {
         // malformed css, just return
         return;
       }
+      this._setInProgress = true;
       var rule_length = dummyRule.length;
       var name;
       for (i = 0; i < rule_length; ++i) {
@@ -206,7 +214,10 @@ Object.defineProperties(CSSStyleDeclaration.prototype, {
           dummyRule.getPropertyPriority(name)
         );
       }
-      this._onChange(this.cssText);
+      this._setInProgress = false;
+      if (this._onChange) {
+        this._onChange(this.cssText);
+      }
     },
     enumerable: true,
     configurable: true,
