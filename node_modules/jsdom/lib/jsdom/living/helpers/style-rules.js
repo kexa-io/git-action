@@ -1,4 +1,5 @@
 "use strict";
+
 const cssom = require("rrweb-cssom");
 const { CSSStyleDeclaration } = require("cssstyle");
 const defaultStyleSheet = require("../../browser/default-stylesheet");
@@ -168,8 +169,8 @@ exports.getDeclarationForElement = elementImpl => {
   return declaration;
 };
 
-function matches(rule, element) {
-  return matchesDontThrow(element, rule.selectorText);
+function matches(rule, elementImpl) {
+  return matchesDontThrow(rule.selectorText, elementImpl);
 }
 
 // Naive implementation of https://drafts.csswg.org/css-cascade-4/#cascading

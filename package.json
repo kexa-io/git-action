@@ -22,7 +22,7 @@
         "reporting"
     ],
     "exports": {
-        ".": "./lib/index.js"
+        ".": "./lib/main.js"
     },
     "engines": {
         "node": ">=20"
