@@ -31257,3 +31257,12 @@ src/services/addOn/save/mySQLSave.service.ts was changed
 package.json was changed
 
 
+## 1.2.5
+
+### Files added: 0
+
+### Files changed: 1
+
+.github/workflows/ci.yml was changed
+
+
