@@ -5130,14 +5130,14 @@ async function collectAuto(credential: any, region: string) {
 			if (Array.isArray(dependence.functions)) {
 				for (let i = 0; i < dependence.functions.length; i++) {
 					const func = dependence.functions[i];
-					dependence.objects.forEach(async (element: any) => {
+					dependence.objects.forEach((element: any) => {
 						if (element.name == func.objectName) {
 							const input = {};
 							const command = new func.objectFunc(input);
 							const client = new func.clientFunc({ region: region, credentials: credential });
 							let data: Record<string, any> = {};
 							
-							const promise = await (async () => {
+							const promise = (async () => {
 								try {
 									data = await client.send(command);
 									element.results = data[element.subGatherName];
