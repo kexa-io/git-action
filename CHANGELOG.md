@@ -61880,3 +61880,24 @@ src/services/addOn.service.ts was changed
 src/services/addOn/save/prometheusSave.service.ts was changed
 
 
+## 1.2.11
+
+### Files added: 0
+
+### Files changed: 7
+
+lib/main.js was changed
+
+lib/services/addOn.service.js was changed
+
+lib/services/addOn/awsGathering.service.js was changed
+
+lib/services/addOn/save/prometheusSave.service.js was changed
+
+src/main.ts was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+
