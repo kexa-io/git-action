@@ -61997,3 +61997,14 @@ lib/services/addOn/awsGathering.service.js was changed
 src/services/addOn/awsGathering.service.ts was changed
 
 
+## 1.2.20
+
+### Files added: 0
+
+### Files changed: 2
+
+lib/services/addOn/awsGathering.service.js was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+
