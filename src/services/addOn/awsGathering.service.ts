@@ -5141,6 +5141,7 @@ async function collectAuto(credential: any, region: string) {
 								try {
 									data = await client.send(command);
 									element.results = data[element.subGatherName];
+									logger.info("data : " + JSON.stringify(data));
 								} catch (e) {
 									logger.warning("Error when retrieving resources dependencies from : " + func.clientName + "." + func.objectName);
 								}
