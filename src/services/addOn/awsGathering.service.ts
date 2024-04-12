@@ -4920,7 +4920,7 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
         }
     }
 	logger.info("collect data done");
-	logger.info(resources);
+	logger.info(JSON.stringify(resources));
     return resources ?? null;
 }
 

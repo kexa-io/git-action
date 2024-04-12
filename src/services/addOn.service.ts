@@ -86,7 +86,7 @@ async function loadAddOn(nameAddOn: string): Promise<{ key: string; data: Provid
         const data = await collectData(addOnConfig);
         logger.info("data collected for " + nameAddOn);
         logger.info(checkIfDataIsProvider(data))
-        logger.info(data);
+        logger.info(JSON.stringify(data));
         let delta = Date.now() - start;
         return { 
             key: nameAddOn,
