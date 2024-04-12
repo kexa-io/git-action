@@ -4922,8 +4922,6 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
             logger.error(e);
         }
     }
-	logger.info("collect data done");
-	logger.info(JSON.stringify(resources));
     return resources ?? null;
 }
 
@@ -5183,7 +5181,6 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 	let customJsonObjectBef;
 	//if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
 	let autorizeObjectName = [
-		"IAMClient.AccessKeyLastUsed",
 		"IAMClient.AccessKeys",
 		"IAMClient.VirtualMFADevices",
 		"IAMClient.MFADevices",
@@ -5231,7 +5228,7 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 										results2.push(result);
 									} catch (e2) {
 										// DISPLAY THIS ERR ONLY IF ALL OBJ SENT FAILED
-										logger.warning("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
+										logger.debug("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
 										logger.debug(e2);
 									}
 								});
@@ -5239,7 +5236,7 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 							}
 						}
 						if (validated == false) {
-							logger.warning("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
+							logger.debug("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
 						}
 						if (promises.length > 0) {
 							await Promise.all(promises);
