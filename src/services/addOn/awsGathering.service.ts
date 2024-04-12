@@ -5182,8 +5182,8 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 
 	let alreadyStructured = false;
 	let customJsonObjectBef;
-	if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
-	logger.info(region + " - " + object.clientName + "." + object.objectName + " Listing  Started");
+	//if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
+	//logger.info(region + " - " + object.clientName + "." + object.objectName + " Listing  Started");
 	try {
 
 		const client = new object.clientFunc({region: region, credentials: credential});
