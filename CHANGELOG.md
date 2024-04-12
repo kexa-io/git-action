@@ -61889,3 +61889,28 @@ src/services/addOn/save/prometheusSave.service.ts was changed
 LICENSE was changed
 
 
+## 1.5.5
+
+### Files added: 0
+
+### Files changed: 9
+
+lib/main.js was changed
+
+lib/services/addOn.service.js was changed
+
+lib/services/addOn/awsGathering.service.js was changed
+
+lib/services/addOn/display/awsDisplay.service.js was changed
+
+lib/services/addOn/save/prometheusSave.service.js was changed
+
+src/main.ts was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+src/services/addOn/display/awsDisplay.service.ts was changed
+
+
