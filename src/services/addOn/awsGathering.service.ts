@@ -5137,7 +5137,7 @@ async function collectAuto(credential: any, region: string) {
 							const client = new func.clientFunc({ region: region, credentials: credential });
 							let data: Record<string, any> = {};
 							
-							const promise = (async () => {
+							const promise = await (async () => {
 								try {
 									data = await client.send(command);
 									element.results = data[element.subGatherName];
