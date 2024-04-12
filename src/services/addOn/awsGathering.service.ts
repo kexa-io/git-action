@@ -803,10 +803,8 @@
 	*	- CloudFormationClient.AccountLimits
 	*	- CloudFormationClient.ChangeSet
 	*	- CloudFormationClient.ChangeSetHooks
-	*	- CloudFormationClient.GeneratedTemplate
 	*	- CloudFormationClient.OrganizationsAccess
 	*	- CloudFormationClient.Publisher
-	*	- CloudFormationClient.ResourceScan
 	*	- CloudFormationClient.StackDriftDetectionStatus
 	*	- CloudFormationClient.StackEvents
 	*	- CloudFormationClient.StackInstance
@@ -818,17 +816,12 @@
 	*	- CloudFormationClient.Stacks
 	*	- CloudFormationClient.Type
 	*	- CloudFormationClient.TypeRegistration
-	*	- CloudFormationClient.GeneratedTemplate
 	*	- CloudFormationClient.StackPolicy
 	*	- CloudFormationClient.Template
 	*	- CloudFormationClient.TemplateSummary
 	*	- CloudFormationClient.ChangeSets
 	*	- CloudFormationClient.Exports
-	*	- CloudFormationClient.GeneratedTemplates
 	*	- CloudFormationClient.Imports
-	*	- CloudFormationClient.ResourceScanRelatedResources
-	*	- CloudFormationClient.ResourceScanResources
-	*	- CloudFormationClient.ResourceScans
 	*	- CloudFormationClient.StackInstanceResourceDrifts
 	*	- CloudFormationClient.StackInstances
 	*	- CloudFormationClient.StackResources
@@ -980,7 +973,6 @@
 	*	- RDSClient.DBProxyTargets
 	*	- RDSClient.DBRecommendations
 	*	- RDSClient.DBSecurityGroups
-	*	- RDSClient.DBShardGroups
 	*	- RDSClient.DBSnapshotAttributes
 	*	- RDSClient.DBSnapshotTenantDatabases
 	*	- RDSClient.DBSnapshots
@@ -1012,7 +1004,6 @@
 	*	- CodeBuildClient.Builds
 	*	- CodeBuildClient.BuildsForProject
 	*	- CodeBuildClient.CuratedEnvironmentImages
-	*	- CodeBuildClient.Fleets
 	*	- CodeBuildClient.Projects
 	*	- CodeBuildClient.ReportGroups
 	*	- CodeBuildClient.Reports
@@ -1504,7 +1495,6 @@
 	*	- RedshiftClient.ReservedNodeExchangeConfigurationOptions
 	*	- RedshiftClient.ReservedNodeExchangeOfferings
 	*	- RedshiftClient.ResourcePolicy
-	*	- RedshiftClient.Recommendations
 	*	- MediaConvertClient.Endpoints
 	*	- MediaConvertClient.Job
 	*	- MediaConvertClient.JobTemplate
@@ -1549,7 +1539,6 @@
 	*	- CloudTrailClient.EventDataStores
 	*	- CloudTrailClient.ImportFailures
 	*	- CloudTrailClient.Imports
-	*	- CloudTrailClient.InsightsMetricData
 	*	- CloudTrailClient.PublicKeys
 	*	- CloudTrailClient.Queries
 	*	- CloudTrailClient.Tags
@@ -1665,14 +1654,12 @@
 	*	- KinesisVideoClient.TagsForStream
 	*	- IvsClient.Channel
 	*	- IvsClient.PlaybackKeyPair
-	*	- IvsClient.PlaybackRestrictionPolicy
 	*	- IvsClient.RecordingConfiguration
 	*	- IvsClient.Stream
 	*	- IvsClient.StreamKey
 	*	- IvsClient.StreamSession
 	*	- IvsClient.Channels
 	*	- IvsClient.PlaybackKeyPairs
-	*	- IvsClient.PlaybackRestrictionPolicies
 	*	- IvsClient.RecordingConfigurations
 	*	- IvsClient.StreamKeys
 	*	- IvsClient.StreamSessions
@@ -1685,7 +1672,6 @@
 	*	- AppSyncClient.DomainName
 	*	- AppSyncClient.Function
 	*	- AppSyncClient.GraphqlApi
-	*	- AppSyncClient.GraphqlApiEnvironmentVariables
 	*	- AppSyncClient.IntrospectionSchema
 	*	- AppSyncClient.Resolver
 	*	- AppSyncClient.SchemaCreationStatus
@@ -2362,7 +2348,6 @@
 	*	- CostExplorerClient.Anomalies
 	*	- CostExplorerClient.AnomalyMonitors
 	*	- CostExplorerClient.AnomalySubscriptions
-	*	- CostExplorerClient.ApproximateUsageRecords
 	*	- CostExplorerClient.CostAndUsage
 	*	- CostExplorerClient.CostAndUsageWithResources
 	*	- CostExplorerClient.CostCategories
@@ -3020,7 +3005,6 @@
 	*	- LightsailClient.RelationalDatabaseSnapshot
 	*	- LightsailClient.RelationalDatabaseSnapshots
 	*	- LightsailClient.RelationalDatabases
-	*	- LightsailClient.SetupHistory
 	*	- LightsailClient.StaticIp
 	*	- LightsailClient.StaticIps
 	*	- NeptuneClient.DBClusterEndpoints
@@ -3354,14 +3338,12 @@
 	*	- AmplifyUIBuilderClient.CodegenJobs
 	*	- AmplifyUIBuilderClient.Components
 	*	- AmplifyUIBuilderClient.Forms
-	*	- AmplifyUIBuilderClient.TagsForResource
 	*	- AmplifyUIBuilderClient.Themes
 	*	- KafkaConnectClient.Connector
 	*	- KafkaConnectClient.CustomPlugin
 	*	- KafkaConnectClient.WorkerConfiguration
 	*	- KafkaConnectClient.Connectors
 	*	- KafkaConnectClient.CustomPlugins
-	*	- KafkaConnectClient.TagsForResource
 	*	- KafkaConnectClient.WorkerConfigurations
 	*	- PanoramaClient.ApplicationInstance
 	*	- PanoramaClient.ApplicationInstanceDetails
@@ -3570,7 +3552,6 @@
 	*	- ApplicationCostProfilerClient.ReportDefinition
 	*	- ApplicationCostProfilerClient.ReportDefinitions
 	*	- KeyspacesClient.Keyspace
-	*	- KeyspacesClient.TableAutoScalingSettings
 	*	- KeyspacesClient.Table
 	*	- KeyspacesClient.Keyspaces
 	*	- KeyspacesClient.Tables
@@ -4938,6 +4919,8 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
             logger.error(e);
         }
     }
+	logger.info("collect data done");
+	logger.info(resources);
     return resources ?? null;
 }
 
@@ -4945,6 +4928,8 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
 /* ****************************************** */
 /*  	Retrieving clients & objects names    */
 /* ****************************************** */
+
+let iamClientGlobalForRegion: any;
 
 let awsGatherDependencies = [
 
@@ -5126,6 +5111,8 @@ function concatAllObjects(collectedResults: any) {
 	return (finalResults);
 }
 
+let iamUsers: any;
+
 async function collectAuto(credential: any, region: string) {
 	logger.info("Retrieving AWS Region : " + region);
 
@@ -5179,6 +5166,10 @@ async function collectAuto(credential: any, region: string) {
 		await Promise.all(promises);
 	}
 	return (azureRet);
+}
+
+function gatherDependenciesResources(credential: any, region:string, object: ClientResultsInterface) {
+
 }
 
 async function gatherAwsObject(credential: any, region:string, object: ClientResultsInterface) {

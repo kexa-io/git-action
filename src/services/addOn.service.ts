@@ -84,8 +84,15 @@ async function loadAddOn(nameAddOn: string): Promise<{ key: string; data: Provid
         let start = Date.now();
         const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
         const data = await collectData(addOnConfig);
+        logger.info("data collected for " + nameAddOn);
+        logger.info(checkIfDataIsProvider(data))
+        logger.info(data);
         let delta = Date.now() - start;
-        return { key: nameAddOn, data:(checkIfDataIsProvider(data) ? data : null), delta};
+        return { 
+            key: nameAddOn,
+            data:data, // (checkIfDataIsProvider(data) ? data : null)
+            delta
+        };
     }catch(e:any){
         logger.warning(e);
     }
@@ -129,7 +136,6 @@ import { propertyToSend as displayO365}  from "./addOn/display/o365Display.servi
 import { save as saveAmazonS3}  from "./addOn/save/amazonS3Save.service";
 import { save as saveAzureBlobStorage}  from "./addOn/save/azureBlobStorageSave.service";
 import { save as saveMongoDB}  from "./addOn/save/mongoDBSave.service";
-import { save as savePrometheus}  from "./addOn/save/prometheusSave.service";
 import { exportation as exportAzureBlobStorage}  from "./addOn/exportation/azureBlobStorageExportation.service";
 import { exportation as exportMongoDB}  from "./addOn/exportation/mongoDBExportation.service";
 import { exportation as exportMySQL}  from "./addOn/exportation/mySQLExportation.service";
