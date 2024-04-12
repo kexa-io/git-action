@@ -803,10 +803,8 @@
 	*	- CloudFormationClient.AccountLimits
 	*	- CloudFormationClient.ChangeSet
 	*	- CloudFormationClient.ChangeSetHooks
-	*	- CloudFormationClient.GeneratedTemplate
 	*	- CloudFormationClient.OrganizationsAccess
 	*	- CloudFormationClient.Publisher
-	*	- CloudFormationClient.ResourceScan
 	*	- CloudFormationClient.StackDriftDetectionStatus
 	*	- CloudFormationClient.StackEvents
 	*	- CloudFormationClient.StackInstance
@@ -818,17 +816,12 @@
 	*	- CloudFormationClient.Stacks
 	*	- CloudFormationClient.Type
 	*	- CloudFormationClient.TypeRegistration
-	*	- CloudFormationClient.GeneratedTemplate
 	*	- CloudFormationClient.StackPolicy
 	*	- CloudFormationClient.Template
 	*	- CloudFormationClient.TemplateSummary
 	*	- CloudFormationClient.ChangeSets
 	*	- CloudFormationClient.Exports
-	*	- CloudFormationClient.GeneratedTemplates
 	*	- CloudFormationClient.Imports
-	*	- CloudFormationClient.ResourceScanRelatedResources
-	*	- CloudFormationClient.ResourceScanResources
-	*	- CloudFormationClient.ResourceScans
 	*	- CloudFormationClient.StackInstanceResourceDrifts
 	*	- CloudFormationClient.StackInstances
 	*	- CloudFormationClient.StackResources
@@ -980,7 +973,6 @@
 	*	- RDSClient.DBProxyTargets
 	*	- RDSClient.DBRecommendations
 	*	- RDSClient.DBSecurityGroups
-	*	- RDSClient.DBShardGroups
 	*	- RDSClient.DBSnapshotAttributes
 	*	- RDSClient.DBSnapshotTenantDatabases
 	*	- RDSClient.DBSnapshots
@@ -1012,7 +1004,6 @@
 	*	- CodeBuildClient.Builds
 	*	- CodeBuildClient.BuildsForProject
 	*	- CodeBuildClient.CuratedEnvironmentImages
-	*	- CodeBuildClient.Fleets
 	*	- CodeBuildClient.Projects
 	*	- CodeBuildClient.ReportGroups
 	*	- CodeBuildClient.Reports
@@ -1504,7 +1495,6 @@
 	*	- RedshiftClient.ReservedNodeExchangeConfigurationOptions
 	*	- RedshiftClient.ReservedNodeExchangeOfferings
 	*	- RedshiftClient.ResourcePolicy
-	*	- RedshiftClient.Recommendations
 	*	- MediaConvertClient.Endpoints
 	*	- MediaConvertClient.Job
 	*	- MediaConvertClient.JobTemplate
@@ -1549,7 +1539,6 @@
 	*	- CloudTrailClient.EventDataStores
 	*	- CloudTrailClient.ImportFailures
 	*	- CloudTrailClient.Imports
-	*	- CloudTrailClient.InsightsMetricData
 	*	- CloudTrailClient.PublicKeys
 	*	- CloudTrailClient.Queries
 	*	- CloudTrailClient.Tags
@@ -1665,14 +1654,12 @@
 	*	- KinesisVideoClient.TagsForStream
 	*	- IvsClient.Channel
 	*	- IvsClient.PlaybackKeyPair
-	*	- IvsClient.PlaybackRestrictionPolicy
 	*	- IvsClient.RecordingConfiguration
 	*	- IvsClient.Stream
 	*	- IvsClient.StreamKey
 	*	- IvsClient.StreamSession
 	*	- IvsClient.Channels
 	*	- IvsClient.PlaybackKeyPairs
-	*	- IvsClient.PlaybackRestrictionPolicies
 	*	- IvsClient.RecordingConfigurations
 	*	- IvsClient.StreamKeys
 	*	- IvsClient.StreamSessions
@@ -1685,7 +1672,6 @@
 	*	- AppSyncClient.DomainName
 	*	- AppSyncClient.Function
 	*	- AppSyncClient.GraphqlApi
-	*	- AppSyncClient.GraphqlApiEnvironmentVariables
 	*	- AppSyncClient.IntrospectionSchema
 	*	- AppSyncClient.Resolver
 	*	- AppSyncClient.SchemaCreationStatus
@@ -2362,7 +2348,6 @@
 	*	- CostExplorerClient.Anomalies
 	*	- CostExplorerClient.AnomalyMonitors
 	*	- CostExplorerClient.AnomalySubscriptions
-	*	- CostExplorerClient.ApproximateUsageRecords
 	*	- CostExplorerClient.CostAndUsage
 	*	- CostExplorerClient.CostAndUsageWithResources
 	*	- CostExplorerClient.CostCategories
@@ -3020,7 +3005,6 @@
 	*	- LightsailClient.RelationalDatabaseSnapshot
 	*	- LightsailClient.RelationalDatabaseSnapshots
 	*	- LightsailClient.RelationalDatabases
-	*	- LightsailClient.SetupHistory
 	*	- LightsailClient.StaticIp
 	*	- LightsailClient.StaticIps
 	*	- NeptuneClient.DBClusterEndpoints
@@ -3354,14 +3338,12 @@
 	*	- AmplifyUIBuilderClient.CodegenJobs
 	*	- AmplifyUIBuilderClient.Components
 	*	- AmplifyUIBuilderClient.Forms
-	*	- AmplifyUIBuilderClient.TagsForResource
 	*	- AmplifyUIBuilderClient.Themes
 	*	- KafkaConnectClient.Connector
 	*	- KafkaConnectClient.CustomPlugin
 	*	- KafkaConnectClient.WorkerConfiguration
 	*	- KafkaConnectClient.Connectors
 	*	- KafkaConnectClient.CustomPlugins
-	*	- KafkaConnectClient.TagsForResource
 	*	- KafkaConnectClient.WorkerConfigurations
 	*	- PanoramaClient.ApplicationInstance
 	*	- PanoramaClient.ApplicationInstanceDetails
@@ -3570,7 +3552,6 @@
 	*	- ApplicationCostProfilerClient.ReportDefinition
 	*	- ApplicationCostProfilerClient.ReportDefinitions
 	*	- KeyspacesClient.Keyspace
-	*	- KeyspacesClient.TableAutoScalingSettings
 	*	- KeyspacesClient.Table
 	*	- KeyspacesClient.Keyspaces
 	*	- KeyspacesClient.Tables
@@ -4860,6 +4841,9 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
         try {
             let awsKeyId = await getConfigOrEnvVar(oneConfig, "AWS_ACCESS_KEY_ID", prefix);
             let awsSecretKey = await getConfigOrEnvVar(oneConfig, "AWS_SECRET_ACCESS_KEY", prefix);
+			let awsSessionToken = await getConfigOrEnvVar(oneConfig, "AWS_SESSION_TOKEN", prefix);
+			if (awsSessionToken)
+				setEnvVar("AWS_SESSION_TOKEN", awsSessionToken);
             if (awsKeyId)
                 setEnvVar("AWS_ACCESS_KEY_ID", awsKeyId);
             else
@@ -4928,7 +4912,7 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
                     }
                 });
 				await Promise.all(promises);
-                logger.info("- Listing AWS resources done -");
+				logger.info("- Listing AWS resources done -");
 				
 				const concatedResults = concatAllObjects(collectedResults);
                 resources.push(concatedResults);
@@ -4945,6 +4929,8 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
 /* ****************************************** */
 /*  	Retrieving clients & objects names    */
 /* ****************************************** */
+
+let iamClientGlobalForRegion: any;
 
 let awsGatherDependencies = [
 
@@ -5126,6 +5112,8 @@ function concatAllObjects(collectedResults: any) {
 	return (finalResults);
 }
 
+let iamUsers: any;
+
 async function collectAuto(credential: any, region: string) {
 	logger.info("Retrieving AWS Region : " + region);
 
@@ -5143,7 +5131,7 @@ async function collectAuto(credential: any, region: string) {
 			if (Array.isArray(dependence.functions)) {
 				for (let i = 0; i < dependence.functions.length; i++) {
 					const func = dependence.functions[i];
-					dependence.objects.forEach(async (element: any) => {
+					dependence.objects.forEach((element: any) => {
 						if (element.name == func.objectName) {
 							const input = {};
 							const command = new func.objectFunc(input);
@@ -5174,18 +5162,36 @@ async function collectAuto(credential: any, region: string) {
 	for (const client of objectToGather) {
 		const promises = client.map(async (object: any) => {
 			const gathered = await gatherAwsObject(credential, region, object);
-			azureRet = { ...azureRet, ...gathered };
+			if(gathered?.[Object.keys(gathered)[0]].length > 0){
+                azureRet = { ...azureRet, ...gathered };
+            } 
 		});
 		await Promise.all(promises);
 	}
 	return (azureRet);
 }
 
+function gatherDependenciesResources(credential: any, region:string, object: ClientResultsInterface) {
+
+}
+
 async function gatherAwsObject(credential: any, region:string, object: ClientResultsInterface) {
 
 	let alreadyStructured = false;
 	let customJsonObjectBef;
-	if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
+	//if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
+	let autorizeObjectName = [
+		"IAMClient.AccessKeys",
+		"IAMClient.VirtualMFADevices",
+		"IAMClient.MFADevices",
+		"EC2Client.NetworkAcls",
+		"IAMClient.Policies",
+		"EC2Client.Instances",
+		"EC2Client.NetworkInterfaces"
+	]
+	if (!autorizeObjectName.includes(object.clientName + "." + object.objectName)) {
+		return null;
+	}
 	try {
 
 		const client = new object.clientFunc({region: region, credentials: credential});
@@ -5222,7 +5228,7 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 										results2.push(result);
 									} catch (e2) {
 										// DISPLAY THIS ERR ONLY IF ALL OBJ SENT FAILED
-										logger.warning("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
+										logger.debug("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
 										logger.debug(e2);
 									}
 								});
@@ -5230,7 +5236,7 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 							}
 						}
 						if (validated == false) {
-							logger.warning("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
+							logger.debug("Cannot retrieve resource with unknown dependencies for " + retrievingFullName);
 						}
 						if (promises.length > 0) {
 							await Promise.all(promises);

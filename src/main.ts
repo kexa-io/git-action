@@ -35,7 +35,8 @@ export async function main() {
         let stop = false;
         let resources = {};
         resources = await loadAddOns(resources);
-        logger.debug(resources);
+        logger.info("Resources loaded");
+        logger.debug(JSON.stringify(resources));
         settings.forEach(setting => {
             let result = checkRules(setting.rules, resources, setting.alert);
             logger.setOutput('resultScan', result);
