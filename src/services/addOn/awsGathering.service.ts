@@ -5182,6 +5182,19 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 	let alreadyStructured = false;
 	let customJsonObjectBef;
 	//if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
+	let autorizeObjectName = [
+		"IAMClient.AccessKeyLastUsed",
+		"IAMClient.AccessKeys",
+		"IAMClient.VirtualMFADevices",
+		"IAMClient.MFADevices",
+		"EC2Client.NetworkAcls",
+		"IAMClient.Policies",
+		"EC2Client.Instances",
+		"EC2Client.NetworkInterfaces"
+	]
+	if (!autorizeObjectName.includes(object.clientName + "." + object.objectName)) {
+		return null;
+	}
 	try {
 
 		const client = new object.clientFunc({region: region, credentials: credential});
