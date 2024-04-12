@@ -5144,7 +5144,6 @@ async function collectAuto(credential: any, region: string) {
 								try {
 									data = await client.send(command);
 									element.results = data[element.subGatherName];
-									logger.info("data : " + JSON.stringify(data));
 								} catch (e) {
 									logger.warning("Error when retrieving resources dependencies from : " + func.clientName + "." + func.objectName);
 								}
@@ -5157,7 +5156,6 @@ async function collectAuto(credential: any, region: string) {
 			}
 		}
 		await Promise.all(promises);
-		logger.info("Dependencies retrieved: " + JSON.stringify(awsGatherDependencies));
 	}
 
 	/* ------------------------- */
@@ -5166,8 +5164,7 @@ async function collectAuto(credential: any, region: string) {
 	for (const client of objectToGather) {
 		const promises = client.map(async (object: any) => {
 			const gathered = await gatherAwsObject(credential, region, object);
-			if(gathered[gathered.keys()[0]].length > 0){
-                logger.info("data2 : " + JSON.stringify(gathered));
+			if(gathered?.[gathered.keys()[0]].length > 0){
                 azureRet = { ...azureRet, ...gathered };
             } 
 		});
@@ -5185,7 +5182,6 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 	let alreadyStructured = false;
 	let customJsonObjectBef;
 	//if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
-	//logger.info(region + " - " + object.clientName + "." + object.objectName + " Listing  Started");
 	try {
 
 		const client = new object.clientFunc({region: region, credentials: credential});
