@@ -5166,8 +5166,10 @@ async function collectAuto(credential: any, region: string) {
 	for (const client of objectToGather) {
 		const promises = client.map(async (object: any) => {
 			const gathered = await gatherAwsObject(credential, region, object);
-			if(gathered) logger.info("data2 : " + JSON.stringify(gathered));
-			azureRet = { ...azureRet, ...gathered };
+			if(gathered[gathered.keys()[0]].length > 0){
+                logger.info("data2 : " + JSON.stringify(gathered));
+                azureRet = { ...azureRet, ...gathered };
+            } 
 		});
 		await Promise.all(promises);
 	}
