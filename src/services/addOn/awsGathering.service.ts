@@ -4841,6 +4841,9 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
         try {
             let awsKeyId = await getConfigOrEnvVar(oneConfig, "AWS_ACCESS_KEY_ID", prefix);
             let awsSecretKey = await getConfigOrEnvVar(oneConfig, "AWS_SECRET_ACCESS_KEY", prefix);
+			let awsSessionToken = await getConfigOrEnvVar(oneConfig, "AWS_SESSION_TOKEN", prefix);
+			if (awsSessionToken)
+				setEnvVar("AWS_SESSION_TOKEN", awsSessionToken);
             if (awsKeyId)
                 setEnvVar("AWS_ACCESS_KEY_ID", awsKeyId);
             else
@@ -4909,7 +4912,7 @@ export async function collectData(awsConfig: AwsConfig[]): Promise<Object[]|null
                     }
                 });
 				await Promise.all(promises);
-                logger.info("- Listing AWS resources done -");
+				logger.info("- Listing AWS resources done -");
 				
 				const concatedResults = concatAllObjects(collectedResults);
                 resources.push(concatedResults);
@@ -5154,6 +5157,7 @@ async function collectAuto(credential: any, region: string) {
 			}
 		}
 		await Promise.all(promises);
+		logger.info("Dependencies retrieved: " + JSON.stringify(awsGatherDependencies));
 	}
 
 	/* ------------------------- */
@@ -5162,6 +5166,7 @@ async function collectAuto(credential: any, region: string) {
 	for (const client of objectToGather) {
 		const promises = client.map(async (object: any) => {
 			const gathered = await gatherAwsObject(credential, region, object);
+			logger.info("data2 : " + JSON.stringify(gathered));
 			azureRet = { ...azureRet, ...gathered };
 		});
 		await Promise.all(promises);
