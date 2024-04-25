@@ -68392,3 +68392,14 @@ src/services/addOn/azureGathering.service.ts was changed
 src/services/addOn/gcpGathering.service.ts was changed
 
 
+## 1.2.11
+
+### Files added: 0
+
+### Files changed: 2
+
+package-lock.json was changed
+
+package.json was changed
+
+
