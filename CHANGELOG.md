@@ -68459,3 +68459,6490 @@ VERSION was changed
 package.json was changed
 
 
+## 1.6.0
+
+### Files added: 340
+
+node_modules/@aws-sdk/client-ec2/dist-es/commands/DisableImageDeregistrationProtectionCommand.js was added
+
+node_modules/@aws-sdk/client-ec2/dist-es/commands/EnableImageDeregistrationProtectionCommand.js was added
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DisableImageDeregistrationProtectionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/EnableImageDeregistrationProtectionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/DisableImageDeregistrationProtectionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/EnableImageDeregistrationProtectionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/CreateSecurityConfigurationCommand.js was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/DescribeSecurityConfigurationCommand.js was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/ListSecurityConfigurationsCommand.js was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/pagination/ListSecurityConfigurationsPaginator.js was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/CreateSecurityConfigurationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/DescribeSecurityConfigurationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/ListSecurityConfigurationsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/pagination/ListSecurityConfigurationsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/CreateSecurityConfigurationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/DescribeSecurityConfigurationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/ListSecurityConfigurationsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/pagination/ListSecurityConfigurationsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/CreateContainerGroupDefinitionCommand.js was added
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/DeleteContainerGroupDefinitionCommand.js was added
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/DescribeContainerGroupDefinitionCommand.js was added
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/ListContainerGroupDefinitionsCommand.js was added
+
+node_modules/@aws-sdk/client-gamelift/dist-es/pagination/ListContainerGroupDefinitionsPaginator.js was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/CreateContainerGroupDefinitionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DeleteContainerGroupDefinitionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeContainerGroupDefinitionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/ListContainerGroupDefinitionsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/pagination/ListContainerGroupDefinitionsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/CreateContainerGroupDefinitionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/DeleteContainerGroupDefinitionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/DescribeContainerGroupDefinitionCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/ListContainerGroupDefinitionsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/pagination/ListContainerGroupDefinitionsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-kms/dist-es/commands/ListKeyRotationsCommand.js was added
+
+node_modules/@aws-sdk/client-kms/dist-es/commands/RotateKeyOnDemandCommand.js was added
+
+node_modules/@aws-sdk/client-kms/dist-es/pagination/ListKeyRotationsPaginator.js was added
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/ListKeyRotationsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/RotateKeyOnDemandCommand.d.ts was added
+
+node_modules/@aws-sdk/client-kms/dist-types/pagination/ListKeyRotationsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/commands/ListKeyRotationsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/commands/RotateKeyOnDemandCommand.d.ts was added
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/pagination/ListKeyRotationsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateCloudWatchAlarmTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateCloudWatchAlarmTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateEventBridgeRuleTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateEventBridgeRuleTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateSignalMapCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteCloudWatchAlarmTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteCloudWatchAlarmTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteEventBridgeRuleTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteEventBridgeRuleTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteSignalMapCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetCloudWatchAlarmTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetCloudWatchAlarmTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetEventBridgeRuleTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetEventBridgeRuleTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetSignalMapCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListCloudWatchAlarmTemplateGroupsCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListCloudWatchAlarmTemplatesCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListEventBridgeRuleTemplateGroupsCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListEventBridgeRuleTemplatesCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListSignalMapsCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/StartDeleteMonitorDeploymentCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/StartMonitorDeploymentCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/StartUpdateSignalMapCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateCloudWatchAlarmTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateCloudWatchAlarmTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateEventBridgeRuleTemplateCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateEventBridgeRuleTemplateGroupCommand.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListCloudWatchAlarmTemplateGroupsPaginator.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListCloudWatchAlarmTemplatesPaginator.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListEventBridgeRuleTemplateGroupsPaginator.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListEventBridgeRuleTemplatesPaginator.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListSignalMapsPaginator.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapCreated.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapMonitorDeleted.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapMonitorDeployed.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapUpdated.js was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListCloudWatchAlarmTemplateGroupsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListCloudWatchAlarmTemplatesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListEventBridgeRuleTemplateGroupsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListEventBridgeRuleTemplatesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListSignalMapsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/StartDeleteMonitorDeploymentCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/StartMonitorDeploymentCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/StartUpdateSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListCloudWatchAlarmTemplateGroupsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListCloudWatchAlarmTemplatesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListEventBridgeRuleTemplateGroupsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListEventBridgeRuleTemplatesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListSignalMapsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListCloudWatchAlarmTemplateGroupsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListCloudWatchAlarmTemplatesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListEventBridgeRuleTemplateGroupsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListEventBridgeRuleTemplatesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListSignalMapsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/StartDeleteMonitorDeploymentCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/StartMonitorDeploymentCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/StartUpdateSignalMapCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateCloudWatchAlarmTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateCloudWatchAlarmTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateEventBridgeRuleTemplateCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateEventBridgeRuleTemplateGroupCommand.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListCloudWatchAlarmTemplateGroupsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListCloudWatchAlarmTemplatesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListEventBridgeRuleTemplateGroupsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListEventBridgeRuleTemplatesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListSignalMapsPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapCreated.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapMonitorDeleted.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapMonitorDeployed.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapUpdated.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapCreated.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapMonitorDeleted.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapMonitorDeployed.d.ts was added
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapUpdated.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/CancelCapacityTaskCommand.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/GetCapacityTaskCommand.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/GetOutpostSupportedInstanceTypesCommand.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/ListCapacityTasksCommand.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/StartCapacityTaskCommand.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/pagination/GetOutpostSupportedInstanceTypesPaginator.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-es/pagination/ListCapacityTasksPaginator.js was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/CancelCapacityTaskCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/GetCapacityTaskCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/GetOutpostSupportedInstanceTypesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/ListCapacityTasksCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/StartCapacityTaskCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/pagination/GetOutpostSupportedInstanceTypesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/pagination/ListCapacityTasksPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/CancelCapacityTaskCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/GetCapacityTaskCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/GetOutpostSupportedInstanceTypesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/ListCapacityTasksCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/StartCapacityTaskCommand.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/pagination/GetOutpostSupportedInstanceTypesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/pagination/ListCapacityTasksPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-ssm/dist-es/commands/DescribeInstancePropertiesCommand.js was added
+
+node_modules/@aws-sdk/client-ssm/dist-es/pagination/DescribeInstancePropertiesPaginator.js was added
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/DescribeInstancePropertiesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-ssm/dist-types/pagination/DescribeInstancePropertiesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/DescribeInstancePropertiesCommand.d.ts was added
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/pagination/DescribeInstancePropertiesPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-transfer/dist-es/commands/StartDirectoryListingCommand.js was added
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/StartDirectoryListingCommand.d.ts was added
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/commands/StartDirectoryListingCommand.d.ts was added
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/commands/GetGlobalSettingsCommand.js was added
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/commands/UpdateIntegrationCommand.js was added
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/GetGlobalSettingsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpdateIntegrationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/commands/GetGlobalSettingsCommand.d.ts was added
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/commands/UpdateIntegrationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/AcceptAccountLinkInvitationCommand.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/CreateAccountLinkInvitationCommand.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/DeleteAccountLinkInvitationCommand.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/GetAccountLinkCommand.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/ListAccountLinksCommand.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/RejectAccountLinkInvitationCommand.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-es/pagination/ListAccountLinksPaginator.js was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/AcceptAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/CreateAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/DeleteAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/GetAccountLinkCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/ListAccountLinksCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/RejectAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/pagination/ListAccountLinksPaginator.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/AcceptAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/CreateAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/DeleteAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/GetAccountLinkCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/ListAccountLinksCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/RejectAccountLinkInvitationCommand.d.ts was added
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/pagination/ListAccountLinksPaginator.d.ts was added
+
+node_modules/@aws-sdk/core/src/protocols/xml/parseXmlBody.spec.ts was added
+
+node_modules/@azure/msal-common/dist/error/CacheError.d.ts was added
+
+node_modules/@azure/msal-common/dist/error/CacheError.d.ts.map was added
+
+node_modules/@azure/msal-common/dist/error/CacheError.mjs was added
+
+node_modules/@azure/msal-common/dist/error/CacheError.mjs.map was added
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.d.ts was added
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.d.ts.map was added
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.mjs was added
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.mjs.map was added
+
+node_modules/@azure/msal-common/src/error/CacheError.ts was added
+
+node_modules/@azure/msal-common/src/error/CacheErrorCodes.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.mjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.cjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.cjs.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.d.ts was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.mjs was added
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.mjs.map was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.cjs was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.cjs.map was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.d.ts was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.mjs was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.mjs.map was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.cjs was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.cjs.map was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.d.ts was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.mjs was added
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.mjs.map was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.cjs was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.cjs.map was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.d.ts was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.mjs was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.mjs.map was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.cjs was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.cjs.map was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.d.ts was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.mjs was added
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.mjs.map was added
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.cjs was added
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.cjs.map was added
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.d.ts was added
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.mjs was added
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.mjs.map was added
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequest.d.ts was added
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequest.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequestParams.d.ts was added
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequestParams.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/response/ManagedIdentityTokenResponse.d.ts was added
+
+node_modules/@azure/msal-node/dist/response/ManagedIdentityTokenResponse.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/retry/IHttpRetryPolicy.d.ts was added
+
+node_modules/@azure/msal-node/dist/retry/IHttpRetryPolicy.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.cjs was added
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.cjs.map was added
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.d.ts was added
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.d.ts.map was added
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.mjs was added
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.mjs.map was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentityApplication.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentityClient.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/AppService.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/AzureArc.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/BaseManagedIdentitySource.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/CloudShell.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/Imds.ts was added
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/ServiceFabric.ts was added
+
+node_modules/@azure/msal-node/src/config/ManagedIdentityId.ts was added
+
+node_modules/@azure/msal-node/src/config/ManagedIdentityRequestParameters.ts was added
+
+node_modules/@azure/msal-node/src/error/ManagedIdentityError.ts was added
+
+node_modules/@azure/msal-node/src/error/ManagedIdentityErrorCodes.ts was added
+
+node_modules/@azure/msal-node/src/network/HttpClientWithRetries.ts was added
+
+node_modules/@azure/msal-node/src/request/ManagedIdentityRequest.ts was added
+
+node_modules/@azure/msal-node/src/request/ManagedIdentityRequestParams.ts was added
+
+node_modules/@azure/msal-node/src/response/ManagedIdentityTokenResponse.ts was added
+
+node_modules/@azure/msal-node/src/retry/IHttpRetryPolicy.ts was added
+
+node_modules/@azure/msal-node/src/retry/LinearRetryPolicy.ts was added
+
+node_modules/aws-sdk/apis/payment-cryptography-2021-09-14.waiters2.json was added
+
+node_modules/aws-sdk/apis/route53profiles-2018-05-10.examples.json was added
+
+node_modules/aws-sdk/apis/route53profiles-2018-05-10.min.json was added
+
+node_modules/aws-sdk/apis/route53profiles-2018-05-10.paginators.json was added
+
+node_modules/aws-sdk/clients/route53profiles.d.ts was added
+
+node_modules/aws-sdk/clients/route53profiles.js was added
+
+node_modules/google-auth-library/build/src/auth/defaultawssecuritycredentialssupplier.d.ts was added
+
+node_modules/google-auth-library/build/src/auth/defaultawssecuritycredentialssupplier.js was added
+
+node_modules/google-auth-library/build/src/auth/filesubjecttokensupplier.d.ts was added
+
+node_modules/google-auth-library/build/src/auth/filesubjecttokensupplier.js was added
+
+node_modules/google-auth-library/build/src/auth/urlsubjecttokensupplier.d.ts was added
+
+node_modules/google-auth-library/build/src/auth/urlsubjecttokensupplier.js was added
+
+### Files changed: 2906
+
+node_modules/@aws-sdk/client-ec2/dist-es/commands/DisableImageDeregistrationProtectionCommand.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/commands/EnableImageDeregistrationProtectionCommand.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DisableImageDeregistrationProtectionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/EnableImageDeregistrationProtectionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/DisableImageDeregistrationProtectionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/EnableImageDeregistrationProtectionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/CreateSecurityConfigurationCommand.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/DescribeSecurityConfigurationCommand.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/ListSecurityConfigurationsCommand.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/pagination/ListSecurityConfigurationsPaginator.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/CreateSecurityConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/DescribeSecurityConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/ListSecurityConfigurationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/pagination/ListSecurityConfigurationsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/CreateSecurityConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/DescribeSecurityConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/ListSecurityConfigurationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/pagination/ListSecurityConfigurationsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/CreateContainerGroupDefinitionCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/DeleteContainerGroupDefinitionCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/DescribeContainerGroupDefinitionCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/ListContainerGroupDefinitionsCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/pagination/ListContainerGroupDefinitionsPaginator.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/CreateContainerGroupDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DeleteContainerGroupDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeContainerGroupDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/ListContainerGroupDefinitionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/pagination/ListContainerGroupDefinitionsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/CreateContainerGroupDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/DeleteContainerGroupDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/DescribeContainerGroupDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/ListContainerGroupDefinitionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/pagination/ListContainerGroupDefinitionsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/commands/ListKeyRotationsCommand.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/commands/RotateKeyOnDemandCommand.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/pagination/ListKeyRotationsPaginator.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/ListKeyRotationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/RotateKeyOnDemandCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/pagination/ListKeyRotationsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/commands/ListKeyRotationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/commands/RotateKeyOnDemandCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/pagination/ListKeyRotationsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateCloudWatchAlarmTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateCloudWatchAlarmTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateEventBridgeRuleTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateEventBridgeRuleTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/CreateSignalMapCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteCloudWatchAlarmTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteCloudWatchAlarmTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteEventBridgeRuleTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteEventBridgeRuleTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DeleteSignalMapCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetCloudWatchAlarmTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetCloudWatchAlarmTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetEventBridgeRuleTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetEventBridgeRuleTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/GetSignalMapCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListCloudWatchAlarmTemplateGroupsCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListCloudWatchAlarmTemplatesCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListEventBridgeRuleTemplateGroupsCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListEventBridgeRuleTemplatesCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/ListSignalMapsCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/StartDeleteMonitorDeploymentCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/StartMonitorDeploymentCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/StartUpdateSignalMapCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateCloudWatchAlarmTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateCloudWatchAlarmTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateEventBridgeRuleTemplateCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/UpdateEventBridgeRuleTemplateGroupCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListCloudWatchAlarmTemplateGroupsPaginator.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListCloudWatchAlarmTemplatesPaginator.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListEventBridgeRuleTemplateGroupsPaginator.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListEventBridgeRuleTemplatesPaginator.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/ListSignalMapsPaginator.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapCreated.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapMonitorDeleted.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapMonitorDeployed.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/waitForSignalMapUpdated.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/CreateSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/GetSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListCloudWatchAlarmTemplateGroupsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListCloudWatchAlarmTemplatesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListEventBridgeRuleTemplateGroupsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListEventBridgeRuleTemplatesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/ListSignalMapsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/StartDeleteMonitorDeploymentCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/StartMonitorDeploymentCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/StartUpdateSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/UpdateEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListCloudWatchAlarmTemplateGroupsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListCloudWatchAlarmTemplatesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListEventBridgeRuleTemplateGroupsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListEventBridgeRuleTemplatesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/ListSignalMapsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/CreateSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/GetSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListCloudWatchAlarmTemplateGroupsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListCloudWatchAlarmTemplatesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListEventBridgeRuleTemplateGroupsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListEventBridgeRuleTemplatesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/ListSignalMapsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/StartDeleteMonitorDeploymentCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/StartMonitorDeploymentCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/StartUpdateSignalMapCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateCloudWatchAlarmTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateCloudWatchAlarmTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateEventBridgeRuleTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/UpdateEventBridgeRuleTemplateGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListCloudWatchAlarmTemplateGroupsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListCloudWatchAlarmTemplatesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListEventBridgeRuleTemplateGroupsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListEventBridgeRuleTemplatesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/ListSignalMapsPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapCreated.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapMonitorDeleted.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapMonitorDeployed.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/waitForSignalMapUpdated.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapCreated.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapMonitorDeleted.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapMonitorDeployed.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/waitForSignalMapUpdated.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/CancelCapacityTaskCommand.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/GetCapacityTaskCommand.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/GetOutpostSupportedInstanceTypesCommand.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/ListCapacityTasksCommand.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/StartCapacityTaskCommand.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/pagination/GetOutpostSupportedInstanceTypesPaginator.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/pagination/ListCapacityTasksPaginator.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/CancelCapacityTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/GetCapacityTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/GetOutpostSupportedInstanceTypesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/ListCapacityTasksCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/StartCapacityTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/pagination/GetOutpostSupportedInstanceTypesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/pagination/ListCapacityTasksPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/CancelCapacityTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/GetCapacityTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/GetOutpostSupportedInstanceTypesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/ListCapacityTasksCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/StartCapacityTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/pagination/GetOutpostSupportedInstanceTypesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/pagination/ListCapacityTasksPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/commands/DescribeInstancePropertiesCommand.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/pagination/DescribeInstancePropertiesPaginator.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/DescribeInstancePropertiesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/pagination/DescribeInstancePropertiesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/DescribeInstancePropertiesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/pagination/DescribeInstancePropertiesPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-es/commands/StartDirectoryListingCommand.js was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/StartDirectoryListingCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/commands/StartDirectoryListingCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/commands/GetGlobalSettingsCommand.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/commands/UpdateIntegrationCommand.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/GetGlobalSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpdateIntegrationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/commands/GetGlobalSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/commands/UpdateIntegrationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/AcceptAccountLinkInvitationCommand.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/CreateAccountLinkInvitationCommand.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/DeleteAccountLinkInvitationCommand.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/GetAccountLinkCommand.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/ListAccountLinksCommand.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/RejectAccountLinkInvitationCommand.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/pagination/ListAccountLinksPaginator.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/AcceptAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/CreateAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/DeleteAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/GetAccountLinkCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/ListAccountLinksCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/RejectAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/pagination/ListAccountLinksPaginator.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/AcceptAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/CreateAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/DeleteAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/GetAccountLinkCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/ListAccountLinksCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/RejectAccountLinkInvitationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/pagination/ListAccountLinksPaginator.d.ts was changed
+
+node_modules/@aws-sdk/core/src/protocols/xml/parseXmlBody.spec.ts was changed
+
+node_modules/@azure/msal-common/dist/error/CacheError.d.ts was changed
+
+node_modules/@azure/msal-common/dist/error/CacheError.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/error/CacheError.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/CacheError.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.d.ts was changed
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/CacheErrorCodes.mjs.map was changed
+
+node_modules/@azure/msal-common/src/error/CacheError.ts was changed
+
+node_modules/@azure/msal-common/src/error/CacheErrorCodes.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityApplication.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentityClient.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AppService.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/AzureArc.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/BaseManagedIdentitySource.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/CloudShell.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/Imds.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ManagedIdentitySources/ServiceFabric.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.cjs was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.d.ts was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.mjs was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityId.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.cjs was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.d.ts was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.mjs was changed
+
+node_modules/@azure/msal-node/dist/config/ManagedIdentityRequestParameters.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.cjs was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.d.ts was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.mjs was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityError.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.cjs was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.d.ts was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.mjs was changed
+
+node_modules/@azure/msal-node/dist/error/ManagedIdentityErrorCodes.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.cjs was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.d.ts was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.mjs was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClientWithRetries.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequest.d.ts was changed
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequest.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequestParams.d.ts was changed
+
+node_modules/@azure/msal-node/dist/request/ManagedIdentityRequestParams.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/response/ManagedIdentityTokenResponse.d.ts was changed
+
+node_modules/@azure/msal-node/dist/response/ManagedIdentityTokenResponse.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/retry/IHttpRetryPolicy.d.ts was changed
+
+node_modules/@azure/msal-node/dist/retry/IHttpRetryPolicy.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.cjs was changed
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.d.ts was changed
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.mjs was changed
+
+node_modules/@azure/msal-node/dist/retry/LinearRetryPolicy.mjs.map was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentityApplication.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentityClient.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/AppService.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/AzureArc.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/BaseManagedIdentitySource.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/CloudShell.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/Imds.ts was changed
+
+node_modules/@azure/msal-node/src/client/ManagedIdentitySources/ServiceFabric.ts was changed
+
+node_modules/@azure/msal-node/src/config/ManagedIdentityId.ts was changed
+
+node_modules/@azure/msal-node/src/config/ManagedIdentityRequestParameters.ts was changed
+
+node_modules/@azure/msal-node/src/error/ManagedIdentityError.ts was changed
+
+node_modules/@azure/msal-node/src/error/ManagedIdentityErrorCodes.ts was changed
+
+node_modules/@azure/msal-node/src/network/HttpClientWithRetries.ts was changed
+
+node_modules/@azure/msal-node/src/request/ManagedIdentityRequest.ts was changed
+
+node_modules/@azure/msal-node/src/request/ManagedIdentityRequestParams.ts was changed
+
+node_modules/@azure/msal-node/src/response/ManagedIdentityTokenResponse.ts was changed
+
+node_modules/@azure/msal-node/src/retry/IHttpRetryPolicy.ts was changed
+
+node_modules/@azure/msal-node/src/retry/LinearRetryPolicy.ts was changed
+
+node_modules/aws-sdk/apis/payment-cryptography-2021-09-14.waiters2.json was changed
+
+node_modules/aws-sdk/apis/route53profiles-2018-05-10.examples.json was changed
+
+node_modules/aws-sdk/apis/route53profiles-2018-05-10.min.json was changed
+
+node_modules/aws-sdk/apis/route53profiles-2018-05-10.paginators.json was changed
+
+node_modules/aws-sdk/clients/route53profiles.d.ts was changed
+
+node_modules/aws-sdk/clients/route53profiles.js was changed
+
+node_modules/google-auth-library/build/src/auth/defaultawssecuritycredentialssupplier.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/defaultawssecuritycredentialssupplier.js was changed
+
+node_modules/google-auth-library/build/src/auth/filesubjecttokensupplier.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/filesubjecttokensupplier.js was changed
+
+node_modules/google-auth-library/build/src/auth/urlsubjecttokensupplier.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/urlsubjecttokensupplier.js was changed
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+lib/__tests__/services/addOn.test.js was changed
+
+lib/main.js was changed
+
+lib/services/addOn.service.js was changed
+
+lib/services/addOn/awsGathering.service.js was changed
+
+lib/services/addOn/azureGathering.service.js was changed
+
+lib/services/addOn/gcpGathering.service.js was changed
+
+lib/services/addOn/githubGathering.service.js was changed
+
+lib/services/addOn/googleWorkspaceGathering.service.js was changed
+
+lib/services/addOn/kubernetesGathering.service.js was changed
+
+lib/services/addOn/o365Gathering.service.js was changed
+
+node_modules/.package-lock.json was changed
+
+node_modules/@actions/github/node_modules/@octokit/openapi-types/package.json was changed
+
+node_modules/@actions/github/node_modules/@octokit/openapi-types/types.d.ts was changed
+
+node_modules/@actions/github/node_modules/@octokit/types/dist-types/VERSION.d.ts was changed
+
+node_modules/@actions/github/node_modules/@octokit/types/package.json was changed
+
+node_modules/@aws-sdk/client-accessanalyzer/package.json was changed
+
+node_modules/@aws-sdk/client-account/package.json was changed
+
+node_modules/@aws-sdk/client-acm-pca/package.json was changed
+
+node_modules/@aws-sdk/client-acm/package.json was changed
+
+node_modules/@aws-sdk/client-alexa-for-business/package.json was changed
+
+node_modules/@aws-sdk/client-amp/package.json was changed
+
+node_modules/@aws-sdk/client-amplify/package.json was changed
+
+node_modules/@aws-sdk/client-amplifybackend/package.json was changed
+
+node_modules/@aws-sdk/client-amplifyuibuilder/package.json was changed
+
+node_modules/@aws-sdk/client-api-gateway/package.json was changed
+
+node_modules/@aws-sdk/client-apigatewaymanagementapi/package.json was changed
+
+node_modules/@aws-sdk/client-app-mesh/package.json was changed
+
+node_modules/@aws-sdk/client-appconfig/package.json was changed
+
+node_modules/@aws-sdk/client-appflow/package.json was changed
+
+node_modules/@aws-sdk/client-appintegrations/package.json was changed
+
+node_modules/@aws-sdk/client-application-auto-scaling/package.json was changed
+
+node_modules/@aws-sdk/client-application-insights/package.json was changed
+
+node_modules/@aws-sdk/client-applicationcostprofiler/package.json was changed
+
+node_modules/@aws-sdk/client-apprunner/package.json was changed
+
+node_modules/@aws-sdk/client-appstream/package.json was changed
+
+node_modules/@aws-sdk/client-appsync/package.json was changed
+
+node_modules/@aws-sdk/client-athena/package.json was changed
+
+node_modules/@aws-sdk/client-auditmanager/package.json was changed
+
+node_modules/@aws-sdk/client-auto-scaling-plans/package.json was changed
+
+node_modules/@aws-sdk/client-auto-scaling/package.json was changed
+
+node_modules/@aws-sdk/client-backup-gateway/package.json was changed
+
+node_modules/@aws-sdk/client-backup/package.json was changed
+
+node_modules/@aws-sdk/client-batch/README.md was changed
+
+node_modules/@aws-sdk/client-batch/dist-types/Batch.d.ts was changed
+
+node_modules/@aws-sdk/client-batch/dist-types/BatchClient.d.ts was changed
+
+node_modules/@aws-sdk/client-batch/dist-types/commands/DescribeJobsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-batch/dist-types/index.d.ts was changed
+
+node_modules/@aws-sdk/client-batch/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-batch/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-batch/package.json was changed
+
+node_modules/@aws-sdk/client-billingconductor/package.json was changed
+
+node_modules/@aws-sdk/client-braket/package.json was changed
+
+node_modules/@aws-sdk/client-budgets/package.json was changed
+
+node_modules/@aws-sdk/client-chime-sdk-identity/package.json was changed
+
+node_modules/@aws-sdk/client-chime-sdk-media-pipelines/package.json was changed
+
+node_modules/@aws-sdk/client-chime-sdk-meetings/package.json was changed
+
+node_modules/@aws-sdk/client-chime-sdk-messaging/package.json was changed
+
+node_modules/@aws-sdk/client-chime/package.json was changed
+
+node_modules/@aws-sdk/client-cloudcontrol/package.json was changed
+
+node_modules/@aws-sdk/client-clouddirectory/package.json was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-es/protocols/Aws_query.js was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/commands/DescribeChangeSetCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/commands/SetTypeConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/ts3.4/commands/SetTypeConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudformation/package.json was changed
+
+node_modules/@aws-sdk/client-cloudfront/README.md was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/CloudFront.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/CloudFrontClient.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/CreateInvalidationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/CreateKeyValueStoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/CreateOriginAccessControlCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/DeleteKeyValueStoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/DeleteMonitoringSubscriptionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/DescribeKeyValueStoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/GetOriginAccessControlCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/GetOriginAccessControlConfigCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/ListKeyValueStoresCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/ListOriginAccessControlsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/UpdateKeyValueStoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/commands/UpdateOriginAccessControlCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/index.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudfront/package.json was changed
+
+node_modules/@aws-sdk/client-cloudhsm/package.json was changed
+
+node_modules/@aws-sdk/client-cloudsearch-domain/package.json was changed
+
+node_modules/@aws-sdk/client-cloudsearch/package.json was changed
+
+node_modules/@aws-sdk/client-cloudtrail/package.json was changed
+
+node_modules/@aws-sdk/client-cloudwatch-events/package.json was changed
+
+node_modules/@aws-sdk/client-cloudwatch-logs/package.json was changed
+
+node_modules/@aws-sdk/client-cloudwatch/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-cloudwatch/dist-es/protocols/Aws_query.js was changed
+
+node_modules/@aws-sdk/client-cloudwatch/dist-types/commands/DescribeAnomalyDetectorsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudwatch/dist-types/commands/PutAnomalyDetectorCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudwatch/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudwatch/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cloudwatch/package.json was changed
+
+node_modules/@aws-sdk/client-codeartifact/package.json was changed
+
+node_modules/@aws-sdk/client-codebuild/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-codebuild/package.json was changed
+
+node_modules/@aws-sdk/client-codecommit/package.json was changed
+
+node_modules/@aws-sdk/client-codedeploy/package.json was changed
+
+node_modules/@aws-sdk/client-codeguru-reviewer/package.json was changed
+
+node_modules/@aws-sdk/client-codeguruprofiler/package.json was changed
+
+node_modules/@aws-sdk/client-codepipeline/package.json was changed
+
+node_modules/@aws-sdk/client-codestar-connections/package.json was changed
+
+node_modules/@aws-sdk/client-codestar-notifications/package.json was changed
+
+node_modules/@aws-sdk/client-codestar/package.json was changed
+
+node_modules/@aws-sdk/client-cognito-identity-provider/package.json was changed
+
+node_modules/@aws-sdk/client-cognito-identity/package.json was changed
+
+node_modules/@aws-sdk/client-cognito-sync/package.json was changed
+
+node_modules/@aws-sdk/client-comprehend/package.json was changed
+
+node_modules/@aws-sdk/client-comprehendmedical/package.json was changed
+
+node_modules/@aws-sdk/client-compute-optimizer/package.json was changed
+
+node_modules/@aws-sdk/client-connect-contact-lens/package.json was changed
+
+node_modules/@aws-sdk/client-connect/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-connect/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-connect/dist-es/models/models_1.js was changed
+
+node_modules/@aws-sdk/client-connect/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/commands/CreateRuleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/commands/DescribeRuleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/commands/ListRulesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/commands/UpdateRuleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/dist-types/ts3.4/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-connect/package.json was changed
+
+node_modules/@aws-sdk/client-connectcampaigns/package.json was changed
+
+node_modules/@aws-sdk/client-connectparticipant/package.json was changed
+
+node_modules/@aws-sdk/client-cost-explorer/dist-types/commands/GetCostAndUsageWithResourcesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cost-explorer/dist-types/commands/GetReservationPurchaseRecommendationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-cost-explorer/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cost-explorer/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-cost-explorer/package.json was changed
+
+node_modules/@aws-sdk/client-customer-profiles/package.json was changed
+
+node_modules/@aws-sdk/client-data-pipeline/package.json was changed
+
+node_modules/@aws-sdk/client-databrew/package.json was changed
+
+node_modules/@aws-sdk/client-dataexchange/package.json was changed
+
+node_modules/@aws-sdk/client-datasync/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-datasync/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-datasync/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-datasync/dist-types/commands/CreateTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-datasync/dist-types/commands/DescribeTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-datasync/dist-types/commands/UpdateTaskCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-datasync/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-datasync/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-datasync/package.json was changed
+
+node_modules/@aws-sdk/client-dax/package.json was changed
+
+node_modules/@aws-sdk/client-detective/package.json was changed
+
+node_modules/@aws-sdk/client-device-farm/package.json was changed
+
+node_modules/@aws-sdk/client-devops-guru/package.json was changed
+
+node_modules/@aws-sdk/client-direct-connect/package.json was changed
+
+node_modules/@aws-sdk/client-dlm/package.json was changed
+
+node_modules/@aws-sdk/client-docdb/package.json was changed
+
+node_modules/@aws-sdk/client-drs/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-drs/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/CreateExtendedSourceServerCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/DescribeRecoveryInstancesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/DescribeSourceServersCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/DisconnectSourceServerCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/RetryDataReplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/StartReplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/commands/StopReplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-drs/package.json was changed
+
+node_modules/@aws-sdk/client-dynamodb-streams/package.json was changed
+
+node_modules/@aws-sdk/client-dynamodb/package.json was changed
+
+node_modules/@aws-sdk/client-ebs/package.json was changed
+
+node_modules/@aws-sdk/client-ec2/README.md was changed
+
+node_modules/@aws-sdk/client-ec2/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/EC2.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/models/models_3.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/models/models_4.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/models/models_5.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/models/models_6.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-es/protocols/Aws_ec2.js was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/EC2.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/EC2Client.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/CancelSpotFleetRequestsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/CreateDhcpOptionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/CreateLaunchTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/CreateLaunchTemplateVersionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DeleteFleetsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeImageAttributeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeImagesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeInstanceTypeOfferingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeInstanceTypesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeInstancesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeNetworkInterfaceAttributeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeNetworkInterfacesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeSnapshotsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeTagsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/DescribeVolumesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/GetConsoleScreenshotCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/GetIpamDiscoveredAccountsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/GetIpamDiscoveredPublicAddressesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/ModifyInstanceMetadataDefaultsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/ModifyNetworkInterfaceAttributeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/ProvisionPublicIpv4PoolCidrCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/PurchaseCapacityBlockCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/PurchaseHostReservationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_3.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_4.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_5.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_6.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/models/models_7.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/protocols/Aws_ec2.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/EC2.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/EC2Client.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/GetIpamDiscoveredAccountsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/GetIpamDiscoveredPublicAddressesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/ProvisionPublicIpv4PoolCidrCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/PurchaseCapacityBlockCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/PurchaseHostReservationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/models/models_3.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/models/models_4.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/models/models_5.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/models/models_6.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/models/models_7.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/dist-types/ts3.4/protocols/Aws_ec2.d.ts was changed
+
+node_modules/@aws-sdk/client-ec2/package.json was changed
+
+node_modules/@aws-sdk/client-ecr-public/package.json was changed
+
+node_modules/@aws-sdk/client-ecr/package.json was changed
+
+node_modules/@aws-sdk/client-ecs/package.json was changed
+
+node_modules/@aws-sdk/client-efs/package.json was changed
+
+node_modules/@aws-sdk/client-eks/package.json was changed
+
+node_modules/@aws-sdk/client-elastic-beanstalk/package.json was changed
+
+node_modules/@aws-sdk/client-elastic-inference/package.json was changed
+
+node_modules/@aws-sdk/client-elastic-load-balancing/package.json was changed
+
+node_modules/@aws-sdk/client-elastic-transcoder/package.json was changed
+
+node_modules/@aws-sdk/client-elasticache/package.json was changed
+
+node_modules/@aws-sdk/client-emr-containers/README.md was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/EMRContainers.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/EMRContainers.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/EMRContainersClient.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/CreateVirtualClusterCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/DescribeVirtualClusterCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/ListVirtualClustersCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/EMRContainers.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/EMRContainersClient.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/dist-types/ts3.4/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-containers/package.json was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/commands/CreateApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/commands/GetApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/commands/GetJobRunCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/commands/StartJobRunCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/commands/UpdateApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-emr-serverless/package.json was changed
+
+node_modules/@aws-sdk/client-emr/package.json was changed
+
+node_modules/@aws-sdk/client-eventbridge/node_modules/@aws-sdk/middleware-signing/package.json was changed
+
+node_modules/@aws-sdk/client-eventbridge/package.json was changed
+
+node_modules/@aws-sdk/client-evidently/package.json was changed
+
+node_modules/@aws-sdk/client-finspace/package.json was changed
+
+node_modules/@aws-sdk/client-firehose/package.json was changed
+
+node_modules/@aws-sdk/client-fis/package.json was changed
+
+node_modules/@aws-sdk/client-fms/package.json was changed
+
+node_modules/@aws-sdk/client-forecast/package.json was changed
+
+node_modules/@aws-sdk/client-forecastquery/package.json was changed
+
+node_modules/@aws-sdk/client-frauddetector/package.json was changed
+
+node_modules/@aws-sdk/client-fsx/package.json was changed
+
+node_modules/@aws-sdk/client-gamelift/README.md was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/GameLift.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/CreateFleetCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/DescribeFleetAttributesCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/SearchGameSessionsCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/StartGameSessionPlacementCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/StartMatchBackfillCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/StartMatchmakingCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/StopGameSessionPlacementCommand.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/models/models_1.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/GameLift.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/GameLiftClient.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/CreateFleetCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/CreateFleetLocationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DeleteFleetCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DeregisterComputeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeComputeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeFleetAttributesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeFleetCapacityCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeFleetEventsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeFleetLocationCapacityCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeFleetPortSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/DescribeRuntimeConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/GetComputeAccessCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/GetComputeAuthTokenCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/ListComputeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/ListFleetsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/RegisterComputeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/RequestUploadCredentialsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/ResolveAliasCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/ResumeGameServerGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/SearchGameSessionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StartFleetActionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StartGameSessionPlacementCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StartMatchBackfillCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StartMatchmakingCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StopFleetActionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StopGameSessionPlacementCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/StopMatchmakingCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/SuspendGameServerGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/TagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UntagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UpdateAliasCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UpdateBuildCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UpdateFleetAttributesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UpdateFleetCapacityCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UpdateFleetPortSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/UpdateRuntimeConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/GameLift.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/GameLiftClient.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/ResumeGameServerGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/SearchGameSessionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StartFleetActionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StartGameSessionPlacementCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StartMatchBackfillCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StartMatchmakingCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StopFleetActionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StopGameSessionPlacementCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/StopMatchmakingCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/SuspendGameServerGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/TagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/UntagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/UpdateAliasCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/UpdateBuildCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/UpdateFleetAttributesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/dist-types/ts3.4/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-gamelift/package.json was changed
+
+node_modules/@aws-sdk/client-glacier/package.json was changed
+
+node_modules/@aws-sdk/client-global-accelerator/package.json was changed
+
+node_modules/@aws-sdk/client-glue/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-glue/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-glue/dist-types/commands/GetUnfilteredTableMetadataCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-glue/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-glue/dist-types/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-glue/dist-types/ts3.4/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-glue/package.json was changed
+
+node_modules/@aws-sdk/client-grafana/package.json was changed
+
+node_modules/@aws-sdk/client-greengrass/package.json was changed
+
+node_modules/@aws-sdk/client-groundstation/package.json was changed
+
+node_modules/@aws-sdk/client-guardduty/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-guardduty/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-guardduty/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-guardduty/dist-types/commands/GetFindingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-guardduty/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-guardduty/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-guardduty/package.json was changed
+
+node_modules/@aws-sdk/client-health/package.json was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-es/protocols/Aws_json1_0.js was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-types/commands/CreateFHIRDatastoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-types/commands/DeleteFHIRDatastoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-types/commands/DescribeFHIRDatastoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-types/commands/ListFHIRDatastoresCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-healthlake/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-healthlake/package.json was changed
+
+node_modules/@aws-sdk/client-honeycode/package.json was changed
+
+node_modules/@aws-sdk/client-iam/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-iam/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-iam/dist-es/protocols/Aws_query.js was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/commands/CreateInstanceProfileCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/commands/CreateOpenIDConnectProviderCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/commands/DeleteRoleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/commands/RemoveRoleFromInstanceProfileCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/commands/UntagInstanceProfileCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/commands/UpdateOpenIDConnectProviderThumbprintCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/ts3.4/commands/UntagInstanceProfileCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-iam/package.json was changed
+
+node_modules/@aws-sdk/client-identitystore/package.json was changed
+
+node_modules/@aws-sdk/client-imagebuilder/package.json was changed
+
+node_modules/@aws-sdk/client-inspector/package.json was changed
+
+node_modules/@aws-sdk/client-iot-data-plane/package.json was changed
+
+node_modules/@aws-sdk/client-iot-events/package.json was changed
+
+node_modules/@aws-sdk/client-iot-jobs-data-plane/package.json was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/CreateWirelessGatewayCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/DeleteWirelessGatewayCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/GetMetricConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/GetMetricsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/GetWirelessDeviceStatisticsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/ListPositionConfigurationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/commands/UpdateMetricConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/ts3.4/commands/ListPositionConfigurationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-iot-wireless/package.json was changed
+
+node_modules/@aws-sdk/client-iot/package.json was changed
+
+node_modules/@aws-sdk/client-iotanalytics/package.json was changed
+
+node_modules/@aws-sdk/client-iotdeviceadvisor/package.json was changed
+
+node_modules/@aws-sdk/client-iotfleethub/README.md was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/IoTFleetHub.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/IoTFleetHubClient.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/CreateApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/DeleteApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/DescribeApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/ListApplicationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/ListTagsForResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/TagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/UntagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/commands/UpdateApplicationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/index.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-iotfleethub/package.json was changed
+
+node_modules/@aws-sdk/client-iotsecuretunneling/package.json was changed
+
+node_modules/@aws-sdk/client-iotsitewise/package.json was changed
+
+node_modules/@aws-sdk/client-iotthingsgraph/package.json was changed
+
+node_modules/@aws-sdk/client-iottwinmaker/package.json was changed
+
+node_modules/@aws-sdk/client-ivs/package.json was changed
+
+node_modules/@aws-sdk/client-ivschat/package.json was changed
+
+node_modules/@aws-sdk/client-kafka/package.json was changed
+
+node_modules/@aws-sdk/client-kafkaconnect/package.json was changed
+
+node_modules/@aws-sdk/client-kendra/package.json was changed
+
+node_modules/@aws-sdk/client-keyspaces/package.json was changed
+
+node_modules/@aws-sdk/client-kinesis-analytics/package.json was changed
+
+node_modules/@aws-sdk/client-kinesis-video-archived-media/package.json was changed
+
+node_modules/@aws-sdk/client-kinesis-video-media/package.json was changed
+
+node_modules/@aws-sdk/client-kinesis-video-signaling/package.json was changed
+
+node_modules/@aws-sdk/client-kinesis-video/package.json was changed
+
+node_modules/@aws-sdk/client-kinesis/package.json was changed
+
+node_modules/@aws-sdk/client-kms/README.md was changed
+
+node_modules/@aws-sdk/client-kms/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/KMS.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/KMS.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/KMSClient.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/CreateCustomKeyStoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/DisableKeyRotationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/EnableKeyRotationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/GetKeyRotationStatusCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/UpdateCustomKeyStoreCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/KMS.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/KMSClient.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/dist-types/ts3.4/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-kms/package.json was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-types/commands/CreateLakeFormationIdentityCenterConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-types/commands/DescribeLakeFormationIdentityCenterConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-types/commands/UpdateLakeFormationIdentityCenterConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-lakeformation/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-lakeformation/package.json was changed
+
+node_modules/@aws-sdk/client-lambda/package.json was changed
+
+node_modules/@aws-sdk/client-license-manager/package.json was changed
+
+node_modules/@aws-sdk/client-lightsail/package.json was changed
+
+node_modules/@aws-sdk/client-location/package.json was changed
+
+node_modules/@aws-sdk/client-lookoutequipment/package.json was changed
+
+node_modules/@aws-sdk/client-lookoutmetrics/package.json was changed
+
+node_modules/@aws-sdk/client-lookoutvision/package.json was changed
+
+node_modules/@aws-sdk/client-machine-learning/package.json was changed
+
+node_modules/@aws-sdk/client-managedblockchain/package.json was changed
+
+node_modules/@aws-sdk/client-marketplace-commerce-analytics/package.json was changed
+
+node_modules/@aws-sdk/client-marketplace-metering/package.json was changed
+
+node_modules/@aws-sdk/client-mediaconnect/package.json was changed
+
+node_modules/@aws-sdk/client-mediaconvert/package.json was changed
+
+node_modules/@aws-sdk/client-medialive/README.md was changed
+
+node_modules/@aws-sdk/client-medialive/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/MediaLive.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/DescribeInputDeviceThumbnailCommand.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/models/models_1.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/models/models_2.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-es/waiters/index.js was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/MediaLive.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/MediaLiveClient.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteInputCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteInputSecurityGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteMultiplexCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteMultiplexProgramCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteReservationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteScheduleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DeleteTagsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeAccountConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeChannelCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeInputCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeInputDeviceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeInputDeviceThumbnailCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeInputSecurityGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/DescribeMultiplexCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/MediaLive.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/MediaLiveClient.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteInputCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteInputSecurityGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteMultiplexCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteMultiplexProgramCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteReservationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteScheduleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DeleteTagsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeAccountConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeChannelCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeInputCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeInputDeviceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeInputDeviceThumbnailCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeInputSecurityGroupCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/DescribeMultiplexCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/ts3.4/waiters/index.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/dist-types/waiters/index.d.ts was changed
+
+node_modules/@aws-sdk/client-medialive/package.json was changed
+
+node_modules/@aws-sdk/client-mediapackage-vod/package.json was changed
+
+node_modules/@aws-sdk/client-mediapackage/package.json was changed
+
+node_modules/@aws-sdk/client-mediastore/package.json was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-types/commands/GetPlaybackConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-types/commands/ListPlaybackConfigurationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-types/commands/PutPlaybackConfigurationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-mediatailor/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-mediatailor/package.json was changed
+
+node_modules/@aws-sdk/client-memorydb/package.json was changed
+
+node_modules/@aws-sdk/client-mgn/package.json was changed
+
+node_modules/@aws-sdk/client-migration-hub-refactor-spaces/package.json was changed
+
+node_modules/@aws-sdk/client-migration-hub/package.json was changed
+
+node_modules/@aws-sdk/client-migrationhub-config/package.json was changed
+
+node_modules/@aws-sdk/client-migrationhubstrategy/package.json was changed
+
+node_modules/@aws-sdk/client-mobile/package.json was changed
+
+node_modules/@aws-sdk/client-mq/package.json was changed
+
+node_modules/@aws-sdk/client-mturk/package.json was changed
+
+node_modules/@aws-sdk/client-mwaa/package.json was changed
+
+node_modules/@aws-sdk/client-neptune/package.json was changed
+
+node_modules/@aws-sdk/client-network-firewall/package.json was changed
+
+node_modules/@aws-sdk/client-networkmanager/package.json was changed
+
+node_modules/@aws-sdk/client-nimble/package.json was changed
+
+node_modules/@aws-sdk/client-opensearch/package.json was changed
+
+node_modules/@aws-sdk/client-opsworks/package.json was changed
+
+node_modules/@aws-sdk/client-opsworkscm/package.json was changed
+
+node_modules/@aws-sdk/client-organizations/package.json was changed
+
+node_modules/@aws-sdk/client-outposts/README.md was changed
+
+node_modules/@aws-sdk/client-outposts/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/Outposts.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/Outposts.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/OutpostsClient.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/CreateOrderCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/GetOrderCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/Outposts.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/OutpostsClient.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/dist-types/ts3.4/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-outposts/package.json was changed
+
+node_modules/@aws-sdk/client-panorama/package.json was changed
+
+node_modules/@aws-sdk/client-personalize-events/package.json was changed
+
+node_modules/@aws-sdk/client-personalize-runtime/package.json was changed
+
+node_modules/@aws-sdk/client-personalize/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-personalize/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-personalize/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/CreateCampaignCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/CreateSolutionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/CreateSolutionVersionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/DescribeCampaignCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/DescribeSolutionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/DescribeSolutionVersionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/ListSolutionVersionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/ListSolutionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/UntagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/commands/UpdateCampaignCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-personalize/package.json was changed
+
+node_modules/@aws-sdk/client-pi/dist-types/commands/GetResourceMetricsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-pi/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-pi/package.json was changed
+
+node_modules/@aws-sdk/client-pinpoint-email/package.json was changed
+
+node_modules/@aws-sdk/client-pinpoint-sms-voice/package.json was changed
+
+node_modules/@aws-sdk/client-pinpoint/package.json was changed
+
+node_modules/@aws-sdk/client-polly/package.json was changed
+
+node_modules/@aws-sdk/client-pricing/package.json was changed
+
+node_modules/@aws-sdk/client-proton/package.json was changed
+
+node_modules/@aws-sdk/client-qldb-session/package.json was changed
+
+node_modules/@aws-sdk/client-qldb/package.json was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-es/models/models_1.js was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-es/models/models_2.js was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-es/models/models_3.js was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/CreateAnalysisCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/CreateDashboardCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/CreateTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/CreateThemeAliasCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/CreateThemeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/DescribeAnalysisDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/DescribeAssetBundleExportJobCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/DescribeAssetBundleImportJobCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/DescribeDashboardDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/DescribeTemplateDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/ListGroupsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/ListIAMPolicyAssignmentsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/ListIAMPolicyAssignmentsForUserCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/ListIdentityPropagationConfigsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/ListIngestionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/ListNamespacesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/StartAssetBundleExportJobCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/StartDashboardSnapshotJobCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/UpdateAnalysisCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/UpdateDashboardCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/commands/UpdateTemplateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/models/models_3.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/models/models_4.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/CreateThemeAliasCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/CreateThemeCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/ListGroupsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/ListIAMPolicyAssignmentsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/ListIAMPolicyAssignmentsForUserCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/ListIdentityPropagationConfigsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/ListIngestionsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/commands/ListNamespacesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/models/models_3.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/dist-types/ts3.4/models/models_4.d.ts was changed
+
+node_modules/@aws-sdk/client-quicksight/package.json was changed
+
+node_modules/@aws-sdk/client-ram/package.json was changed
+
+node_modules/@aws-sdk/client-rbin/package.json was changed
+
+node_modules/@aws-sdk/client-rds/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-rds/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-rds/package.json was changed
+
+node_modules/@aws-sdk/client-redshift/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-redshift/dist-es/protocols/Aws_query.js was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/AuthorizeSnapshotAccessCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/CopyClusterSnapshotCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/CreateClusterSnapshotCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/DeleteClusterSnapshotCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/DescribeClusterSnapshotsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/ModifyClusterSnapshotCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/commands/RevokeSnapshotAccessCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-redshift/package.json was changed
+
+node_modules/@aws-sdk/client-rekognition/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-rekognition/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-rekognition/dist-types/commands/GetContentModerationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-rekognition/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-rekognition/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-rekognition/package.json was changed
+
+node_modules/@aws-sdk/client-resiliencehub/package.json was changed
+
+node_modules/@aws-sdk/client-resource-groups-tagging-api/package.json was changed
+
+node_modules/@aws-sdk/client-resource-groups/package.json was changed
+
+node_modules/@aws-sdk/client-robomaker/package.json was changed
+
+node_modules/@aws-sdk/client-rum/package.json was changed
+
+node_modules/@aws-sdk/client-s3/node_modules/@aws-sdk/middleware-signing/package.json was changed
+
+node_modules/@aws-sdk/client-s3/package.json was changed
+
+node_modules/@aws-sdk/client-sagemaker-edge/package.json was changed
+
+node_modules/@aws-sdk/client-sagemaker-featurestore-runtime/package.json was changed
+
+node_modules/@aws-sdk/client-sagemaker-runtime/package.json was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/commands/CreateDomainCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/commands/CreateFlowDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/commands/DescribeDomainCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/commands/DescribeFlowDefinitionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/commands/UpdateDomainCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/models/models_4.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-sagemaker/package.json was changed
+
+node_modules/@aws-sdk/client-savingsplans/package.json was changed
+
+node_modules/@aws-sdk/client-schemas/package.json was changed
+
+node_modules/@aws-sdk/client-secrets-manager/package.json was changed
+
+node_modules/@aws-sdk/client-securityhub/package.json was changed
+
+node_modules/@aws-sdk/client-serverlessapplicationrepository/package.json was changed
+
+node_modules/@aws-sdk/client-service-catalog-appregistry/package.json was changed
+
+node_modules/@aws-sdk/client-service-quotas/package.json was changed
+
+node_modules/@aws-sdk/client-servicediscovery/README.md was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/ServiceDiscovery.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/ServiceDiscoveryClient.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/CreateHttpNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/CreatePrivateDnsNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/CreatePublicDnsNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/CreateServiceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/DeleteNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/DeleteServiceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/DeregisterInstanceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/DiscoverInstancesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/DiscoverInstancesRevisionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/GetInstanceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/GetInstancesHealthStatusCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/GetNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/GetOperationCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/GetServiceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/ListInstancesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/ListNamespacesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/ListOperationsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/ListServicesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/ListTagsForResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/RegisterInstanceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/TagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/UntagResourceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/UpdateHttpNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/UpdateInstanceCustomHealthStatusCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/UpdatePrivateDnsNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/UpdatePublicDnsNamespaceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/commands/UpdateServiceCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/index.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-servicediscovery/package.json was changed
+
+node_modules/@aws-sdk/client-ses/package.json was changed
+
+node_modules/@aws-sdk/client-sfn/package.json was changed
+
+node_modules/@aws-sdk/client-shield/package.json was changed
+
+node_modules/@aws-sdk/client-signer/package.json was changed
+
+node_modules/@aws-sdk/client-sms/package.json was changed
+
+node_modules/@aws-sdk/client-snow-device-management/package.json was changed
+
+node_modules/@aws-sdk/client-snowball/package.json was changed
+
+node_modules/@aws-sdk/client-sns/package.json was changed
+
+node_modules/@aws-sdk/client-sqs/package.json was changed
+
+node_modules/@aws-sdk/client-ssm-contacts/package.json was changed
+
+node_modules/@aws-sdk/client-ssm-incidents/package.json was changed
+
+node_modules/@aws-sdk/client-ssm/README.md was changed
+
+node_modules/@aws-sdk/client-ssm/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/SSM.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/commands/DescribeMaintenanceWindowTargetsCommand.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/models/models_1.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/models/models_2.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/SSM.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/SSMClient.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/DescribeMaintenanceWindowScheduleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/DescribeMaintenanceWindowTargetsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/DescribeMaintenanceWindowTasksCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/DescribeMaintenanceWindowsForTargetCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/StartChangeRequestExecutionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/StartSessionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/SSM.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/SSMClient.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/DescribeMaintenanceWindowScheduleCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/DescribeMaintenanceWindowTargetsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/DescribeMaintenanceWindowTasksCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/DescribeMaintenanceWindowsForTargetCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/StartChangeRequestExecutionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/StartSessionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/models/models_1.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/models/models_2.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/dist-types/ts3.4/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-ssm/package.json was changed
+
+node_modules/@aws-sdk/client-sso-admin/package.json was changed
+
+node_modules/@aws-sdk/client-sso-oidc/package.json was changed
+
+node_modules/@aws-sdk/client-sso/package.json was changed
+
+node_modules/@aws-sdk/client-storage-gateway/package.json was changed
+
+node_modules/@aws-sdk/client-sts/package.json was changed
+
+node_modules/@aws-sdk/client-support/package.json was changed
+
+node_modules/@aws-sdk/client-swf/package.json was changed
+
+node_modules/@aws-sdk/client-synthetics/package.json was changed
+
+node_modules/@aws-sdk/client-textract/package.json was changed
+
+node_modules/@aws-sdk/client-timestream-query/package.json was changed
+
+node_modules/@aws-sdk/client-timestream-write/package.json was changed
+
+node_modules/@aws-sdk/client-transcribe-streaming/node_modules/@aws-sdk/middleware-signing/package.json was changed
+
+node_modules/@aws-sdk/client-transcribe-streaming/package.json was changed
+
+node_modules/@aws-sdk/client-transcribe/package.json was changed
+
+node_modules/@aws-sdk/client-transfer/README.md was changed
+
+node_modules/@aws-sdk/client-transfer/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-transfer/dist-es/Transfer.js was changed
+
+node_modules/@aws-sdk/client-transfer/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-transfer/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-transfer/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/Transfer.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/TransferClient.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/DescribeCertificateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/ImportCertificateCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/ListCertificatesCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/StartFileTransferCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/Transfer.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/TransferClient.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/dist-types/ts3.4/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-transfer/package.json was changed
+
+node_modules/@aws-sdk/client-translate/package.json was changed
+
+node_modules/@aws-sdk/client-voice-id/package.json was changed
+
+node_modules/@aws-sdk/client-waf-regional/package.json was changed
+
+node_modules/@aws-sdk/client-waf/package.json was changed
+
+node_modules/@aws-sdk/client-wellarchitected/README.md was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/WellArchitected.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/WellArchitected.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/WellArchitectedClient.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/CreateWorkloadCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/GetAnswerCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/GetLensReviewCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/GetMilestoneCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/GetWorkloadCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/ListAnswersCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/ListLensReviewImprovementsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpdateAnswerCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpdateGlobalSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpdateLensReviewCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpdateWorkloadCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpgradeLensReviewCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/UpgradeProfileVersionCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/WellArchitected.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/WellArchitectedClient.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/dist-types/ts3.4/protocols/Aws_restJson1.d.ts was changed
+
+node_modules/@aws-sdk/client-wellarchitected/package.json was changed
+
+node_modules/@aws-sdk/client-wisdom/package.json was changed
+
+node_modules/@aws-sdk/client-workdocs/package.json was changed
+
+node_modules/@aws-sdk/client-worklink/package.json was changed
+
+node_modules/@aws-sdk/client-workmail/package.json was changed
+
+node_modules/@aws-sdk/client-workmailmessageflow/package.json was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-es/protocols/Aws_restJson1.js was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/CreatePortalCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/GetBrowserSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/GetIpAccessSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/GetPortalCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/GetUserSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/ListPortalsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/UpdateBrowserSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/UpdateIpAccessSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/UpdatePortalCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/commands/UpdateUserSettingsCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces-web/package.json was changed
+
+node_modules/@aws-sdk/client-workspaces/README.md was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/WorkSpaces.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/commands/index.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/models/models_0.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/pagination/index.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-es/protocols/Aws_json1_1.js was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/WorkSpaces.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/WorkSpacesClient.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/DescribeAccountCommand.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/WorkSpaces.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/WorkSpacesClient.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/commands/index.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/models/models_0.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/pagination/index.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/dist-types/ts3.4/protocols/Aws_json1_1.d.ts was changed
+
+node_modules/@aws-sdk/client-workspaces/package.json was changed
+
+node_modules/@aws-sdk/client-xray/package.json was changed
+
+node_modules/@aws-sdk/core/CHANGELOG.md was changed
+
+node_modules/@aws-sdk/core/dist-cjs/index.js was changed
+
+node_modules/@aws-sdk/core/dist-es/protocols/xml/parseXmlBody.js was changed
+
+node_modules/@aws-sdk/core/package.json was changed
+
+node_modules/@aws-sdk/core/src/protocols/xml/parseXmlBody.ts was changed
+
+node_modules/@aws-sdk/credential-provider-cognito-identity/package.json was changed
+
+node_modules/@aws-sdk/credential-provider-ini/package.json was changed
+
+node_modules/@aws-sdk/credential-provider-node/package.json was changed
+
+node_modules/@aws-sdk/credential-provider-sso/package.json was changed
+
+node_modules/@aws-sdk/credential-provider-web-identity/package.json was changed
+
+node_modules/@aws-sdk/credential-providers/package.json was changed
+
+node_modules/@aws-sdk/middleware-sdk-ec2/package.json was changed
+
+node_modules/@aws-sdk/middleware-sdk-rds/package.json was changed
+
+node_modules/@aws-sdk/middleware-sdk-s3/package.json was changed
+
+node_modules/@aws-sdk/middleware-sdk-transcribe-streaming/package.json was changed
+
+node_modules/@aws-sdk/middleware-websocket/node_modules/@aws-sdk/middleware-signing/package.json was changed
+
+node_modules/@aws-sdk/middleware-websocket/package.json was changed
+
+node_modules/@aws-sdk/signature-v4-multi-region/package.json was changed
+
+node_modules/@aws-sdk/token-providers/package.json was changed
+
+node_modules/@azure/arm-cdn/CHANGELOG.md was changed
+
+node_modules/@azure/arm-cdn/LICENSE was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsRefreshValidationTokenSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsRefreshValidationTokenSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdCustomDomainsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsListResourceUsageSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsListResourceUsageSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsPurgeContentSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsUpdateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdEndpointsValidateCustomDomainSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsListResourceUsageSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsListResourceUsageSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginGroupsUpdateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginsListByOriginGroupSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginsListByOriginGroupSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdOriginsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesCheckEndpointNameAvailabilitySample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesCheckEndpointNameAvailabilitySample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesCheckHostNameAvailabilitySample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesCheckHostNameAvailabilitySample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesListResourceUsageSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesListResourceUsageSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesUpgradeSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesUpgradeSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesValidateSecretSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/afdProfilesValidateSecretSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/checkEndpointNameAvailabilitySample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/checkEndpointNameAvailabilitySample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/checkNameAvailabilitySample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/checkNameAvailabilitySample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/checkNameAvailabilityWithSubscriptionSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/checkNameAvailabilityWithSubscriptionSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsDisableCustomHttpsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsEnableCustomHttpsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsListByEndpointSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/customDomainsListByEndpointSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/edgeNodesListSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/edgeNodesListSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsCreateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsListResourceUsageSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsListResourceUsageSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsLoadContentSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsPurgeContentSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsStartSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsStopSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/endpointsValidateCustomDomainSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetLogAnalyticsLocationsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetLogAnalyticsMetricsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetLogAnalyticsMetricsSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetLogAnalyticsRankingsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetLogAnalyticsResourcesSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetWafLogAnalyticsMetricsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetWafLogAnalyticsMetricsSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/logAnalyticsGetWafLogAnalyticsRankingsSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/managedRuleSetsListSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/managedRuleSetsListSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/operationsListSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/operationsListSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsCreateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsListByEndpointSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsListByEndpointSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originGroupsUpdateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originsListByEndpointSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originsListByEndpointSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/originsUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesCreateOrUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesCreateOrUpdateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesListSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesListSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/policiesUpdateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesCanMigrateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesCanMigrateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesGenerateSsoUriSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListByResourceGroupSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListByResourceGroupSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListResourceUsageSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListResourceUsageSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesListSupportedOptimizationTypesSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesMigrateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesMigrateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesMigrationCommitSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/profilesUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/resourceUsageListSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/resourceUsageListSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesCreateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesListByEndpointSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesListByEndpointSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/routesUpdateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsListResourceUsageSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/ruleSetsListResourceUsageSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/rulesCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/rulesDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/rulesGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/rulesListByRuleSetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/rulesListByRuleSetSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/rulesUpdateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/secretsCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/secretsCreateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/secretsDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/secretsGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/secretsListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/secretsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesCreateSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesCreateSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesDeleteSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesGetSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesListByProfileSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesPatchSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/securityPoliciesPatchSample.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/samples-dev/validateProbeSample.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/cdnManagementClient.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/cdnManagementClient.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/cdnManagementClient.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/lroImpl.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/index.d.ts was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/index.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/index.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/index.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/mappers.d.ts was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/mappers.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/mappers.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/mappers.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/parameters.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/parameters.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/models/parameters.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdCustomDomains.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdCustomDomains.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdCustomDomains.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdEndpoints.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdEndpoints.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdEndpoints.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdOriginGroups.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdOriginGroups.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdOriginGroups.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdOrigins.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdOrigins.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdOrigins.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdProfiles.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdProfiles.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/afdProfiles.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/customDomains.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/customDomains.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/customDomains.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/edgeNodes.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/edgeNodes.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/endpoints.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/endpoints.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/endpoints.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/logAnalytics.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/logAnalytics.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/managedRuleSets.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/managedRuleSets.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/operations.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/operations.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/originGroups.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/originGroups.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/originGroups.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/origins.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/origins.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/origins.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/policies.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/policies.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/policies.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/profiles.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/profiles.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/profiles.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/resourceUsageOperations.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/resourceUsageOperations.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/routes.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/routes.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/routes.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/ruleSets.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/ruleSets.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/ruleSets.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/rules.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/rules.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/rules.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/secrets.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/secrets.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/secrets.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/securityPolicies.d.ts.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/securityPolicies.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/operations/securityPolicies.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/src/pagingHelper.js.map was changed
+
+node_modules/@azure/arm-cdn/dist-esm/test/cdn_examples.spec.js was changed
+
+node_modules/@azure/arm-cdn/dist-esm/test/cdn_examples.spec.js.map was changed
+
+node_modules/@azure/arm-cdn/dist/index.js was changed
+
+node_modules/@azure/arm-cdn/dist/index.js.map was changed
+
+node_modules/@azure/arm-cdn/dist/index.min.js was changed
+
+node_modules/@azure/arm-cdn/dist/index.min.js.map was changed
+
+node_modules/@azure/arm-cdn/package.json was changed
+
+node_modules/@azure/arm-cdn/review/arm-cdn.api.md was changed
+
+node_modules/@azure/arm-cdn/src/cdnManagementClient.ts was changed
+
+node_modules/@azure/arm-cdn/src/lroImpl.ts was changed
+
+node_modules/@azure/arm-cdn/src/models/index.ts was changed
+
+node_modules/@azure/arm-cdn/src/models/mappers.ts was changed
+
+node_modules/@azure/arm-cdn/src/models/parameters.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/afdCustomDomains.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/afdEndpoints.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/afdOriginGroups.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/afdOrigins.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/afdProfiles.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/customDomains.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/edgeNodes.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/endpoints.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/logAnalytics.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/managedRuleSets.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/operations.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/originGroups.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/origins.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/policies.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/profiles.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/resourceUsageOperations.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/routes.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/ruleSets.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/rules.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/secrets.ts was changed
+
+node_modules/@azure/arm-cdn/src/operations/securityPolicies.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/afdCustomDomains.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/afdEndpoints.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/afdOriginGroups.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/afdOrigins.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/afdProfiles.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/customDomains.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/edgeNodes.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/endpoints.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/logAnalytics.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/managedRuleSets.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/operations.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/originGroups.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/origins.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/policies.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/profiles.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/resourceUsageOperations.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/routes.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/ruleSets.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/rules.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/secrets.ts was changed
+
+node_modules/@azure/arm-cdn/src/operationsInterfaces/securityPolicies.ts was changed
+
+node_modules/@azure/arm-cdn/src/pagingHelper.ts was changed
+
+node_modules/@azure/arm-cdn/types/arm-cdn.d.ts was changed
+
+node_modules/@azure/arm-cdn/types/tsdoc-metadata.json was changed
+
+node_modules/@azure/arm-frontdoor/CHANGELOG.md was changed
+
+node_modules/@azure/arm-frontdoor/LICENSE was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/endpointsPurgeContentSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/endpointsPurgeContentSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/experimentsCreateOrUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/experimentsListByProfileSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/experimentsListByProfileSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/experimentsUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/experimentsUpdateSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorNameAvailabilityCheckSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorNameAvailabilityCheckSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorNameAvailabilityWithSubscriptionCheckSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorNameAvailabilityWithSubscriptionCheckSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsCreateOrUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsCreateOrUpdateSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsListByResourceGroupSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsListByResourceGroupSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsListSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsListSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsValidateCustomDomainSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontDoorsValidateCustomDomainSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontendEndpointsEnableHttpsSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontendEndpointsEnableHttpsSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontendEndpointsListByFrontDoorSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/frontendEndpointsListByFrontDoorSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/managedRuleSetsListSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/managedRuleSetsListSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesCreateOrUpdateSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesListByResourceGroupSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesListByResourceGroupSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesListSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesListSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/networkExperimentProfilesUpdateSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesCreateOrUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesCreateOrUpdateSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesDeleteSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesGetSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesListBySubscriptionSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesListBySubscriptionSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesListSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesListSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/policiesUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/preconfiguredEndpointsListSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/preconfiguredEndpointsListSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/rulesEnginesCreateOrUpdateSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/rulesEnginesCreateOrUpdateSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/rulesEnginesListByFrontDoorSample.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/samples-dev/rulesEnginesListByFrontDoorSample.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/frontDoorManagementClient.d.ts was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/frontDoorManagementClient.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/frontDoorManagementClient.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/frontDoorManagementClient.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/lroImpl.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/index.d.ts was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/index.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/index.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/index.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/mappers.d.ts was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/mappers.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/mappers.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/mappers.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/parameters.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/models/parameters.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/endpoints.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/endpoints.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/endpoints.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/experiments.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/experiments.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/experiments.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoorNameAvailability.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoorNameAvailability.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoorNameAvailability.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoorNameAvailabilityWithSubscription.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoorNameAvailabilityWithSubscription.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoorNameAvailabilityWithSubscription.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoors.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoors.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontDoors.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontendEndpoints.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontendEndpoints.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/frontendEndpoints.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/managedRuleSets.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/managedRuleSets.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/networkExperimentProfiles.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/networkExperimentProfiles.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/networkExperimentProfiles.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/policies.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/policies.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/policies.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/preconfiguredEndpoints.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/preconfiguredEndpoints.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/reports.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/reports.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/rulesEngines.d.ts.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/rulesEngines.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/operations/rulesEngines.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/src/pagingHelper.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/test/frontdoor_operations_test.spec.js was changed
+
+node_modules/@azure/arm-frontdoor/dist-esm/test/frontdoor_operations_test.spec.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist/index.js was changed
+
+node_modules/@azure/arm-frontdoor/dist/index.js.map was changed
+
+node_modules/@azure/arm-frontdoor/dist/index.min.js was changed
+
+node_modules/@azure/arm-frontdoor/dist/index.min.js.map was changed
+
+node_modules/@azure/arm-frontdoor/package.json was changed
+
+node_modules/@azure/arm-frontdoor/review/arm-frontdoor.api.md was changed
+
+node_modules/@azure/arm-frontdoor/src/frontDoorManagementClient.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/lroImpl.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/models/index.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/models/mappers.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/models/parameters.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/endpoints.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/experiments.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/frontDoorNameAvailability.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/frontDoorNameAvailabilityWithSubscription.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/frontDoors.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/frontendEndpoints.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/managedRuleSets.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/networkExperimentProfiles.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/policies.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/preconfiguredEndpoints.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/reports.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operations/rulesEngines.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/endpoints.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/experiments.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/frontDoorNameAvailability.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/frontDoorNameAvailabilityWithSubscription.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/frontDoors.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/frontendEndpoints.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/managedRuleSets.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/networkExperimentProfiles.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/policies.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/preconfiguredEndpoints.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/reports.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/operationsInterfaces/rulesEngines.ts was changed
+
+node_modules/@azure/arm-frontdoor/src/pagingHelper.ts was changed
+
+node_modules/@azure/arm-frontdoor/types/arm-frontdoor.d.ts was changed
+
+node_modules/@azure/arm-frontdoor/types/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-auth/dist/browser/azureKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/browser/azureKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/browser/azureNamedKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/browser/azureNamedKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/browser/azureSASCredential.js was changed
+
+node_modules/@azure/core-auth/dist/browser/azureSASCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/commonjs/azureKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/commonjs/azureKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/commonjs/azureNamedKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/commonjs/azureNamedKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/commonjs/azureSASCredential.js was changed
+
+node_modules/@azure/core-auth/dist/commonjs/azureSASCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-auth/dist/esm/azureKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/esm/azureKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/esm/azureNamedKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/esm/azureNamedKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/esm/azureSASCredential.js was changed
+
+node_modules/@azure/core-auth/dist/esm/azureSASCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/react-native/azureKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/react-native/azureKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/react-native/azureNamedKeyCredential.js was changed
+
+node_modules/@azure/core-auth/dist/react-native/azureNamedKeyCredential.js.map was changed
+
+node_modules/@azure/core-auth/dist/react-native/azureSASCredential.js was changed
+
+node_modules/@azure/core-auth/dist/react-native/azureSASCredential.js.map was changed
+
+node_modules/@azure/core-auth/node_modules/@azure/abort-controller/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-auth/node_modules/@azure/abort-controller/package.json was changed
+
+node_modules/@azure/core-auth/package.json was changed
+
+node_modules/@azure/core-client/dist/browser/authorizeRequestOnClaimChallenge.js was changed
+
+node_modules/@azure/core-client/dist/browser/authorizeRequestOnClaimChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/authorizeRequestOnTenantChallenge.d.ts.map was changed
+
+node_modules/@azure/core-client/dist/browser/authorizeRequestOnTenantChallenge.js was changed
+
+node_modules/@azure/core-client/dist/browser/authorizeRequestOnTenantChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/deserializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/browser/deserializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/pipeline.js was changed
+
+node_modules/@azure/core-client/dist/browser/pipeline.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/serializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/browser/serializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/serializer.js was changed
+
+node_modules/@azure/core-client/dist/browser/serializer.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/serviceClient.js was changed
+
+node_modules/@azure/core-client/dist/browser/serviceClient.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/urlHelpers.js was changed
+
+node_modules/@azure/core-client/dist/browser/urlHelpers.js.map was changed
+
+node_modules/@azure/core-client/dist/browser/utils.js was changed
+
+node_modules/@azure/core-client/dist/browser/utils.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/authorizeRequestOnClaimChallenge.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/authorizeRequestOnClaimChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/authorizeRequestOnTenantChallenge.d.ts.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/authorizeRequestOnTenantChallenge.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/authorizeRequestOnTenantChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/deserializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/deserializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/pipeline.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/pipeline.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/serializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/serializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/serializer.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/serializer.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/serviceClient.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/serviceClient.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-client/dist/commonjs/urlHelpers.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/urlHelpers.js.map was changed
+
+node_modules/@azure/core-client/dist/commonjs/utils.js was changed
+
+node_modules/@azure/core-client/dist/commonjs/utils.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/authorizeRequestOnClaimChallenge.js was changed
+
+node_modules/@azure/core-client/dist/esm/authorizeRequestOnClaimChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/authorizeRequestOnTenantChallenge.d.ts.map was changed
+
+node_modules/@azure/core-client/dist/esm/authorizeRequestOnTenantChallenge.js was changed
+
+node_modules/@azure/core-client/dist/esm/authorizeRequestOnTenantChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/deserializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/esm/deserializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/pipeline.js was changed
+
+node_modules/@azure/core-client/dist/esm/pipeline.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/serializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/esm/serializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/serializer.js was changed
+
+node_modules/@azure/core-client/dist/esm/serializer.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/serviceClient.js was changed
+
+node_modules/@azure/core-client/dist/esm/serviceClient.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/urlHelpers.js was changed
+
+node_modules/@azure/core-client/dist/esm/urlHelpers.js.map was changed
+
+node_modules/@azure/core-client/dist/esm/utils.js was changed
+
+node_modules/@azure/core-client/dist/esm/utils.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/authorizeRequestOnClaimChallenge.js was changed
+
+node_modules/@azure/core-client/dist/react-native/authorizeRequestOnClaimChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/authorizeRequestOnTenantChallenge.d.ts.map was changed
+
+node_modules/@azure/core-client/dist/react-native/authorizeRequestOnTenantChallenge.js was changed
+
+node_modules/@azure/core-client/dist/react-native/authorizeRequestOnTenantChallenge.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/deserializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/react-native/deserializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/pipeline.js was changed
+
+node_modules/@azure/core-client/dist/react-native/pipeline.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/serializationPolicy.js was changed
+
+node_modules/@azure/core-client/dist/react-native/serializationPolicy.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/serializer.js was changed
+
+node_modules/@azure/core-client/dist/react-native/serializer.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/serviceClient.js was changed
+
+node_modules/@azure/core-client/dist/react-native/serviceClient.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/urlHelpers.js was changed
+
+node_modules/@azure/core-client/dist/react-native/urlHelpers.js.map was changed
+
+node_modules/@azure/core-client/dist/react-native/utils.js was changed
+
+node_modules/@azure/core-client/dist/react-native/utils.js.map was changed
+
+node_modules/@azure/core-client/node_modules/@azure/abort-controller/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-client/node_modules/@azure/abort-controller/package.json was changed
+
+node_modules/@azure/core-client/package.json was changed
+
+node_modules/@azure/core-http-compat/dist/browser/extendedClient.js was changed
+
+node_modules/@azure/core-http-compat/dist/browser/extendedClient.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/browser/response.js was changed
+
+node_modules/@azure/core-http-compat/dist/browser/response.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/browser/util.js was changed
+
+node_modules/@azure/core-http-compat/dist/browser/util.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/extendedClient.js was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/extendedClient.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/response.js was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/response.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/util.js was changed
+
+node_modules/@azure/core-http-compat/dist/commonjs/util.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/esm/extendedClient.js was changed
+
+node_modules/@azure/core-http-compat/dist/esm/extendedClient.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/esm/response.js was changed
+
+node_modules/@azure/core-http-compat/dist/esm/response.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/esm/util.js was changed
+
+node_modules/@azure/core-http-compat/dist/esm/util.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/react-native/extendedClient.js was changed
+
+node_modules/@azure/core-http-compat/dist/react-native/extendedClient.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/react-native/response.js was changed
+
+node_modules/@azure/core-http-compat/dist/react-native/response.js.map was changed
+
+node_modules/@azure/core-http-compat/dist/react-native/util.js was changed
+
+node_modules/@azure/core-http-compat/dist/react-native/util.js.map was changed
+
+node_modules/@azure/core-http-compat/node_modules/@azure/abort-controller/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-http-compat/node_modules/@azure/abort-controller/package.json was changed
+
+node_modules/@azure/core-http-compat/package.json was changed
+
+node_modules/@azure/core-lro/dist/browser/http/operation.js was changed
+
+node_modules/@azure/core-lro/dist/browser/http/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/browser/http/poller.js was changed
+
+node_modules/@azure/core-lro/dist/browser/http/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/browser/legacy/lroEngine/lroEngine.js was changed
+
+node_modules/@azure/core-lro/dist/browser/legacy/lroEngine/lroEngine.js.map was changed
+
+node_modules/@azure/core-lro/dist/browser/legacy/lroEngine/operation.js was changed
+
+node_modules/@azure/core-lro/dist/browser/legacy/lroEngine/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/browser/legacy/poller.js was changed
+
+node_modules/@azure/core-lro/dist/browser/legacy/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/browser/poller/operation.js was changed
+
+node_modules/@azure/core-lro/dist/browser/poller/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/browser/poller/poller.js was changed
+
+node_modules/@azure/core-lro/dist/browser/poller/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/http/operation.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/http/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/http/poller.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/http/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/legacy/lroEngine/lroEngine.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/legacy/lroEngine/lroEngine.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/legacy/lroEngine/operation.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/legacy/lroEngine/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/legacy/poller.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/legacy/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/poller/operation.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/poller/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/poller/poller.js was changed
+
+node_modules/@azure/core-lro/dist/commonjs/poller/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-lro/dist/esm/http/operation.js was changed
+
+node_modules/@azure/core-lro/dist/esm/http/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/esm/http/poller.js was changed
+
+node_modules/@azure/core-lro/dist/esm/http/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/esm/legacy/lroEngine/lroEngine.js was changed
+
+node_modules/@azure/core-lro/dist/esm/legacy/lroEngine/lroEngine.js.map was changed
+
+node_modules/@azure/core-lro/dist/esm/legacy/lroEngine/operation.js was changed
+
+node_modules/@azure/core-lro/dist/esm/legacy/lroEngine/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/esm/legacy/poller.js was changed
+
+node_modules/@azure/core-lro/dist/esm/legacy/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/esm/poller/operation.js was changed
+
+node_modules/@azure/core-lro/dist/esm/poller/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/esm/poller/poller.js was changed
+
+node_modules/@azure/core-lro/dist/esm/poller/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/http/operation.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/http/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/http/poller.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/http/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/legacy/lroEngine/lroEngine.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/legacy/lroEngine/lroEngine.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/legacy/lroEngine/operation.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/legacy/lroEngine/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/legacy/poller.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/legacy/poller.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/poller/operation.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/poller/operation.js.map was changed
+
+node_modules/@azure/core-lro/dist/react-native/poller/poller.js was changed
+
+node_modules/@azure/core-lro/dist/react-native/poller/poller.js.map was changed
+
+node_modules/@azure/core-lro/node_modules/@azure/abort-controller/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-lro/node_modules/@azure/abort-controller/package.json was changed
+
+node_modules/@azure/core-lro/package.json was changed
+
+node_modules/@azure/core-paging/dist/browser/getPagedAsyncIterator.js was changed
+
+node_modules/@azure/core-paging/dist/browser/getPagedAsyncIterator.js.map was changed
+
+node_modules/@azure/core-paging/dist/commonjs/getPagedAsyncIterator.js was changed
+
+node_modules/@azure/core-paging/dist/commonjs/getPagedAsyncIterator.js.map was changed
+
+node_modules/@azure/core-paging/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-paging/dist/esm/getPagedAsyncIterator.js was changed
+
+node_modules/@azure/core-paging/dist/esm/getPagedAsyncIterator.js.map was changed
+
+node_modules/@azure/core-paging/dist/react-native/getPagedAsyncIterator.js was changed
+
+node_modules/@azure/core-paging/dist/react-native/getPagedAsyncIterator.js.map was changed
+
+node_modules/@azure/core-paging/package.json was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/accessTokenCache.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/accessTokenCache.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/constants.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/constants.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/createPipelineFromOptions.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/createPipelineFromOptions.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/fetchHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/fetchHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/httpHeaders.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/httpHeaders.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/nodeHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/nodeHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/pipeline.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/pipeline.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/pipelineRequest.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/pipelineRequest.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/auxiliaryAuthenticationHeaderPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/auxiliaryAuthenticationHeaderPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/bearerTokenAuthenticationPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/bearerTokenAuthenticationPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/defaultRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/defaultRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/exponentialRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/exponentialRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/formDataPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/formDataPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/logPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/logPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/multipartPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/multipartPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/retryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/retryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/systemErrorRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/systemErrorRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/throttlingRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/throttlingRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/tracingPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/policies/tracingPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/restError.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/restError.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/retryStrategies/exponentialRetryStrategy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/retryStrategies/exponentialRetryStrategy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/file.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/file.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/helpers.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/helpers.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/sanitizer.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/sanitizer.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/tokenCycler.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/tokenCycler.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/userAgentPlatform-browser.mjs.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/util/userAgentPlatform.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/xhrHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/browser/xhrHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/accessTokenCache.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/accessTokenCache.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/constants.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/constants.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/createPipelineFromOptions.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/createPipelineFromOptions.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/fetchHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/fetchHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/httpHeaders.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/httpHeaders.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/nodeHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/nodeHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/pipeline.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/pipeline.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/pipelineRequest.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/pipelineRequest.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/auxiliaryAuthenticationHeaderPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/auxiliaryAuthenticationHeaderPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/bearerTokenAuthenticationPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/bearerTokenAuthenticationPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/defaultRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/defaultRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/exponentialRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/exponentialRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/formDataPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/formDataPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/logPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/logPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/multipartPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/multipartPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/proxyPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/proxyPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/retryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/retryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/systemErrorRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/systemErrorRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/throttlingRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/throttlingRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/tracingPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/policies/tracingPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/restError.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/restError.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/retryStrategies/exponentialRetryStrategy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/retryStrategies/exponentialRetryStrategy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/concat.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/concat.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/file.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/file.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/helpers.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/helpers.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/sanitizer.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/sanitizer.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/tokenCycler.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/util/tokenCycler.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/xhrHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/commonjs/xhrHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/accessTokenCache.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/accessTokenCache.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/constants.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/constants.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/createPipelineFromOptions.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/createPipelineFromOptions.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/fetchHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/fetchHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/httpHeaders.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/httpHeaders.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/nodeHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/nodeHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/pipeline.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/pipeline.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/pipelineRequest.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/pipelineRequest.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/auxiliaryAuthenticationHeaderPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/auxiliaryAuthenticationHeaderPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/bearerTokenAuthenticationPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/bearerTokenAuthenticationPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/defaultRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/defaultRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/exponentialRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/exponentialRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/formDataPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/formDataPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/logPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/logPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/multipartPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/multipartPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/proxyPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/proxyPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/retryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/retryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/systemErrorRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/systemErrorRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/throttlingRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/throttlingRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/tracingPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/policies/tracingPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/restError.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/restError.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/retryStrategies/exponentialRetryStrategy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/retryStrategies/exponentialRetryStrategy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/concat.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/concat.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/file.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/file.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/helpers.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/helpers.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/sanitizer.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/sanitizer.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/tokenCycler.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/util/tokenCycler.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/xhrHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/esm/xhrHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/accessTokenCache.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/accessTokenCache.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/constants.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/constants.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/createPipelineFromOptions.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/createPipelineFromOptions.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/fetchHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/fetchHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/httpHeaders.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/httpHeaders.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/nodeHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/nodeHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/pipeline.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/pipeline.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/pipelineRequest.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/pipelineRequest.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/auxiliaryAuthenticationHeaderPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/auxiliaryAuthenticationHeaderPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/bearerTokenAuthenticationPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/bearerTokenAuthenticationPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/defaultRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/defaultRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/exponentialRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/exponentialRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/formDataPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/formDataPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/logPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/logPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/multipartPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/multipartPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/proxyPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/proxyPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/retryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/retryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/systemErrorRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/systemErrorRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/throttlingRetryPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/throttlingRetryPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/tracingPolicy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/policies/tracingPolicy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/restError.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/restError.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/retryStrategies/exponentialRetryStrategy.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/retryStrategies/exponentialRetryStrategy.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/concat.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/concat.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/file.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/file.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/helpers.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/helpers.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/sanitizer.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/sanitizer.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/tokenCycler.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/tokenCycler.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/userAgentPlatform-react-native.mjs.map was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/util/userAgentPlatform.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/xhrHttpClient.js was changed
+
+node_modules/@azure/core-rest-pipeline/dist/react-native/xhrHttpClient.js.map was changed
+
+node_modules/@azure/core-rest-pipeline/node_modules/@azure/abort-controller/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-rest-pipeline/node_modules/@azure/abort-controller/package.json was changed
+
+node_modules/@azure/core-rest-pipeline/package.json was changed
+
+node_modules/@azure/core-tracing/dist/browser/tracingClient.js was changed
+
+node_modules/@azure/core-tracing/dist/browser/tracingClient.js.map was changed
+
+node_modules/@azure/core-tracing/dist/browser/tracingContext.js was changed
+
+node_modules/@azure/core-tracing/dist/browser/tracingContext.js.map was changed
+
+node_modules/@azure/core-tracing/dist/commonjs/tracingClient.js was changed
+
+node_modules/@azure/core-tracing/dist/commonjs/tracingClient.js.map was changed
+
+node_modules/@azure/core-tracing/dist/commonjs/tracingContext.js was changed
+
+node_modules/@azure/core-tracing/dist/commonjs/tracingContext.js.map was changed
+
+node_modules/@azure/core-tracing/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-tracing/dist/esm/tracingClient.js was changed
+
+node_modules/@azure/core-tracing/dist/esm/tracingClient.js.map was changed
+
+node_modules/@azure/core-tracing/dist/esm/tracingContext.js was changed
+
+node_modules/@azure/core-tracing/dist/esm/tracingContext.js.map was changed
+
+node_modules/@azure/core-tracing/dist/react-native/tracingClient.js was changed
+
+node_modules/@azure/core-tracing/dist/react-native/tracingClient.js.map was changed
+
+node_modules/@azure/core-tracing/dist/react-native/tracingContext.js was changed
+
+node_modules/@azure/core-tracing/dist/react-native/tracingContext.js.map was changed
+
+node_modules/@azure/core-tracing/package.json was changed
+
+node_modules/@azure/core-util/dist/browser/aborterUtils.js was changed
+
+node_modules/@azure/core-util/dist/browser/aborterUtils.js.map was changed
+
+node_modules/@azure/core-util/dist/browser/checkEnvironment.d.ts was changed
+
+node_modules/@azure/core-util/dist/browser/checkEnvironment.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/browser/checkEnvironment.js was changed
+
+node_modules/@azure/core-util/dist/browser/checkEnvironment.js.map was changed
+
+node_modules/@azure/core-util/dist/browser/createAbortablePromise.js was changed
+
+node_modules/@azure/core-util/dist/browser/createAbortablePromise.js.map was changed
+
+node_modules/@azure/core-util/dist/browser/delay.js was changed
+
+node_modules/@azure/core-util/dist/browser/delay.js.map was changed
+
+node_modules/@azure/core-util/dist/browser/index.d.ts was changed
+
+node_modules/@azure/core-util/dist/browser/index.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/browser/index.js was changed
+
+node_modules/@azure/core-util/dist/browser/index.js.map was changed
+
+node_modules/@azure/core-util/dist/browser/uuidUtils-browser.mjs.map was changed
+
+node_modules/@azure/core-util/dist/browser/uuidUtils.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/aborterUtils.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/aborterUtils.js.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/checkEnvironment.d.ts was changed
+
+node_modules/@azure/core-util/dist/commonjs/checkEnvironment.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/checkEnvironment.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/checkEnvironment.js.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/createAbortablePromise.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/createAbortablePromise.js.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/delay.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/delay.js.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/index.d.ts was changed
+
+node_modules/@azure/core-util/dist/commonjs/index.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/index.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/index.js.map was changed
+
+node_modules/@azure/core-util/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-util/dist/commonjs/uuidUtils.js was changed
+
+node_modules/@azure/core-util/dist/commonjs/uuidUtils.js.map was changed
+
+node_modules/@azure/core-util/dist/core-util.d.ts was changed
+
+node_modules/@azure/core-util/dist/esm/aborterUtils.js was changed
+
+node_modules/@azure/core-util/dist/esm/aborterUtils.js.map was changed
+
+node_modules/@azure/core-util/dist/esm/checkEnvironment.d.ts was changed
+
+node_modules/@azure/core-util/dist/esm/checkEnvironment.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/esm/checkEnvironment.js was changed
+
+node_modules/@azure/core-util/dist/esm/checkEnvironment.js.map was changed
+
+node_modules/@azure/core-util/dist/esm/createAbortablePromise.js was changed
+
+node_modules/@azure/core-util/dist/esm/createAbortablePromise.js.map was changed
+
+node_modules/@azure/core-util/dist/esm/delay.js was changed
+
+node_modules/@azure/core-util/dist/esm/delay.js.map was changed
+
+node_modules/@azure/core-util/dist/esm/index.d.ts was changed
+
+node_modules/@azure/core-util/dist/esm/index.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/esm/index.js was changed
+
+node_modules/@azure/core-util/dist/esm/index.js.map was changed
+
+node_modules/@azure/core-util/dist/esm/uuidUtils.js was changed
+
+node_modules/@azure/core-util/dist/esm/uuidUtils.js.map was changed
+
+node_modules/@azure/core-util/dist/react-native/aborterUtils.js was changed
+
+node_modules/@azure/core-util/dist/react-native/aborterUtils.js.map was changed
+
+node_modules/@azure/core-util/dist/react-native/checkEnvironment.d.ts was changed
+
+node_modules/@azure/core-util/dist/react-native/checkEnvironment.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/react-native/checkEnvironment.js was changed
+
+node_modules/@azure/core-util/dist/react-native/checkEnvironment.js.map was changed
+
+node_modules/@azure/core-util/dist/react-native/createAbortablePromise.js was changed
+
+node_modules/@azure/core-util/dist/react-native/createAbortablePromise.js.map was changed
+
+node_modules/@azure/core-util/dist/react-native/delay.js was changed
+
+node_modules/@azure/core-util/dist/react-native/delay.js.map was changed
+
+node_modules/@azure/core-util/dist/react-native/index.d.ts was changed
+
+node_modules/@azure/core-util/dist/react-native/index.d.ts.map was changed
+
+node_modules/@azure/core-util/dist/react-native/index.js was changed
+
+node_modules/@azure/core-util/dist/react-native/index.js.map was changed
+
+node_modules/@azure/core-util/node_modules/@azure/abort-controller/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/core-util/node_modules/@azure/abort-controller/package.json was changed
+
+node_modules/@azure/core-util/package.json was changed
+
+node_modules/@azure/logger/dist/commonjs/tsdoc-metadata.json was changed
+
+node_modules/@azure/logger/package.json was changed
+
+node_modules/@azure/msal-browser/dist/app/IPublicClientApplication.mjs was changed
+
+node_modules/@azure/msal-browser/dist/app/PublicClientApplication.mjs was changed
+
+node_modules/@azure/msal-browser/dist/app/PublicClientNext.mjs was changed
+
+node_modules/@azure/msal-browser/dist/broker/nativeBroker/NativeMessageHandler.mjs was changed
+
+node_modules/@azure/msal-browser/dist/broker/nativeBroker/NativeStatusCodes.mjs was changed
+
+node_modules/@azure/msal-browser/dist/cache/AsyncMemoryStorage.mjs was changed
+
+node_modules/@azure/msal-browser/dist/cache/BrowserCacheManager.d.ts was changed
+
+node_modules/@azure/msal-browser/dist/cache/BrowserCacheManager.d.ts.map was changed
+
+node_modules/@azure/msal-browser/dist/cache/BrowserCacheManager.mjs was changed
+
+node_modules/@azure/msal-browser/dist/cache/BrowserCacheManager.mjs.map was changed
+
+node_modules/@azure/msal-browser/dist/cache/BrowserStorage.mjs was changed
+
+node_modules/@azure/msal-browser/dist/cache/DatabaseStorage.mjs was changed
+
+node_modules/@azure/msal-browser/dist/cache/MemoryStorage.mjs was changed
+
+node_modules/@azure/msal-browser/dist/cache/TokenCache.mjs was changed
+
+node_modules/@azure/msal-browser/dist/config/Configuration.mjs was changed
+
+node_modules/@azure/msal-browser/dist/controllers/ControllerFactory.mjs was changed
+
+node_modules/@azure/msal-browser/dist/controllers/NestedAppAuthController.d.ts.map was changed
+
+node_modules/@azure/msal-browser/dist/controllers/NestedAppAuthController.mjs was changed
+
+node_modules/@azure/msal-browser/dist/controllers/NestedAppAuthController.mjs.map was changed
+
+node_modules/@azure/msal-browser/dist/controllers/StandardController.d.ts was changed
+
+node_modules/@azure/msal-browser/dist/controllers/StandardController.d.ts.map was changed
+
+node_modules/@azure/msal-browser/dist/controllers/StandardController.mjs was changed
+
+node_modules/@azure/msal-browser/dist/controllers/StandardController.mjs.map was changed
+
+node_modules/@azure/msal-browser/dist/controllers/UnknownOperatingContextController.d.ts.map was changed
+
+node_modules/@azure/msal-browser/dist/controllers/UnknownOperatingContextController.mjs was changed
+
+node_modules/@azure/msal-browser/dist/controllers/UnknownOperatingContextController.mjs.map was changed
+
+node_modules/@azure/msal-browser/dist/crypto/BrowserCrypto.mjs was changed
+
+node_modules/@azure/msal-browser/dist/crypto/CryptoOps.mjs was changed
+
+node_modules/@azure/msal-browser/dist/crypto/PkceGenerator.mjs was changed
+
+node_modules/@azure/msal-browser/dist/crypto/SignedHttpRequest.mjs was changed
+
+node_modules/@azure/msal-browser/dist/encode/Base64Decode.mjs was changed
+
+node_modules/@azure/msal-browser/dist/encode/Base64Encode.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/BrowserAuthError.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/BrowserAuthErrorCodes.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/BrowserConfigurationAuthError.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/BrowserConfigurationAuthErrorCodes.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/NativeAuthError.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/NativeAuthErrorCodes.mjs was changed
+
+node_modules/@azure/msal-browser/dist/error/NestedAppAuthError.mjs was changed
+
+node_modules/@azure/msal-browser/dist/event/EventHandler.mjs was changed
+
+node_modules/@azure/msal-browser/dist/event/EventMessage.mjs was changed
+
+node_modules/@azure/msal-browser/dist/event/EventType.mjs was changed
+
+node_modules/@azure/msal-browser/dist/index.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/BaseInteractionClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/HybridSpaAuthorizationCodeClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/NativeInteractionClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/PopupClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/RedirectClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/SilentAuthCodeClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/SilentCacheClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/SilentIframeClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/SilentRefreshClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_client/StandardInteractionClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_handler/InteractionHandler.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_handler/RedirectHandler.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_handler/SilentHandler.mjs was changed
+
+node_modules/@azure/msal-browser/dist/interaction_handler/SilentHandler.mjs.map was changed
+
+node_modules/@azure/msal-browser/dist/naa/BridgeError.mjs was changed
+
+node_modules/@azure/msal-browser/dist/naa/BridgeProxy.d.ts was changed
+
+node_modules/@azure/msal-browser/dist/naa/BridgeProxy.d.ts.map was changed
+
+node_modules/@azure/msal-browser/dist/naa/BridgeProxy.mjs was changed
+
+node_modules/@azure/msal-browser/dist/naa/BridgeProxy.mjs.map was changed
+
+node_modules/@azure/msal-browser/dist/naa/BridgeStatusCode.mjs was changed
+
+node_modules/@azure/msal-browser/dist/naa/mapping/NestedAppAuthAdapter.mjs was changed
+
+node_modules/@azure/msal-browser/dist/navigation/NavigationClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/network/FetchClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/operatingcontext/BaseOperatingContext.mjs was changed
+
+node_modules/@azure/msal-browser/dist/operatingcontext/StandardOperatingContext.mjs was changed
+
+node_modules/@azure/msal-browser/dist/operatingcontext/TeamsAppOperatingContext.mjs was changed
+
+node_modules/@azure/msal-browser/dist/operatingcontext/UnknownOperatingContext.mjs was changed
+
+node_modules/@azure/msal-browser/dist/packageMetadata.d.ts was changed
+
+node_modules/@azure/msal-browser/dist/packageMetadata.mjs was changed
+
+node_modules/@azure/msal-browser/dist/request/RequestHelpers.mjs was changed
+
+node_modules/@azure/msal-browser/dist/response/ResponseHandler.mjs was changed
+
+node_modules/@azure/msal-browser/dist/telemetry/BrowserPerformanceClient.mjs was changed
+
+node_modules/@azure/msal-browser/dist/telemetry/BrowserPerformanceMeasurement.mjs was changed
+
+node_modules/@azure/msal-browser/dist/utils/BrowserConstants.mjs was changed
+
+node_modules/@azure/msal-browser/dist/utils/BrowserProtocolUtils.mjs was changed
+
+node_modules/@azure/msal-browser/dist/utils/BrowserUtils.mjs was changed
+
+node_modules/@azure/msal-browser/lib/msal-browser.cjs was changed
+
+node_modules/@azure/msal-browser/lib/msal-browser.cjs.map was changed
+
+node_modules/@azure/msal-browser/lib/msal-browser.js was changed
+
+node_modules/@azure/msal-browser/lib/msal-browser.js.map was changed
+
+node_modules/@azure/msal-browser/lib/msal-browser.min.js was changed
+
+node_modules/@azure/msal-browser/package.json was changed
+
+node_modules/@azure/msal-browser/src/cache/BrowserCacheManager.ts was changed
+
+node_modules/@azure/msal-browser/src/controllers/NestedAppAuthController.ts was changed
+
+node_modules/@azure/msal-browser/src/controllers/StandardController.ts was changed
+
+node_modules/@azure/msal-browser/src/controllers/UnknownOperatingContextController.ts was changed
+
+node_modules/@azure/msal-browser/src/interaction_handler/SilentHandler.ts was changed
+
+node_modules/@azure/msal-browser/src/naa/BridgeProxy.ts was changed
+
+node_modules/@azure/msal-browser/src/packageMetadata.ts was changed
+
+node_modules/@azure/msal-common/dist/account/AccountInfo.mjs was changed
+
+node_modules/@azure/msal-common/dist/account/AuthToken.mjs was changed
+
+node_modules/@azure/msal-common/dist/account/CcsCredential.mjs was changed
+
+node_modules/@azure/msal-common/dist/account/ClientInfo.mjs was changed
+
+node_modules/@azure/msal-common/dist/account/TokenClaims.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/Authority.d.ts was changed
+
+node_modules/@azure/msal-common/dist/authority/Authority.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/authority/Authority.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/Authority.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/authority/AuthorityFactory.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/AuthorityMetadata.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/AuthorityOptions.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/AuthorityType.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/CloudInstanceDiscoveryErrorResponse.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/CloudInstanceDiscoveryResponse.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/OpenIdConfigResponse.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/ProtocolMode.mjs was changed
+
+node_modules/@azure/msal-common/dist/authority/RegionDiscovery.mjs was changed
+
+node_modules/@azure/msal-common/dist/cache/CacheManager.d.ts was changed
+
+node_modules/@azure/msal-common/dist/cache/CacheManager.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/cache/CacheManager.mjs was changed
+
+node_modules/@azure/msal-common/dist/cache/CacheManager.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/cache/entities/AccountEntity.mjs was changed
+
+node_modules/@azure/msal-common/dist/cache/entities/CacheRecord.mjs was changed
+
+node_modules/@azure/msal-common/dist/cache/persistence/TokenCacheContext.mjs was changed
+
+node_modules/@azure/msal-common/dist/cache/utils/CacheHelpers.mjs was changed
+
+node_modules/@azure/msal-common/dist/client/AuthorizationCodeClient.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/client/AuthorizationCodeClient.mjs was changed
+
+node_modules/@azure/msal-common/dist/client/AuthorizationCodeClient.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/client/BaseClient.mjs was changed
+
+node_modules/@azure/msal-common/dist/client/RefreshTokenClient.mjs was changed
+
+node_modules/@azure/msal-common/dist/client/SilentFlowClient.mjs was changed
+
+node_modules/@azure/msal-common/dist/config/ClientConfiguration.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/config/ClientConfiguration.mjs was changed
+
+node_modules/@azure/msal-common/dist/config/ClientConfiguration.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/constants/AADServerParamKeys.mjs was changed
+
+node_modules/@azure/msal-common/dist/crypto/ICrypto.mjs was changed
+
+node_modules/@azure/msal-common/dist/crypto/JoseHeader.mjs was changed
+
+node_modules/@azure/msal-common/dist/crypto/PopTokenGenerator.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/AuthError.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/AuthErrorCodes.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/ClientAuthError.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/ClientAuthErrorCodes.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/ClientConfigurationError.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/ClientConfigurationErrorCodes.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/InteractionRequiredAuthError.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/InteractionRequiredAuthErrorCodes.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/JoseHeaderError.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/JoseHeaderErrorCodes.mjs was changed
+
+node_modules/@azure/msal-common/dist/error/ServerError.mjs was changed
+
+node_modules/@azure/msal-common/dist/index.cjs was changed
+
+node_modules/@azure/msal-common/dist/index.cjs.map was changed
+
+node_modules/@azure/msal-common/dist/index.d.ts was changed
+
+node_modules/@azure/msal-common/dist/index.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/index.mjs was changed
+
+node_modules/@azure/msal-common/dist/index.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/logger/Logger.mjs was changed
+
+node_modules/@azure/msal-common/dist/network/INetworkModule.mjs was changed
+
+node_modules/@azure/msal-common/dist/network/NetworkManager.mjs was changed
+
+node_modules/@azure/msal-common/dist/network/ThrottlingUtils.mjs was changed
+
+node_modules/@azure/msal-common/dist/packageMetadata.d.ts was changed
+
+node_modules/@azure/msal-common/dist/packageMetadata.mjs was changed
+
+node_modules/@azure/msal-common/dist/request/AuthenticationHeaderParser.mjs was changed
+
+node_modules/@azure/msal-common/dist/request/RequestParameterBuilder.mjs was changed
+
+node_modules/@azure/msal-common/dist/request/RequestValidator.mjs was changed
+
+node_modules/@azure/msal-common/dist/request/ScopeSet.mjs was changed
+
+node_modules/@azure/msal-common/dist/response/ResponseHandler.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/response/ResponseHandler.mjs was changed
+
+node_modules/@azure/msal-common/dist/response/ResponseHandler.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceClient.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceClient.mjs was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceClient.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceEvent.d.ts was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceEvent.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceEvent.mjs was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/PerformanceEvent.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/telemetry/performance/StubPerformanceClient.mjs was changed
+
+node_modules/@azure/msal-common/dist/telemetry/server/ServerTelemetryManager.mjs was changed
+
+node_modules/@azure/msal-common/dist/url/UrlString.mjs was changed
+
+node_modules/@azure/msal-common/dist/utils/Constants.d.ts was changed
+
+node_modules/@azure/msal-common/dist/utils/Constants.d.ts.map was changed
+
+node_modules/@azure/msal-common/dist/utils/Constants.mjs was changed
+
+node_modules/@azure/msal-common/dist/utils/Constants.mjs.map was changed
+
+node_modules/@azure/msal-common/dist/utils/FunctionWrappers.mjs was changed
+
+node_modules/@azure/msal-common/dist/utils/ProtocolUtils.mjs was changed
+
+node_modules/@azure/msal-common/dist/utils/StringUtils.mjs was changed
+
+node_modules/@azure/msal-common/dist/utils/TimeUtils.mjs was changed
+
+node_modules/@azure/msal-common/dist/utils/UrlUtils.mjs was changed
+
+node_modules/@azure/msal-common/package.json was changed
+
+node_modules/@azure/msal-common/src/authority/Authority.ts was changed
+
+node_modules/@azure/msal-common/src/cache/CacheManager.ts was changed
+
+node_modules/@azure/msal-common/src/client/AuthorizationCodeClient.ts was changed
+
+node_modules/@azure/msal-common/src/config/ClientConfiguration.ts was changed
+
+node_modules/@azure/msal-common/src/index.ts was changed
+
+node_modules/@azure/msal-common/src/packageMetadata.ts was changed
+
+node_modules/@azure/msal-common/src/response/ResponseHandler.ts was changed
+
+node_modules/@azure/msal-common/src/telemetry/performance/PerformanceClient.ts was changed
+
+node_modules/@azure/msal-common/src/telemetry/performance/PerformanceEvent.ts was changed
+
+node_modules/@azure/msal-common/src/utils/Constants.ts was changed
+
+node_modules/@azure/msal-node/dist/cache/NodeStorage.cjs was changed
+
+node_modules/@azure/msal-node/dist/cache/NodeStorage.mjs was changed
+
+node_modules/@azure/msal-node/dist/cache/TokenCache.cjs was changed
+
+node_modules/@azure/msal-node/dist/cache/TokenCache.mjs was changed
+
+node_modules/@azure/msal-node/dist/cache/distributed/DistributedCachePlugin.cjs was changed
+
+node_modules/@azure/msal-node/dist/cache/distributed/DistributedCachePlugin.mjs was changed
+
+node_modules/@azure/msal-node/dist/cache/serializer/Deserializer.cjs was changed
+
+node_modules/@azure/msal-node/dist/cache/serializer/Deserializer.mjs was changed
+
+node_modules/@azure/msal-node/dist/cache/serializer/Serializer.cjs was changed
+
+node_modules/@azure/msal-node/dist/cache/serializer/Serializer.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientApplication.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientApplication.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientAssertion.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientAssertion.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientCredentialClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientCredentialClient.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ClientCredentialClient.d.ts was changed
+
+node_modules/@azure/msal-node/dist/client/ClientCredentialClient.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/client/ClientCredentialClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/ClientCredentialClient.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/client/ConfidentialClientApplication.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/ConfidentialClientApplication.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/DeviceCodeClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/DeviceCodeClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/OnBehalfOfClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/OnBehalfOfClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/PublicClientApplication.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/PublicClientApplication.mjs was changed
+
+node_modules/@azure/msal-node/dist/client/UsernamePasswordClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/client/UsernamePasswordClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/config/Configuration.cjs was changed
+
+node_modules/@azure/msal-node/dist/config/Configuration.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/config/Configuration.d.ts was changed
+
+node_modules/@azure/msal-node/dist/config/Configuration.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/config/Configuration.mjs was changed
+
+node_modules/@azure/msal-node/dist/config/Configuration.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/crypto/CryptoProvider.cjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/CryptoProvider.mjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/GuidGenerator.cjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/GuidGenerator.mjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/HashUtils.cjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/HashUtils.mjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/PkceGenerator.cjs was changed
+
+node_modules/@azure/msal-node/dist/crypto/PkceGenerator.mjs was changed
+
+node_modules/@azure/msal-node/dist/error/NodeAuthError.cjs was changed
+
+node_modules/@azure/msal-node/dist/error/NodeAuthError.mjs was changed
+
+node_modules/@azure/msal-node/dist/index.cjs was changed
+
+node_modules/@azure/msal-node/dist/index.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/index.d.ts was changed
+
+node_modules/@azure/msal-node/dist/index.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/index.mjs was changed
+
+node_modules/@azure/msal-node/dist/index.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/internals.cjs was changed
+
+node_modules/@azure/msal-node/dist/internals.mjs was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClient.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClient.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/network/HttpClient.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/network/LoopbackClient.cjs was changed
+
+node_modules/@azure/msal-node/dist/network/LoopbackClient.mjs was changed
+
+node_modules/@azure/msal-node/dist/packageMetadata.cjs was changed
+
+node_modules/@azure/msal-node/dist/packageMetadata.d.ts was changed
+
+node_modules/@azure/msal-node/dist/packageMetadata.mjs was changed
+
+node_modules/@azure/msal-node/dist/utils/Constants.cjs was changed
+
+node_modules/@azure/msal-node/dist/utils/Constants.cjs.map was changed
+
+node_modules/@azure/msal-node/dist/utils/Constants.d.ts was changed
+
+node_modules/@azure/msal-node/dist/utils/Constants.d.ts.map was changed
+
+node_modules/@azure/msal-node/dist/utils/Constants.mjs was changed
+
+node_modules/@azure/msal-node/dist/utils/Constants.mjs.map was changed
+
+node_modules/@azure/msal-node/dist/utils/EncodingUtils.cjs was changed
+
+node_modules/@azure/msal-node/dist/utils/EncodingUtils.mjs was changed
+
+node_modules/@azure/msal-node/dist/utils/NetworkUtils.cjs was changed
+
+node_modules/@azure/msal-node/dist/utils/NetworkUtils.mjs was changed
+
+node_modules/@azure/msal-node/package.json was changed
+
+node_modules/@azure/msal-node/src/client/ClientCredentialClient.ts was changed
+
+node_modules/@azure/msal-node/src/config/Configuration.ts was changed
+
+node_modules/@azure/msal-node/src/index.ts was changed
+
+node_modules/@azure/msal-node/src/network/HttpClient.ts was changed
+
+node_modules/@azure/msal-node/src/packageMetadata.ts was changed
+
+node_modules/@azure/msal-node/src/utils/Constants.ts was changed
+
+node_modules/@google-cloud/container/CHANGELOG.md was changed
+
+node_modules/@google-cloud/container/build/protos/google/container/v1/cluster_service.proto was changed
+
+node_modules/@google-cloud/container/build/protos/google/container/v1beta1/cluster_service.proto was changed
+
+node_modules/@google-cloud/container/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/container/build/protos/protos.js was changed
+
+node_modules/@google-cloud/container/build/protos/protos.json was changed
+
+node_modules/@google-cloud/container/build/src/v1/cluster_manager_client.js was changed
+
+node_modules/@google-cloud/container/build/src/v1beta1/cluster_manager_client.js was changed
+
+node_modules/@google-cloud/container/package.json was changed
+
+node_modules/@google-cloud/deploy/CHANGELOG.md was changed
+
+node_modules/@google-cloud/deploy/build/protos/google/cloud/deploy/v1/cloud_deploy.proto was changed
+
+node_modules/@google-cloud/deploy/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/deploy/build/protos/protos.js was changed
+
+node_modules/@google-cloud/deploy/build/protos/protos.json was changed
+
+node_modules/@google-cloud/deploy/build/src/v1/cloud_deploy_client.d.ts was changed
+
+node_modules/@google-cloud/deploy/build/src/v1/cloud_deploy_client.js was changed
+
+node_modules/@google-cloud/deploy/package.json was changed
+
+node_modules/@google-cloud/domains/CHANGELOG.md was changed
+
+node_modules/@google-cloud/domains/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/domains/build/protos/protos.js was changed
+
+node_modules/@google-cloud/domains/build/protos/protos.json was changed
+
+node_modules/@google-cloud/domains/build/src/index.js was changed
+
+node_modules/@google-cloud/domains/build/src/v1/domains_client.d.ts was changed
+
+node_modules/@google-cloud/domains/build/src/v1/domains_client.js was changed
+
+node_modules/@google-cloud/domains/build/src/v1/index.js was changed
+
+node_modules/@google-cloud/domains/build/src/v1alpha2/domains_client.d.ts was changed
+
+node_modules/@google-cloud/domains/build/src/v1alpha2/domains_client.js was changed
+
+node_modules/@google-cloud/domains/build/src/v1alpha2/index.js was changed
+
+node_modules/@google-cloud/domains/build/src/v1beta1/domains_client.d.ts was changed
+
+node_modules/@google-cloud/domains/build/src/v1beta1/domains_client.js was changed
+
+node_modules/@google-cloud/domains/build/src/v1beta1/index.js was changed
+
+node_modules/@google-cloud/domains/package.json was changed
+
+node_modules/@google-cloud/orchestration-airflow/CHANGELOG.md was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/protos/protos.js was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/protos/protos.json was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/src/v1/environments_client.js was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/src/v1/image_versions_client.js was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/src/v1beta1/environments_client.js was changed
+
+node_modules/@google-cloud/orchestration-airflow/build/src/v1beta1/image_versions_client.js was changed
+
+node_modules/@google-cloud/orchestration-airflow/package.json was changed
+
+node_modules/@google-cloud/org-policy/CHANGELOG.md was changed
+
+node_modules/@google-cloud/org-policy/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/org-policy/build/protos/protos.js was changed
+
+node_modules/@google-cloud/org-policy/build/protos/protos.json was changed
+
+node_modules/@google-cloud/org-policy/build/src/v2/org_policy_client.js was changed
+
+node_modules/@google-cloud/org-policy/package.json was changed
+
+node_modules/@google-cloud/os-config/CHANGELOG.md was changed
+
+node_modules/@google-cloud/os-config/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/os-config/build/protos/protos.js was changed
+
+node_modules/@google-cloud/os-config/build/protos/protos.json was changed
+
+node_modules/@google-cloud/os-config/build/src/v1/os_config_service_client.js was changed
+
+node_modules/@google-cloud/os-config/build/src/v1/os_config_zonal_service_client.js was changed
+
+node_modules/@google-cloud/os-config/build/src/v1alpha/os_config_zonal_service_client.js was changed
+
+node_modules/@google-cloud/os-config/build/src/v1beta/os_config_service_client.js was changed
+
+node_modules/@google-cloud/os-config/package.json was changed
+
+node_modules/@google-cloud/redis/CHANGELOG.md was changed
+
+node_modules/@google-cloud/redis/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/redis/build/protos/protos.js was changed
+
+node_modules/@google-cloud/redis/build/protos/protos.json was changed
+
+node_modules/@google-cloud/redis/build/src/v1/cloud_redis_client.js was changed
+
+node_modules/@google-cloud/redis/build/src/v1beta1/cloud_redis_client.js was changed
+
+node_modules/@google-cloud/redis/package.json was changed
+
+node_modules/@google-cloud/resource-manager/CHANGELOG.md was changed
+
+node_modules/@google-cloud/resource-manager/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/resource-manager/build/protos/protos.js was changed
+
+node_modules/@google-cloud/resource-manager/build/protos/protos.json was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/folders_client.js was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/organizations_client.js was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/projects_client.js was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/tag_bindings_client.js was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/tag_holds_client.js was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/tag_keys_client.js was changed
+
+node_modules/@google-cloud/resource-manager/build/src/v3/tag_values_client.js was changed
+
+node_modules/@google-cloud/resource-manager/package.json was changed
+
+node_modules/@google-cloud/resource-settings/CHANGELOG.md was changed
+
+node_modules/@google-cloud/resource-settings/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/resource-settings/build/protos/protos.js was changed
+
+node_modules/@google-cloud/resource-settings/build/protos/protos.json was changed
+
+node_modules/@google-cloud/resource-settings/build/src/v1/resource_settings_service_client.js was changed
+
+node_modules/@google-cloud/resource-settings/package.json was changed
+
+node_modules/@google-cloud/retail/CHANGELOG.md was changed
+
+node_modules/@google-cloud/retail/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/retail/build/protos/protos.js was changed
+
+node_modules/@google-cloud/retail/build/protos/protos.json was changed
+
+node_modules/@google-cloud/retail/build/src/v2/analytics_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/catalog_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/completion_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/control_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/model_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/prediction_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/product_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/search_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/serving_config_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2/user_event_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/analytics_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/catalog_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/completion_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/control_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/merchant_center_account_link_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/model_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/prediction_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/product_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/search_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/serving_config_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2alpha/user_event_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/analytics_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/catalog_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/completion_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/control_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/model_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/prediction_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/product_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/search_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/serving_config_service_client.js was changed
+
+node_modules/@google-cloud/retail/build/src/v2beta/user_event_service_client.js was changed
+
+node_modules/@google-cloud/retail/package.json was changed
+
+node_modules/@google-cloud/service-usage/CHANGELOG.md was changed
+
+node_modules/@google-cloud/service-usage/build/protos/protos.d.ts was changed
+
+node_modules/@google-cloud/service-usage/build/protos/protos.js was changed
+
+node_modules/@google-cloud/service-usage/build/protos/protos.json was changed
+
+node_modules/@google-cloud/service-usage/build/src/v1/service_usage_client.js was changed
+
+node_modules/@google-cloud/service-usage/build/src/v1beta1/service_usage_client.js was changed
+
+node_modules/@google-cloud/service-usage/package.json was changed
+
+node_modules/@google-cloud/storage/CHANGELOG.md was changed
+
+node_modules/@google-cloud/storage/README.md was changed
+
+node_modules/@google-cloud/storage/build/cjs/src/bucket.js was changed
+
+node_modules/@google-cloud/storage/build/cjs/src/file.d.ts was changed
+
+node_modules/@google-cloud/storage/build/cjs/src/file.js was changed
+
+node_modules/@google-cloud/storage/build/cjs/src/nodejs-common/service.js was changed
+
+node_modules/@google-cloud/storage/build/cjs/src/resumable-upload.js was changed
+
+node_modules/@google-cloud/storage/build/cjs/src/transfer-manager.js was changed
+
+node_modules/@google-cloud/storage/build/esm/src/bucket.js was changed
+
+node_modules/@google-cloud/storage/build/esm/src/file.d.ts was changed
+
+node_modules/@google-cloud/storage/build/esm/src/file.js was changed
+
+node_modules/@google-cloud/storage/build/esm/src/nodejs-common/service.js was changed
+
+node_modules/@google-cloud/storage/build/esm/src/resumable-upload.js was changed
+
+node_modules/@google-cloud/storage/build/esm/src/transfer-manager.js was changed
+
+node_modules/@google-cloud/storage/package.json was changed
+
+node_modules/@jsdoc/salty/README.md was changed
+
+node_modules/@jsdoc/salty/lib/salty.js was changed
+
+node_modules/@jsdoc/salty/package.json was changed
+
+node_modules/@microsoft/teams-js/README.md was changed
+
+node_modules/@microsoft/teams-js/dist/MicrosoftTeams.d.ts was changed
+
+node_modules/@microsoft/teams-js/dist/MicrosoftTeams.js was changed
+
+node_modules/@microsoft/teams-js/dist/MicrosoftTeams.js.map was changed
+
+node_modules/@microsoft/teams-js/dist/MicrosoftTeams.min.js was changed
+
+node_modules/@microsoft/teams-js/dist/MicrosoftTeams.min.js.map was changed
+
+node_modules/@microsoft/teams-js/package.json was changed
+
+node_modules/@smithy/signature-v4/dist-cjs/index.js was changed
+
+node_modules/@smithy/signature-v4/dist-es/SignatureV4.js was changed
+
+node_modules/@smithy/signature-v4/package.json was changed
+
+node_modules/aws-sdk/README.md was changed
+
+node_modules/aws-sdk/apis/batch-2016-08-10.min.json was changed
+
+node_modules/aws-sdk/apis/bedrock-2023-04-20.min.json was changed
+
+node_modules/aws-sdk/apis/bedrock-2023-04-20.paginators.json was changed
+
+node_modules/aws-sdk/apis/bedrock-agent-2023-06-05.min.json was changed
+
+node_modules/aws-sdk/apis/bedrock-agent-runtime-2023-07-26.min.json was changed
+
+node_modules/aws-sdk/apis/bedrock-runtime-2023-09-30.min.json was changed
+
+node_modules/aws-sdk/apis/ce-2017-10-25.min.json was changed
+
+node_modules/aws-sdk/apis/cleanrooms-2022-02-17.min.json was changed
+
+node_modules/aws-sdk/apis/cloudformation-2010-05-15.min.json was changed
+
+node_modules/aws-sdk/apis/connect-2017-08-08.min.json was changed
+
+node_modules/aws-sdk/apis/datasync-2018-11-09.min.json was changed
+
+node_modules/aws-sdk/apis/drs-2020-02-26.min.json was changed
+
+node_modules/aws-sdk/apis/ec2-2016-11-15.min.json was changed
+
+node_modules/aws-sdk/apis/emr-containers-2020-10-01.min.json was changed
+
+node_modules/aws-sdk/apis/emr-containers-2020-10-01.paginators.json was changed
+
+node_modules/aws-sdk/apis/emr-serverless-2021-07-13.min.json was changed
+
+node_modules/aws-sdk/apis/entityresolution-2018-05-10.min.json was changed
+
+node_modules/aws-sdk/apis/entityresolution-2018-05-10.paginators.json was changed
+
+node_modules/aws-sdk/apis/gamelift-2015-10-01.min.json was changed
+
+node_modules/aws-sdk/apis/gamelift-2015-10-01.paginators.json was changed
+
+node_modules/aws-sdk/apis/glue-2017-03-31.min.json was changed
+
+node_modules/aws-sdk/apis/guardduty-2017-11-28.min.json was changed
+
+node_modules/aws-sdk/apis/healthlake-2017-07-01.min.json was changed
+
+node_modules/aws-sdk/apis/iam-2010-05-08.min.json was changed
+
+node_modules/aws-sdk/apis/internetmonitor-2021-06-03.min.json was changed
+
+node_modules/aws-sdk/apis/internetmonitor-2021-06-03.paginators.json was changed
+
+node_modules/aws-sdk/apis/iotwireless-2020-11-22.min.json was changed
+
+node_modules/aws-sdk/apis/kms-2014-11-01.examples.json was changed
+
+node_modules/aws-sdk/apis/kms-2014-11-01.min.json was changed
+
+node_modules/aws-sdk/apis/kms-2014-11-01.paginators.json was changed
+
+node_modules/aws-sdk/apis/lakeformation-2017-03-31.min.json was changed
+
+node_modules/aws-sdk/apis/m2-2021-04-28.min.json was changed
+
+node_modules/aws-sdk/apis/medialive-2017-10-14.min.json was changed
+
+node_modules/aws-sdk/apis/medialive-2017-10-14.paginators.json was changed
+
+node_modules/aws-sdk/apis/medialive-2017-10-14.waiters2.json was changed
+
+node_modules/aws-sdk/apis/mediapackagev2-2022-12-25.min.json was changed
+
+node_modules/aws-sdk/apis/mediatailor-2018-04-23.min.json was changed
+
+node_modules/aws-sdk/apis/metadata.json was changed
+
+node_modules/aws-sdk/apis/monitoring-2010-08-01.min.json was changed
+
+node_modules/aws-sdk/apis/omics-2022-11-28.min.json was changed
+
+node_modules/aws-sdk/apis/outposts-2019-12-03.min.json was changed
+
+node_modules/aws-sdk/apis/outposts-2019-12-03.paginators.json was changed
+
+node_modules/aws-sdk/apis/payment-cryptography-2021-09-14.min.json was changed
+
+node_modules/aws-sdk/apis/personalize-2018-05-22.min.json was changed
+
+node_modules/aws-sdk/apis/qbusiness-2023-11-27.min.json was changed
+
+node_modules/aws-sdk/apis/qconnect-2020-10-19.min.json was changed
+
+node_modules/aws-sdk/apis/quicksight-2018-04-01.min.json was changed
+
+node_modules/aws-sdk/apis/redshift-2012-12-01.min.json was changed
+
+node_modules/aws-sdk/apis/rekognition-2016-06-27.min.json was changed
+
+node_modules/aws-sdk/apis/rolesanywhere-2018-05-10.min.json was changed
+
+node_modules/aws-sdk/apis/sagemaker-2017-07-24.min.json was changed
+
+node_modules/aws-sdk/apis/servicediscovery-2017-03-14.examples.json was changed
+
+node_modules/aws-sdk/apis/ssm-2014-11-06.min.json was changed
+
+node_modules/aws-sdk/apis/ssm-2014-11-06.paginators.json was changed
+
+node_modules/aws-sdk/apis/supplychain-2024-01-01.examples.json was changed
+
+node_modules/aws-sdk/apis/supplychain-2024-01-01.min.json was changed
+
+node_modules/aws-sdk/apis/transfer-2018-11-05.min.json was changed
+
+node_modules/aws-sdk/apis/wellarchitected-2020-03-31.min.json was changed
+
+node_modules/aws-sdk/apis/workspaces-2015-04-08.min.json was changed
+
+node_modules/aws-sdk/apis/workspaces-2015-04-08.paginators.json was changed
+
+node_modules/aws-sdk/apis/workspaces-thin-client-2023-08-22.min.json was changed
+
+node_modules/aws-sdk/apis/workspaces-web-2020-07-08.min.json was changed
+
+node_modules/aws-sdk/clients/all.d.ts was changed
+
+node_modules/aws-sdk/clients/all.js was changed
+
+node_modules/aws-sdk/clients/batch.d.ts was changed
+
+node_modules/aws-sdk/clients/bedrock.d.ts was changed
+
+node_modules/aws-sdk/clients/bedrockagent.d.ts was changed
+
+node_modules/aws-sdk/clients/bedrockagentruntime.d.ts was changed
+
+node_modules/aws-sdk/clients/bedrockruntime.d.ts was changed
+
+node_modules/aws-sdk/clients/cleanrooms.d.ts was changed
+
+node_modules/aws-sdk/clients/cloudformation.d.ts was changed
+
+node_modules/aws-sdk/clients/cloudfront.d.ts was changed
+
+node_modules/aws-sdk/clients/cloudwatch.d.ts was changed
+
+node_modules/aws-sdk/clients/codebuild.d.ts was changed
+
+node_modules/aws-sdk/clients/configservice.d.ts was changed
+
+node_modules/aws-sdk/clients/connect.d.ts was changed
+
+node_modules/aws-sdk/clients/costexplorer.d.ts was changed
+
+node_modules/aws-sdk/clients/datasync.d.ts was changed
+
+node_modules/aws-sdk/clients/drs.d.ts was changed
+
+node_modules/aws-sdk/clients/ec2.d.ts was changed
+
+node_modules/aws-sdk/clients/emrcontainers.d.ts was changed
+
+node_modules/aws-sdk/clients/emrserverless.d.ts was changed
+
+node_modules/aws-sdk/clients/entityresolution.d.ts was changed
+
+node_modules/aws-sdk/clients/gamelift.d.ts was changed
+
+node_modules/aws-sdk/clients/glue.d.ts was changed
+
+node_modules/aws-sdk/clients/guardduty.d.ts was changed
+
+node_modules/aws-sdk/clients/healthlake.d.ts was changed
+
+node_modules/aws-sdk/clients/iam.d.ts was changed
+
+node_modules/aws-sdk/clients/internetmonitor.d.ts was changed
+
+node_modules/aws-sdk/clients/iotfleethub.d.ts was changed
+
+node_modules/aws-sdk/clients/iotwireless.d.ts was changed
+
+node_modules/aws-sdk/clients/kms.d.ts was changed
+
+node_modules/aws-sdk/clients/lakeformation.d.ts was changed
+
+node_modules/aws-sdk/clients/m2.d.ts was changed
+
+node_modules/aws-sdk/clients/medialive.d.ts was changed
+
+node_modules/aws-sdk/clients/mediapackagev2.d.ts was changed
+
+node_modules/aws-sdk/clients/mediatailor.d.ts was changed
+
+node_modules/aws-sdk/clients/networkmonitor.d.ts was changed
+
+node_modules/aws-sdk/clients/omics.d.ts was changed
+
+node_modules/aws-sdk/clients/outposts.d.ts was changed
+
+node_modules/aws-sdk/clients/paymentcryptography.d.ts was changed
+
+node_modules/aws-sdk/clients/paymentcryptography.js was changed
+
+node_modules/aws-sdk/clients/personalize.d.ts was changed
+
+node_modules/aws-sdk/clients/pi.d.ts was changed
+
+node_modules/aws-sdk/clients/qbusiness.d.ts was changed
+
+node_modules/aws-sdk/clients/qconnect.d.ts was changed
+
+node_modules/aws-sdk/clients/quicksight.d.ts was changed
+
+node_modules/aws-sdk/clients/rds.d.ts was changed
+
+node_modules/aws-sdk/clients/redshift.d.ts was changed
+
+node_modules/aws-sdk/clients/redshiftserverless.d.ts was changed
+
+node_modules/aws-sdk/clients/rekognition.d.ts was changed
+
+node_modules/aws-sdk/clients/rolesanywhere.d.ts was changed
+
+node_modules/aws-sdk/clients/s3control.d.ts was changed
+
+node_modules/aws-sdk/clients/sagemaker.d.ts was changed
+
+node_modules/aws-sdk/clients/servicediscovery.d.ts was changed
+
+node_modules/aws-sdk/clients/ssm.d.ts was changed
+
+node_modules/aws-sdk/clients/supplychain.d.ts was changed
+
+node_modules/aws-sdk/clients/transfer.d.ts was changed
+
+node_modules/aws-sdk/clients/wellarchitected.d.ts was changed
+
+node_modules/aws-sdk/clients/workspaces.d.ts was changed
+
+node_modules/aws-sdk/clients/workspacesthinclient.d.ts was changed
+
+node_modules/aws-sdk/clients/workspacesweb.d.ts was changed
+
+node_modules/aws-sdk/dist/aws-sdk-core-react-native.js was changed
+
+node_modules/aws-sdk/dist/aws-sdk-react-native.js was changed
+
+node_modules/aws-sdk/dist/aws-sdk.js was changed
+
+node_modules/aws-sdk/dist/aws-sdk.min.js was changed
+
+node_modules/aws-sdk/lib/config_service_placeholders.d.ts was changed
+
+node_modules/aws-sdk/lib/core.js was changed
+
+node_modules/aws-sdk/lib/region_config_data.json was changed
+
+node_modules/aws-sdk/package.json was changed
+
+node_modules/gaxios/CHANGELOG.md was changed
+
+node_modules/gaxios/README.md was changed
+
+node_modules/gaxios/build/src/common.d.ts was changed
+
+node_modules/gaxios/build/src/common.js.map was changed
+
+node_modules/gaxios/build/src/gaxios.d.ts was changed
+
+node_modules/gaxios/build/src/gaxios.js was changed
+
+node_modules/gaxios/build/src/gaxios.js.map was changed
+
+node_modules/gaxios/build/src/retry.js was changed
+
+node_modules/gaxios/build/src/retry.js.map was changed
+
+node_modules/gaxios/package.json was changed
+
+node_modules/google-auth-library/CHANGELOG.md was changed
+
+node_modules/google-auth-library/README.md was changed
+
+node_modules/google-auth-library/build/src/auth/authclient.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/authclient.js was changed
+
+node_modules/google-auth-library/build/src/auth/awsclient.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/awsclient.js was changed
+
+node_modules/google-auth-library/build/src/auth/baseexternalclient.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/baseexternalclient.js was changed
+
+node_modules/google-auth-library/build/src/auth/downscopedclient.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/downscopedclient.js was changed
+
+node_modules/google-auth-library/build/src/auth/externalAccountAuthorizedUserClient.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/externalAccountAuthorizedUserClient.js was changed
+
+node_modules/google-auth-library/build/src/auth/googleauth.js was changed
+
+node_modules/google-auth-library/build/src/auth/identitypoolclient.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/identitypoolclient.js was changed
+
+node_modules/google-auth-library/build/src/auth/impersonated.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/impersonated.js was changed
+
+node_modules/google-auth-library/build/src/auth/oauth2client.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/oauth2client.js was changed
+
+node_modules/google-auth-library/build/src/auth/oauth2common.d.ts was changed
+
+node_modules/google-auth-library/build/src/auth/oauth2common.js was changed
+
+node_modules/google-auth-library/build/src/auth/stscredentials.js was changed
+
+node_modules/google-auth-library/build/src/index.d.ts was changed
+
+node_modules/google-auth-library/build/src/index.js was changed
+
+node_modules/google-auth-library/build/src/transporters.js was changed
+
+node_modules/google-auth-library/package.json was changed
+
+node_modules/mongoose/dist/browser.umd.js was changed
+
+node_modules/mongoose/lib/document.js was changed
+
+node_modules/mongoose/lib/helpers/discriminator/applyEmbeddedDiscriminators.js was changed
+
+node_modules/mongoose/lib/helpers/populate/assignVals.js was changed
+
+node_modules/mongoose/lib/model.js was changed
+
+node_modules/mongoose/lib/mongoose.js was changed
+
+node_modules/mongoose/lib/schema.js was changed
+
+node_modules/mongoose/lib/schema/documentArray.js was changed
+
+node_modules/mongoose/lib/schemaType.js was changed
+
+node_modules/mongoose/package.json was changed
+
+node_modules/mongoose/types/index.d.ts was changed
+
+node_modules/mongoose/types/models.d.ts was changed
+
+node_modules/mongoose/types/query.d.ts was changed
+
+node_modules/mongoose/types/types.d.ts was changed
+
+node_modules/mysql2/lib/helpers.js was changed
+
+node_modules/mysql2/lib/parsers/binary_parser.js was changed
+
+node_modules/mysql2/lib/parsers/text_parser.js was changed
+
+node_modules/mysql2/package.json was changed
+
+node_modules/qs/.editorconfig was changed
+
+node_modules/qs/CHANGELOG.md was changed
+
+node_modules/qs/dist/qs.js was changed
+
+node_modules/qs/lib/parse.js was changed
+
+node_modules/qs/lib/utils.js was changed
+
+node_modules/qs/package.json was changed
+
+node_modules/qs/test/parse.js was changed
+
+node_modules/qs/test/stringify.js was changed
+
+package-lock.json was changed
+
+package.json was changed
+
+src/__tests__/services/addOn.test.ts was changed
+
+src/main.ts was changed
+
+src/services/addOn.service.ts was changed
+
+src/services/addOn/awsGathering.service.ts was changed
+
+src/services/addOn/azureGathering.service.ts was changed
+
+src/services/addOn/gcpGathering.service.ts was changed
+
+src/services/addOn/githubGathering.service.ts was changed
+
+src/services/addOn/googleWorkspaceGathering.service.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+src/services/addOn/o365Gathering.service.ts was changed
+
+
