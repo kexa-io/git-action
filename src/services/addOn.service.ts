@@ -51,11 +51,12 @@ const addOnCollect:{
 }
 
 
-export async function loadAddOns(resources: ProviderResource): Promise<ProviderResource>{
+export async function loadAddOns(resources: ProviderResource, settingFileList:SettingFile[]): Promise<ProviderResource>{
     logger.info("Loading addOns");
+    const addOnNeed = extractAddOnNeed(settingFileList);
     const promises = addOnName.map(async (file: string) => {
         if(config?.[file]){
-            return await loadAddOn(file);
+            return await loadAddOn(file, addOnNeed);
         }
         return null;
     });
@@ -77,12 +78,39 @@ export async function loadAddOns(resources: ProviderResource): Promise<ProviderR
     return resources;
 }
 
-async function loadAddOn(nameAddOn: string): Promise<{ key: string; data: Provider|null; delta: number } | null> {
+function extractAddOnNeed(settingFileList: SettingFile[]){
+    let providerList = new Array<string>();
+    let objectNameList:any = {};
+    settingFileList.forEach((ruleFile) => {
+        objectNameList[ruleFile.alert.global.name] = {};
+        ruleFile.rules.forEach((rule: Rules) => {
+            if(rule.applied === false) return;
+            if(!providerList.includes(rule.cloudProvider)) providerList.push(rule.cloudProvider);
+            if(!objectNameList[ruleFile.alert.global.name][rule.cloudProvider]) objectNameList[ruleFile.alert.global.name][rule.cloudProvider] = new Array<string>();
+            if(!objectNameList[ruleFile.alert.global.name][rule.cloudProvider].includes(rule.objectName)) objectNameList[ruleFile.alert.global.name][rule.cloudProvider].push(rule.objectName);
+        });
+    });
+    return { "addOn" : providerList, "objectNameNeed": objectNameList };
+}
+
+async function loadAddOn(nameAddOn: string, addOnNeed:{addOn: string[];objectNameNeed: any;}): Promise<{ key: string; data: Provider|null; delta: number } | null> {
     try{
         //const { collectData } = await import(`./addOn/${nameAddOn}Gathering.service.js`);
         const collectData = addOnCollect[nameAddOn];
         let start = Date.now();
         const addOnConfig = (configuration.has(nameAddOn))?configuration.get(nameAddOn):null;
+        addOnConfig?.forEach((config: any) => {
+            config.ObjectNameNeed = []
+            config.rules.forEach((rulesName: string) => {
+                let addOnNeedRules = addOnNeed["objectNameNeed"][rulesName];
+                if(addOnNeedRules){
+                    addOnNeedRules = addOnNeedRules[nameAddOn];
+                    if(addOnNeedRules){
+                        config.ObjectNameNeed = [...config.ObjectNameNeed, ...addOnNeedRules];
+                    }
+                }
+            });
+        });
         const data = await collectData(addOnConfig);
         let delta = Date.now() - start;
         return { 
@@ -136,6 +164,8 @@ import { save as saveMongoDB}  from "./addOn/save/mongoDBSave.service";
 import { exportation as exportAzureBlobStorage}  from "./addOn/exportation/azureBlobStorageExportation.service";
 import { exportation as exportMongoDB}  from "./addOn/exportation/mongoDBExportation.service";
 import { exportation as exportMySQL}  from "./addOn/exportation/mySQLExportation.service";
+import { SettingFile } from "../models/settingFile/settingFile.models";
+import { Rules } from "../models/settingFile/rules.models";
 
 const addOnCustomUtility: {
     [key: string]: { [key: string]: Function; };
