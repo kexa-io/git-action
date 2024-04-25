@@ -68446,3 +68446,16 @@ src/services/addOn/kubernetesGathering.service.ts was changed
 src/services/addOn/o365Gathering.service.ts was changed
 
 
+## 1.2.12
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+package.json was changed
+
+
