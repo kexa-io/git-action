@@ -68423,3 +68423,26 @@ package.json was changed
 CHANGELOG.md was changed
 
 
+## 1.2.12
+
+### Files added: 0
+
+### Files changed: 8
+
+lib/services/addOn/githubGathering.service.js was changed
+
+lib/services/addOn/googleWorkspaceGathering.service.js was changed
+
+lib/services/addOn/kubernetesGathering.service.js was changed
+
+lib/services/addOn/o365Gathering.service.js was changed
+
+src/services/addOn/githubGathering.service.ts was changed
+
+src/services/addOn/googleWorkspaceGathering.service.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+src/services/addOn/o365Gathering.service.ts was changed
+
+
