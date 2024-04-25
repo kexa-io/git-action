@@ -1814,11 +1814,19 @@ async function collectAuto(credential: any, subscriptionId: any, config: AzureCo
 	for (const clientService in allClients) {
 		const constructor = clientConstructors[clientService];
 		const clientName = constructor.name;
-		try {
-            azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
-        } catch (e) {
-            logger.debug("Error constructing client", e);
-        }
+		let requireClient = false;
+		if (Array.isArray(config.ObjectNameNeed)) {
+			requireClient = config.ObjectNameNeed.some((item: string) => item.startsWith(constructor.name));
+		} else {
+			requireClient = false;
+		}
+		if(requireClient){
+			try {
+				azureRet[clientName] = await callGenericClient(createGenericClient(constructor, credential, subscriptionId), config);
+			} catch (e) {
+				logger.debug("Error constructing client", e);
+			}
+		}
 	}
 	const autoFlatResources: { [key: string]: any } = {};
 	Object.keys(azureRet).forEach(parentKey => {

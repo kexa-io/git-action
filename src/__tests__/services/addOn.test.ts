@@ -1,4 +1,4 @@
-import { hasValidHeader, loadAddOns, loadAddOnsCustomUtility } from "../../services/addOn.service";
+import { hasValidHeader, loadAddOnsCustomUtility } from "../../services/addOn.service";
 import { getConfig } from "../../helpers/loaderConfig";
 
 const { expect } = require('chai');

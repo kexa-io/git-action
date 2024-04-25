@@ -34,7 +34,7 @@ export async function main() {
     if(settings.length != 0){
         let stop = false;
         let resources = {};
-        resources = await loadAddOns(resources);
+        resources = await loadAddOns(resources, settings);
         logger.info("Resources loaded");
         logger.debug(JSON.stringify(resources));
         settings.forEach(setting => {

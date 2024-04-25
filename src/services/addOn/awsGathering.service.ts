@@ -78,6 +78,7 @@
 	*	- EC2Client.LocalGatewayVirtualInterfaces
 	*	- EC2Client.LocalGateways
 	*	- EC2Client.LockedSnapshots
+	*	- EC2Client.MacHosts
 	*	- EC2Client.ManagedPrefixLists
 	*	- EC2Client.MovingAddresses
 	*	- EC2Client.NatGateways
@@ -168,6 +169,7 @@
 	*	- EC2Client.GroupsForCapacityReservation
 	*	- EC2Client.HostReservationPurchasePreview
 	*	- EC2Client.ImageBlockPublicAccessState
+	*	- EC2Client.InstanceMetadataDefaults
 	*	- EC2Client.InstanceTypesFromInstanceRequirements
 	*	- EC2Client.InstanceUefiData
 	*	- EC2Client.IpamAddressHistory
@@ -264,6 +266,7 @@
 	*	- DynamoDBClient.TableReplicaAutoScaling
 	*	- DynamoDBClient.TimeToLive
 	*	- DynamoDBClient.Item
+	*	- DynamoDBClient.ResourcePolicy
 	*	- DynamoDBClient.Backups
 	*	- DynamoDBClient.ContributorInsights
 	*	- DynamoDBClient.Exports
@@ -526,6 +529,7 @@
 	*	- SSMClient.InstancePatchStates
 	*	- SSMClient.InstancePatchStatesForPatchGroup
 	*	- SSMClient.InstancePatches
+	*	- SSMClient.InstanceProperties
 	*	- SSMClient.InventoryDeletions
 	*	- SSMClient.MaintenanceWindowExecutionTaskInvocations
 	*	- SSMClient.MaintenanceWindowExecutionTasks
@@ -679,6 +683,7 @@
 	*	- KMSClient.Aliases
 	*	- KMSClient.Grants
 	*	- KMSClient.KeyPolicies
+	*	- KMSClient.KeyRotations
 	*	- KMSClient.Keys
 	*	- KMSClient.ResourceTags
 	*	- KMSClient.RetirableGrants
@@ -803,8 +808,10 @@
 	*	- CloudFormationClient.AccountLimits
 	*	- CloudFormationClient.ChangeSet
 	*	- CloudFormationClient.ChangeSetHooks
+	*	- CloudFormationClient.GeneratedTemplate
 	*	- CloudFormationClient.OrganizationsAccess
 	*	- CloudFormationClient.Publisher
+	*	- CloudFormationClient.ResourceScan
 	*	- CloudFormationClient.StackDriftDetectionStatus
 	*	- CloudFormationClient.StackEvents
 	*	- CloudFormationClient.StackInstance
@@ -816,15 +823,21 @@
 	*	- CloudFormationClient.Stacks
 	*	- CloudFormationClient.Type
 	*	- CloudFormationClient.TypeRegistration
+	*	- CloudFormationClient.GeneratedTemplate
 	*	- CloudFormationClient.StackPolicy
 	*	- CloudFormationClient.Template
 	*	- CloudFormationClient.TemplateSummary
 	*	- CloudFormationClient.ChangeSets
 	*	- CloudFormationClient.Exports
+	*	- CloudFormationClient.GeneratedTemplates
 	*	- CloudFormationClient.Imports
+	*	- CloudFormationClient.ResourceScanRelatedResources
+	*	- CloudFormationClient.ResourceScanResources
+	*	- CloudFormationClient.ResourceScans
 	*	- CloudFormationClient.StackInstanceResourceDrifts
 	*	- CloudFormationClient.StackInstances
 	*	- CloudFormationClient.StackResources
+	*	- CloudFormationClient.StackSetAutoDeploymentTargets
 	*	- CloudFormationClient.StackSetOperationResults
 	*	- CloudFormationClient.StackSetOperations
 	*	- CloudFormationClient.StackSets
@@ -973,6 +986,7 @@
 	*	- RDSClient.DBProxyTargets
 	*	- RDSClient.DBRecommendations
 	*	- RDSClient.DBSecurityGroups
+	*	- RDSClient.DBShardGroups
 	*	- RDSClient.DBSnapshotAttributes
 	*	- RDSClient.DBSnapshotTenantDatabases
 	*	- RDSClient.DBSnapshots
@@ -1004,6 +1018,7 @@
 	*	- CodeBuildClient.Builds
 	*	- CodeBuildClient.BuildsForProject
 	*	- CodeBuildClient.CuratedEnvironmentImages
+	*	- CodeBuildClient.Fleets
 	*	- CodeBuildClient.Projects
 	*	- CodeBuildClient.ReportGroups
 	*	- CodeBuildClient.Reports
@@ -1301,21 +1316,27 @@
 	*	- OpenSearchClient.VpcEndpointsForDomain
 	*	- CodeartifactClient.Domain
 	*	- CodeartifactClient.Package
+	*	- CodeartifactClient.PackageGroup
 	*	- CodeartifactClient.PackageVersion
 	*	- CodeartifactClient.Repository
+	*	- CodeartifactClient.AssociatedPackageGroup
 	*	- CodeartifactClient.AuthorizationToken
 	*	- CodeartifactClient.DomainPermissionsPolicy
 	*	- CodeartifactClient.PackageVersionAsset
 	*	- CodeartifactClient.PackageVersionReadme
 	*	- CodeartifactClient.RepositoryEndpoint
 	*	- CodeartifactClient.RepositoryPermissionsPolicy
+	*	- CodeartifactClient.AllowedRepositoriesForGroup
+	*	- CodeartifactClient.AssociatedPackages
 	*	- CodeartifactClient.Domains
+	*	- CodeartifactClient.PackageGroups
 	*	- CodeartifactClient.PackageVersionAssets
 	*	- CodeartifactClient.PackageVersionDependencies
 	*	- CodeartifactClient.PackageVersions
 	*	- CodeartifactClient.Packages
 	*	- CodeartifactClient.Repositories
 	*	- CodeartifactClient.RepositoriesInDomain
+	*	- CodeartifactClient.SubPackageGroups
 	*	- CodeartifactClient.TagsForResource
 	*	- ApiGatewayManagementApiClient.Connection
 	*	- GlueClient.Blueprint
@@ -1495,6 +1516,7 @@
 	*	- RedshiftClient.ReservedNodeExchangeConfigurationOptions
 	*	- RedshiftClient.ReservedNodeExchangeOfferings
 	*	- RedshiftClient.ResourcePolicy
+	*	- RedshiftClient.Recommendations
 	*	- MediaConvertClient.Endpoints
 	*	- MediaConvertClient.Job
 	*	- MediaConvertClient.JobTemplate
@@ -1539,6 +1561,7 @@
 	*	- CloudTrailClient.EventDataStores
 	*	- CloudTrailClient.ImportFailures
 	*	- CloudTrailClient.Imports
+	*	- CloudTrailClient.InsightsMetricData
 	*	- CloudTrailClient.PublicKeys
 	*	- CloudTrailClient.Queries
 	*	- CloudTrailClient.Tags
@@ -1654,12 +1677,14 @@
 	*	- KinesisVideoClient.TagsForStream
 	*	- IvsClient.Channel
 	*	- IvsClient.PlaybackKeyPair
+	*	- IvsClient.PlaybackRestrictionPolicy
 	*	- IvsClient.RecordingConfiguration
 	*	- IvsClient.Stream
 	*	- IvsClient.StreamKey
 	*	- IvsClient.StreamSession
 	*	- IvsClient.Channels
 	*	- IvsClient.PlaybackKeyPairs
+	*	- IvsClient.PlaybackRestrictionPolicies
 	*	- IvsClient.RecordingConfigurations
 	*	- IvsClient.StreamKeys
 	*	- IvsClient.StreamSessions
@@ -1672,6 +1697,7 @@
 	*	- AppSyncClient.DomainName
 	*	- AppSyncClient.Function
 	*	- AppSyncClient.GraphqlApi
+	*	- AppSyncClient.GraphqlApiEnvironmentVariables
 	*	- AppSyncClient.IntrospectionSchema
 	*	- AppSyncClient.Resolver
 	*	- AppSyncClient.SchemaCreationStatus
@@ -1791,7 +1817,16 @@
 	*	- MediaLiveClient.Reservation
 	*	- MediaLiveClient.Schedule
 	*	- MediaLiveClient.Thumbnails
+	*	- MediaLiveClient.CloudWatchAlarmTemplate
+	*	- MediaLiveClient.CloudWatchAlarmTemplateGroup
+	*	- MediaLiveClient.EventBridgeRuleTemplate
+	*	- MediaLiveClient.EventBridgeRuleTemplateGroup
+	*	- MediaLiveClient.SignalMap
 	*	- MediaLiveClient.Channels
+	*	- MediaLiveClient.CloudWatchAlarmTemplateGroups
+	*	- MediaLiveClient.CloudWatchAlarmTemplates
+	*	- MediaLiveClient.EventBridgeRuleTemplateGroups
+	*	- MediaLiveClient.EventBridgeRuleTemplates
 	*	- MediaLiveClient.InputDeviceTransfers
 	*	- MediaLiveClient.InputDevices
 	*	- MediaLiveClient.InputSecurityGroups
@@ -1800,6 +1835,7 @@
 	*	- MediaLiveClient.Multiplexes
 	*	- MediaLiveClient.Offerings
 	*	- MediaLiveClient.Reservations
+	*	- MediaLiveClient.SignalMaps
 	*	- MediaLiveClient.TagsForResource
 	*	- KafkaClient.Cluster
 	*	- KafkaClient.ClusterOperation
@@ -2348,6 +2384,7 @@
 	*	- CostExplorerClient.Anomalies
 	*	- CostExplorerClient.AnomalyMonitors
 	*	- CostExplorerClient.AnomalySubscriptions
+	*	- CostExplorerClient.ApproximateUsageRecords
 	*	- CostExplorerClient.CostAndUsage
 	*	- CostExplorerClient.CostAndUsageWithResources
 	*	- CostExplorerClient.CostCategories
@@ -2364,6 +2401,7 @@
 	*	- CostExplorerClient.SavingsPlansUtilizationDetails
 	*	- CostExplorerClient.Tags
 	*	- CostExplorerClient.UsageForecast
+	*	- CostExplorerClient.CostAllocationTagBackfillHistory
 	*	- CostExplorerClient.CostAllocationTags
 	*	- CostExplorerClient.CostCategoryDefinitions
 	*	- CostExplorerClient.SavingsPlansPurchaseRecommendationGeneration
@@ -2667,6 +2705,8 @@
 	*	- WorkSpacesClient.WorkspaceSnapshots
 	*	- WorkSpacesClient.Workspaces
 	*	- WorkSpacesClient.WorkspacesConnectionStatus
+	*	- WorkSpacesClient.AccountLink
+	*	- WorkSpacesClient.AccountLinks
 	*	- WorkSpacesClient.AvailableManagementCidrRanges
 	*	- ResourceGroupsTaggingAPIClient.ReportCreation
 	*	- ResourceGroupsTaggingAPIClient.ComplianceSummary
@@ -2894,6 +2934,7 @@
 	*	- GameLiftClient.Alias
 	*	- GameLiftClient.Build
 	*	- GameLiftClient.Compute
+	*	- GameLiftClient.ContainerGroupDefinition
 	*	- GameLiftClient.EC2InstanceLimits
 	*	- GameLiftClient.FleetAttributes
 	*	- GameLiftClient.FleetCapacity
@@ -2927,6 +2968,7 @@
 	*	- GameLiftClient.Aliases
 	*	- GameLiftClient.Builds
 	*	- GameLiftClient.Compute
+	*	- GameLiftClient.ContainerGroupDefinitions
 	*	- GameLiftClient.Fleets
 	*	- GameLiftClient.GameServerGroups
 	*	- GameLiftClient.GameServers
@@ -3005,6 +3047,7 @@
 	*	- LightsailClient.RelationalDatabaseSnapshot
 	*	- LightsailClient.RelationalDatabaseSnapshots
 	*	- LightsailClient.RelationalDatabases
+	*	- LightsailClient.SetupHistory
 	*	- LightsailClient.StaticIp
 	*	- LightsailClient.StaticIps
 	*	- NeptuneClient.DBClusterEndpoints
@@ -3166,11 +3209,13 @@
 	*	- EMRContainersClient.JobRun
 	*	- EMRContainersClient.JobTemplate
 	*	- EMRContainersClient.ManagedEndpoint
+	*	- EMRContainersClient.SecurityConfiguration
 	*	- EMRContainersClient.VirtualCluster
 	*	- EMRContainersClient.ManagedEndpointSessionCredentials
 	*	- EMRContainersClient.JobRuns
 	*	- EMRContainersClient.JobTemplates
 	*	- EMRContainersClient.ManagedEndpoints
+	*	- EMRContainersClient.SecurityConfigurations
 	*	- EMRContainersClient.TagsForResource
 	*	- EMRContainersClient.VirtualClusters
 	*	- MemoryDBClient.ACLs
@@ -3338,12 +3383,14 @@
 	*	- AmplifyUIBuilderClient.CodegenJobs
 	*	- AmplifyUIBuilderClient.Components
 	*	- AmplifyUIBuilderClient.Forms
+	*	- AmplifyUIBuilderClient.TagsForResource
 	*	- AmplifyUIBuilderClient.Themes
 	*	- KafkaConnectClient.Connector
 	*	- KafkaConnectClient.CustomPlugin
 	*	- KafkaConnectClient.WorkerConfiguration
 	*	- KafkaConnectClient.Connectors
 	*	- KafkaConnectClient.CustomPlugins
+	*	- KafkaConnectClient.TagsForResource
 	*	- KafkaConnectClient.WorkerConfigurations
 	*	- PanoramaClient.ApplicationInstance
 	*	- PanoramaClient.ApplicationInstanceDetails
@@ -3552,6 +3599,7 @@
 	*	- ApplicationCostProfilerClient.ReportDefinition
 	*	- ApplicationCostProfilerClient.ReportDefinitions
 	*	- KeyspacesClient.Keyspace
+	*	- KeyspacesClient.TableAutoScalingSettings
 	*	- KeyspacesClient.Table
 	*	- KeyspacesClient.Keyspaces
 	*	- KeyspacesClient.Tables
@@ -3696,6 +3744,7 @@
 	*	- IvschatClient.TagsForResource
 	*	- WellArchitectedClient.Answer
 	*	- WellArchitectedClient.ConsolidatedReport
+	*	- WellArchitectedClient.GlobalSettings
 	*	- WellArchitectedClient.Lens
 	*	- WellArchitectedClient.LensReview
 	*	- WellArchitectedClient.LensReviewReport
@@ -3965,14 +4014,17 @@
 	*	- DLMClient.LifecyclePolicies
 	*	- DLMClient.LifecyclePolicy
 	*	- DLMClient.TagsForResource
+	*	- OutpostsClient.CapacityTask
 	*	- OutpostsClient.CatalogItem
 	*	- OutpostsClient.Connection
 	*	- OutpostsClient.Order
 	*	- OutpostsClient.Outpost
 	*	- OutpostsClient.OutpostInstanceTypes
+	*	- OutpostsClient.OutpostSupportedInstanceTypes
 	*	- OutpostsClient.SiteAddress
 	*	- OutpostsClient.Site
 	*	- OutpostsClient.Assets
+	*	- OutpostsClient.CapacityTasks
 	*	- OutpostsClient.CatalogItems
 	*	- OutpostsClient.Orders
 	*	- OutpostsClient.Outposts
@@ -4659,6 +4711,8 @@
 	*	- IoTWirelessClient.EventConfigurationByResourceTypes
 	*	- IoTWirelessClient.FuotaTask
 	*	- IoTWirelessClient.LogLevelsByResourceTypes
+	*	- IoTWirelessClient.MetricConfiguration
+	*	- IoTWirelessClient.Metrics
 	*	- IoTWirelessClient.MulticastGroup
 	*	- IoTWirelessClient.MulticastGroupSession
 	*	- IoTWirelessClient.NetworkAnalyzerConfiguration
@@ -5179,19 +5233,19 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 
 	let alreadyStructured = false;
 	let customJsonObjectBef;
-	//if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
-	let autorizeObjectName = [
-		"IAMClient.AccessKeys",
-		"IAMClient.VirtualMFADevices",
-		"IAMClient.MFADevices",
-		"EC2Client.NetworkAcls",
-		"IAMClient.Policies",
-		"EC2Client.Instances",
-		"EC2Client.NetworkInterfaces"
-	]
-	if (!autorizeObjectName.includes(object.clientName + "." + object.objectName)) {
-		return null;
-	}
+	if(!currentConfig.ObjectNameNeed?.includes(object.clientName + "." + object.objectName)) return null;
+	//let autorizeObjectName = [
+	//	"IAMClient.AccessKeys",
+	//	"IAMClient.VirtualMFADevices",
+	//	"IAMClient.MFADevices",
+	//	"EC2Client.NetworkAcls",
+	//	"IAMClient.Policies",
+	//	"EC2Client.Instances",
+	//	"EC2Client.NetworkInterfaces"
+	//]
+	//if (!autorizeObjectName.includes(object.clientName + "." + object.objectName)) {
+	//	return null;
+	//}
 	try {
 
 		const client = new object.clientFunc({region: region, credentials: credential});
