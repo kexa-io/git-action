@@ -68414,3 +68414,12 @@ CHANGELOG.md was changed
 package.json was changed
 
 
+## 1.2.11
+
+### Files added: 0
+
+### Files changed: 1
+
+CHANGELOG.md was changed
+
+
