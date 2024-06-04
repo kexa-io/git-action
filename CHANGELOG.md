@@ -74946,3 +74946,24 @@ src/services/addOn/kubernetesGathering.service.ts was changed
 src/services/addOn/o365Gathering.service.ts was changed
 
 
+## 1.6.1
+
+### Files added: 0
+
+### Files changed: 7
+
+lib/models/kubernetes/kubernetes.models.js was changed
+
+lib/services/addOn/display/kubernetesDisplay.service.js was changed
+
+lib/services/addOn/kubernetesGathering.service.js was changed
+
+src/models/kubernetes/kubernetes.models.ts was changed
+
+src/rules/Kubernete.yaml was changed
+
+src/services/addOn/display/kubernetesDisplay.service.ts was changed
+
+src/services/addOn/kubernetesGathering.service.ts was changed
+
+
