@@ -33,6 +33,7 @@ import { GCPResources } from "../../models/gcp/resource.models";
 import {Storage} from "@google-cloud/storage";
 import { deleteFile, getFile, writeStringToJsonFile } from "../../helpers/files";
 import { GcpConfig } from "../../models/gcp/config.models";
+import { jsonStringify } from '../../helpers/jsonStringify';
 
 ////////////////////////////////
 //////   INITIALIZATION   //////
@@ -259,14 +260,14 @@ async function executeAllRegions(projectId: number, serviceFunction: Function, c
             const request = { parent };
             if (!isIterable) {
                 let response = await serviceFunction.call(client, request);
-                let jsonTmp = JSON.parse(JSON.stringify(response));
+                let jsonTmp = JSON.parse(jsonStringify(response));
                 if (jsonTmp != null && jsonTmp.length > 0) {
                     jsonResponses.push(addRegionGCP(jsonTmp, currentRegion));
                 }
             } else {
                 const iterable = await serviceFunction.call(client, request);
                 for await (const response of iterable) {
-                    let jsonTmp = JSON.parse(JSON.stringify(response));
+                    let jsonTmp = JSON.parse(jsonStringify(response));
                     if (jsonTmp != null && jsonTmp.length > 0) {
                         jsonResponses.push(addRegionGCP(jsonTmp, currentRegion));
                     }
@@ -325,7 +326,7 @@ async function listAllComputes(projectId: string): Promise<Array<any>|null> {
 
         if (instances && instances.length > 0) {
             for (let i = 0; i < instances.length; i++) {
-                jsonData.push(JSON.parse(JSON.stringify(instances[i].metadata.items.length)));
+                jsonData.push(JSON.parse(jsonStringify(instances[i].metadata.items.length)));
             }
         }
     }
@@ -345,7 +346,7 @@ async function listSSHKey(projectId: string): Promise<Array<any>|null> {
         const instances = instancesObject.instances;
         if (instances && instances.length > 0) {
             for (let i = 0; i < instances.length; i++) {
-                jsonData.push(JSON.parse(JSON.stringify(instances[i].metadata?.items)));
+                jsonData.push(JSON.parse(jsonStringify(instances[i].metadata?.items)));
             }
         }
     }
@@ -363,7 +364,7 @@ async function listPersistentDisks(projectId: any) {
 
         if (disks && disks.length > 0) {
             for (let i = 0; i < disks.length; i++) {
-                jsonData.push(JSON.parse(JSON.stringify(disks[i])));
+                jsonData.push(JSON.parse(jsonStringify(disks[i])));
             }
         }
     }
@@ -379,7 +380,7 @@ async function listAllBucket(): Promise<Array<any>|null> {
         const [buckets] = await storage.getBuckets();
         for (let i = 0; i < buckets.length; i++) {
             const current_bucket = await storage.bucket(buckets[i].name).get();
-            const jsonData = JSON.parse(JSON.stringify(current_bucket));
+            const jsonData = JSON.parse(jsonStringify(current_bucket));
             jsonReturn.push(jsonData);
 
         }
@@ -404,7 +405,7 @@ async function listAllClusters(): Promise<Array<any>|null> {
             zone: "-",
         };
         const [response] = await cnt.listClusters(request);
-        jsonData = JSON.parse(JSON.stringify(response));
+        jsonData = JSON.parse(jsonStringify(response));
     } catch (e) {
         logger.debug(e);
     }
@@ -421,7 +422,7 @@ async function listAllProject(): Promise<Array<any>|null> {
         const client = new ProjectsClient();
         const projects = client.searchProjectsAsync();
         for await (const project of projects) {
-            jsonData = JSON.parse(JSON.stringify(project));
+            jsonData = JSON.parse(jsonStringify(project));
         }
     } catch (e) {
         logger.debug(e);
@@ -441,7 +442,7 @@ async function getBillingAccount(projectId: any): Promise<Array<any>|null> {
             projectId,
         });
         for (const account of accounts) {
-            jsonData = JSON.parse(JSON.stringify(account));
+            jsonData = JSON.parse(jsonStringify(account));
         }
     } catch (e) {
         logger.debug(e);
@@ -460,7 +461,7 @@ async function listWorkflows(projectId: any): Promise<Array<any>|null> {
             parent: client.locationPath(projectId, '-'),
         });
         for (const workflow of workflows) {
-            jsonData = JSON.parse(JSON.stringify(workflow));
+            jsonData = JSON.parse(jsonStringify(workflow));
         }
     } catch (e) {
         logger.debug(e);
@@ -478,7 +479,7 @@ async function listWebSecurityConfig(projectId: any): Promise<Array<any>|null> {
         const stats = await client.listScanConfigs({
             parent: `projects/${projectId}`,
         });
-        jsonData = JSON.parse(JSON.stringify(stats));
+        jsonData = JSON.parse(jsonStringify(stats));
     }
     catch (e) {
         logger.debug(e);
@@ -515,7 +516,7 @@ async function listVMWareEngine(projectId: any): Promise<Array<any>|null>  {
             request
         );
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.debug(e);
@@ -551,7 +552,7 @@ export async function listSecrets(projectId: any): Promise<Array<any>|null> {
         const request = { parent };
         const iterable = await secretmanagerClient.listSecretsAsync(request);
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.debug(e);
@@ -570,7 +571,7 @@ async function listConnectivityTests(projectId: any): Promise<Array<any>|null>  
         const tests = await client.listConnectivityTests({
             parent: `projects/${projectId}/locations/global`,
         });
-        jsonData = JSON.parse(JSON.stringify(tests));
+        jsonData = JSON.parse(jsonStringify(tests));
     } catch (e) {
         logger.debug(e);
     }
@@ -589,7 +590,7 @@ async function listResourceSettings(projectId: any): Promise<Array<any>|null> {
         const settings = await client.listSettings({
             parent: `projects/${projectId}`,
         });
-        jsonData = JSON.parse(JSON.stringify(settings));
+        jsonData = JSON.parse(jsonStringify(settings));
     } catch (e) {
         logger.debug(e);
     }
@@ -622,7 +623,7 @@ async function listOSConfig(projectId: any): Promise<Array<any>|null> {
         const [deployments] = await client.listPatchDeployments({
             parent: `projects/${projectId}`,
         });
-        jsonData = JSON.parse(JSON.stringify(deployments));
+        jsonData = JSON.parse(jsonStringify(deployments));
     } catch (e) {
         logger.debug(e);
     }
@@ -640,7 +641,7 @@ async function listOrgPolicyContraints(projectId: any): Promise<Array<any>|null>
         const constraints = await client.listConstraints({
             parent: `projects/${projectId}`,
         });
-        jsonData = JSON.parse(JSON.stringify(constraints));
+        jsonData = JSON.parse(jsonStringify(constraints));
     } catch (e) {
         logger.debug(e);
     }
@@ -674,7 +675,7 @@ async function listNotebookInstances(projectId: any): Promise<Array<any> | null>
             parent: `projects/${projectId}/locations/-`,
         });
         for (const instance of instances) {
-            jsonData = JSON.parse(JSON.stringify(instance));
+            jsonData = JSON.parse(jsonStringify(instance));
         }
     } catch (e) {
         logger.debug(e);
@@ -693,7 +694,7 @@ async function listDashboards(projectId: any): Promise<Array<any> | null> {
         const ds = new DashboardsServiceClient();
         const [dashboards] = await ds.listDashboards({parent,});
         for (const dashboard of dashboards) {
-            jsonData = JSON.parse(JSON.stringify(dashboard));
+            jsonData = JSON.parse(jsonStringify(dashboard));
         }
     } catch (e) {
         logger.debug(e);
@@ -712,7 +713,7 @@ async function listIdentitiesDomain(projectId: any): Promise<Array<any> | null> 
         const domains = await client.listDomains({
             parent: `projects/${projectId}/locations/global`,
         });
-        jsonData = JSON.parse(JSON.stringify(domains));
+        jsonData = JSON.parse(jsonStringify(domains));
     } catch (e) {
         logger.debug(e)
     }
@@ -730,7 +731,7 @@ async function listLineageProcesses(projectId: any): Promise<Array<any> | null> 
         const request = {parent};
         const iterable = await lineageClient.listProcessesAsync(request);
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.debug(e);
@@ -752,7 +753,7 @@ async function listKMSCryptoKeys(projectId: any): Promise<Array<any> | null> {
             maxResults: 50,
             autoPaginate: false,
         });
-        jsonData = JSON.parse(JSON.stringify(response));
+        jsonData = JSON.parse(jsonStringify(response));
     } catch (e) {
         logger.debug(e);
     }
@@ -772,7 +773,7 @@ async function listKMSKeyRings(projectId: any): Promise<Array<any> | null> {
             parent: locationName
         });
         for (const keyRing of keyRings) {
-            jsonData = JSON.parse(JSON.stringify(keyRing));
+            jsonData = JSON.parse(jsonStringify(keyRing));
         }
     } catch (e) {
         logger.debug(e);
@@ -791,7 +792,7 @@ async function listDomainsRegistration(projectId: any): Promise<Array<any> | nul
         const [registrations] = await client.listRegistrations({
             parent: `projects/${projectId}/locations/global`,
         });
-        jsonData = JSON.parse(JSON.stringify(registrations));
+        jsonData = JSON.parse(jsonStringify(registrations));
     } catch (e) {
         logger.debug(e);
     }
@@ -808,7 +809,7 @@ async function listDnsZones(projectId: any): Promise<Array<any> | null> {
         const dns = new DNS();
         const [zones] = await dns.getZones();
         for (const zone of zones) {
-            jsonData = JSON.parse(JSON.stringify(zone));
+            jsonData = JSON.parse(jsonStringify(zone));
         }
     } catch (e) {
         logger.debug(e);
@@ -843,7 +844,7 @@ async function listCertificates(projectId: any): Promise<Array<any> | null> {
         const request = { parent };
         const iterable = await certificatemanagerClient.listCertificatesAsync(request);
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.debug(e);
@@ -881,7 +882,7 @@ async function listWorkloads(projectId: any): Promise<Array<any> | null> {
             parent: `organizations/${projectId}`,
         });
         for (const workload of workloads) {
-            jsonData = JSON.parse(JSON.stringify(workload));
+            jsonData = JSON.parse(jsonStringify(workload));
         }*/
     } catch (e) {
         logger.debug(e);
@@ -935,7 +936,7 @@ async function listAppConnectors(projectId: any): Promise<Array<any> | null> {
         const request = {parent};
         const iterable = await appconnectorsClient.listAppConnectorsAsync(request);
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.error(e);
@@ -955,7 +956,7 @@ async function listApiKeys(projectId: any): Promise<Array<any> | null> {
         const request = { parent };
         const iterable = await apikeysClient.listKeysAsync(request);
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.error(e);
@@ -974,7 +975,7 @@ async function listApi(projectId: any): Promise<Array<any> | null> {
             parent: `projects/${projectId}/locations/global`,
         });
         for (const api of apis) {
-            jsonData = JSON.parse(JSON.stringify(api));
+            jsonData = JSON.parse(jsonStringify(api));
         }
     } catch (e) {
         logger.error(e);
@@ -992,7 +993,7 @@ async function listAccessPolicy(projectId: any): Promise<Array<any> | null> {
         const requests = await client.listApprovalRequests({
             parent: `projects/${projectId}`,
         });
-        jsonData = JSON.parse(JSON.stringify(requests));
+        jsonData = JSON.parse(jsonStringify(requests));
     } catch (e) {
         logger.error(e);
     }
@@ -1033,7 +1034,7 @@ async function listStorageConfig(projectId: any): Promise<Array<any>|null> {
         };
         const iterable = await storageinsightsClient.listReportConfigsAsync(request);
         for await (const response of iterable) {
-            jsonData = JSON.parse(JSON.stringify(response));
+            jsonData = JSON.parse(jsonStringify(response));
         }
     } catch (e) {
         logger.error(e);
@@ -1054,7 +1055,7 @@ async function listPrivateCertificates(projectId: any): Promise<Array<any>|null>
         const res = await client.listCertificates({
             parent: `projects/${projectId}/locations/-/caPools/-`,
         });
-        jsonData = JSON.parse(JSON.stringify(res));
+        jsonData = JSON.parse(jsonStringify(res));
     } catch (e) {
         logger.error(e);
     }

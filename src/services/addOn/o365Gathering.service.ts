@@ -25,6 +25,7 @@
 import { getConfigOrEnvVar } from "../manageVarEnvironnement.service";
 import { o365Resources } from "../../models/o365/ressource.models";
 import { o365Config } from "../../models/o365/config.models";
+import { jsonStringify } from '../../helpers/jsonStringify';
 
 ////////////////////////////////
 //////   INITIALIZATION   //////
@@ -186,7 +187,7 @@ async function  listUsers(endpoint: string, accessToken: string, headers: Header
             logger.error("O365 - Error when calling graph API")
             return null;
         }
-        jsonData = JSON.parse(JSON.stringify(response.data.value));
+        jsonData = JSON.parse(jsonStringify(response.data.value));
         for (const element of jsonData) {
             try {
                 const licenseResponse = await axios.get(`${endpoint}/users/${element.id}/licenseDetails`, {
@@ -237,7 +238,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
             return null;
         }
         else {
-            jsonData = JSON.parse(JSON.stringify(response.data.value));
+            jsonData = JSON.parse(jsonStringify(response.data.value));
         }
         const assignedResponse = await axios.get(`${endpoint}/users?$select=id,assignedLicenses`, {
             headers: {
@@ -252,7 +253,7 @@ async function  listSubscribedSkus(endpoint: string, accessToken: string, header
                 userId: user.id,
                 assignedLicenses: user.assignedLicenses,
             }));
-            jsonData.usersLicenses = JSON.parse(JSON.stringify(adaptedResponse));
+            jsonData.usersLicenses = JSON.parse(jsonStringify(adaptedResponse));
         }
 
     } catch (e: any) {
@@ -276,9 +277,9 @@ async function genericListing(endpoint: string, accessToken: string, queryEndpoi
         }
         else {
             if (response.data.value)
-                jsonData = JSON.parse(JSON.stringify(response.data.value));
+                jsonData = JSON.parse(jsonStringify(response.data.value));
             else
-                jsonData = JSON.parse(JSON.stringify(response.data));
+                jsonData = JSON.parse(jsonStringify(response.data));
         }
     } catch (e: any) {
         logger.error(e.response.data);
@@ -316,7 +317,7 @@ async function listAuthMethods(endpoint: string, accessToken: string, userList: 
                 return null;
             } else {
                 let tmpJson = {methods: [], userId: {}, userName: {}, userRole: {}};
-                tmpJson.methods = JSON.parse(JSON.stringify(response.data.value));
+                tmpJson.methods = JSON.parse(jsonStringify(response.data.value));
                 tmpJson.userId = element.id;
                 tmpJson.userName = element.displayName;
                 tmpJson.userRole = element.displayName;

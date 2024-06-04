@@ -1755,6 +1755,7 @@ import { DefaultAzureCredential } from "@azure/identity";
 import { getConfigOrEnvVar, setEnvVar } from "../manageVarEnvironnement.service";
 import { AzureConfig } from "../../models/azure/config.models";
 import axios from "axios";
+import { jsonStringify } from "../../helpers/jsonStringify";
 
 import { getNewLogger } from "../logger.service";
 const logger = getNewLogger("AzureLogger");
@@ -1767,7 +1768,7 @@ export async function collectData(azureConfig:AzureConfig[]): Promise<Object[]|n
     let resources = new Array<Object>();
     for(let config of azureConfig??[]){
         logger.debug("config: ");
-        logger.debug(JSON.stringify(config));
+        logger.debug(jsonStringify(config));
         let prefix = config.prefix??(azureConfig.indexOf(config).toString());
         try {
             logger.debug("prefix: " + prefix);

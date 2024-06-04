@@ -4864,6 +4864,7 @@ import { AwsConfig } from "../../models/aws/config.models";
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import { EC2Client } from "@aws-sdk/client-ec2";
 import { ResourceGroupsTaggingAPIClient, GetTagKeysCommand, GetResourcesCommand, GetComplianceSummaryCommand } from "@aws-sdk/client-resource-groups-tagging-api";
+import { jsonStringify } from "../../helpers/jsonStringify";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -5314,10 +5315,10 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 			if (Object.keys(data).length == 2 && key != "$metadata") {
 				try {
 					if (Array.isArray(data[key])) {
-						jsonData = JSON.parse(JSON.stringify(data[key]));
+						jsonData = JSON.parse(jsonStringify(data[key]));
 					}
 					else {
-						jsonData = JSON.parse(JSON.stringify([data[key]]));
+						jsonData = JSON.parse(jsonStringify([data[key]]));
 					}
 				} catch (e) {
 					jsonData = [];
@@ -5326,7 +5327,7 @@ async function gatherAwsObject(credential: any, region:string, object: ClientRes
 			else if ((key != "$metadata") && (key != "NextToken")) {
 				try {
 					if (Array.isArray(data[key])) {
-						jsonData = JSON.parse(JSON.stringify(data[key]));
+						jsonData = JSON.parse(jsonStringify(data[key]));
 					}
 				} catch (e) {
 					jsonData = [];
@@ -5405,7 +5406,7 @@ const customGatherFunctions: FunctionMap = {
 async function tagsValueListing(client: ResourceGroupsTaggingAPIClient, command: GetTagKeysCommand, region: string): Promise<any> {
     try {
         const dataKeys = await client.send(command);
-        const jsonDataKeys = JSON.parse(JSON.stringify(dataKeys.TagKeys));
+        const jsonDataKeys = JSON.parse(jsonStringify(dataKeys.TagKeys));
         let jsonData: any[] = [];
         for (const element of jsonDataKeys) {
             const newData = { 
@@ -5425,7 +5426,7 @@ async function tagsValueListing(client: ResourceGroupsTaggingAPIClient, command:
 async function complianceSummaryListing(client: ResourceGroupsTaggingAPIClient, command: GetResourcesCommand, region: string): Promise<any> {
     try {
         const dataKeys = await client.send(command);
-        const jsonData = JSON.parse(JSON.stringify(dataKeys.ResourceTagMappingList));
+        const jsonData = JSON.parse(jsonStringify(dataKeys.ResourceTagMappingList));
         logger.debug(region + " - Tags Done");
         return jsonData ?? null;
     } catch (err) {

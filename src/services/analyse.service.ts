@@ -18,6 +18,7 @@ import moment, { Moment, unitOfTime } from 'moment';
 import { BeHaviorEnum } from '../enum/beHavior.enum';
 import { writeStringToJsonFile } from '../helpers/files';
 import { getConfig } from '../helpers/loaderConfig';
+import { jsonStringify } from '../helpers/jsonStringify';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -88,7 +89,7 @@ export function extractAddOnNeed(settingFileList: SettingFile[]){
             if(!objectNameList[ruleFile.alert.global.name][rule.cloudProvider].includes(rule.objectName)) objectNameList[ruleFile.alert.global.name][rule.cloudProvider].push(rule.objectName);
         });
     });
-    writeStringToJsonFile(JSON.stringify({ "addOn" : providerList, "objectNameNeed": objectNameList }), "./config/addOnNeed.json");
+    writeStringToJsonFile(jsonStringify({ "addOn" : providerList, "objectNameNeed": objectNameList }), "./config/addOnNeed.json");
 }
 
 function getListNeedRules(): string[]{
@@ -599,14 +600,16 @@ export function checkEqual(condition:RulesConditions, value:any): boolean {
 }
 
 export function checkGreaterThan(condition:RulesConditions, value:any): boolean {
-    logger.debug("check greater than");
-    if(value > condition.value) return true;
+    logger.debug("check greater than:" + value + " > " + condition.value + " ?");
+    if(typeof value === "number" && value > (condition.value as number)) return true;
+    if(~~value > ~~condition.value) return true;
     return false;
 }
 
 export function checkLessThan(condition:RulesConditions, value:any): boolean {
-    logger.debug("check less than");
-    if(value < condition.value) return true;
+    logger.debug("check less than:" + value + " < " + condition.value + " ?");
+    if(typeof value === "number" && value < (condition.value as number)) return true;
+    if(~~value < ~~condition.value) return true;
     return false;
 }
 

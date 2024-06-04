@@ -13,6 +13,7 @@ import { getConfigOrEnvVar } from "./manageVarEnvironnement.service";
 import axios from 'axios';
 import { extractURL } from "../helpers/extractURL";
 import { Teams } from "../emails/teams";
+import { jsonStringify } from "../helpers/jsonStringify";
 
 const jsome = require('jsome');
 jsome.level.show = true;
@@ -146,7 +147,7 @@ export function alertWebhookGlobal(alert: GlobalConfigAlert, compteError: number
     alert.to.forEach((webhook_to) => {
         if(!webhook_to.includes("http")) return;
         logger.debug("send webhook to:"+webhook_to);
-        request.post(webhook_to, { json: JSON.stringify(content) }, (res:any) => {
+        request.post(webhook_to, { json: jsonStringify(content) }, (res:any) => {
             logger.debug(`webhook to: ${webhook_to} are send`)
         }).on('error', (error:any) => {
             logger.error(error)
@@ -344,7 +345,7 @@ async function SendMail(mail: string, to: string, subject: string): Promise<bool
 
 async function SendMailWithAttachment(mail: string, to: string, subject: string, content: any): Promise<boolean> {
     try{
-        const jsonContent = JSON.stringify(content);
+        const jsonContent = jsonStringify(content);
 
         const jsonStream = new Readable();
         jsonStream.push(jsonContent);

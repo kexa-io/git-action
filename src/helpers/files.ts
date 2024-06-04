@@ -1,15 +1,16 @@
 import * as fs from 'fs';
 import { getNewLogger } from '../services/logger.service';
+import { jsonStringify } from './jsonStringify';
 const logger = getNewLogger("FilesHelper");
 
 export function writeStringToJsonFile(data: string, filePath: string): boolean {
     try {
         const fileExists = fs.existsSync(filePath);
         if (!fileExists) {
-            const initialData = JSON.stringify({});
+            const initialData = jsonStringify({});
             fs.writeFileSync(filePath, initialData);
         }
-        fs.writeFileSync(filePath, JSON.stringify(JSON.parse(data), null, 4), 'utf8');
+        fs.writeFileSync(filePath, jsonStringify(JSON.parse(data), 4), 'utf8');
         return true;
     } catch (error:any) {
         logger.error(error);

@@ -11,6 +11,7 @@ import {getNewLogger} from "./logger.service";
 import { Capacity } from "../models/settingFile/capacity.models";
 import { getEnvVar, setEnvVar } from "./manageVarEnvironnement.service";
 import { getConfig } from "../helpers/loaderConfig";
+import { jsonStringify } from "../helpers/jsonStringify";
 const logger = getNewLogger("LoaderAddOnLogger");
 const config = getConfig();
 
@@ -327,7 +328,7 @@ export async function extractHeaders(): Promise<Capacity>{
             };
         }
     });
-    writeStringToJsonFile(JSON.stringify(finalData), "./config/headers.json");
+    writeStringToJsonFile(jsonStringify(finalData), "./config/headers.json");
     return finalData;
 }
 
