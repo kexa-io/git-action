@@ -1,9 +1,5 @@
 name: Kexaction Scan
 
-on:
-  push:
-    branches:
-      - main
 
 jobs:
   run-docker-image:
