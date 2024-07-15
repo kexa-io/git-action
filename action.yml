@@ -19,19 +19,25 @@ runs:
 
     - name: Create .env file with all environment variables
       run: echo "${{ inputs.ENV_VARS }}" > .env
+      shell: bash
 
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.0
+      shell: bash
 
     - name: Run Docker container
       run: |
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.0 sleep infinity
+      shell: bash
 
     - name: Copy rules into container
       run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
+      shell: bash
 
     - name: Copy config into container
       run: docker cp ./config/* kexadockeractioncontainer:/app/config/
+      shell: bash
 
     - name: Start main application inside container
       run: docker exec kexadockeractioncontainer pnpm run start:nobuild
+      shell: bash
