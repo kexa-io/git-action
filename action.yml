@@ -18,8 +18,14 @@ runs:
       uses: actions/checkout@v2
 
     - name: Create .env file with all environment variables
-      run: echo "${{ inputs.ENV_VARS }}" > .env
+      run: |
+        echo "${{ inputs.ENV_VARS }}" | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' > .env
       shell: bash
+
+
+#    - name: Create .env file with all environment variables
+#      run: echo "${{ inputs.ENV_VARS }}" > .env
+#      shell: bash
 
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.0
