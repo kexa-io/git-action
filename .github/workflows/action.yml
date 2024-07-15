@@ -3,7 +3,7 @@ name: Kexaction Scan
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   run-docker-image:
