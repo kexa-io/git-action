@@ -21,6 +21,10 @@ runs:
       run: echo "${{ inputs.ENV_VARS }}" > .env
       shell: bash
 
+    - name: Display contents of .env file
+      run: cat .env
+      shell: bash
+
 #    - name: Create .env file with all environment variables
 #      run: echo "${{ inputs.ENV_VARS }}" > .env
 #      shell: bash
