@@ -23,9 +23,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create .env file with all environment variables
-        run: echo "${{ inputs.ENV_VARS }}" > .env
+        run: echo "${{ github.event.inputs.ENV_VARS }}" > .env
 
-  
       - name: Pull Docker image
         run: docker pull innovtech/kexaction:v1.0
 
