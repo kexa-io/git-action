@@ -19,9 +19,8 @@ runs:
 
     - name: Create .env file with all environment variables
       run: |
-        echo "${{ inputs.ENV_VARS }}" | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' > .env
+        echo '${{ inputs.ENV_VARS }}' | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' > .env
       shell: bash
-
 
 #    - name: Create .env file with all environment variables
 #      run: echo "${{ inputs.ENV_VARS }}" > .env
