@@ -9,10 +9,12 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 
-inputs:
-  envVars:
-    description: 'Serialized environment variables in JSON format'
-    required: true
+on:
+  workflow_dispatch:
+    inputs:
+      envVars:
+        description: 'Serialized environment variables in JSON format'
+        required: true
 
 jobs:
   run-docker-image:
