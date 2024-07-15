@@ -21,18 +21,6 @@ runs:
       run: echo "${{ inputs.ENV_VARS }}" > .env
       shell: bash
 
-    - name: Display contents of .env file
-      run: cat .env
-      shell: bash
-
-
-    - name: Display env vars
-      run: echo "${{ inputs.ENV_VARS }}" 
-      shell: bash
-#    - name: Create .env file with all environment variables
-#      run: echo "${{ inputs.ENV_VARS }}" > .env
-#      shell: bash
-
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.0
       shell: bash
