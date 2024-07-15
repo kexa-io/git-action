@@ -145,7 +145,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Kexa Action
-        uses: 4urcloud/Kexa_githubAction@1.7.6
+        uses: 4urcloud/Kexa_githubAction@1.7.0
 ```
 
 <br/>
@@ -168,7 +168,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Kexa Action
-        uses: 4urcloud/Kexa_githubAction@1.7.6
+        uses: 4urcloud/Kexa_githubAction@1.7.0
         with:
           ENV_VARS: |
           {
