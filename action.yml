@@ -9,12 +9,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 
-on:
-  workflow_dispatch:
-    inputs:  # Remove extra indentation here
-      envVars:
-        description: 'Serialized environment variables in JSON format'
-        required: true
+inputs:
+  ENV_VARS:
+    description: 'All environment variables to be set in the .env file as a JSON object'
+    default: null
 
 jobs:
   run-docker-image:
@@ -25,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create .env file with all environment variables
-        run: echo "${{ inputs.envVars }}" > .env
+        run: echo "${{ inputs.ENV_VARS }}" > .env
 
   
       - name: Pull Docker image
