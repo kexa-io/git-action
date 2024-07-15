@@ -11,7 +11,7 @@ runs:
 
 on:
   workflow_dispatch:
-    inputs:
+    inputs:  # Remove extra indentation here
       envVars:
         description: 'Serialized environment variables in JSON format'
         required: true
@@ -26,6 +26,7 @@ jobs:
 
       - name: Create .env file with all environment variables
         run: echo "${{ inputs.envVars }}" > .env
+
   
       - name: Pull Docker image
         run: docker pull innovtech/kexaction:v1.0
