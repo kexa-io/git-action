@@ -25,9 +25,26 @@ runs:
       run: docker pull innovtech/kexaction:v1.1
       shell: bash
 
+    #- name: Run Docker container
+    #  run: |
+    #    docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.1 sleep infinity
+    #  shell: bash
+
     - name: Run Docker container
+      id: docker-run
       run: |
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.1 sleep infinity
+        echo "::set-output name=exit_code::$?"
+      shell: bash
+
+    - name: Check if Docker run failed
+      if: ${{ always() }}
+      run: |
+        exit_code=${{ steps.docker-run.outputs.exit_code }}
+        if [ $exit_code -ne 0 ]; then
+          echo "Docker run failed with exit code $exit_code"
+          exit 1
+        fi
       shell: bash
 
     - name: Copy rules into container
