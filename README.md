@@ -129,82 +129,54 @@ Those rules will be defined in YAML files located in the /rules folder.
 To use the [github action](https://docs.github.com/fr/actions/learn-github-actions/understanding-github-actions) you can use such as:
 
 ```yaml
-   env:
-      AZ1_AZURECLIENTID: ${{ secrets.AZPROJ1_AZURECLIENTID }}
-      AZ1_AZURECLIENTSECRET: ${{ secrets.AZPROJ1_AZURECLIENTSECRET }}
-      AZ1_AZURETENANTID: ${{ secrets.AZPROJ1_AZURETENANTID }}
-      AZ1_SUBSCRIPTIONID: ${{ secrets.AZPROJ1_SUBSCRIPTIONID }}
-      #add here all your "environment variable" here from Github secrets
+name: Kexa-Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Create .env file with all environment variables
-        run: |
-          printenv > .env
-
-      - name: Pull Docker image
-        run: docker pull innovtech/kexaction:v1.0
-
-      - name: Run Docker container
-        run: |
-          docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.0 sleep infinity
-
-      - name: Copy rules into container
-        run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
-
-      - name: Copy config into container
-        run: docker cp ./config/* kexadockeractioncontainer:/app/config/
-
-      - name: Start main application inside container
-        run: docker exec kexadockeractioncontainer pnpm run start:nobuild
+      - name: Run Kexa Action
+        uses: 4urcloud/Kexa_githubAction@1.7.6
 ```
 
 <br/>
 
 Here is a full example of a github workflow with Kexa action :
 ```yaml
-name: Kexaction Scan
+name: Kexa-Action
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
-  run-docker-image:
+  deploy:
     runs-on: ubuntu-latest
-    
-    env:
-      AZ1_AZURECLIENTID: ${{ secrets.AZPROJ1_AZURECLIENTID }}
-      AZ1_AZURECLIENTSECRET: ${{ secrets.AZPROJ1_AZURECLIENTSECRET }}
-      AZ1_AZURETENANTID: ${{ secrets.AZPROJ1_AZURETENANTID }}
-      AZ1_SUBSCRIPTIONID: ${{ secrets.AZPROJ1_SUBSCRIPTIONID }}
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Create .env file with all environment variables
-        run: |
-          printenv > .env
-
-      - name: Pull Docker image
-        run: docker pull innovtech/kexaction:v1.0
-
-      - name: Run Docker container
-        run: |
-          docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.0 sleep infinity
-
-      - name: Copy rules into container
-        run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
-
-      - name: Copy config into container
-        run: docker cp ./config/* kexadockeractioncontainer:/app/config/
-
-      - name: Start main application inside container
-        run: docker exec kexadockeractioncontainer pnpm run start:nobuild
+      - name: Run Kexa Action
+        uses: 4urcloud/Kexa_githubAction@1.7.6
+        with:
+          ENV_VARS: |
+          {
+            "AZ1_AZURECLIENTID": "${{ secrets.AZPROJ1_AZURECLIENTID }}",
+            "AZ1_AZURECLIENTSECRET": "${{ secrets.AZPROJ1_AZURECLIENTSECRET }}",
+            "AZ1_AZURETENANTID": "${{ secrets.AZPROJ1_AZURETENANTID }}",
+            "AZ1_SUBSCRIPTIONID": "${{ secrets.AZPROJ1_SUBSCRIPTIONID }}"
+          }
 ```
 
 You can also use key manager. The principle of use is the same as for [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#password-manager). Here are some examples of use with and without key manager : [Here](./documentation/github/)
