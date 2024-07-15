@@ -18,16 +18,12 @@ jobs:
   run-docker-image:
     runs-on: ubuntu-latest
 
-    inputs:
-      envVars: ${{ toJson(inputs.envVars) }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Create .env file with all environment variables
-        run: |
-          echo "${{ inputs.envVars }}" > .env
+        run: echo "${{ inputs.envVars }}" > .env
   
       - name: Pull Docker image
         run: docker pull innovtech/kexaction:v1.0
