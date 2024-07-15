@@ -9,10 +9,12 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 
-inputs:
-  ENV_VARS:
-    description: 'All environment variables to be set in the .env file as a JSON object'
-    default: null
+on:
+  workflow_dispatch:
+    inputs:
+      ENV_VARS:
+        description: 'All environment variables to be set in the .env file as a JSON object'
+        default: null
 
 jobs:
   run-docker-image:
