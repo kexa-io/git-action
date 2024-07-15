@@ -5,37 +5,33 @@ branding:
   icon: 'check-circle'
   color: 'blue'
 
-on:
-  workflow_dispatch:
-    inputs:
-      ENV_VARS:
-        description: 'All environment variables to be set in the .env file as a JSON object'
-        default: '{}'
-        required: true
+inputs:
+  ENV_VARS:
+    description: 'All environment variables to be set in the .env file as a JSON object'
+    required: true
+    default: '{}'
 
-jobs:
-  run-docker-image:
-    runs-on: ubuntu-latest
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Create .env file with all environment variables
+      run: echo "${{ inputs.ENV_VARS }}" > .env
 
-      - name: Create .env file with all environment variables
-        run: echo "${{ inputs.ENV_VARS }}" > .env
+    - name: Pull Docker image
+      run: docker pull innovtech/kexaction:v1.0
 
-      - name: Pull Docker image
-        run: docker pull innovtech/kexaction:v1.0
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.0 sleep infinity
 
-      - name: Run Docker container
-        run: |
-          docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.0 sleep infinity
+    - name: Copy rules into container
+      run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
 
-      - name: Copy rules into container
-        run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
+    - name: Copy config into container
+      run: docker cp ./config/* kexadockeractioncontainer:/app/config/
 
-      - name: Copy config into container
-        run: docker cp ./config/* kexadockeractioncontainer:/app/config/
-
-      - name: Start main application inside container
-        run: docker exec kexadockeractioncontainer pnpm run start:nobuild
+    - name: Start main application inside container
+      run: docker exec kexadockeractioncontainer pnpm run start:nobuild
