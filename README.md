@@ -129,7 +129,7 @@ Those rules will be defined in YAML files located in the /rules folder.
 To use the [github action](https://docs.github.com/fr/actions/learn-github-actions/understanding-github-actions) you can use such as:
 
 ```yaml
-name: Kexa-Action
+name: Kexa Scan
 
 on:
   push:
@@ -145,14 +145,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Kexa Action
-        uses: 4urcloud/Kexa_githubAction@1.7.0
+        uses: 4urcloud/Kexa_githubAction@1.7.1
+
 ```
 
 <br/>
 
 Here is a full example of a github workflow with Kexa action :
 ```yaml
-name: Kexa-Action
+name: Kexa Scan
 
 on:
   push:
@@ -168,15 +169,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Kexa Action
-        uses: 4urcloud/Kexa_githubAction@1.7.0
+        uses: 4urcloud/Kexa_githubAction@1.7.1
         with:
           ENV_VARS: |
-          {
-            "AZ1_AZURECLIENTID": "${{ secrets.AZPROJ1_AZURECLIENTID }}",
-            "AZ1_AZURECLIENTSECRET": "${{ secrets.AZPROJ1_AZURECLIENTSECRET }}",
-            "AZ1_AZURETENANTID": "${{ secrets.AZPROJ1_AZURETENANTID }}",
-            "AZ1_SUBSCRIPTIONID": "${{ secrets.AZPROJ1_SUBSCRIPTIONID }}"
-          }
+            AZ1_AZURECLIENTID=${{ secrets.AZPROJ1_AZURECLIENTID }}
+            AZ1_AZURECLIENTSECRET=${{ secrets.AZPROJ1_AZURECLIENTSECRET }}
+            AZ1_AZURETENANTID=${{ secrets.AZPROJ1_AZURETENANTID }}
+            AZ1_SUBSCRIPTIONID=${{ secrets.AZPROJ1_SUBSCRIPTIONID }}
 ```
 
 You can also use key manager. The principle of use is the same as for [Kexa](https://github.com/4urcloud/Kexa/blob/main/documentation/Documentation-Kexa.md#password-manager). Here are some examples of use with and without key manager : [Here](./documentation/github/)
