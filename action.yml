@@ -48,13 +48,14 @@ runs:
       shell: bash
 
     - name: Display kubeconfig file
-      run: cat kubeconfig
+      if: ${{ exists('kubeconfig.yaml') }}
+      run: cat kubeconfig.yaml
       shell: bash
 
-    - name: Here is the env file2
+    - name: Here is the env file
+      if: ${{ exists('.env') }}
       run: cat .env
       shell: bash
-    
     #- name: Display KUBECONFIG information
     #  run: |
     #    echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
