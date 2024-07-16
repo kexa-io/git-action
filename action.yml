@@ -47,13 +47,31 @@ runs:
         fi
       shell: bash
 
+    - name: Check if kubeconfig.yaml exists
+      id: check_kubeconfig
+      run: |
+        if [ -f kubeconfig.yaml ]; then
+          echo "file_exists=true" >> $GITHUB_ENV
+        else
+          echo "file_exists=false" >> $GITHUB_ENV
+        fi
+
     - name: Display kubeconfig file
-      if: ${{ exists('kubeconfig.yaml') }}
+      if: env.file_exists == 'true'
       run: cat kubeconfig.yaml
       shell: bash
 
+    - name: Check if .env exists
+      id: check_env
+      run: |
+        if [ -f .env ]; then
+          echo "env_exists=true" >> $GITHUB_ENV
+        else
+          echo "env_exists=false" >> $GITHUB_ENV
+        fi
+
     - name: Here is the env file
-      if: ${{ exists('.env') }}
+      if: env.env_exists == 'true'
       run: cat .env
       shell: bash
     #- name: Display KUBECONFIG information
