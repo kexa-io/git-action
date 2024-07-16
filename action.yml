@@ -102,5 +102,5 @@ runs:
     # delete kube config file if created
     - name: Delete kubeconfig file
       if: steps.check_kubeconfig.outputs.exists == 'true'
-      run: rm kubeconfig
+      run: rm kubeconfig.yaml
       shell: bash
