@@ -22,7 +22,7 @@ runs:
       shell: bash
 
     - name: Pull Docker image
-      run: docker pull innovtech/kexaction:v1.2
+      run: docker pull innovtech/kexaction:v1.2.2
       shell: bash
 
     #- name: Run Docker container
@@ -31,7 +31,7 @@ runs:
     #  shell: bash
     - name: Run Docker container
       run: |
-        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.2 sleep infinity
+        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.2.2 sleep infinity
       shell: bash
       if: ${{ success() }}
 
