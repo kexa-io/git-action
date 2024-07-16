@@ -68,6 +68,12 @@ runs:
       shell: bash
       if: ${{ success() }}
 
+    - name: Display the kube json file inside container
+      run: |
+        docker exec kexadockeractioncontainer cat /app/config/kubernetes.json
+      shell: bash
+      if: ${{ success() }}
+
     - name: Copy rules into container
       run: |
         for file in ./rules/*; do
