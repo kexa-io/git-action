@@ -18,11 +18,15 @@ runs:
       uses: actions/checkout@v2
 
     - name: Create .env file with all environment variables
-      run: echo "${{ inputs.ENV_VARS }}" > .env
+      run: echo '${{ inputs.ENV_VARS }}' > .env
       shell: bash
 
     - name: Here is the env file
       run: cat .env
+      shell: bash
+
+    - name: Env done
+      run: echo "DONE"
       shell: bash
 
     - name: Pull Docker image
