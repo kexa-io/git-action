@@ -40,12 +40,18 @@ runs:
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
-          echo "${{ inputs.KUBECONFIG }}" > kubernetes.json
           echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=./kubeconfig.yaml" >> .env
+          python -c "import yaml, json, os; print(json.dumps(yaml.safe_load(${{ inputs.KUBECONFIG }}), indent=2))" > kubernetes.json
         else
           echo "KUBECONFIG not found."
         fi
       shell: bash
+
+
+    - name: Here is the JSON file
+      run: cat kubernetes.json
+      shell: bash
+
 
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.3
@@ -59,13 +65,13 @@ runs:
 
     - name: Copy kubeconfig into container
       run: |
-        docker cp ./kubeconfig.yaml kexadockeractioncontainer:/app/
+        docker cp kubeconfig.yaml kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
 
     - name: Copy kube json into container
       run: |
-        docker cp ./kubernetes.json kexadockeractioncontainer:/app/config/kubernetes.json
+        docker cp kubernetes.json kexadockeractioncontainer:/app/config/kubernetes.json
       shell: bash
       if: ${{ success() }}
 
