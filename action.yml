@@ -10,7 +10,6 @@ inputs:
     description: 'All environment variables to be set in the .env file as a JSON object'
     required: true
     default: '{}'
-    # PROBLEM HERE
   KUBECONFIG:
     description: 'Kubeconfig file content'
     required: false
@@ -47,33 +46,6 @@ runs:
         fi
       shell: bash
 
-    - name: Display kubeconfig file
-      run: cat kubeconfig.yaml
-      shell: bash
-
-    - name: Here is the env file
-      run: cat .env
-      shell: bash
-    #- name: Display KUBECONFIG information
-    #  run: |
-    #    echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
-    #    echo "KUBECONFIG_CONTENT: ${{ env.KUBECONFIG_CONTENT }}"
-    #  if: ${{ env.KUBECONFIG_NAME != 'none' }}
-    #  shell: bash
-
-    # retrieve full name of the input containing 'KUBECONFIG'
-    #- name: Get name of input containing 'KUBECONFIG'
-    #  id: get_kubeconfig_name
-    #  if: steps.check_kubeconfig.outputs.exists == 'true'
-    #  run: echo ::set-output name=kubeconfig_name::$(env | grep 'KUBECONFIG' | cut -d= -f1)
-    #  shell: bash
-
-    # add kube config content to .env file
-    #- name: Add kube config content to .env file
-    #  if: steps.check_kubeconfig.outputs.exists == 'true'
-    #  run: echo "${{ env[steps.get_kubeconfig_name.outputs.kubeconfig_name] }}" >> .env
-    #  shell: bash
-
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.3
       shell: bash
@@ -81,6 +53,18 @@ runs:
     - name: Run Docker container
       run: |
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.3 sleep infinity
+      shell: bash
+      if: ${{ success() }}
+
+    - name: Copy kubeconfig into container
+      run: |
+        docker cp ./kubeconfig.yaml kexadockeractioncontainer:/app/
+      shell: bash
+      if: ${{ success() }}
+
+    - name: Copy env into container
+      run: |
+        docker cp .env kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
 
