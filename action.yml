@@ -40,6 +40,7 @@ runs:
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
+          echo "${{ inputs.KUBECONFIG }}" > kubernetes.json
           echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=./kubeconfig.yaml" >> .env
         else
           echo "KUBECONFIG not found."
@@ -59,6 +60,12 @@ runs:
     - name: Copy kubeconfig into container
       run: |
         docker cp ./kubeconfig.yaml kexadockeractioncontainer:/app/
+      shell: bash
+      if: ${{ success() }}
+
+    - name: Copy kube json into container
+      run: |
+        docker cp ./kubernetes.json kexadockeractioncontainer:/app/config/kubernetes.json
       shell: bash
       if: ${{ success() }}
 
