@@ -47,7 +47,6 @@ runs:
       shell: bash
 
     - name: Display kubeconfig file
-      if: env.KUBECONFIG_NAME != 'none'
       run: cat kubeconfig
       shell: bash
 
