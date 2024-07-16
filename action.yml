@@ -30,6 +30,16 @@ runs:
     #  id: check_kubeconfig
     #  run: echo ::set-output name=exists::$(env | grep -q 'KUBECONFIG' && echo true || echo false)
     #  shell: bash
+
+    - name: Display inputs list
+      run: |
+        echo "Inputs list:"
+        for input_name in ${{ inputs }}; do
+          echo "$input_name"
+        done
+      shell: bash
+
+      
     - name: Check for KUBECONFIG in inputs
       id: check_kubeconfig
       run: |
