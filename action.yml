@@ -28,12 +28,7 @@ runs:
     - name: Create .env file with all environment variables
       run: echo '${{ inputs.ENV_VARS }}' > .env
       shell: bash
-
-    - name: Here is the env file
-      run: cat .env
-      shell: bash
     
-
     - name: If Kubeconfig input exists, create kubeconfig file and set exist
       id: check_kubeconfig
       run: |
@@ -47,11 +42,9 @@ runs:
         fi
       shell: bash
 
-
     - name: Here is the JSON file
       run: cat kubernetes.json
       shell: bash
-
 
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.3
@@ -72,12 +65,6 @@ runs:
     - name: Copy kube json into container
       run: |
         docker cp kubernetes.json kexadockeractioncontainer:/app/config/
-      shell: bash
-      if: ${{ success() }}
-
-    - name: Copy env into container
-      run: |
-        docker cp .env kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
 
