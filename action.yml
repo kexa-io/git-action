@@ -26,9 +26,18 @@ runs:
       shell: bash
     
     # check if a inputs with 'KUBECONFIG' in its name is set
-    - name: Check if input containing 'KUBECONFIG' in its name exist
+    #- name: Check if input containing 'KUBECONFIG' in its name exist
+    #  id: check_kubeconfig
+    #  run: echo ::set-output name=exists::$(env | grep -q 'KUBECONFIG' && echo true || echo false)
+    #  shell: bash
+    - name: Check if input containing 'KUBECONFIG' in its name exists
       id: check_kubeconfig
-      run: echo ::set-output name=exists::$(env | grep -q 'KUBECONFIG' && echo true || echo false)
+      run: |
+        if env | grep -q 'KUBECONFIG'; then
+          echo "exists=true" >> $GITHUB_ENV
+        else
+          echo "exists=false" >> $GITHUB_ENV
+        fi
       shell: bash
 
     # retrieve full name of the input containing 'KUBECONFIG'
