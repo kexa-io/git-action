@@ -15,6 +15,10 @@ inputs:
     description: 'Kubeconfig file content'
     required: false
     default: ''
+  KUBEPREFIX:
+    description: 'Kube var prefix'
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
@@ -37,6 +41,7 @@ runs:
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig
+          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=kubeconfig" >> .env
         else
           echo "KUBECONFIG not found."
         fi
@@ -46,6 +51,10 @@ runs:
       run: cat kubeconfig
       shell: bash
 
+    - name: Here is the env file2
+      run: cat .env
+      shell: bash
+    
     #- name: Display KUBECONFIG information
     #  run: |
     #    echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
