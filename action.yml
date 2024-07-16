@@ -40,8 +40,8 @@ runs:
       run: |
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
-          echo "${{ inputs.KUBECONFIG }}" > kubeconfig
-          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=kubeconfig" >> .env
+          echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
+          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=./kubeconfig.yaml" >> .env
         else
           echo "KUBECONFIG not found."
         fi
