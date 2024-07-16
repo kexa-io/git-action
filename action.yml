@@ -21,14 +21,14 @@ runs:
       run: echo "${{ inputs.ENV_VARS }}" > .env
       shell: bash
 
+    - name: Here is the env file
+      run: cat .env
+      shell: bash
+
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.3
       shell: bash
 
-    #- name: Run Docker container
-    #  run: |
-    #    docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.1 sleep infinity
-    #  shell: bash
     - name: Run Docker container
       run: |
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.3 sleep infinity
@@ -45,11 +45,6 @@ runs:
       shell: bash
       if: ${{ success() }}
 
-#    - name: Start main application inside container
-#      run: docker exec kexadockeractioncontainer pnpm run start:nobuild
-#      shell: bash
-#      if: ${{ success() }}
-
     - name: Start main application inside container
       run: |
         docker exec kexadockeractioncontainer sh -c '
@@ -62,25 +57,3 @@ runs:
           fi
         '
       shell: bash
-#
-#    - name: Check if Docker run failed
-#      if: ${{ always() }}
-#      run: |
-#        exit_code=${{ steps.docker-run.outputs.exit_code }}
-#        if [ $exit_code -ne 0 ]; then
-#          echo "Docker run failed with exit code $exit_code"
-#          exit 1
-#        fi
-#      shell: bash
-#
-#    - name: Copy rules into container
-#      run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
-#      shell: bash
-#
-#    - name: Copy config into container
-#      run: docker cp ./config/* kexadockeractioncontainer:/app/config/
-#      shell: bash
-#
-#    - name: Start main application inside container
-#      run: docker exec kexadockeractioncontainer pnpm run start:nobuild
-#      shell: bash
