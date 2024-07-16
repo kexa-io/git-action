@@ -55,6 +55,7 @@ runs:
         echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
         echo "KUBECONFIG_CONTENT: ${{ env.KUBECONFIG_CONTENT }}"
       if: ${{ env.KUBECONFIG_NAME != 'none' }}
+      shell: bash
 
     # retrieve full name of the input containing 'KUBECONFIG'
     - name: Get name of input containing 'KUBECONFIG'
