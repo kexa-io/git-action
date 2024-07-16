@@ -36,13 +36,9 @@ runs:
       run: |
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
-          echo "KUBECONFIG_NAME=KUBECONFIG" >> $GITHUB_ENV
-          echo "KUBECONFIG_CONTENT=${{ inputs.KUBECONFIG }}" >> $GITHUB_ENV
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig
         else
           echo "KUBECONFIG not found."
-          echo "KUBECONFIG_NAME=none" >> $GITHUB_ENV
-          echo "KUBECONFIG_CONTENT=none" >> $GITHUB_ENV
         fi
       shell: bash
 
