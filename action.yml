@@ -10,6 +10,11 @@ inputs:
     description: 'All environment variables to be set in the .env file as a JSON object'
     required: true
     default: '{}'
+    # PROBLEM HERE
+  KUBECONFIG:
+    description: 'Kubeconfig file content'
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
@@ -36,10 +41,11 @@ runs:
         echo "Inputs list:"
         for input_name in ${{ inputs }}; do
           echo "$input_name"
+          echo displayed
         done
       shell: bash
 
-      
+
     - name: Check for KUBECONFIG in inputs
       id: check_kubeconfig
       run: |
