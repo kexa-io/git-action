@@ -33,12 +33,28 @@ runs:
     - name: Check if input containing 'KUBECONFIG' in its name exists
       id: check_kubeconfig
       run: |
+        # Check for environment variables containing 'KUBECONFIG'
         if env | grep -q 'KUBECONFIG'; then
-          echo "exists=true" >> $GITHUB_ENV
+          # Loop through environment variables and find the one containing 'KUBECONFIG'
+          while IFS= read -r line; do
+            name=$(echo "$line" | cut -d '=' -f 1)
+            value=$(echo "$line" | cut -d '=' -f 2-)
+            if [[ "$name" == *"KUBECONFIG"* ]]; then
+              echo "KUBECONFIG_NAME=$name" >> $GITHUB_ENV
+              echo "KUBECONFIG_CONTENT=$value" >> $GITHUB_ENV
+            fi
+          done < <(env)
         else
-          echo "exists=false" >> $GITHUB_ENV
+          echo "KUBECONFIG_NAME=none" >> $GITHUB_ENV
+          echo "KUBECONFIG_CONTENT=none" >> $GITHUB_ENV
         fi
       shell: bash
+
+    - name: Display KUBECONFIG information
+      run: |
+        echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
+        echo "KUBECONFIG_CONTENT: ${{ env.KUBECONFIG_CONTENT }}"
+      if: ${{ env.KUBECONFIG_NAME != 'none' }}
 
     # retrieve full name of the input containing 'KUBECONFIG'
     - name: Get name of input containing 'KUBECONFIG'
