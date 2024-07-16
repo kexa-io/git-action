@@ -24,9 +24,24 @@ runs:
     - name: Here is the env file
       run: cat .env
       shell: bash
+    
+    # check if a inputs with 'KUBECONFIG' in its name is set
+    - name: Check if input containing 'KUBECONFIG' in its name exist
+      id: check_kubeconfig
+      run: echo ::set-output name=exists::$(env | grep -q 'KUBECONFIG' && echo true || echo false)
+      shell: bash
 
-    - name: Env done
-      run: echo "DONE"
+    # retrieve full name of the input containing 'KUBECONFIG'
+    - name: Get name of input containing 'KUBECONFIG'
+      id: get_kubeconfig_name
+      if: steps.check_kubeconfig.outputs.exists == 'true'
+      run: echo ::set-output name=kubeconfig_name::$(env | grep 'KUBECONFIG' | cut -d= -f1)
+      shell: bash
+
+    # add kube config content to .env file
+    - name: Add kube config content to .env file
+      if: steps.check_kubeconfig.outputs.exists == 'true'
+      run: echo "${{ env[steps.get_kubeconfig_name.outputs.kubeconfig_name] }}" >> .env
       shell: bash
 
     - name: Pull Docker image
@@ -60,4 +75,11 @@ runs:
             exit $EXIT_CODE
           fi
         '
+      shell: bash
+
+
+    # delete kube config file if created
+    - name: Delete kubeconfig file
+      if: steps.check_kubeconfig.outputs.exists == 'true'
+      run: rm kubeconfig
       shell: bash
