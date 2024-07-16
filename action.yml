@@ -42,10 +42,6 @@ runs:
         fi
       shell: bash
 
-    - name: display env file
-      run: cat .env
-      shell: bash
-
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:debug-2
       shell: bash
