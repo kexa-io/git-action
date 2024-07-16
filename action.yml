@@ -34,14 +34,14 @@ runs:
       shell: bash
     
 
-    - name: If Kubeconfig input exist, create kubeconfig file and set exist
+    - name: If Kubeconfig input exists, create kubeconfig file and set exist
       id: check_kubeconfig
       run: |
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
           echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=./kubeconfig.yaml" >> .env
-          python -c "import yaml, json, os; print(json.dumps(yaml.safe_load(${{ inputs.KUBECONFIG }}), indent=2))" > kubernetes.json
+          echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
         else
           echo "KUBECONFIG not found."
         fi
