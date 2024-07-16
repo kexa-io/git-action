@@ -33,9 +33,12 @@ runs:
     - name: Check for KUBECONFIG in inputs
       id: check_kubeconfig
       run: |
+        echo "Starting to check for KUBECONFIG in inputs..."
         found=false
         for input_name in $(printenv | grep '^INPUT_' | cut -d= -f1); do
+          echo "Checking input: $input_name"
           if [[ "$input_name" == *"KUBECONFIG"* ]]; then
+            echo "Found KUBECONFIG in: $input_name"
             kubeconfig_name="$input_name"
             kubeconfig_content="${!input_name}"
             echo "KUBECONFIG_NAME=$kubeconfig_name" >> $GITHUB_ENV
@@ -45,15 +48,24 @@ runs:
           fi
         done
         if [ "$found" = false ]; then
+          echo "No KUBECONFIG found in inputs."
           echo "KUBECONFIG_NAME=none" >> $GITHUB_ENV
           echo "KUBECONFIG_CONTENT=none" >> $GITHUB_ENV
         fi
       shell: bash
 
+    - name: Display KUBECONFIG_NAME and KUBECONFIG_CONTENT
+      run: |
+        echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
+        echo "KUBECONFIG_CONTENT: ${{ env.KUBECONFIG_CONTENT }}"
+      shell: bash
+
     - name: Create kubeconfig file if KUBECONFIG is found
       if: env.KUBECONFIG_NAME != 'none'
       run: |
+        echo "Creating kubeconfig file with the content of ${{ env.KUBECONFIG_NAME }}..."
         echo "${{ env.KUBECONFIG_CONTENT }}" > kubeconfig
+        echo "kubeconfig file created."
       shell: bash
 
     - name: Display kubeconfig file
