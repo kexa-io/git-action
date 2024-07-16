@@ -55,6 +55,7 @@ runs:
         else
           echo "file_exists=false" >> $GITHUB_ENV
         fi
+      shell: bash
 
     - name: Display kubeconfig file
       if: env.file_exists == 'true'
@@ -69,6 +70,8 @@ runs:
         else
           echo "env_exists=false" >> $GITHUB_ENV
         fi
+      shell: bash
+
 
     - name: Here is the env file
       if: env.env_exists == 'true'
