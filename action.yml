@@ -35,7 +35,7 @@ runs:
       run: |
         echo "Starting to check for KUBECONFIG in inputs..."
         found=false
-        for input_name in $(env | grep '^INPUT_' | cut -d= -f1); do
+        for input_name in ${{ inputs }}; do
           echo "Checking input: $input_name"
           if [[ "$input_name" == *"KUBECONFIG"* ]]; then
             echo "Found KUBECONFIG in: $input_name"
