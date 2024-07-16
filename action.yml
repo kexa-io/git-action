@@ -71,7 +71,7 @@ runs:
 
     - name: Copy kube json into container
       run: |
-        docker cp kubernetes.json kexadockeractioncontainer:/app/config/kubernetes.json
+        docker cp kubernetes.json kexadockeractioncontainer:/app/config/
       shell: bash
       if: ${{ success() }}
 
