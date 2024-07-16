@@ -54,15 +54,32 @@ runs:
       shell: bash
       if: ${{ success() }}
 
+#    - name: Copy rules into container
+#      run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
+#      shell: bash
+#      if: ${{ success() }}
+
+#    - name: Copy config into container
+#      run: docker cp ./config/* kexadockeractioncontainer:/app/config/
+#      shell: bash
+#      if: ${{ success() }}
+
     - name: Copy rules into container
-      run: docker cp ./rules/* kexadockeractioncontainer:/app/rules/
+      run: |
+        for file in ./rules/*; do
+          docker cp "$file" kexadockeractioncontainer:/app/rules/
+        done
       shell: bash
       if: ${{ success() }}
 
     - name: Copy config into container
-      run: docker cp ./config/* kexadockeractioncontainer:/app/config/
+      run: |
+        for file in ./config/*; do
+          docker cp "$file" kexadockeractioncontainer:/app/config/
+        done
       shell: bash
       if: ${{ success() }}
+
 
     - name: Start main application inside container
       run: |
