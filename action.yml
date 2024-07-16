@@ -42,8 +42,8 @@ runs:
         fi
       shell: bash
 
-    - name: Here is the JSON file
-      run: cat kubernetes.json
+    - name: display env file
+      run: cat .env
       shell: bash
 
     - name: Pull Docker image
@@ -65,12 +65,6 @@ runs:
     - name: Copy kube json into container
       run: |
         docker cp kubernetes.json kexadockeractioncontainer:/app/config/
-      shell: bash
-      if: ${{ success() }}
-
-    - name: Display the kube json file inside container
-      run: |
-        docker exec kexadockeractioncontainer cat /app/config/kubernetes.json
       shell: bash
       if: ${{ success() }}
 
