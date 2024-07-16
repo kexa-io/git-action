@@ -30,45 +30,56 @@ runs:
     #  id: check_kubeconfig
     #  run: echo ::set-output name=exists::$(env | grep -q 'KUBECONFIG' && echo true || echo false)
     #  shell: bash
-    - name: Check if input containing 'KUBECONFIG' in its name exists
+    - name: Check for KUBECONFIG in inputs
       id: check_kubeconfig
       run: |
-        # Check for environment variables containing 'KUBECONFIG'
-        if env | grep -q 'KUBECONFIG'; then
-          # Loop through environment variables and find the one containing 'KUBECONFIG'
-          while IFS= read -r line; do
-            name=$(echo "$line" | cut -d '=' -f 1)
-            value=$(echo "$line" | cut -d '=' -f 2-)
-            if [[ "$name" == *"KUBECONFIG"* ]]; then
-              echo "KUBECONFIG_NAME=$name" >> $GITHUB_ENV
-              echo "KUBECONFIG_CONTENT=$value" >> $GITHUB_ENV
-            fi
-          done < <(env)
-        else
+        found=false
+        for input_name in $(printenv | grep '^INPUT_' | cut -d= -f1); do
+          if [[ "$input_name" == *"KUBECONFIG"* ]]; then
+            kubeconfig_name="$input_name"
+            kubeconfig_content="${!input_name}"
+            echo "KUBECONFIG_NAME=$kubeconfig_name" >> $GITHUB_ENV
+            echo "KUBECONFIG_CONTENT=$kubeconfig_content" >> $GITHUB_ENV
+            found=true
+            break
+          fi
+        done
+        if [ "$found" = false ]; then
           echo "KUBECONFIG_NAME=none" >> $GITHUB_ENV
           echo "KUBECONFIG_CONTENT=none" >> $GITHUB_ENV
         fi
       shell: bash
 
-    - name: Display KUBECONFIG information
+    - name: Create kubeconfig file if KUBECONFIG is found
+      if: env.KUBECONFIG_NAME != 'none'
       run: |
-        echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
-        echo "KUBECONFIG_CONTENT: ${{ env.KUBECONFIG_CONTENT }}"
-      if: ${{ env.KUBECONFIG_NAME != 'none' }}
+        echo "${{ env.KUBECONFIG_CONTENT }}" > kubeconfig
       shell: bash
+
+    - name: Display kubeconfig file
+      if: env.KUBECONFIG_NAME != 'none'
+      run: cat kubeconfig
+      shell: bash
+
+    #- name: Display KUBECONFIG information
+    #  run: |
+    #    echo "KUBECONFIG_NAME: ${{ env.KUBECONFIG_NAME }}"
+    #    echo "KUBECONFIG_CONTENT: ${{ env.KUBECONFIG_CONTENT }}"
+    #  if: ${{ env.KUBECONFIG_NAME != 'none' }}
+    #  shell: bash
 
     # retrieve full name of the input containing 'KUBECONFIG'
-    - name: Get name of input containing 'KUBECONFIG'
-      id: get_kubeconfig_name
-      if: steps.check_kubeconfig.outputs.exists == 'true'
-      run: echo ::set-output name=kubeconfig_name::$(env | grep 'KUBECONFIG' | cut -d= -f1)
-      shell: bash
+    #- name: Get name of input containing 'KUBECONFIG'
+    #  id: get_kubeconfig_name
+    #  if: steps.check_kubeconfig.outputs.exists == 'true'
+    #  run: echo ::set-output name=kubeconfig_name::$(env | grep 'KUBECONFIG' | cut -d= -f1)
+    #  shell: bash
 
     # add kube config content to .env file
-    - name: Add kube config content to .env file
-      if: steps.check_kubeconfig.outputs.exists == 'true'
-      run: echo "${{ env[steps.get_kubeconfig_name.outputs.kubeconfig_name] }}" >> .env
-      shell: bash
+    #- name: Add kube config content to .env file
+    #  if: steps.check_kubeconfig.outputs.exists == 'true'
+    #  run: echo "${{ env[steps.get_kubeconfig_name.outputs.kubeconfig_name] }}" >> .env
+    #  shell: bash
 
     - name: Pull Docker image
       run: docker pull innovtech/kexaction:v1.3
