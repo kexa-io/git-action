@@ -86,14 +86,12 @@ runs:
     - name: Copy rules into container
       run: |
         docker cp ./rules kexadockeractioncontainer:/app/
-        docker exec kexadockeractioncontainer rsync -av /app/rules/ /app/rules/
       shell: bash
       if: ${{ success() }}
 
     - name: Copy config into container
       run: |
         docker cp ./config kexadockeractioncontainer:/app/
-        docker exec kexadockeractioncontainer rsync -av /app/config/ /app/config/
       shell: bash
       if: ${{ success() }}
 
