@@ -67,19 +67,33 @@ runs:
       continue-on-error: true
       if: ${{ success() }}
 
+    # - name: Copy rules into container
+    #   run: |
+    #     for file in ./rules/*; do
+    #       docker cp "$file" kexadockeractioncontainer:/app/rules/
+    #     done
+    #   shell: bash
+    #   if: ${{ success() }}
+
+    # - name: Copy config into container
+    #   run: |
+    #     for file in ./config/*; do
+    #       docker cp "$file" kexadockeractioncontainer:/app/config/
+    #     done
+    #   shell: bash
+    #   if: ${{ success() }}
+
     - name: Copy rules into container
       run: |
-        for file in ./rules/*; do
-          docker cp "$file" kexadockeractioncontainer:/app/rules/
-        done
+        docker cp ./rules kexadockeractioncontainer:/app/
+        docker exec kexadockeractioncontainer rsync -av /app/rules/ /app/rules/
       shell: bash
       if: ${{ success() }}
 
     - name: Copy config into container
       run: |
-        for file in ./config/*; do
-          docker cp "$file" kexadockeractioncontainer:/app/config/
-        done
+        docker cp ./config kexadockeractioncontainer:/app/
+        docker exec kexadockeractioncontainer rsync -av /app/config/ /app/config/
       shell: bash
       if: ${{ success() }}
 
