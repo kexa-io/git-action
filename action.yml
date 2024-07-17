@@ -44,12 +44,12 @@ runs:
       shell: bash
 
     - name: Pull Docker image
-      run: docker pull innovtech/kexaction:debug-helm
+      run: docker pull innovtech/kexaction:debug-helm2
       shell: bash
 
     - name: Run Docker container
       run: |
-        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:debug-helm sleep infinity
+        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:debug-helm2 sleep infinity
       shell: bash
       if: ${{ success() }}
 
