@@ -94,17 +94,6 @@ runs:
         docker cp ./config kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
-  
-    - name: Content of /app/config
-      run: docker exec kexadockeractioncontainer ls -Rla /app/config
-      shell: bash
-      if: ${{ success() }}
-
-    - name: Content of /app/rules
-      run: docker exec kexadockeractioncontainer ls -Rla /app/rules
-      shell: bash
-      if: ${{ success() }}
-
 
     - name: Start main application inside container
       run: |
