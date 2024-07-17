@@ -96,12 +96,12 @@ runs:
       if: ${{ success() }}
   
     - name: Content of /app/config
-      run: docker exec kexadockeractioncontainer ls -la /app/config
+      run: docker exec kexadockeractioncontainer ls -Rla /app/config
       shell: bash
       if: ${{ success() }}
 
     - name: Content of /app/rules
-      run: docker exec kexadockeractioncontainer ls -la /app/rules
+      run: docker exec kexadockeractioncontainer ls -Rla /app/rules
       shell: bash
       if: ${{ success() }}
 
