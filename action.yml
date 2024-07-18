@@ -87,10 +87,10 @@ runs:
     - name: If Google application credentials input exists, create Google application credentials file and set exist
       id: check_google_application_credentials
       run: |
-        if [ -n "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" ]; then
+        if [ -n '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' ]; then
           echo "GOOGLE_APPLICATION_CREDENTIALS found."
-          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" > gcp.json
-          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json" >> .env
+          echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' > gcp.json
+          echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json' >> .env
           chmod 700 gcp.json
         else
           echo "GOOGLE_APPLICATION_CREDENTIALS not found."
@@ -154,7 +154,6 @@ runs:
         docker cp ./config kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
-
 
     #################################
     #       RUN KEXA SCRIPT         #
