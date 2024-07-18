@@ -39,6 +39,11 @@ runs:
         echo "${{ inputs.ENV_VARS }}" | sed 's/"/\\"/g' | sed 's/ /\\ /g' > .env
       shell: bash
 
+    - name: Display the generated .env file
+      run: cat .env
+      shell: bash
+
+      
     - name: If Kubeconfig input exists, create kubeconfig file and set exist
       id: check_kubeconfig
       run: |
