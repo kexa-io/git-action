@@ -76,9 +76,9 @@ runs:
       run: |
         if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
           echo "WORKSPACECRED found."
-          echo "${{ inputs.WORKSPACECRED }}" > workspace-credentials.json
-          echo "${{ inputs.WORKSPACEPREFIX }}WORKSPACECRED=/app/config/workspace-credentials.json" >> .env
-          chmod 700 workspace-credentials.json
+          echo "${{ inputs.WORKSPACECRED }}" > credentials_workspace.json
+          echo "${{ inputs.WORKSPACEPREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
+          chmod 700 credentials_workspace.json
         else
           echo "WORKSPACECRED not found."
         fi
@@ -131,7 +131,7 @@ runs:
 
     - name: Copy workspace credentials into container
       run: |
-        docker cp workspace-credentials.json kexadockeractioncontainer:/app/config/
+        docker cp credentials_workspace.json kexadockeractioncontainer:/app/config/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
@@ -183,7 +183,7 @@ runs:
     # delete workspace credentials file if created
     - name: Delete workspace credentials file
       if: steps.check_workspacecred.outputs.exists == 'true'
-      run: rm workspace-credentials.json
+      run: rm credentials_workspace.json
       continue-on-error: true
       shell: bash
 
