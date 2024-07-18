@@ -108,40 +108,45 @@ runs:
     #   if: ${{ success() }}
 
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    - name: Cache Docker layers
-      id: cache-docker-layers
-      uses: actions/cache@v3
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+      - name: Cache Docker layers
+        id: cache-docker-layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
 
-    - name: Pull Docker image from cache
-      id: pull-image-from-cache
-      run: |
-        mkdir -p /tmp/.buildx-cache
-        if [ -f /tmp/.buildx-cache/kexaction.tar.gz ]; then
-          echo "Docker image loaded from cache"
-          gunzip /tmp/.buildx-cache/kexaction.tar.gz
-          docker load -i /tmp/.buildx-cache/kexaction.tar
-          docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
-        else
-          echo "Docker image not found in cache"
+      - name: Load Docker image from cache
+        id: load-image-from-cache
+        run: |
+          mkdir -p /tmp/.buildx-cache
+          if [ -f /tmp/.buildx-cache/kexaction.tar.gz ]; then
+            echo "Docker image loaded from cache"
+            gunzip /tmp/.buildx-cache/kexaction.tar.gz
+            docker load -i /tmp/.buildx-cache/kexaction.tar
+            docker tag innovtech/kexaction:v1.4.2 cached-innovtech/kexaction:v1.4.2
+          else
+            echo "Docker image not found in cache"
+            exit 1
+        shell: bash
+
+      - name: Pull Docker image if not cached
+        if: steps.load-image-from-cache.outcome == 'failure'
+        run: |
           docker pull innovtech/kexaction:v1.4.2
           docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
           gzip /tmp/.buildx-cache/kexaction.tar
-        fi
-      shell: bash
+        shell: bash
 
-    - name: Run Docker container
-      run: |
-        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
-      shell: bash
-      if: ${{ success() }}
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
+        shell: bash
+        if: steps.load-image-from-cache.outcome == 'success' || steps.pull-image-from-cache.outcome == 'success'
 
 
     #############################################
