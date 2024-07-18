@@ -101,8 +101,44 @@ runs:
     #       RUN DOCKER IMAGE         #
     ##################################
 
-    - name: Pull Docker image
-      run: docker pull innovtech/kexaction:v1.4.2
+    # - name: Pull Docker image
+    #   run: docker pull innovtech/kexaction:v1.4.2
+    #   shell: bash
+
+    # - name: Run Docker container
+    #   run: |
+    #     docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
+    #   shell: bash
+    #   if: ${{ success() }}
+
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Cache Docker layers
+      id: cache-docker-layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
+    - name: Pull Docker image from cache
+      id: pull-image-from-cache
+      run: |
+        mkdir -p /tmp/.buildx-cache
+        if docker load -i /tmp/.buildx-cache/kexaction.tar; then
+          echo "Docker image loaded from cache"
+        else
+          echo "Docker image not found in cache"
+        fi
+
+    - name: Pull Docker image if not in cache
+      if: steps.pull-image-from-cache.outputs.cache-hit != 'true'
+      run: |
+        docker pull innovtech/kexaction:v1.4.2
+        docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
       shell: bash
 
     - name: Run Docker container
@@ -111,6 +147,7 @@ runs:
       shell: bash
       if: ${{ success() }}
 
+      
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
