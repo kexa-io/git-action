@@ -125,20 +125,16 @@ runs:
       run: |
         mkdir -p /tmp/.buildx-cache
         if [ -f /tmp/.buildx-cache/kexaction.tar.gz ]; then
+          echo "Docker image loaded from cache"
           gunzip /tmp/.buildx-cache/kexaction.tar.gz
           docker load -i /tmp/.buildx-cache/kexaction.tar
-          echo "Docker image loaded from cache"
+          docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
         else
           echo "Docker image not found in cache"
+          docker pull innovtech/kexaction:v1.4.2
+          docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
+          gzip /tmp/.buildx-cache/kexaction.tar
         fi
-      shell: bash
-
-    - name: Pull Docker image if not in cache
-      if: steps.pull-image-from-cache.outputs.cache-hit != 'true'
-      run: |
-        docker pull innovtech/kexaction:v1.4.2
-        docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
-        gzip /tmp/.buildx-cache/kexaction.tar
       shell: bash
 
     - name: Run Docker container
