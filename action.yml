@@ -132,6 +132,7 @@ runs:
         else
           echo "Docker image not found in cache"
           exit 1
+        fi
       shell: bash
 
     - name: Pull Docker image if not cached
