@@ -31,13 +31,7 @@ runs:
 
     - name: Create .env file with all environment variables
       run: |
-        echo '${{ inputs.ENV_VARS }}' | while IFS= read -r line; do
-          if [[ $line == *"="* ]]; then
-            key=$(echo "$line" | cut -d '=' -f 1)
-            value=$(echo "$line" | cut -d '=' -f 2- | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
-            echo "$key=\"$value\"" >> .env
-          fi
-        done
+        echo '${{ inputs.ENV_VARS }}' | sed 's/"/\\"/g' | sed 's/ /\\ /g' > .env
       shell: bash
 
     - name: Display the generated .env file
