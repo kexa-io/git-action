@@ -131,17 +131,10 @@ runs:
           docker tag innovtech/kexaction:v1.4.2 cached-innovtech/kexaction:v1.4.2
         else
           echo "Docker image not found in cache"
-          exit 1
+          docker pull innovtech/kexaction:v1.4.2
+          docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
+          gzip /tmp/.buildx-cache/kexaction.tar
         fi
-      shell: bash
-
-    - name: Pull Docker image if not cached
-      if: steps.load-image-from-cache.outcome == 'failure'
-      id: pull-image-from-cache
-      run: |
-        docker pull innovtech/kexaction:v1.4.2
-        docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
-        gzip /tmp/.buildx-cache/kexaction.tar
       shell: bash
 
     - name: Run Docker container
