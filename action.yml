@@ -123,7 +123,6 @@ runs:
         key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-buildx-
-      shell: bash
 
     - name: Pull Docker image from cache
       id: pull-image-from-cache
