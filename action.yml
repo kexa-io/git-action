@@ -123,6 +123,7 @@ runs:
         key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-buildx-
+      shell: bash
 
     - name: Pull Docker image from cache
       id: pull-image-from-cache
@@ -133,6 +134,7 @@ runs:
         else
           echo "Docker image not found in cache"
         fi
+      shell: bash
 
     - name: Pull Docker image if not in cache
       if: steps.pull-image-from-cache.outputs.cache-hit != 'true'
@@ -147,7 +149,7 @@ runs:
       shell: bash
       if: ${{ success() }}
 
-      
+
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
