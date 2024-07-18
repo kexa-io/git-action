@@ -29,9 +29,14 @@ runs:
     #   run: echo '${{ inputs.ENV_VARS }}' > .env
     #   shell: bash
     
+    # - name: Create .env file with all environment variables
+    #   run: |
+    #     echo "${{ inputs.ENV_VARS }}" | awk '{ gsub(/\\n/, "\n"); print }' > .env
+    #   shell: bash
+
     - name: Create .env file with all environment variables
       run: |
-        echo "${{ inputs.ENV_VARS }}" | awk '{ gsub(/\\n/, "\n"); print }' > .env
+        echo "${{ inputs.ENV_VARS }}" | awk '{ gsub(/\\n/, "\n"); gsub(/ /, "\\ "); print }' > .env
       shell: bash
 
     - name: If Kubeconfig input exists, create kubeconfig file and set exist
