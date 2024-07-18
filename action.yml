@@ -18,6 +18,22 @@ inputs:
     description: 'Kube var prefix'
     required: false
     default: ''
+  WORKSPACECRED:
+    description: 'Workspace credentials'
+    required: false
+    default: ''
+  WORKSPACEPREFIX:
+    description: 'Workspace var prefix'
+    required: false
+    default: ''
+  GOOGLE_APPLICATION_CREDENTIALS:
+    description: 'Google application credentials'
+    required: false
+    default: ''
+  GOOGLE_APPLICATION_CREDENTIALS_PREFIX:
+    description: 'Google application credentials prefix'
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
@@ -60,6 +76,32 @@ runs:
           chmod 700 kubernetes.json kubeconfig.yaml
         else
           echo "KUBECONFIG not found."
+        fi
+      shell: bash
+
+    - name: If Workspace credentials input exists, create workspace credentials file and set exist
+      id: check_workspacecred
+      run: |
+        if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
+          echo "WORKSPACECRED found."
+          echo "${{ inputs.WORKSPACECRED }}" > workspace-credentials.json
+          echo "${{ inputs.WORKSPACEPREFIX }}WORKSPACECRED=/app/config/workspace-credentials.json" >> .env
+          chmod 700 workspace-credentials.json
+        else
+          echo "WORKSPACECRED not found."
+        fi
+      shell: bash
+
+    - name: If Google application credentials input exists, create Google application credentials file and set exist
+      id: check_google_application_credentials
+      run: |
+        if [ -n "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" ]; then
+          echo "GOOGLE_APPLICATION_CREDENTIALS found."
+          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" > google-application-credentials.json
+          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/google-application-credentials.json" >> .env
+          chmod 700 google-application-credentials.json
+        else
+          echo "GOOGLE_APPLICATION_CREDENTIALS not found."
         fi
       shell: bash
 
