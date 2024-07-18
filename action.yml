@@ -54,11 +54,11 @@ runs:
 # maybe do not escape space but only quote, and wrap in quote
 # last try , {} were being removed
 
-    - name: Create .env file with all environment variables
-      run: |
-        echo '${{ inputs.ENV_VARS }}' | sed 's/"/\\"/g' > .env
-      shell: bash
-      # problem is that here it escape the first and last quote, so it is not a valid json anymore
+    # - name: Create .env file with all environment variables
+    #   run: |
+    #     echo '${{ inputs.ENV_VARS }}' | sed 's/"/\\"/g' > .env
+    #   shell: bash
+    #   # problem is that here it escape the first and last quote, so it is not a valid json anymore
 
  
     - name: Display the generated .env file
