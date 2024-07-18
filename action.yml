@@ -41,7 +41,7 @@ runs:
   
     - name: Create .env file with all environment variables
       run: |
-        echo "${{ inputs.ENV_VARS }}" | awk '{ gsub(/\\n/, "\n"); {gsub(/"/, "\'"); gsub(/ /, "\\ "); print}' > .env
+        echo ${{ inputs.ENV_VARS }} > .env
       shell: bash
 
     - name: Display the generated .env file
