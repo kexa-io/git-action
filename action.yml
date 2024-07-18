@@ -25,29 +25,13 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # - name: Create .env file with all environment variables
-    #   run: echo '${{ inputs.ENV_VARS }}' > .env
-    #   shell: bash
-    
-    # - name: Create .env file with all environment variables
-    #   run: |
-    #     echo "${{ inputs.ENV_VARS }}" | awk '{ gsub(/\\n/, "\n"); print }' > .env
-    #   shell: bash
-
-    # - name: Create .env file with all environment variables
-    #   run: |
-    #     echo "${{ inputs.ENV_VARS }}" | sed 's/"/\\"/g' | sed 's/ /\\ /g' > .env
-    #   shell: bash
-  
     - name: Create .env file with all environment variables
-      run: |
-        echo ${{ inputs.ENV_VARS }} | awk '{ gsub(/\\n/, "\n"); print }' > .env
+      run: echo '${{ inputs.ENV_VARS }}' > .env
       shell: bash
 
     - name: Display the generated .env file
       run: cat .env
       shell: bash
-
 
     - name: If Kubeconfig input exists, create kubeconfig file and set exist
       id: check_kubeconfig
