@@ -115,6 +115,11 @@ runs:
       shell: bash
       if: ${{ success() }}
 
+    - name: Display env in container
+      run: docker exec kexadockeractioncontainer sh -c 'cat /app/.env'
+      shell: bash
+      if: ${{ success() }}
+
     - name: Copy kubeconfig into container
       run: |
         docker cp kubeconfig.yaml kexadockeractioncontainer:/app/
