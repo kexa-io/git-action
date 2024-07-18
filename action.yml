@@ -48,10 +48,6 @@ runs:
     - name: Create .env file with all environment variables
       run: echo '${{ inputs.ENV_VARS }}' > .env
       shell: bash
- 
-    - name: Display the generated .env file
-      run: cat .env
-      shell: bash
 
     ##################################
     #   CONFIG FILE CREATION         #
@@ -128,7 +124,9 @@ runs:
       id: pull-image-from-cache
       run: |
         mkdir -p /tmp/.buildx-cache
-        if docker load -i /tmp/.buildx-cache/kexaction.tar; then
+        if [ -f /tmp/.buildx-cache/kexaction.tar.gz ]; then
+          gunzip /tmp/.buildx-cache/kexaction.tar.gz
+          docker load -i /tmp/.buildx-cache/kexaction.tar
           echo "Docker image loaded from cache"
         else
           echo "Docker image not found in cache"
@@ -140,6 +138,7 @@ runs:
       run: |
         docker pull innovtech/kexaction:v1.4.2
         docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
+        gzip /tmp/.buildx-cache/kexaction.tar
       shell: bash
 
     - name: Run Docker container
