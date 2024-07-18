@@ -97,15 +97,15 @@ runs:
     #       RUN DOCKER IMAGE         #
     ##################################
 
-    # - name: Pull Docker image
-    #   run: docker pull innovtech/kexaction:v1.4.2
-    #   shell: bash
+    - name: Pull Docker image
+      run: docker pull innovtech/kexaction:v1.4.2
+      shell: bash
 
-    # - name: Run Docker container
-    #   run: |
-    #     docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
-    #   shell: bash
-    #   if: ${{ success() }}
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
+      shell: bash
+      if: ${{ success() }}
 
 
     - name: Cache Docker layers
@@ -119,6 +119,7 @@ runs:
 
     - name: Load Docker image from cache
       id: load-image-from-cache
+      continue-on-error: true
       run: |
         mkdir -p /tmp/.buildx-cache
         if [ -f /tmp/.buildx-cache/kexaction.tar.gz ]; then
@@ -128,14 +129,12 @@ runs:
           docker tag innovtech/kexaction:v1.4.2 cached-innovtech/kexaction:v1.4.2
         else
           echo "Docker image not found in cache"
-          exit 1
         fi
-      continue-on-error: true
       shell: bash
 
     - name: Pull Docker image if not in cache
-      if: steps.load-image-from-cache.outcome == 'failure'
-      id: pull-image-from-cache
+      if: steps.load-image-from-cache.outcome == 'failure' || !steps.load-image-from-cache.outputs.cache-hit
+      id: pull-image
       run: |
         docker pull innovtech/kexaction:v1.4.2
         docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
@@ -143,11 +142,9 @@ runs:
       shell: bash
 
     - name: Run Docker container
-      if: steps.load-image-from-cache.outcome == 'success' || steps.pull-image-from-cache.outcome == 'success'
       run: |
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
       shell: bash
-
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
