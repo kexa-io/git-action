@@ -38,7 +38,7 @@ runs:
             echo "$key=\"$value\"" >> .env
           fi
         done
-      shell: /usr/bin/bash --noprofile --norc -e -o pipefail
+      shell: bash
 
     - name: Display the generated .env file
       run: cat .env
