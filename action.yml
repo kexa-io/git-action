@@ -160,11 +160,11 @@ runs:
     - name: Start main application inside container
       run: |
         docker exec kexadockeractioncontainer sh -c '
-          bun run start:nobuild
+          pnpm run start:nobuild
           EXIT_CODE=$?
           echo "Exit code: $EXIT_CODE"
           if [ $EXIT_CODE -ne 0 ]; then
-            echo "bun run start:nobuild failed with exit code $EXIT_CODE"
+            echo "pnpm run start:nobuild failed with exit code $EXIT_CODE"
             exit $EXIT_CODE
           fi
         '
