@@ -101,7 +101,6 @@ runs:
       run: docker pull innovtech/kexaction:v1.4.2
       shell: bash
 
-
     - name: Stop and remove Docker container
       run: |
         containerId=$(docker ps -qf name=^kexadockeractioncontainer$)
@@ -116,51 +115,12 @@ runs:
       continue-on-error: true
       shell: bash
 
-
     - name: Run Docker container
       run: |
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
       shell: bash
       if: ${{ success() }}
 
-
-    - name: Cache Docker layers
-      id: cache-docker-layers
-      uses: actions/cache@v3
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
-
-    - name: Load Docker image from cache
-      id: load-image-from-cache
-      continue-on-error: true
-      run: |
-        mkdir -p /tmp/.buildx-cache
-        if [ -f /tmp/.buildx-cache/kexaction.tar.gz ]; then
-          echo "Docker image loaded from cache"
-          gunzip /tmp/.buildx-cache/kexaction.tar.gz
-          docker load -i /tmp/.buildx-cache/kexaction.tar
-          docker tag innovtech/kexaction:v1.4.2 cached-innovtech/kexaction:v1.4.2
-        else
-          echo "Docker image not found in cache"
-        fi
-      shell: bash
-
-    - name: Pull Docker image if not in cache
-      if: steps.load-image-from-cache.outcome == 'failure' || !steps.load-image-from-cache.outputs.cache-hit
-      id: pull-image
-      run: |
-        docker pull innovtech/kexaction:v1.4.2
-        docker save innovtech/kexaction:v1.4.2 -o /tmp/.buildx-cache/kexaction.tar
-        gzip /tmp/.buildx-cache/kexaction.tar
-      shell: bash
-
-    - name: Run Docker container
-      run: |
-        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexaction:v1.4.2 sleep infinity
-      shell: bash
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
