@@ -59,7 +59,7 @@ runs:
     #- name: If Kubeconfig is a list of files, create kubeconfig file and set exist
 
     - name: Multiple kubconfig, create files and set env variables
-      id: check_kubeconfig
+      id: check_kubeconfig_multiple
       run: |
         parse_kubeconfig() {
           local kubeconfig="$1"
@@ -244,6 +244,13 @@ runs:
     - name: Delete kubeconfig file
       if: steps.check_kubeconfig.outputs.exists == 'true'
       run: rm kubeconfig.yaml
+      continue-on-error: true
+      shell: bash
+
+    # delete multiple kube config files if created
+    - name: Delete kubeconfig files
+      if: steps.check_kubeconfig_multiple.outputs.exists == 'true'
+      run: rm kubeconfig_*.yaml kubernetes_*.json
       continue-on-error: true
       shell: bash
 
