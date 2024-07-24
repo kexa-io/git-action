@@ -53,19 +53,76 @@ runs:
     #   CONFIG FILE CREATION         #
     ##################################
 
-    - name: If Kubeconfig input exists, create kubeconfig file and set exist
+
+    # here, if KUBECONFIG is list, parse KUBECONFIG and KUBECONFIG_PREFIX
+    # and create the env file with all the variables and their prefix
+    #- name: If Kubeconfig is a list of files, create kubeconfig file and set exist
+
+    - name: Multiple kubconfig, create files and set env variables
       id: check_kubeconfig
       run: |
-        if [ -n "${{ inputs.KUBECONFIG }}" ]; then
-          echo "KUBECONFIG found."
-          echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
-          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
-          echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
-          chmod 700 kubernetes.json kubeconfig.yaml
+        parse_kubeconfig() {
+          local kubeconfig="$1"
+          local prefix="$2"
+          local idx="$3"
+
+          echo "${kubeconfig}" > "kubeconfig_${idx}.yaml"
+          echo "${prefix}KUBECONFIG=/app/config/kubernetes_${idx}.json" >> .env
+          echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > "kubernetes_${idx}.json"
+          chmod 700 "kubernetes_${idx}.json" "kubeconfig_${idx}.yaml"
+        }
+
+        if echo "${{ inputs.KUBECONFIG }}" | jq empty 2>/dev/null; then
+          KUBECONFIGS=$(echo "${{ inputs.KUBECONFIG }}" | jq -r '.[]')
+          KUBEPREFIXES=$(echo "${{ inputs.KUBEPREFIX }}" | jq -r '.[]')
+
+          IFS=$'\n' read -rd '' -a kubeconfigs <<< "$KUBECONFIGS"
+          IFS=$'\n' read -rd '' -a kubeprefixes <<< "$KUBEPREFIXES"
+
+          if [ ${#kubeconfigs[@]} -eq ${#kubeprefixes[@]} ]; then
+            for idx in "${!kubeconfigs[@]}"; do
+              parse_kubeconfig "${kubeconfigs[$idx]}" "${kubeprefixes[$idx]}" "$idx"
+            done
+          else
+            echo "KUBECONFIG and KUBEPREFIX lists are not the same length."
+            exit 1
+          fi
         else
-          echo "KUBECONFIG not found."
+          echo "KUBECONFIG is not a list, skipping this step."
         fi
       shell: bash
+
+    - name: One kubconfig, create file and set env variable
+      id: check_kubeconfig
+      run: |
+        if echo "${{ inputs.KUBECONFIG }}" | jq type | grep -q '"array"'; then
+          echo "KUBECONFIG is a list, skipping this step."
+        else
+          if [ -n "${{ inputs.KUBECONFIG }}" ]; then
+            echo "KUBECONFIG found."
+            echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
+            echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
+            echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
+            chmod 700 kubernetes.json kubeconfig.yaml
+          else
+            echo "KUBECONFIG not found."
+          fi
+        fi
+      shell: bash
+
+    # - name: If Kubeconfig input exists, create kubeconfig file and set exist
+    #   id: check_kubeconfig
+    #   run: |
+    #     if [ -n "${{ inputs.KUBECONFIG }}" ]; then
+    #       echo "KUBECONFIG found."
+    #       echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
+    #       echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
+    #       echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
+    #       chmod 700 kubernetes.json kubeconfig.yaml
+    #     else
+    #       echo "KUBECONFIG not found."
+    #     fi
+    #   shell: bash
 
     - name: If Workspace credentials input exists, create workspace credentials file and set exist
       id: check_workspacecred
