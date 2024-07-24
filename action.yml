@@ -71,11 +71,11 @@ runs:
           echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > "kubernetes_${idx}.json"
           chmod 700 "kubernetes_${idx}.json" "kubeconfig_${idx}.yaml"
         }
-
-        if echo "${{ inputs.KUBECONFIG }}" | jq empty 2>/dev/null; then
-          KUBECONFIGS=$(echo "${{ inputs.KUBECONFIG }}" | jq -r '.[]')
-          KUBEPREFIXES=$(echo "${{ inputs.KUBEPREFIX }}" | jq -r '.[]')
-
+  
+        if echo "${{ steps.kexa.outputs.KUBECONFIG }}" | grep -q ','; then
+          KUBECONFIGS=$(echo "${{ steps.kexa.outputs.KUBECONFIG }}" | tr ',' '\n')
+          KUBEPREFIXES=$(echo "${{ steps.kexa.outputs.KUBEPREFIX }}" | tr ',' '\n')
+          
           IFS=$'\n' read -rd '' -a kubeconfigs <<< "$KUBECONFIGS"
           IFS=$'\n' read -rd '' -a kubeprefixes <<< "$KUBEPREFIXES"
 
