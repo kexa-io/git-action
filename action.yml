@@ -60,8 +60,8 @@ runs:
     - name: Multiple kubconfig, create files and set env variables
       id: check_kubeconfig_multiple
       run: |
-        KUBEPREFIXES=$(echo '${{ inputs.KUBEPREFIX }}' | jq -r '.[]')
-        IFS=$'\n' read -rd '' -a kubeprefixes <<< "$KUBEPREFIXES"
+        KUBEPREFIXES="${{ inputs.KUBEPREFIX }}"
+        IFS=',' read -r -a kubeprefixes <<< "$KUBEPREFIXES"
 
         if [ ${#kubeprefixes[@]} -gt 0 ]; then
           for idx in "${!kubeprefixes[@]}"; do
