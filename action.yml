@@ -62,12 +62,13 @@ runs:
       run: |
         KUBEPREFIXES="${{ inputs.KUBEPREFIX }}"
         IFS=',' read -r -a kubeprefixes <<< "$KUBEPREFIXES"
+        echo "KUBEPREFIXES: ${kubeprefixes[@]}"
 
         if [ ${#kubeprefixes[@]} -gt 0 ]; then
           for idx in "${!kubeprefixes[@]}"; do
             prefix="${kubeprefixes[$idx]}"
             kubeconfig="${{ inputs.KUBECONFIG }}"
-
+            echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubeconfig_${idx}.yaml"
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
             chmod 700 "kubeconfig_${idx}.yaml"
