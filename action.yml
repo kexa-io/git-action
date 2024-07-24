@@ -167,6 +167,14 @@ runs:
       continue-on-error: true
       if: ${{ success() }}
 
+    - name: Copy multiple kubernetes json into container
+      run: |
+        for file in kubernetes_*.json; do
+          docker cp "$file" kexadockeractioncontainer:/app/config/
+        done
+      shell: bash
+      continue-on-error: true
+      if: ${{ success() }}
 
     - name: Copy kube json into container
       run: |
