@@ -57,7 +57,6 @@ runs:
     # here, if KUBECONFIG is list, parse KUBECONFIG and KUBECONFIG_PREFIX
     # and create the env file with all the variables and their prefix
     #- name: If Kubeconfig is a list of files, create kubeconfig file and set exist
-
     - name: Multiple kubconfig, create files and set env variables
       id: check_kubeconfig_multiple
       run: |
@@ -72,14 +71,20 @@ runs:
           chmod 700 "kubernetes_${idx}.json" "kubeconfig_${idx}.yaml"
         }
 
-        IFS=$'\n' read -rd '' -a kubeprefixes <<< "$(echo '${{ steps.kexa.outputs.KUBEPREFIX }}' | tr ',' '\n')"
+        KUBEPREFIXES=$(echo '${{ inputs.KUBEPREFIX }}' | jq -r '.[]')
 
-        for idx in "${!kubeprefixes[@]}"; do
-          prefix="${kubeprefixes[$idx]}"
-          parse_kubeconfig "${{ secrets.KUBECONFIG }}" "${prefix}" "$idx"
-        done
+        IFS=$'\n' read -rd '' -a kubeprefixes <<< "$KUBEPREFIXES"
+
+        if [ ${#kubeprefixes[@]} -gt 0 ]; then
+          for idx in "${!kubeprefixes[@]}"; do
+            prefix="${kubeprefixes[$idx]}"
+            parse_kubeconfig "${{ inputs.KUBECONFIG }}" "${prefix}" "$idx"
+          done
+        else
+          echo "No KUBEPREFIX values found."
+          exit 1
+        fi
       shell: bash
-
 
     # - name: If Kubeconfig input exists, create kubeconfig file and set exist
     #   id: check_kubeconfig
