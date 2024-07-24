@@ -158,6 +158,14 @@ runs:
       continue-on-error: true
       if: ${{ success() }}
 
+    - name: Copy multiple kubeconfig into container
+      run: |
+        docker cp kubeconfig_*.yaml kexadockeractioncontainer:/app/
+      shell: bash
+      continue-on-error: true
+      if: ${{ success() }}
+
+
     - name: Copy kube json into container
       run: |
         docker cp kubernetes.json kexadockeractioncontainer:/app/config/
@@ -217,7 +225,7 @@ runs:
       shell: bash
 
     # delete multiple kube config files if created
-    - name: Delete kubeconfig files
+    - name: Delete multiple kubeconfig files
       if: steps.check_kubeconfig_multiple.outputs.exists == 'true'
       run: rm kubeconfig_*.yaml kubernetes_*.json
       continue-on-error: true
