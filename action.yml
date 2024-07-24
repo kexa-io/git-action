@@ -160,7 +160,9 @@ runs:
 
     - name: Copy multiple kubeconfig into container
       run: |
-        docker cp kubeconfig_*.yaml kexadockeractioncontainer:/app/
+        for file in kubeconfig_*.yaml; do
+          docker cp "$file" kexadockeractioncontainer:/app/
+        done
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
