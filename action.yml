@@ -66,7 +66,6 @@ runs:
         if [ ${#kubeprefixes[@]} -gt 0 ]; then
           for idx in "${!kubeprefixes[@]}"; do
             prefix="${kubeprefixes[$idx]}"
-            parse_kubeconfig "${{ inputs.KUBECONFIG }}" "${prefix}"
             kubeconfig="${{ inputs.KUBECONFIG }}"
 
             echo "${kubeconfig}" > "kubeconfig_${idx}.yaml"
