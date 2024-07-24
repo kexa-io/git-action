@@ -160,6 +160,12 @@ runs:
       continue-on-error: true
       if: ${{ success() }}
 
+    - name: Delete unique kube json in container
+      run: docker exec kexadockeractioncontainer rm /app/config/kubernetes.json
+      shell: bash
+      continue-on-error: true
+      if: ${{ success() }}
+
     - name: Copy multiple kubeconfig into container
       run: |
         for file in kubeconfig_*.yaml; do
