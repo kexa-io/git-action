@@ -73,11 +73,11 @@ runs:
 
 
             echo "Iterating try:"
-            for i in "${inputs[@]}"; do
+            for i in "${{ inputs[@] }}"; do
               echo "i: $i"
               if [[ $i == $INPUT_PREFIX_KUBE ]]; then
                 echo "FOUND! $i"
-                kubeconfig="${inputs[$i]}"
+                kubeconfig="${{ inputs[$i] }}"
               fi
             done
 
