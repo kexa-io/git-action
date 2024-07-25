@@ -66,7 +66,7 @@ runs:
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
           echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
           kubeconfig="${{ inputs.KUBECONFIG }}"
-          echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; json.dump(yaml.safe_load(sys.stdin), sys.stdout, indent=2)" > kubernetes.json
+          cat kubeconfig.yaml | python -c "import yaml, json, sys; json.dump(yaml.safe_load(sys.stdin), sys.stdout, indent=2)" > kubernetes.json
 
           chmod 700 kubernetes.json kubeconfig.yaml
         else
