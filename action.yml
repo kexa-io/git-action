@@ -81,7 +81,7 @@ runs:
       run: |
         if [ -z "${{ inputs.KUBEPREFIX }}" ]; then
           echo "KUBEPREFIX not found."
-          exit 1
+          exit 0
         fi
 
         KUBEPREFIXES="${{ inputs.KUBEPREFIX }}"
@@ -158,7 +158,7 @@ runs:
       if: steps.check_google_application_credentials.outputs.exists == 'false'
       run: |
         echo "checking for multiple GCP credentials"
-        
+
         if [ -z "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}" ]; then
           echo "GOOGLE_APPLICATION_CREDENTIALS_PREFIX not found."
           exit 1
