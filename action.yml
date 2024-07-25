@@ -67,15 +67,17 @@ runs:
         if [ ${#kubeprefixes[@]} -gt 0 ]; then
           for idx in "${!kubeprefixes[@]}"; do
             prefix="${kubeprefixes[$idx]}"
+
+            /// PROBLEM IS HERE I DONT GET THE GOOD VALUE FUECK
             kubeconfig="${{ inputs.KUBECONFIG }}"
             echo "PREFIX: ${prefix}"
-            echo "${kubeconfig}" > "kubeconfig_${idx}.yaml"
+            echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
             echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes_${idx}.json
             cat .env
-            cat "kubeconfig_${idx}.yaml"
+            chmod 700 "kubernetes_${idx}.yaml" "kubernetes_${idx}.json"
+            cat "kubernetes_${idx}.yaml"
             cat "kubernetes_${idx}.json"
-            chmod 700 "kubeconfig_${idx}.yaml" "kubernetes_${idx}.json"
           done
         else
           echo "No KUBEPREFIX values found."
@@ -157,7 +159,7 @@ runs:
 
     - name: Copy kubeconfig into container
       run: |
-        docker cp kubeconfig.yaml kexadockeractioncontainer:/app/
+        docker cp kubernetes.yaml kexadockeractioncontainer:/app/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
@@ -169,14 +171,14 @@ runs:
       if: ${{ success() }}
 
     - name: Delete unique kubeconfig in container
-      run: docker exec kexadockeractioncontainer rm /app/kubeconfig.yaml
+      run: docker exec kexadockeractioncontainer rm /app/kubernetes.yaml
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
     - name: Copy multiple kubeconfig into container
       run: |
-        for file in kubeconfig_*.yaml; do
+        for file in kubernetes_*.yaml; do
           docker cp "$file" kexadockeractioncontainer:/app/
         done
       shell: bash
@@ -259,14 +261,14 @@ runs:
     # delete kube config file if created
     - name: Delete kubeconfig file
       if: steps.check_kubeconfig.outputs.exists == 'true'
-      run: rm kubeconfig.yaml
+      run: rm kubernetes.yaml
       continue-on-error: true
       shell: bash
 
     # delete multiple kube config files if created
     - name: Delete multiple kubeconfig files
       if: steps.check_kubeconfig_multiple.outputs.exists == 'true'
-      run: rm kubeconfig_*.yaml kubernetes_*.json
+      run: rm kubernetes_*.yaml kubernetes_*.json
       continue-on-error: true
       shell: bash
 
