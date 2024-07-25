@@ -71,11 +71,7 @@ runs:
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
-            inputsList=${{ toJSON(inputs) }}
-            for i in ${{ inputs }}
-            do
-              echo "i: $i"
-            done
+            inputsList="${{ toJSON(inputs) }}"
 
             kubeconfig="$inputsList['$INPUT_PREFIX_KUBE']"
 
