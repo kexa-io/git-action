@@ -211,6 +211,8 @@ runs:
 
             INPUT_PREFIX_GCP="${prefix}GOOGLE_APPLICATION_CREDENTIALS"
 
+            echo "INPUT_PREFIX_GCP: $INPUT_PREFIX_GCP"
+
             newInputs='${{ toJson(inputs) }}'
             gcp=""
             for key in $(echo "$newInputs" | jq -r 'keys[]'); do
