@@ -70,8 +70,8 @@ runs:
             kubeconfig="${{ inputs.KUBECONFIG }}"
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubeconfig_${idx}.yaml"
-            echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes_${idx}.json
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
+            echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes_${idx}.json
             cat .env
             chmod 700 "kubeconfig_${idx}.yaml" "kubernetes_${idx}.json"
           done
