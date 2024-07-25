@@ -71,14 +71,13 @@ runs:
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
+            inputsList=${{ toJSON(inputs) }}
             for i in ${{ inputs }}
             do
               echo "i: $i"
             done
 
-           # echo "${{ inputs['KUB'] }}"
-            allInputs=${{ inputs }}
-            kubeconfig="$allInputs['$INPUT_PREFIX_KUBE']"
+            kubeconfig="$inputsList['$INPUT_PREFIX_KUBE']"
 
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
