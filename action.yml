@@ -73,18 +73,14 @@ runs:
 
 
             echo "Iterating try:"
-            for i in "${{ inputs[@] }}"; do
+            inputsList=${{ inputs }}
+
+            for i in "${inputsList[@]}"; do
               echo "i: $i"
               if [[ $i == $INPUT_PREFIX_KUBE ]]; then
                 echo "FOUND! $i"
-                kubeconfig="${{ inputs[$i] }}"
+                kubeconfig="${inputsList[$i]}"
               fi
-            done
-
-
-            echo "Iterating through input keys:"
-            for key in $(env | grep '^INPUT_' | cut -d= -f1); do
-              echo "${key#INPUT_}"
             done
 
             echo "PREFIX: ${prefix}"
