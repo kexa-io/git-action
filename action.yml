@@ -72,17 +72,17 @@ runs:
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
             echo "START"
-            echo "END"
-
             newInputs='${{ toJson(inputs) }}'
+            kubeconfig=""
             for key in $(echo "$newInputs" | jq -r 'keys[]'); do
               value=$(echo "$newInputs" | jq -r ".\"$key\"")
               echo "Input key: $key"
               echo "Input value: $value"
+              if [ "$key" == "$INPUT_PREFIX_KUBE" ]; then
+                kubeconfig="${value}"
+              fi
             done
-
-
-            kubeconfig="${{ inputs['KUB1_KUBECONFIG'] }}"
+            echo "END"
 
             echo "KUBECONFIG: ${kubeconfig}"
 
