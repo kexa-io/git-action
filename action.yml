@@ -188,6 +188,9 @@ runs:
 
             echo "${gcp}" > "gcp_${idx}.json"
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
+
+            cat "gcp_${idx}.json"
+            
             chmod 700 "gcp_${idx}.json"
           done
         else
