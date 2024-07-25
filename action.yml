@@ -64,8 +64,8 @@ runs:
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubernetes.yaml
-          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
-          echo "${{ inputs.KUBECONFIG }}" > kubernetes.json
+          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/kubernetes.yaml" >> .env
+          echo "${{ inputs.KUBECONFIG }} " > kubernetes.json
 
           chmod 700 kubernetes.json kubernetes.yaml
         else
