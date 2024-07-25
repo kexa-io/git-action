@@ -69,9 +69,7 @@ runs:
             prefix="${kubeprefixes[$idx]}"
 
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
-            KUBECONFIG_VALUE="${{ inputs.${{ INPUT_PREFIX_KUBE }} }}"
-
-            kubeconfig="${{ inputs.KUBECONFIG }}"
+            kubeconfig="${{ inputs.${{ INPUT_PREFIX_KUBE }} }}"
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
@@ -86,6 +84,35 @@ runs:
           exit 1
         fi
       shell: bash
+    
+    # - name: Multiple kubconfig, create files and set env variables
+    #   id: check_kubeconfig_multiple
+    #   run: |
+    #     KUBEPREFIXES="${{ inputs.KUBEPREFIX }}"
+    #     IFS=',' read -r -a kubeprefixes <<< "$KUBEPREFIXES"
+    #     echo "KUBEPREFIXES: ${kubeprefixes[@]}"
+
+    #     if [ ${#kubeprefixes[@]} -gt 0 ]; then
+    #       for idx in "${!kubeprefixes[@]}"; do
+    #         prefix="${kubeprefixes[$idx]}"
+    #         kubeconfig="${{ inputs.KUBECONFIG }}"
+    #         echo "PREFIX: ${prefix}"
+    #         echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
+    #         echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
+    #         echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes_${idx}.json
+    #         cat .env
+    #         chmod 700 "kubernetes_${idx}.yaml" "kubernetes_${idx}.json"
+    #         cat "kubernetes_${idx}.yaml"
+    #         cat "kubernetes_${idx}.json"
+    #       done
+    #     else
+    #       echo "No KUBEPREFIX values found."
+    #       exit 1
+    #     fi
+    #   shell: bash
+
+
+
 
     # - name: If Kubeconfig input exists, create kubeconfig file and set exist
     #   id: check_kubeconfig
