@@ -71,7 +71,6 @@ runs:
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
             echo "INPUT_PREFIX_KUBE: ${{ inputs['${INPUT_PREFIX_KUBE}'] }}"
-            echo "${{ inputs[format('{0}KUBECONFIG', prefix)] }}"
             kubeconfig="${{ inputs['KUB1_KUBECONFIG'] }}"
 
 
