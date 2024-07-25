@@ -134,44 +134,6 @@ runs:
         fi
       shell: bash
 
-    - name: Multiple workspace credentials, create files and set env variables
-      if: steps.check_workspacecred.outputs.exists == 'false'
-      run: |
-        if [ -z "${{ inputs.WORKSPACEPREFIX }}" ]; then
-          echo "WORKSPACEPREFIX not found."
-          exit 1
-        fi
-        
-        echo "WORKSPACEPREFIXES found for multiple conf."
-
-        WORKSPACEPREFIXES="${{ inputs.WORKSPACEPREFIX }}"
-        IFS=',' read -r -a workspaceprefixes <<< "$WORKSPACEPREFIXES"
-
-        if [ ${#workspaceprefixes[@]} -gt 0 ]; then
-          for idx in "${!workspaceprefixes[@]}"; do
-            prefix="${workspaceprefixes[$idx]}"
-
-            INPUT_PREFIX_WORKSPACE="${prefix}WORKSPACECRED"
-
-            newInputs='${{ toJson(inputs) }}'
-            workspace=""
-            for key in $(echo "$newInputs" | jq -r 'keys[]'); do
-              value=$(echo "$newInputs" | jq -r ".\"$key\"")
-              if [ "$key" == "$INPUT_PREFIX_WORKSPACE" ]; then
-                workspace="${value}"
-              fi
-            done
-
-            echo "${workspace}" > "workspace_${idx}.json"
-            echo "${prefix}WORKSPACECRED=/app/config/workspace_${idx}.json" >> .env
-            chmod 700 "workspace_${idx}.json"
-          done
-        else
-          echo "No WORKSPACEPREFIX values found."
-          exit 1
-        fi
-      shell: bash
-
 
     ############
     #   GCP    #
@@ -195,6 +157,8 @@ runs:
     - name: Multiple google application credentials, create files and set env variables
       if: steps.check_google_application_credentials.outputs.exists == 'false'
       run: |
+        echo "checking for multiple GCP credentials"
+        
         if [ -z "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}" ]; then
           echo "GOOGLE_APPLICATION_CREDENTIALS_PREFIX not found."
           exit 1
