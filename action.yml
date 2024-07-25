@@ -68,7 +68,6 @@ runs:
           for idx in "${!kubeprefixes[@]}"; do
             prefix="${kubeprefixes[$idx]}"
 
-            /// PROBLEM IS HERE I DONT GET THE GOOD VALUE FUECK
             kubeconfig="${{ inputs.KUBECONFIG }}"
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
