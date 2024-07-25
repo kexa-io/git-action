@@ -72,7 +72,7 @@ runs:
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
             echo "START"
-            inputsNoJson=${{ inputs }}
+            inputsNoJson="${{ inputs }}"
             inputsList=$(echo $inputsNoJson | jq -r '.')
             echo "HERE"
             kubeconfig="$inputsList['$INPUT_PREFIX_KUBE']"
