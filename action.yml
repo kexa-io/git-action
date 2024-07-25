@@ -73,6 +73,7 @@ runs:
 
             echo "START"
             newInputs='${{ toJson(inputs) }}'
+            kubeconfig=""
             for key in $(echo "$newInputs" | jq -r 'keys[]'); do
               value=$(echo "$newInputs" | jq -r ".\"$key\"")
               echo "Input key: $key"
