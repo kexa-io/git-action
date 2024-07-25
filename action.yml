@@ -64,14 +64,13 @@ runs:
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
-          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/kubernetes.yaml" >> .env
+          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
           echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
           chmod 700 kubernetes.json kubeconfig.yaml
         else
           echo "KUBECONFIG not found."
         fi
       shell: bash
-
 
     - name: Multiple kubconfig, create files and set env variables
       id: check_kubeconfig_multiple
@@ -170,6 +169,7 @@ runs:
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
+
 
     - name: Copy multiple kubeconfig into container
       run: |
