@@ -69,6 +69,7 @@ runs:
           chmod 700 kubernetes.json kubeconfig.yaml
         else
           echo "KUBECONFIG not found."
+          echo "::set-output name=exists::false"
         fi
       shell: bash
 
