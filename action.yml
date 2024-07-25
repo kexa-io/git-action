@@ -69,17 +69,12 @@ runs:
             prefix="${kubeprefixes[$idx]}"
 
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
-            # echo "kubeconfig=${{ format('{0}', inputs[INPUT_PREFIX_KUBE]) }}"
 
-            # for i in input, if inputs contain the prefix at beginning,aasign the value to kubeconfig
             for i in "${!inputs[@]}"; do
               if [[ $i == $prefix* ]]; then
                 kubeconfig="${inputs[$i]}"
               fi
             done
-
-            # kubeconfig="${{ format('{0}', inputs[INPUT_PREFIX_KUBE]) }}"
-
 
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
