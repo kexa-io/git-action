@@ -63,12 +63,11 @@ runs:
       run: |
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
-          echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
+          echo "${{ inputs.KUBECONFIG }}" > kubernetes.yaml
           echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
-          kubeconfig="${{ inputs.KUBECONFIG }}"
-          cat kubeconfig.yaml | python -c "import yaml, json, sys; json.dump(yaml.safe_load(sys.stdin), sys.stdout, indent=2)" > kubernetes.json
+          echo "${{ inputs.KUBECONFIG }}" > kubernetes.json
 
-          chmod 700 kubernetes.json kubeconfig.yaml
+          chmod 700 kubernetes.json kubernetes.yaml
         else
           echo "KUBECONFIG not found."
           echo "::set-output name=exists::false"
