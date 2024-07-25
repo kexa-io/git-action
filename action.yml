@@ -142,6 +142,8 @@ runs:
           exit 1
         fi
         
+        echo "WORKSPACEPREFIXES found for multiple conf."
+
         WORKSPACEPREFIXES="${{ inputs.WORKSPACEPREFIX }}"
         IFS=',' read -r -a workspaceprefixes <<< "$WORKSPACEPREFIXES"
 
@@ -197,7 +199,9 @@ runs:
           echo "GOOGLE_APPLICATION_CREDENTIALS_PREFIX not found."
           exit 1
         fi
-        
+
+        echo "GOOGLE_APPLICATION_CREDENTIALS_PREFIX found for multiple conf."
+
         GOOGLE_APPLICATION_CREDENTIALS_PREFIXES="${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}"
         IFS=',' read -r -a google_application_credentials_prefixes <<< "$GOOGLE_APPLICATION_CREDENTIALS_PREFIXES"
 
