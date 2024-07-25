@@ -72,8 +72,7 @@ runs:
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
             echo "START"
-            inputsList=$(echo "${{ inputs }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))")
-            kubeconfig="$inputsList['$INPUT_PREFIX_KUBE']"
+            kubeconfig="$inputs['$INPUT_PREFIX_KUBE']"
             echo "KUBECONFIG: ${kubeconfig}"
             echo "END"
 
