@@ -69,8 +69,10 @@ runs:
             prefix="${kubeprefixes[$idx]}"
 
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
+            echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
             for i in "${!inputs[@]}"; do
+              echo "i: $i"
               if [[ $i == $INPUT_PREFIX_KUBE ]]; then
                 echo "FOUND! $i"
                 kubeconfig="${inputs[$i]}"
