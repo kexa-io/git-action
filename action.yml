@@ -69,7 +69,8 @@ runs:
             prefix="${kubeprefixes[$idx]}"
 
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
-            kubeconfig="${{ inputs.${INPUT_PREFIX_KUBE} }}"
+            echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
+            kubeconfig='${{ format('inputs.{0}', INPUT_PREFIX_KUBE) }}'
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
