@@ -71,7 +71,10 @@ runs:
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
             echo "INPUT_PREFIX_KUBE: ${{ inputs['${INPUT_PREFIX_KUBE}'] }}"
-            kubeconfig="${{ inputs['${INPUT_PREFIX_KUBE}'] }}"
+            echo "${{ inputs[format('{0}KUBECONFIG', prefix)] }}"
+            kubeconfig="${{ inputs[format('{0}KUBECONFIG', prefix)] }}"
+
+
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
@@ -86,7 +89,10 @@ runs:
           exit 1
         fi
       shell: bash
-    
+
+    #             kubeconfig="${{ inputs['${INPUT_PREFIX_KUBE}'] }}"
+
+
     # - name: Multiple kubconfig, create files and set env variables
     #   id: check_kubeconfig_multiple
     #   run: |
@@ -97,6 +103,9 @@ runs:
     #     if [ ${#kubeprefixes[@]} -gt 0 ]; then
     #       for idx in "${!kubeprefixes[@]}"; do
     #         prefix="${kubeprefixes[$idx]}"
+
+
+    
     #         kubeconfig="${{ inputs.KUBECONFIG }}"
     #         echo "PREFIX: ${prefix}"
     #         echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
