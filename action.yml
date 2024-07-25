@@ -188,8 +188,8 @@ runs:
             done
 
             jsonData=$(echo "$gcp" | jq -c .)
-            echo "HEEEERE"
-            echo '$jsonData' > "gcp_${idx}.json"
+            echo "HEEEERE the json is fine"
+            echo "$jsonData" | jq . > "gcp_${idx}.json"
 
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
 
