@@ -72,7 +72,7 @@ runs:
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
             echo "START"
-            kubeconfig="$inputs['$INPUT_PREFIX_KUBE']"
+            kubeconfig="${{ inputs['$INPUT_PREFIX_KUBE'] }}"
             echo "KUBECONFIG: ${kubeconfig}"
             echo "END"
 
