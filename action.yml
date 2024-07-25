@@ -71,12 +71,20 @@ runs:
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
+
+            echo "Iterating try:"
             for i in "${inputs[@]}"; do
               echo "i: $i"
               if [[ $i == $INPUT_PREFIX_KUBE ]]; then
                 echo "FOUND! $i"
                 kubeconfig="${inputs[$i]}"
               fi
+            done
+
+
+            echo "Iterating through input keys:"
+            for key in $(env | grep '^INPUT_' | cut -d= -f1); do
+              echo "${key#INPUT_}"
             done
 
             echo "PREFIX: ${prefix}"
