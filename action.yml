@@ -72,9 +72,10 @@ runs:
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
             echo "START"
-            kubeconfig="${{ inputs['$INPUT_PREFIX_KUBE'] }}"
+            kubeconfig="${{ inputs[$INPUT_PREFIX_KUBE] }}"
             echo "KUBECONFIG: ${kubeconfig}"
             echo "END"
+            kubeconfig="${{ inputs['KUB1_KUBECONFIG'] }}"
 
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
