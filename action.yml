@@ -71,17 +71,26 @@ runs:
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
             echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
 
-
-            echo "Iterating try:"
-            inputsList=${{ inputs }}
+            inputsList=($(env | grep -E "$(echo ${kube_prefix_array[@]} | sed 's/ /|/g')"))
 
             for i in "${inputsList[@]}"; do
-              echo "i: $i"
-              if [[ $i == $INPUT_PREFIX_KUBE ]]; then
-                echo "FOUND! $i"
-                kubeconfig="${inputsList[$i]}"
+              key="${i%%=*}"
+              value="${i#*=}"
+              echo "Key: $key, Value: $value"
+              if [[ $key == ${kube_prefix_array[0]}* ]]; then
+                echo "FOUND! $key"
+                kubeconfig="$value"
               fi
             done
+
+            echo "End Iterating"
+            # for i in "${inputsList[@]}"; do
+              # echo "i: $i"
+              # if [[ $i == $INPUT_PREFIX_KUBE ]]; then
+                # echo "FOUND! $i"
+                # kubeconfig="${inputsList[$i]}"
+              # fi
+            # done
 
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
