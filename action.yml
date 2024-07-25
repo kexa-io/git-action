@@ -92,6 +92,8 @@ runs:
               # fi
             # done
 
+            kubeconfig="${inputs['$INPUT_PREFIX_KUBE']}"
+
             echo "PREFIX: ${prefix}"
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
             echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
