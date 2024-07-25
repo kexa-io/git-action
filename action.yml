@@ -68,10 +68,9 @@ runs:
           for idx in "${!kubeprefixes[@]}"; do
             prefix="${kubeprefixes[$idx]}"
 
-            INPUT_PREFIX_KUBE="inputs.${prefix}KUBECONFIG"
-            echo "INPUT_PREFIX_KUBE: ${INPUT_PREFIX_KUBE}"
-            # echo "INPUT_PREFIX_KUBE inputs: ${{ inputs['${INPUT_PREFIX_KUBE}'] }}"
-            kubeconfig="${INPUT_PREFIX_KUBE}"
+            INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
+            # echo "kubeconfig=${{ format('{0}', inputs[INPUT_PREFIX_KUBE]) }}"
+            kubeconfig="${{ format('{0}', inputs[INPUT_PREFIX_KUBE]) }}"
 
 
             echo "PREFIX: ${prefix}"
