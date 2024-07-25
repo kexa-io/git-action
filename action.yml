@@ -183,12 +183,13 @@ runs:
               value=$(echo "$newInputs" | jq -r ".\"$key\"")
               if [ "$key" == "$INPUT_PREFIX_GCP" ]; then
                 gcp="${value}"
+                echo "value: $value"
               fi
             done
 
             prepared='${ toJson(gcp) }'
-            jsonData=$(echo "$gcp" | jq -c .)
-            echo "$jsonData" > "gcp_${idx}.json"
+            jsonData=$(echo '$gcp' | jq -c .)
+            echo '$jsonData' > "gcp_${idx}.json"
 
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
 
