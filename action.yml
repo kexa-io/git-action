@@ -57,8 +57,25 @@ runs:
     # here, if KUBECONFIG is list, parse KUBECONFIG and KUBECONFIG_PREFIX
     # and create the env file with all the variables and their prefix
     #- name: If Kubeconfig is a list of files, create kubeconfig file and set exist
+
+    - name: If Kubeconfig input exists, create kubeconfig file and set exist
+      id: check_kubeconfig
+      run: |
+        if [ -n "${{ inputs.KUBECONFIG }}" ]; then
+          echo "KUBECONFIG found."
+          echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
+          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
+          echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
+          chmod 700 kubernetes.json kubeconfig.yaml
+        else
+          echo "KUBECONFIG not found."
+        fi
+      shell: bash
+
+
     - name: Multiple kubconfig, create files and set env variables
       id: check_kubeconfig_multiple
+      if: steps.check_kubeconfig.outputs.exists == 'false'
       run: |
         KUBEPREFIXES="${{ inputs.KUBEPREFIX }}"
         IFS=',' read -r -a kubeprefixes <<< "$KUBEPREFIXES"
@@ -86,21 +103,6 @@ runs:
         else
           echo "No KUBEPREFIX values found."
           exit 1
-        fi
-      shell: bash
-
-    - name: If Kubeconfig input exists, create kubeconfig file and set exist
-      id: check_kubeconfig
-      if: steps.check_kubeconfig_multiple.outputs.exists == 'false'
-      run: |
-        if [ -n "${{ inputs.KUBECONFIG }}" ]; then
-          echo "KUBECONFIG found."
-          echo "${{ inputs.KUBECONFIG }}" > kubeconfig.yaml
-          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/config/kubernetes.json" >> .env
-          echo "${{ inputs.KUBECONFIG }}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes.json
-          chmod 700 kubernetes.json kubeconfig.yaml
-        else
-          echo "KUBECONFIG not found."
         fi
       shell: bash
 
@@ -165,18 +167,6 @@ runs:
     - name: Copy kubeconfig into container
       run: |
         docker cp kubernetes.yaml kexadockeractioncontainer:/app/
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-    - name: Delete unique kube json in container
-      run: docker exec kexadockeractioncontainer rm /app/config/kubernetes.json
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-    - name: Delete unique kubeconfig in container
-      run: docker exec kexadockeractioncontainer rm /app/kubernetes.yaml
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
