@@ -187,15 +187,16 @@ runs:
               fi
             done
 
-            jsonData=$(echo "$gcp" | jq -c .)
-            echo "HEEEERE the json is fine"
-            echo "$jsonData" | jq . > "gcp_${idx}.json"
-            echo "AFTEER"
+            # jsonData=$(echo "$gcp" | jq -c .)
+            
+            # echo "HEEEERE the json is fine"
+            # echo "$jsonData" | jq . > "gcp_${idx}.json"
+            # echo "AFTEER"
+            printf "%s" "$jsonData" | jq . > "gcp_${idx}.json"
             cat "gcp_${idx}.json"
+
 
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
-
-            cat "gcp_${idx}.json"
 
             chmod 700 "gcp_${idx}.json"
           done
