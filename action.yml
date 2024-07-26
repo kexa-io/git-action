@@ -195,14 +195,13 @@ runs:
             # printf "%s" "$jsonData" | jq . > "gcp_${idx}.json"
 
             # escapedJsonData=$(echo "$jsonData" | sed 's/"/\\"/g')
-            
-            echo "$jsonData" | jq . > "gcp_${idx}.json"
 
-            cat "gcp_${idx}.json"
+            echo "$jsonData" | jq . > "gcp_${idx}.json"
 
 
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
-
+            cat "gcp_${idx}.json"
+            cat .env
             chmod 700 "gcp_${idx}.json"
           done
         else
