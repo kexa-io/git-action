@@ -195,6 +195,7 @@ runs:
 
             escapedJsonData=$(echo "$jsonData" | sed 's/"/\\"/g')
             printf "%s" "$escapedJsonData" | jq . > "gcp_${idx}.json"
+            echo "$jsonData" | jq . > "gcp_${idx}.json"
 
             cat "gcp_${idx}.json"
 
