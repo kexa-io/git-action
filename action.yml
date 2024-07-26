@@ -161,7 +161,7 @@ runs:
 
         if [ -z "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}" ]; then
           echo "GOOGLE_APPLICATION_CREDENTIALS_PREFIX not found."
-          exit 1
+          exit 0
         fi
 
         echo "GOOGLE_APPLICATION_CREDENTIALS_PREFIX found for multiple conf."
