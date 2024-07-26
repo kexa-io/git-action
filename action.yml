@@ -175,39 +175,25 @@ runs:
 
             INPUT_PREFIX_GCP="${prefix}GOOGLE_APPLICATION_CREDENTIALS"
 
-            echo "INPUT_PREFIX_GCP: $INPUT_PREFIX_GCP"
-
             newInputs='${{ toJson(inputs) }}'
             gcp=""
             for key in $(echo "$newInputs" | jq -r 'keys[]'); do
               value=$(echo "$newInputs" | jq -r ".\"$key\"")
               if [ "$key" == "$INPUT_PREFIX_GCP" ]; then
                 gcp="${value}"
-                echo "value: $value"
               fi
             done
 
             jsonData=$(echo "$gcp" | jq -c .)
-            
-            # echo "HEEEERE the json is fine"
-            # echo "$jsonData" | jq . > "gcp_${idx}.json"
-            # echo "AFTEER"
-            # printf "%s" "$jsonData" | jq . > "gcp_${idx}.json"
-
-            # escapedJsonData=$(echo "$jsonData" | sed 's/"/\\"/g')
-
             echo "$jsonData" | jq . > "gcp_${idx}.json"
 
-
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
-            cat "gcp_${idx}.json"
             chmod 700 "gcp_${idx}.json"
           done
         else
           echo "No GOOGLE_APPLICATION_CREDENTIALS_PREFIX values found."
           exit 1
         fi
-        cat .env
       shell: bash
 
     ##################################
