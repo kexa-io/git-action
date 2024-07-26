@@ -201,13 +201,13 @@ runs:
 
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
             cat "gcp_${idx}.json"
-            cat .env
             chmod 700 "gcp_${idx}.json"
           done
         else
           echo "No GOOGLE_APPLICATION_CREDENTIALS_PREFIX values found."
           exit 1
         fi
+        cat .env
       shell: bash
 
     ##################################
