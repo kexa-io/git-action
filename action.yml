@@ -22,7 +22,7 @@ inputs:
     description: 'Workspace credentials'
     required: false
     default: ''
-  WORKSPACEPREFIX:
+  WORKSPACECRED_PREFIX:
     description: 'Workspace var prefix'
     required: false
     default: ''
@@ -126,11 +126,52 @@ runs:
         if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
           echo "WORKSPACECRED found."
           echo "${{ inputs.WORKSPACECRED }}" > credentials_workspace.json
-          echo "${{ inputs.WORKSPACEPREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
+          echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
           chmod 700 credentials_workspace.json
         else
           echo "WORKSPACECRED not found."
           echo "::set-output name=exists::false"
+        fi
+      shell: bash
+
+    - name: Multiple workspace credentials, create files and set env variables
+      if: steps.check_workspacecred.outputs.exists == 'false'
+      run: |
+        echo "checking for multiple workspace credentials"
+
+        if [ -z "${{ inputs.WORKSPACECRED_PREFIX }}" ]; then
+          echo "WORKSPACECRED_PREFIX not found."
+          exit 0
+        fi
+
+        echo "WORKSPACECRED_PREFIX found for multiple conf."
+
+        WORKSPACEPREFIXES="${{ inputs.WORKSPACECRED_PREFIX }}"
+        IFS=',' read -r -a workspace_prefixes <<< "$WORKSPACEPREFIXES"
+
+        if [ ${#workspace_prefixes[@]} -gt 0 ]; then
+          for idx in "${!workspace_prefixes[@]}"; do
+            prefix="${workspace_prefixes[$idx]}"
+
+            INPUT_PREFIX_WORKSPACE="${prefix}WORKSPACECRED"
+
+            newInputs='${{ toJson(inputs) }}'
+            workspace=""
+            for key in $(echo "$newInputs" | jq -r 'keys[]'); do
+              value=$(echo "$newInputs" | jq -r ".\"$key\"")
+              if [ "$key" == "$INPUT_PREFIX_WORKSPACE" ]; then
+                workspace="${value}"
+              fi
+            done
+
+            echo "${workspace}" > "workspace_${idx}.json"
+
+            echo "${prefix}WORKSPACECRED=/app/config/workspace_${idx}.json" >> .env
+            chmod 700 "workspace_${idx}.json"
+          done
+        else
+          echo "No WORKSPACECRED_PREFIX values found."
+          exit 1
         fi
       shell: bash
 
