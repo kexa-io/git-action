@@ -138,12 +138,6 @@ runs:
     ############
     #   GCP    #
     ############
-            # jsonData=$(echo "$gcp" | jq -c .)
-            
-            # echo "HEEEERE the json is fine"
-            # echo "$jsonData" | jq . > "gcp_${idx}.json"
-            # echo "AFTEER"
-            # printf "%s" "$jsonData" | jq . > "gcp_${idx}.json"
 
 
     - name: If Google application credentials input exists, create Google application credentials file and set exist
@@ -193,8 +187,15 @@ runs:
               fi
             done
 
-            escapedJsonData=$(echo "$jsonData" | sed 's/"/\\"/g')
-            echo "$jsonData" | jq . > "gcp_${idx}.json"
+            jsonData=$(echo "$gcp" | jq -c .)
+            
+            # echo "HEEEERE the json is fine"
+            # echo "$jsonData" | jq . > "gcp_${idx}.json"
+            # echo "AFTEER"
+            # printf "%s" "$jsonData" | jq . > "gcp_${idx}.json"
+
+            # escapedJsonData=$(echo "$jsonData" | sed 's/"/\\"/g')
+            printf "%s" "$jsonData" | jq . > "gcp_${idx}.json"
 
             cat "gcp_${idx}.json"
 
