@@ -64,6 +64,14 @@ runs:
       run: echo '${{ inputs.ENV_VARS }}' > .env
       shell: bash
 
+    # copy JIRA crendentials into env
+    - name: Copy JIRA credentials into container
+      run: |
+        echo "JIRA_API_KEY=${{ inputs.JIRA_API_KEY }}" >> .env
+        echo "JIRA_DONE_STATUS=${{ inputs.JIRA_DONE_STATUS }}" >> .env
+        echo "JIRA_PROJECT_KEY=${{ inputs.JIRA_PROJECT_KEY }}" >> .env
+        echo "JIRA_DOMAIN=${{ inputs.JIRA_DOMAIN }}" >> .env
+      shell: bash
 
     ##################################
     #   CONFIG FILE CREATION         #
@@ -283,7 +291,7 @@ runs:
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
-
+ 
     - name: Copy kubeconfig into container
       run: |
         docker cp kubernetes.yaml kexadockeractioncontainer:/app/
