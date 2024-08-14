@@ -34,7 +34,22 @@ inputs:
     description: 'Google application credentials prefix'
     required: false
     default: ''
-
+  JIRA_API_KEY:
+    description: 'API key for Jira'
+    required: false
+    default: ''
+  JIRA_DONE_STATUS:
+    description: 'Done issue status for Jira project'
+    required: false
+    default: ''
+  JIRA_PROJECT_KEY:
+    description: 'Jira project key'
+    required: false
+    default: ''
+  JIRA_DOMAIN:
+    description: 'Jira domain used by user'
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
@@ -49,6 +64,14 @@ runs:
       run: echo '${{ inputs.ENV_VARS }}' > .env
       shell: bash
 
+    # copy JIRA crendentials into env
+    - name: Copy JIRA credentials into container
+      run: |
+        echo "JIRA_API_KEY=${{ inputs.JIRA_API_KEY }}" >> .env
+        echo "JIRA_DONE_STATUS=${{ inputs.JIRA_DONE_STATUS }}" >> .env
+        echo "JIRA_PROJECT_KEY=${{ inputs.JIRA_PROJECT_KEY }}" >> .env
+        echo "JIRA_DOMAIN=${{ inputs.JIRA_DOMAIN }}" >> .env
+      shell: bash
 
     ##################################
     #   CONFIG FILE CREATION         #
@@ -268,7 +291,7 @@ runs:
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
-
+ 
     - name: Copy kubeconfig into container
       run: |
         docker cp kubernetes.yaml kexadockeractioncontainer:/app/
