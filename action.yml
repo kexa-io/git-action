@@ -146,15 +146,10 @@ runs:
     - name: If Workspace credentials input exists, create workspace credentials file and set exist
       id: check_workspacecred
       run: |
-        if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
           echo "WORKSPACECRED found."
           echo '${{ inputs.WORKSPACECRED }}' > credentials_workspace.json
           echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
           chmod 700 credentials_workspace.json
-        else
-          echo "WORKSPACECRED not found."
-          echo "::set-output name=exists::false"
-        fi
       shell: bash
 
     # - name: Multiple workspace credentials, create files and set env variables
