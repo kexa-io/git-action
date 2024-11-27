@@ -147,11 +147,12 @@ runs:
       id: check_workspacecred
       run: |
           echo "WORKSPACECRED found."
-          echo ${{ inputs.WORKSPACECRED }} > credentials_workspace.json
+          printf %s ${{ inputs.WORKSPACECRED }} > credentials_workspace.json
           cat credentials_workspace.json
           echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
           chmod 700 credentials_workspace.json
       shell: bash
+#          echo ${{ inputs.WORKSPACECRED }} > credentials_workspace.json
 
     # - name: Multiple workspace credentials, create files and set env variables
     #   if: steps.check_workspacecred.outputs.exists == 'false'
