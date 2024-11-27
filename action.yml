@@ -146,15 +146,9 @@ runs:
     - name: If Workspace credentials input exists, create workspace credentials file and set exist
       id: check_workspacecred
       run: |
-        if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
-          echo "WORKSPACECRED found."
-          echo '${{ inputs.WORKSPACECRED }}' > credentials_workspace.json
-          echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
-          chmod 700 credentials_workspace.json
-        else
-          echo "WORKSPACECRED not found."
-          echo "::set-output name=exists::false"
-        fi
+            printf %s ${{ inputs.WORKSPACECRED }} > credentials_workspace.json
+            echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
+            chmod 700 credentials_workspace.json
       shell: bash
 
     - name: Multiple workspace credentials, create files and set env variables
@@ -162,8 +156,8 @@ runs:
       run: |
         echo "checking for multiple workspace credentials"
 
-        if [ -z "${{ inputs.WORKSPACECRED_PREFIX }}" ]; then
-          echo "WORKSPACECRED_PREFIX not found."
+        if [ ! -s credentials_workspace.json ]; then
+          echo "credentials_workspace.json is empty."
           exit 0
         fi
 
