@@ -262,7 +262,7 @@ runs:
     ##################################
 
     - name: Pull Docker image
-      run: docker pull innovtech/kexa:latest
+      run: docker pull innovtech/kexa:debugging
       shell: bash
 
     - name: Stop and remove Docker container
@@ -281,7 +281,7 @@ runs:
 
     - name: Run Docker container
       run: |
-        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexa:latest sleep infinity
+        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexa:debugging sleep infinity
       shell: bash
       if: ${{ success() }}
 
