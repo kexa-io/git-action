@@ -148,7 +148,7 @@ runs:
       run: |
         if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
           echo "WORKSPACECRED found."
-          echo '${{ inputs.WORKSPACECRED }}' | jq . > credentials_workspace.json
+          echo '${{ inputs.WORKSPACECRED }}' > credentials_workspace.json
           echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
           chmod 700 credentials_workspace.json
         else
