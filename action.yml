@@ -265,7 +265,7 @@ runs:
 
     - name: Stop and remove Docker container
       run: |
-        containerId=$(docker ps -qf name=^kexadockeractioncontainer$)
+        containerId=$(docker ps -aqf name=^kexadockeractioncontainer$)
         echo "Container ID to delete: $containerId"
         if [ -n "$containerId" ]; then
           docker stop "$containerId"
