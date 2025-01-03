@@ -50,6 +50,10 @@ inputs:
     description: 'Jira domain used by user'
     required: false
     default: ''
+  DB_CONNECTION_STRING:
+    description: 'Database connection string'
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
@@ -265,7 +269,7 @@ runs:
 
     - name: Stop and remove Docker container
       run: |
-        containerId=$(docker ps -qf name=^kexadockeractioncontainer$)
+        containerId=$(docker ps -aqf name=^kexadockeractioncontainer$)
         echo "Container ID to delete: $containerId"
         if [ -n "$containerId" ]; then
           docker stop "$containerId"
