@@ -50,6 +50,10 @@ inputs:
     description: 'Jira domain used by user'
     required: false
     default: ''
+  DB_CONNECTION_STRING:
+    description: 'Database connection string'
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
