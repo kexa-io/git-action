@@ -77,6 +77,12 @@ runs:
         echo "JIRA_DOMAIN=${{ inputs.JIRA_DOMAIN }}" >> .env
       shell: bash
 
+    # copy DB connection string into env
+    - name: Copy DB connection string into container
+      run: |
+        echo "DB_CONNECTION_STRING=${{ inputs.DB_CONNECTION_STRING }}" >> .env
+      shell: bash
+
     ##################################
     #   CONFIG FILE CREATION         #
     ##################################
