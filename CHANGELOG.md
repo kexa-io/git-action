@@ -75008,3 +75008,20 @@ package-lock.json was changed
 .github/workflows/ci.yml was changed
 
 
+## 1.8.0
+
+### Files added: 1
+
+package-lock.json was added
+
+### Files changed: 4
+
+package-lock.json was changed
+
+.github/workflows/ci.yml was changed
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+
