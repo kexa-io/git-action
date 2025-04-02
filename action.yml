@@ -87,6 +87,19 @@ runs:
     #   CONFIG FILE CREATION         #
     ##################################
 
+    # Create config directories if they don't exist
+    - name: Ensure config directories exist
+      run: |
+        mkdir -p config
+        chmod 775 config
+      shell: bash
+
+    # Create headers.json file to fix permission issue
+    - name: Create headers.json file
+      run: |
+        echo '{}' > config/headers.json
+        chmod 664 config/headers.json
+      shell: bash
 
     ###################
     #   KUBERNETES    #
@@ -102,9 +115,10 @@ runs:
           echo "${{ inputs.KUBECONFIG }} " > kubernetes.json
 
           chmod 700 kubernetes.json kubernetes.yaml
+          echo "exists=true" >> $GITHUB_OUTPUT
         else
           echo "KUBECONFIG not found."
-          echo "::set-output name=exists::false"
+          echo "exists=false" >> $GITHUB_OUTPUT
         fi
       shell: bash
 
@@ -121,7 +135,7 @@ runs:
         IFS=',' read -r -a kubeprefixes <<< "$KUBEPREFIXES"
 
         if [ ${#kubeprefixes[@]} -gt 0 ]; then
-          for idx in "${!kubeprefixes[@]}"; do1
+          for idx in "${!kubeprefixes[@]}"; do
             prefix="${kubeprefixes[$idx]}"
 
             INPUT_PREFIX_KUBE="${prefix}KUBECONFIG"
@@ -140,34 +154,40 @@ runs:
             echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes_${idx}.json
             chmod 700 "kubernetes_${idx}.yaml" "kubernetes_${idx}.json"
           done
+          echo "exists=true" >> $GITHUB_OUTPUT
         else
           echo "No KUBEPREFIX values found."
-          exit 1
+          echo "exists=false" >> $GITHUB_OUTPUT
         fi
       shell: bash
-
-
 
     ###################
     #   WORKSPACE     #
     ###################
 
-
     - name: If Workspace credentials input exists, create workspace credentials file and set exist
       id: check_workspacecred
       run: |
-            printf %s ${{ inputs.WORKSPACECRED }} > credentials_workspace.json
+        if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
+            mkdir -p config
+            printf %s "${{ inputs.WORKSPACECRED }}" > config/credentials_workspace.json
             echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
-            chmod 700 credentials_workspace.json
+            chmod 700 config/credentials_workspace.json
+            echo "exists=true" >> $GITHUB_OUTPUT
+        else
+            echo "WORKSPACECRED not found."
+            echo "exists=false" >> $GITHUB_OUTPUT
+        fi
       shell: bash
 
     - name: Multiple workspace credentials, create files and set env variables
+      id: check_workspacecred_multiple
       if: steps.check_workspacecred.outputs.exists == 'false'
       run: |
         echo "checking for multiple workspace credentials"
 
-        if [ ! -s credentials_workspace.json ]; then
-          echo "credentials_workspace.json is empty."
+        if [ -z "${{ inputs.WORKSPACECRED_PREFIX }}" ]; then
+          echo "WORKSPACECRED_PREFIX not found."
           exit 0
         fi
 
@@ -177,6 +197,7 @@ runs:
         IFS=',' read -r -a workspace_prefixes <<< "$WORKSPACEPREFIXES"
 
         if [ ${#workspace_prefixes[@]} -gt 0 ]; then
+          mkdir -p config
           for idx in "${!workspace_prefixes[@]}"; do
             prefix="${workspace_prefixes[$idx]}"
 
@@ -191,39 +212,39 @@ runs:
               fi
             done
 
-            echo "${workspace}" > "workspace_${idx}.json"
-
+            echo "${workspace}" > "config/workspace_${idx}.json"
             echo "${prefix}WORKSPACECRED=/app/config/workspace_${idx}.json" >> .env
-            chmod 700 "workspace_${idx}.json"
+            chmod 700 "config/workspace_${idx}.json"
           done
+          echo "exists=true" >> $GITHUB_OUTPUT
         else
           echo "No WORKSPACECRED_PREFIX values found."
-          exit 1
+          echo "exists=false" >> $GITHUB_OUTPUT
         fi
       shell: bash
-
-    
 
     ############
     #   GCP    #
     ############
 
-
     - name: If Google application credentials input exists, create Google application credentials file and set exist
       id: check_google_application_credentials
       run: |
-        if [ -n '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' ]; then
+        if [ -n "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" ]; then
           echo "GOOGLE_APPLICATION_CREDENTIALS found."
-          echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' > gcp.json
-          echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json' >> .env
-          chmod 700 gcp.json
+          mkdir -p config
+          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" > config/gcp.json
+          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json" >> .env
+          chmod 700 config/gcp.json
+          echo "exists=true" >> $GITHUB_OUTPUT
         else
           echo "GOOGLE_APPLICATION_CREDENTIALS not found."
-          echo "::set-output name=exists::false"
+          echo "exists=false" >> $GITHUB_OUTPUT
         fi
       shell: bash
 
     - name: Multiple google application credentials, create files and set env variables
+      id: check_google_application_credentials_multiple
       if: steps.check_google_application_credentials.outputs.exists == 'false'
       run: |
         echo "checking for multiple GCP credentials"
@@ -239,6 +260,7 @@ runs:
         IFS=',' read -r -a google_application_credentials_prefixes <<< "$GOOGLE_APPLICATION_CREDENTIALS_PREFIXES"
 
         if [ ${#google_application_credentials_prefixes[@]} -gt 0 ]; then
+          mkdir -p config
           for idx in "${!google_application_credentials_prefixes[@]}"; do
             prefix="${google_application_credentials_prefixes[$idx]}"
 
@@ -254,14 +276,15 @@ runs:
             done
 
             jsonData=$(echo "$gcp" | jq -c .)
-            echo "$jsonData" | jq . > "gcp_${idx}.json"
+            echo "$jsonData" | jq . > "config/gcp_${idx}.json"
 
             echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
-            chmod 700 "gcp_${idx}.json"
+            chmod 700 "config/gcp_${idx}.json"
           done
+          echo "exists=true" >> $GITHUB_OUTPUT
         else
           echo "No GOOGLE_APPLICATION_CREDENTIALS_PREFIX values found."
-          exit 1
+          echo "exists=false" >> $GITHUB_OUTPUT
         fi
       shell: bash
 
@@ -287,28 +310,39 @@ runs:
       continue-on-error: true
       shell: bash
 
-    - name: Run Docker container
+    - name: Run Docker container with increased memory
       run: |
-        docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexabun:latest sleep infinity
+        docker run -d -p 8000:8000 --name kexadockeractioncontainer --memory=2g --memory-swap=2g --env-file .env innovtech/kexabun:latest sleep infinity
       shell: bash
       if: ${{ success() }}
 
     #############################################
     #       COPY CONFIGS INTO CONTAINER         #
     #############################################
+
+    # Create config directory in container if it doesn't exist
+    - name: Ensure config directory exists in container
+      run: |
+        docker exec kexadockeractioncontainer mkdir -p /app/config
+        docker exec kexadockeractioncontainer chmod 775 /app/config
+      shell: bash
+      if: ${{ success() }}
  
     - name: Copy kubeconfig into container
       run: |
-        docker cp kubernetes.yaml kexadockeractioncontainer:/app/
+        if [ -f "kubernetes.yaml" ]; then
+          docker cp kubernetes.yaml kexadockeractioncontainer:/app/
+        fi
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
-
     - name: Copy multiple kubeconfig into container
       run: |
         for file in kubernetes_*.yaml; do
-          docker cp "$file" kexadockeractioncontainer:/app/
+          if [ -f "$file" ]; then
+            docker cp "$file" kexadockeractioncontainer:/app/
+          fi
         done
       shell: bash
       continue-on-error: true
@@ -317,64 +351,42 @@ runs:
     - name: Copy multiple kubernetes json into container
       run: |
         for file in kubernetes_*.json; do
-          docker cp "$file" kexadockeractioncontainer:/app/config/
+          if [ -f "$file" ]; then
+            docker cp "$file" kexadockeractioncontainer:/app/config/
+          fi
         done
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-
-    - name: Display kube json inside container
-      run: docker exec kexadockeractioncontainer ls /app/config/
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-    
-    - name: Display kubeconfig inside container
-      run: docker exec kexadockeractioncontainer sh -c 'ls /app/*.yaml'
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
     - name: Copy kube json into container
       run: |
-        docker cp kubernetes.json kexadockeractioncontainer:/app/config/
+        if [ -f "kubernetes.json" ]; then
+          docker cp kubernetes.json kexadockeractioncontainer:/app/config/
+        fi
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
-    - name: Copy workspace credentials into container
+    - name: Copy config directory into container
       run: |
-        docker cp credentials_workspace.json kexadockeractioncontainer:/app/config/
+        docker cp ./config/. kexadockeractioncontainer:/app/config/
       shell: bash
-      continue-on-error: true
       if: ${{ success() }}
 
-    - name: Copy google application credentials into container
+    - name: Set permissions for config files in container
       run: |
-        docker cp gcp.json kexadockeractioncontainer:/app/config/
+        docker exec kexadockeractioncontainer chmod -R 775 /app/config
       shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-    - name: Copy multiple google application credentials into container
-      run: |
-        for file in gcp_*.json; do
-          docker cp "$file" kexadockeractioncontainer:/app/config/
-        done
-      shell: bash
-      continue-on-error: true
       if: ${{ success() }}
 
     - name: Copy rules into container
       run: |
-        docker cp ./rules kexadockeractioncontainer:/app/
-      shell: bash
-      if: ${{ success() }}
-
-    - name: Copy config into container
-      run: |
-        docker cp ./config kexadockeractioncontainer:/app/
+        if [ -d "./rules" ]; then
+          docker cp ./rules kexadockeractioncontainer:/app/
+        else
+          docker exec kexadockeractioncontainer mkdir -p /app/rules
+        fi
       shell: bash
       if: ${{ success() }}
 
@@ -385,6 +397,16 @@ runs:
     - name: Start main application inside container
       run: |
         docker exec kexadockeractioncontainer sh -c '
+          # Verify config files and permissions
+          ls -la /app/config/
+          
+          # Create empty headers.json if it doesn't exist
+          if [ ! -f "/app/config/headers.json" ]; then
+            echo "{}" > /app/config/headers.json
+            chmod 664 /app/config/headers.json
+          fi
+          
+          # Run the application
           bun run Kexa/index.ts
           EXIT_CODE=$?
           echo "Exit code: $EXIT_CODE"
@@ -395,44 +417,31 @@ runs:
         '
       shell: bash
 
-
-    # delete kube config file if created
+    # Clean up section
     - name: Delete kubeconfig file
       if: steps.check_kubeconfig.outputs.exists == 'true'
-      run: rm kubernetes.yaml
+      run: |
+        if [ -f "kubernetes.yaml" ]; then
+          rm kubernetes.yaml
+        fi
+        if [ -f "kubernetes.json" ]; then
+          rm kubernetes.json
+        fi
       continue-on-error: true
       shell: bash
 
-    # delete multiple kube config files if created
     - name: Delete multiple kubeconfig files
       if: steps.check_kubeconfig_multiple.outputs.exists == 'true'
-      run: rm kubernetes_*.yaml kubernetes_*.json
+      run: |
+        rm -f kubernetes_*.yaml kubernetes_*.json
       continue-on-error: true
       shell: bash
-
-    # delete workspace credentials file if created
-    - name: Delete workspace credentials file
-      if: steps.check_workspacecred.outputs.exists == 'true'
-      run: rm credentials_workspace.json
-      continue-on-error: true
-      shell: bash
-
-    # delete google application credentials file if created
-    - name: Delete google application credentials file
-      if: steps.check_google_application_credentials.outputs.exists == 'true'
-      run: rm google-application-credentials.json
-      continue-on-error: true
-      shell: bash
-      
-    - name: Delete multiple google application credentials files
-      if: steps.check_google_application_credentials.outputs.exists == 'true'
-      run: rm gcp_*.json
-      continue-on-error: true
-      shell: bash
-
 
     - name: Delete .env file
-      run: rm .env
+      run: |
+        if [ -f ".env" ]; then
+          rm .env
+        fi
       continue-on-error: true
       shell: bash
 
