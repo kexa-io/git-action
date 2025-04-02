@@ -261,7 +261,7 @@ runs:
             jsonData=$(echo "$gcp" | jq -c .)
             echo "$jsonData" | jq . > "gcp_${idx}.json"
 
-            echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/config/gcp_${idx}.json" >> .env
+            echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/config/gcp_${idx}json" >> .env
             chmod 700 "gcp_${idx}.json"
           done
           echo "exists=true" >> $GITHUB_OUTPUT
@@ -295,6 +295,8 @@ runs:
 
     - name: Run Docker container
       run: |
+        echo "Environment variables:"
+        cat .env
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env innovtech/kexabun:latest sleep infinity
       shell: bash
       if: ${{ success() }}
