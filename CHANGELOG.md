@@ -74982,3 +74982,29 @@ src/services/addOn/kubernetesGathering.service.ts was changed
 >>>>>>> e0f22c381f12c5eda6d60a7c56ed9d45142b5c91
 
 
+## 1.8.0-SNAPSHOT.257.f4f0fe582
+
+### Files added: 1
+
+package-lock.json was added
+
+### Files changed: 2
+
+package-lock.json was changed
+
+.github/workflows/ci.yml was changed
+
+
+## 1.8.0-SNAPSHOT.258.9b9942203
+
+### Files added: 1
+
+package-lock.json was added
+
+### Files changed: 2
+
+package-lock.json was changed
+
+.github/workflows/ci.yml was changed
+
+

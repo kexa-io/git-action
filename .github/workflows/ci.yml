@@ -35,10 +35,7 @@ jobs:
 
       - name: Set up version in file
         run: echo "${{ steps.versioning.outputs.version }}" > VERSION
-      
-      - name: Run extract Addon
-        run: npm run update
-
+  
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
