@@ -8778,9 +8778,7 @@ src/services/addOn/display/kubernetesDisplay.service.ts was changed
 src/services/addOn/kubernetesGathering.service.ts was changed
 
 
-<<<<<<< HEAD
-## 1.5.3-SNAPSHOT.4.e2104ffbd
-=======
+
 ## 1.5.3
 
 ### Files added: 0
@@ -10808,14 +10806,11 @@ src/services/updateCapability.service.ts was changed
 
 
 ## 1.2.2
->>>>>>> e0f22c381f12c5eda6d60a7c56ed9d45142b5c91
 
 ### Files added: 0
 
 ### Files changed: 2
 
-<<<<<<< HEAD
-=======
 package-lock.json was changed
 
 package.json was changed
@@ -61928,15 +61923,12 @@ src/services/addOn/display/awsDisplay.service.ts was changed
 
 CHANGELOG.md was changed
 
->>>>>>> e0f22c381f12c5eda6d60a7c56ed9d45142b5c91
 VERSION was changed
 
 package.json was changed
 
 
-<<<<<<< HEAD
-## 1.5.3-SNAPSHOT.6.c0bf33eb1
-=======
+
 ## 1.2.11
 
 ### Files added: 340
@@ -68424,16 +68416,12 @@ CHANGELOG.md was changed
 package.json was changed
 
 
-## 1.2.11
->>>>>>> e0f22c381f12c5eda6d60a7c56ed9d45142b5c91
 
 ### Files added: 0
 
 ### Files changed: 1
 
-<<<<<<< HEAD
-README.md was changed
-=======
+
 CHANGELOG.md was changed
 
 
@@ -75098,7 +75086,30 @@ action.yml was changed
 action.yml was changed
 
 
+
 ## 1.8.3
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+action.yml was changed
+
+
+## 1.8.1-SNAPSHOT.39.36d9bac61
+
+### Files added: 0
+
+### Files changed: 1
+
+action.yml was changed
+
+
+## 1.8.2-SNAPSHOT.5.ec37bd3f0
 
 ### Files added: 0
 
