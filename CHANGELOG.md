@@ -17,16 +17,18 @@ VERSION was changed
 
 action.yml was changed
 
-
-## 1.8.3
+## 1.8.3-SNAPSHOT.7.sha.191c2171a
 
 ### Files added: 0
 
-### Files changed: 3
+### Files changed: 0
 
-CHANGELOG.md was changed
 
-VERSION was changed
+## 1.8.3-SNAPSHOT.10.sha.d6fc6b942
+
+### Files added: 0
+
+### Files changed: 1
 
 action.yml was changed
 
