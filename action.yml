@@ -98,7 +98,7 @@ runs:
         if [ -n "${{ inputs.KUBECONFIG }}" ]; then
           echo "KUBECONFIG found."
           echo "${{ inputs.KUBECONFIG }}" > kubernetes.yaml
-          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/usr/src/app/kubernetes.yaml" >> .env
+          echo "${{ inputs.KUBEPREFIX }}KUBECONFIG=/app/kubernetes.yaml" >> .env
           echo "${{ inputs.KUBECONFIG }} " > kubernetes.json
 
           chmod 700 kubernetes.json kubernetes.yaml
@@ -137,7 +137,7 @@ runs:
             done
 
             echo "${kubeconfig}" > "kubernetes_${idx}.yaml"
-            echo "${prefix}KUBECONFIG=/usr/src/app/kubernetes_${idx}.yaml" >> .env
+            echo "${prefix}KUBECONFIG=/app/kubernetes_${idx}.yaml" >> .env
             echo "${kubeconfig}" | python -c "import yaml, json, sys; yaml_content = sys.stdin.read(); print(json.dumps(yaml.safe_load(yaml_content), indent=2))" > kubernetes_${idx}.json
             chmod 700 "kubernetes_${idx}.yaml" "kubernetes_${idx}.json"
           done
@@ -159,7 +159,7 @@ runs:
       id: check_workspacecred
       run: |
             printf %s "${{ inputs.WORKSPACECRED }}" > credentials_workspace.json
-            echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/usr/src/app/config/credentials_workspace.json" >> .env
+            echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
             chmod 700 credentials_workspace.json
             echo "exists=true" >> $GITHUB_OUTPUT
       shell: bash
@@ -196,7 +196,7 @@ runs:
 
             echo "${workspace}" > "workspace_${idx}.json"
 
-            echo "${prefix}WORKSPACECRED=/usr/src/app/config/workspace_${idx}.json" >> .env
+            echo "${prefix}WORKSPACECRED=/app/config/workspace_${idx}.json" >> .env
             chmod 700 "workspace_${idx}.json"
           done
           echo "exists=true" >> $GITHUB_OUTPUT
@@ -219,7 +219,7 @@ runs:
         if [ -n "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" ]; then
           echo "GOOGLE_APPLICATION_CREDENTIALS found."
           echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" > gcp.json
-          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/config/gcp.json" >> .env
+          echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json" >> .env
           chmod 700 gcp.json
           echo "exists=true" >> $GITHUB_OUTPUT
         else
@@ -261,7 +261,7 @@ runs:
             jsonData=$(echo "$gcp" | jq -c .)
             echo "$jsonData" | jq . > "gcp_${idx}.json"
 
-            echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/config/gcp_${idx}json" >> .env
+            echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
             chmod 700 "gcp_${idx}.json"
           done
           echo "exists=true" >> $GITHUB_OUTPUT
@@ -307,7 +307,7 @@ runs:
  
     - name: Copy kubeconfig into container
       run: |
-        docker cp kubernetes.yaml kexadockeractioncontainer:/usr/src/app/
+        docker cp kubernetes.yaml kexadockeractioncontainer:/app/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
@@ -316,7 +316,7 @@ runs:
     - name: Copy multiple kubeconfig into container
       run: |
         for file in kubernetes_*.yaml; do
-          docker cp "$file" kexadockeractioncontainer:/usr/src/app/
+          docker cp "$file" kexadockeractioncontainer:/app/
         done
       shell: bash
       continue-on-error: true
@@ -325,7 +325,7 @@ runs:
     - name: Copy multiple kubernetes json into container
       run: |
         for file in kubernetes_*.json; do
-          docker cp "$file" kexadockeractioncontainer:/usr/src/app/config/
+          docker cp "$file" kexadockeractioncontainer:/app/config/
         done
       shell: bash
       continue-on-error: true
@@ -333,34 +333,34 @@ runs:
 
 
     - name: Display kube json inside container
-      run: docker exec kexadockeractioncontainer ls /usr/src/app/config/
+      run: docker exec kexadockeractioncontainer ls /app/config/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
     
     - name: Display kubeconfig inside container
-      run: docker exec kexadockeractioncontainer sh -c 'ls /usr/src/app/*.yaml'
+      run: docker exec kexadockeractioncontainer sh -c 'ls /app/*.yaml'
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
     - name: Copy kube json into container
       run: |
-        docker cp kubernetes.json kexadockeractioncontainer:/usr/src/app/config/
+        docker cp kubernetes.json kexadockeractioncontainer:/app/config/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
     - name: Copy workspace credentials into container
       run: |
-        docker cp credentials_workspace.json kexadockeractioncontainer:/usr/src/app/config/
+        docker cp credentials_workspace.json kexadockeractioncontainer:/app/config/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
 
     - name: Copy google application credentials into container
       run: |
-        docker cp gcp.json kexadockeractioncontainer:/usr/src/app/config/
+        docker cp gcp.json kexadockeractioncontainer:/app/config/
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
@@ -368,7 +368,7 @@ runs:
     - name: Copy multiple google application credentials into container
       run: |
         for file in gcp_*.json; do
-          docker cp "$file" kexadockeractioncontainer:/usr/src/app/config/
+          docker cp "$file" kexadockeractioncontainer:/app/config/
         done
       shell: bash
       continue-on-error: true
@@ -376,13 +376,13 @@ runs:
 
     - name: Copy rules into container
       run: |
-        docker cp ./rules kexadockeractioncontainer:/usr/src/app/
+        docker cp ./rules kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
 
     - name: Copy config into container
       run: |
-        docker cp ./config kexadockeractioncontainer:/usr/src/app/
+        docker cp ./config kexadockeractioncontainer:/app/
       shell: bash
       if: ${{ success() }}
 
@@ -393,12 +393,12 @@ runs:
     - name: Start main application inside container
       run: |
         docker exec kexadockeractioncontainer sh -c '
-          cd /usr/src/app
-          bun run Kexa/index.ts
+          cd /app
+          bun run Kexa/main.ts
           EXIT_CODE=$?
           echo "Exit code: $EXIT_CODE"
           if [ $EXIT_CODE -ne 0 ]; then
-            echo "bun run Kexa/index.ts failed with exit code $EXIT_CODE"
+            echo "bun run Kexa/main.ts failed with exit code $EXIT_CODE"
             exit $EXIT_CODE
           fi
         '
