@@ -158,10 +158,13 @@ runs:
     - name: If Workspace credentials input exists, create workspace credentials file and set exist
       id: check_workspacecred
       run: |
-            printf %s "${{ inputs.WORKSPACECRED }}" > credentials_workspace.json
-            echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=/app/config/credentials_workspace.json" >> .env
-            chmod 700 credentials_workspace.json
-            echo "exists=true" >> $GITHUB_OUTPUT
+            if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
+              WORKSPACE_CREDS_COMPACT=$(echo '${{ inputs.WORKSPACECRED }}' | jq -c '.')
+              echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=$WORKSPACE_CREDS_COMPACT" >> .env
+              echo "exists=true" >> $GITHUB_OUTPUT
+            else
+              echo "exists=false" >> $GITHUB_OUTPUT
+            fi
       shell: bash
 
     - name: Multiple workspace credentials, create files and set env variables
@@ -169,8 +172,8 @@ runs:
       run: |
         echo "checking for multiple workspace credentials"
 
-        if [ ! -s credentials_workspace.json ]; then
-          echo "credentials_workspace.json is empty."
+        if [ -z "${{ inputs.WORKSPACECRED_PREFIX }}" ]; then
+          echo "WORKSPACECRED_PREFIX not found."
           exit 0
         fi
 
@@ -194,10 +197,8 @@ runs:
               fi
             done
 
-            echo "${workspace}" > "workspace_${idx}.json"
-
-            echo "${prefix}WORKSPACECRED=/app/config/workspace_${idx}.json" >> .env
-            chmod 700 "workspace_${idx}.json"
+            WORKSPACE_CREDS_COMPACT=$(echo "${workspace}" | jq -c '.')
+            echo "${prefix}WORKSPACECRED=$WORKSPACE_CREDS_COMPACT" >> .env
           done
           echo "exists=true" >> $GITHUB_OUTPUT
         else
@@ -216,9 +217,13 @@ runs:
     - name: If Google application credentials input exists, create Google application credentials file and set exist
       id: check_google_application_credentials
       run: |
-            GCP_CREDS_COMPACT=$(echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' | jq -c '.')
-            echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDS_COMPACT" >> .env
-            echo "exists=true" >> $GITHUB_OUTPUT
+            if [ -n "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" ]; then
+              GCP_CREDS_COMPACT=$(echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' | jq -c '.')
+              echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDS_COMPACT" >> .env
+              echo "exists=true" >> $GITHUB_OUTPUT
+            else
+              echo "exists=false" >> $GITHUB_OUTPUT
+            fi
       shell: bash
 
     - name: Multiple google application credentials, create files and set env variables
@@ -251,11 +256,8 @@ runs:
               fi
             done
 
-            jsonData=$(echo "$gcp" | jq -c .)
-            echo "$jsonData" | jq . > "gcp_${idx}.json"
-
-            echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp_${idx}.json" >> .env
-            chmod 700 "gcp_${idx}.json"
+            GCP_CREDS_COMPACT=$(echo "$gcp" | jq -c '.')
+            echo "${prefix}GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDS_COMPACT" >> .env
           done
           echo "exists=true" >> $GITHUB_OUTPUT
         else
@@ -344,40 +346,6 @@ runs:
       continue-on-error: true
       if: ${{ success() }}
 
-    - name: Copy workspace credentials into container
-      run: |
-        docker cp credentials_workspace.json kexadockeractioncontainer:/app/config/
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-    - name: Debug GCP credentials file
-      run: |
-        echo "GCP credentials file size:"
-        ls -lh gcp.json
-        echo "First 100 characters of gcp.json:"
-        head -c 100 gcp.json
-        echo ""
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-    - name: Copy google application credentials into container
-      run: |
-        docker cp gcp.json kexadockeractioncontainer:/app/config/
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
-    - name: Copy multiple google application credentials into container
-      run: |
-        for file in gcp_*.json; do
-          docker cp "$file" kexadockeractioncontainer:/app/config/
-        done
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-
     - name: Copy rules into container
       run: |
         docker cp ./rules kexadockeractioncontainer:/app/
@@ -423,25 +391,6 @@ runs:
       continue-on-error: true
       shell: bash
 
-    # delete workspace credentials file if created
-    - name: Delete workspace credentials file
-      if: steps.check_workspacecred.outputs.exists == 'true'
-      run: rm credentials_workspace.json
-      continue-on-error: true
-      shell: bash
-
-    # delete google application credentials file if created
-    - name: Delete google application credentials file
-      if: steps.check_google_application_credentials.outputs.exists == 'true'
-      run: rm google-application-credentials.json
-      continue-on-error: true
-      shell: bash
-      
-    - name: Delete multiple google application credentials files
-      if: steps.check_google_application_credentials.outputs.exists == 'true'
-      run: rm gcp_*.json
-      continue-on-error: true
-      shell: bash
 
 
     - name: Delete .env file
