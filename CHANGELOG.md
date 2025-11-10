@@ -83,3 +83,16 @@ VERSION was changed
 action.yml was changed
 
 
+## 1.8.7
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+action.yml was changed
+
+
