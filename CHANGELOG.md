@@ -66,14 +66,19 @@ CHANGELOG.md was changed
 
 VERSION was changed
 
+
 action.yml was changed
 
 
-## 1.8.6-SNAPSHOT.7.sha.bb315bbf7
+## 1.8.7-SNAPSHOT.7.sha.04051dfbc
 
 ### Files added: 0
 
-### Files changed: 1
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
 
 action.yml was changed
 
