@@ -216,9 +216,7 @@ runs:
     - name: If Google application credentials input exists, create Google application credentials file and set exist
       id: check_google_application_credentials
       run: |
-            cat > gcp.json <<'EOF'
-            ${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}
-            EOF
+            echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' | jq '.' > gcp.json
             echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json" >> .env
             chmod 700 gcp.json
             echo "exists=true" >> $GITHUB_OUTPUT
@@ -350,6 +348,17 @@ runs:
     - name: Copy workspace credentials into container
       run: |
         docker cp credentials_workspace.json kexadockeractioncontainer:/app/config/
+      shell: bash
+      continue-on-error: true
+      if: ${{ success() }}
+
+    - name: Debug GCP credentials file
+      run: |
+        echo "GCP credentials file size:"
+        ls -lh gcp.json
+        echo "First 100 characters of gcp.json:"
+        head -c 100 gcp.json
+        echo ""
       shell: bash
       continue-on-error: true
       if: ${{ success() }}
