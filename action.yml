@@ -158,8 +158,8 @@ runs:
     - name: If Workspace credentials input exists, create workspace credentials file and set exist
       id: check_workspacecred
       run: |
-            if [ -n "${{ inputs.WORKSPACECRED }}" ]; then
-              WORKSPACE_CREDS_COMPACT=$(echo '${{ inputs.WORKSPACECRED }}' | jq -c '.')
+            WORKSPACE_CREDS_COMPACT=$(echo '${{ inputs.WORKSPACECRED }}' | jq -c '.')
+            if [ -n "$WORKSPACE_CREDS_COMPACT" ] && [ "$WORKSPACE_CREDS_COMPACT" != "null" ]; then
               echo "${{ inputs.WORKSPACECRED_PREFIX }}WORKSPACECRED=$WORKSPACE_CREDS_COMPACT" >> .env
               echo "exists=true" >> $GITHUB_OUTPUT
             else
@@ -217,8 +217,8 @@ runs:
     - name: If Google application credentials input exists, create Google application credentials file and set exist
       id: check_google_application_credentials
       run: |
-            if [ -n "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" ]; then
-              GCP_CREDS_COMPACT=$(echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' | jq -c '.')
+            GCP_CREDS_COMPACT=$(echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' | jq -c '.')
+            if [ -n "$GCP_CREDS_COMPACT" ] && [ "$GCP_CREDS_COMPACT" != "null" ]; then
               echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDS_COMPACT" >> .env
               echo "exists=true" >> $GITHUB_OUTPUT
             else
