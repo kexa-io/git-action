@@ -32,11 +32,40 @@ action.yml was changed
 
 action.yml was changed
 
-
-## 1.8.4-SNAPSHOT.5.sha.2cdbc3851
+## 1.8.4
 
 ### Files added: 0
 
-### Files changed: 0
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+action.yml was changed
+
+
+## 1.8.5
+
+### Files added: 0
+
+### Files changed: 2
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+
+## 1.8.6-SNAPSHOT.4.sha.e878005b0
+
+### Files added: 0
+
+### Files changed: 3
+
+CHANGELOG.md was changed
+
+VERSION was changed
+
+action.yml was changed
 
 
