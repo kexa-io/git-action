@@ -216,7 +216,7 @@ runs:
     - name: If Google application credentials input exists, create Google application credentials file and set exist
       id: check_google_application_credentials
       run: |
-            printf %s "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}" > gcp.json
+            echo '${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}' > gcp.json
             echo "${{ inputs.GOOGLE_APPLICATION_CREDENTIALS_PREFIX }}GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp.json" >> .env
             chmod 700 gcp.json
             echo "exists=true" >> $GITHUB_OUTPUT
