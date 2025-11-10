@@ -290,8 +290,6 @@ runs:
 
     - name: Run Docker container
       run: |
-        echo "Environment variables:"
-        cat .env
         docker run -d -p 8000:8000 --name kexadockeractioncontainer --env-file .env kexa/kexa:latest sleep infinity
       shell: bash
       if: ${{ success() }}
@@ -326,18 +324,6 @@ runs:
       continue-on-error: true
       if: ${{ success() }}
 
-
-    - name: Display kube json inside container
-      run: docker exec kexadockeractioncontainer ls /app/config/
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
-    
-    - name: Display kubeconfig inside container
-      run: docker exec kexadockeractioncontainer sh -c 'ls /app/*.yaml'
-      shell: bash
-      continue-on-error: true
-      if: ${{ success() }}
 
     - name: Copy kube json into container
       run: |
